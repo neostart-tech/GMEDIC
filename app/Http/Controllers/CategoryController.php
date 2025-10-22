@@ -20,11 +20,31 @@ class CategoryController extends Controller
 		]);
 	}
 
+	// public function articlesByCategory(Categorie $categorie): View
+	// {
+	// 	return view('client.articles.index')->with([
+	// 		'articles' => $categorie->articles()->where('published', true)->paginate(5),
+	// 		'category_name' => $categorie->getAttribute('category_name')
+	// 	]);
+	// }
 	public function articlesByCategory(Categorie $categorie): View
-	{
-		return view('client.articles.index')->with([
-			'articles' => $categorie->articles()->where('published', true)->get(),
-			'category_name' => $categorie->getAttribute('category_name')
-		]);
-	}
+{
+    $search = request('search');
+    
+    $query = $categorie->articles()->where('published', true);
+    
+    // Ajouter la recherche si un terme est fourni
+    if ($search) {
+        $query->where(function($q) use ($search) {
+            $q->where('article_name', 'LIKE', "%{$search}%")
+              ->orWhere('article_desc', 'LIKE', "%{$search}%");
+        });
+    }
+    
+    return view('client.articles.index')->with([
+        'articles' => $query->paginate(5),
+        'category_name' => $categorie->getAttribute('category_name'),
+        'search_term' => $search // Pour pré-remplir le champ de recherche
+    ]);
+}
 }

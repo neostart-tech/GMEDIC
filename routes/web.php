@@ -65,6 +65,8 @@ Route::middleware(['auth'])->prefix('administration')->name('admin.')->group(fun
 		Route::put('{user}/modifier-role', 'updateRole')->name('update-role');
 		Route::delete('{user}/retirer', 'destroy')->name('delete');
 	});
+
+
 });
 
 require __DIR__ . '/auth.php';

@@ -1,7 +1,7 @@
 <?php
 
 
-use App\Http\Controllers\{BlogController, CategoryController, ContacterController, WelcomeController};
+use App\Http\Controllers\{BlogController, CategoryController, ContacterController, LanguageController, WelcomeController};
 use Illuminate\Support\Facades\Route;
 
 Route::name('client.')->group(function () {
@@ -22,5 +22,8 @@ Route::name('client.')->group(function () {
 		Route::get('liste', 'index')->name('index');
 		Route::get('{categorie}/articles', 'articlesByCategory')->name('get-articles');
 	});
+
+		Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('lang.switch');
+
 
 });
