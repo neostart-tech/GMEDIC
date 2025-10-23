@@ -124,13 +124,13 @@
         <div class="container">
             <div class="footer-bottom-content">
                 <div class="footer-copyright">
-                    <p>&copy; <span id="footerCurrentYear"></span> {{ env('APP_NAME') }}. Tous droits réservés.</p>
+                    <p>&copy; <span id="footerCurrentYear"></span> {{ env('APP_NAME') }}.{{__('copyright')}}.</p>
                 </div>
                 <div class="footer-bottom-nav">
-                    <a href="#" class="footer-bottom-link">Politique de confidentialité</a>
-                    <a href="#" class="footer-bottom-link">Conditions d'utilisation</a>
+                    <a href="#" class="footer-bottom-link">{{__('privacy_policy')}}</a>
+                    <a href="#" class="footer-bottom-link"> {{__('terms_of_use')}}</a>
                     <a href="https://neostart.tech" class="footer-bottom-link footer-dev-link">
-                        Développé par <strong>Neo Start Technology</strong>
+                        {{__('developed_by')}} <strong>Neo Start Technology</strong>
                     </a>
                 </div>
             </div>
