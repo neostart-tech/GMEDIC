@@ -92,7 +92,7 @@
                             </div>
                             <div class="footer-contact-details">
                                 <span class="footer-contact-label">{{__('Email')}}</span>
-                                <a href="mailto:gmedicsarl@gmail.com" class="footer-email-link">gmedicsarl@gmail.com</a>
+                                <a href="mailto:gmedicsarl@gmail.com" class="footer-email-link">contact@gmedic.tg</a>
                             </div>
                         </div>
                     </div>

@@ -653,7 +653,7 @@
                 <div class="contact-item">
                     <a href="mailto:gmedicsarl@gmail.com">
                         <i class="far fa-envelope"></i>
-                        <span>gmedicsarl@gmail.com</span>
+                        <span>contact@gmedic.tg</span>
                     </a>
                 </div>
             </div>

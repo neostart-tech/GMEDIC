@@ -213,9 +213,11 @@
                          alt="{{ $article->article_name }}"
                         >
                     <div class="card-overlay">
+                        {{-- <button class="view-btn" onclick="displayShowModal({{ $article->id }})"> --}}
+
                         <button class="view-btn" onclick="displayShowModal(@json($article), '{{ Storage::url($article->article_image) }}')">
                             <i class="fas fa-eye"></i>
-                            Voir détails
+                           {{__('Voir détails')}}
                         </button>
                     </div>
                 </div>
@@ -286,6 +288,8 @@
     </div>
 </section>
 
+
+
 @include('client.articles._show')
 
 <style>
@@ -341,9 +345,7 @@ body {
     width: 100%;
 }
 
-/* ============================
-   HERO SLIDER REDESIGN
-   ============================ */
+
 
 .luxury-hero-redesign {
     position: relative;
@@ -1364,7 +1366,7 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Initialisation du nouveau slider hero...');
+   
     
     // Sélectionner tous les slides
     const heroSlides = document.querySelectorAll('.hero-slide-wrapper');
@@ -1372,11 +1374,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevBtn = document.querySelector('.prev-arrow');
     const nextBtn = document.querySelector('.next-arrow');
     
-    console.log('📊 Slides trouvés:', heroSlides.length);
 
     // Si aucun slide valide, on arrête
     if (heroSlides.length === 0) {
-        console.error('❌ Aucun slide trouvé');
+        
         const navigation = document.querySelector('.slider-navigation-wrapper');
         if (navigation) navigation.style.display = 'none';
         return;
@@ -1399,7 +1400,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fonction pour aller à un slide spécifique
     function goToSlide(n) {
-        console.log('🔄 Changement vers le slide:', n);
+      
         
         // Retirer la classe active du slide et indicateur courant
         heroSlides[currentSlide].classList.remove('active');
@@ -1434,7 +1435,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(slideInterval);
         if (heroSlides.length > 1) {
             slideInterval = setInterval(nextSlide, 5000);
-            console.log('⏰ Défilement automatique activé');
+           
         }
     }
 
@@ -1450,14 +1451,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const heroSection = document.querySelector('.luxury-hero-redesign');
         heroSection.addEventListener('mouseenter', () => {
             clearInterval(slideInterval);
-            console.log('⏸️ Slider en pause');
+          
         });
         heroSection.addEventListener('mouseleave', () => {
             resetInterval();
-            console.log('▶️ Slider repris');
         });
     } else {
-        console.log('ℹ️ Un seul slide - pas de défilement automatique');
         const navigation = document.querySelector('.slider-navigation-wrapper');
         if (navigation) navigation.style.display = 'none';
     }
@@ -1503,10 +1502,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (Math.abs(diff) > swipeThreshold) {
                 if (diff > 0) {
                     nextSlide();
-                    console.log('➡️ Swipe vers la droite');
+                  
                 } else {
                     prevSlide();
-                    console.log('⬅️ Swipe vers la gauche');
+                  
                 }
             }
         }
@@ -1514,11 +1513,35 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Fonction pour afficher la modal des articles
-function displayShowModal(article, image) {
-    document.getElementById('image').src = image;
-    document.getElementById('desc').innerHTML = article.article_desc;
-    document.getElementById('nom').innerHTML = article.article_name;
-    $('#show-modal').modal('show');
+function displayShowModal(article,image) {
+    
+        
+        if (!article) {
+            console.error('Article non trouvé:', article);
+            return;
+        }
+
+        // Mettre à jour le contenu du modal
+        document.getElementById('modalArticleImage').src = image;
+        document.getElementById('modalArticleTitle').textContent = article.article_name;
+        document.getElementById('modalArticleDescription').innerHTML = article.article_desc;
+        document.getElementById('category_name').innerHTML=article.category_name
+        
+        // Formater et afficher la date
+        const articleDate = new Date(article.created_at);
+        const formattedDate = articleDate.toLocaleDateString('fr-FR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        document.getElementById('modalArticleDate').textContent = formattedDate;
+        
+        // Afficher le modal avec Bootstrap
+        // const modalElement = document.getElementById('');
+        const modalElement = document.getElementById('articleModal');
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+    
 }
 </script>
 

@@ -864,7 +864,7 @@
                         <span>{{ $category_name }}</span>
                     </div>
                 </div>
-                <button type="button" class="modal-close-btn" data-bs-dismiss="modal">
+                <button type="button" id='close' class="modal-close-btn" data-bs-dismiss="modal">
                     <i class="fas fa-times"></i>
                     {{__('Fermer')}}
                 </button>
@@ -914,6 +914,10 @@
         const modal = new bootstrap.Modal(modalElement);
         modal.show();
     }
+
+    //  document.getElementById('close').addEventListener('click', ()=> {
+    //    document.getElementById('articleModal').close();
+    //  })
 
     // Recherche en temps réel
     document.getElementById('searchInput').addEventListener('input', function(e) {
