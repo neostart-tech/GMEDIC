@@ -547,14 +547,13 @@
     <div class="contact-hero-content">
         <div class="contact-hero-badge">
             <i class="fas fa-envelope"></i>
-            Contactez-nous
+            {{__('Contactez-nous')}}
         </div>
         <h1 class="contact-hero-title">
-            Parlons de votre <span>projet</span>
+            {!! __('Parlons de votre <span>projet</span>')!!}
         </h1>
         <p class="contact-hero-subtitle">
-            Nous sommes là pour répondre à vos questions et vous accompagner dans vos projets. 
-            N'hésitez pas à nous contacter, nous vous répondrons dans les plus brefs délais.
+            {{__('Nous_sommes_là')}}
         </p>
     </div>
 </section>
@@ -577,14 +576,14 @@
             <div class="contact-card fade-in-up">
                 <h2 class="contact-card-title">
                     <i class="fas fa-paper-plane me-2"></i>
-                    Envoyez un message
+                    {{__('Envoyez un message')}}
                 </h2>
                 
                 <form action="{{ route('client.contact.store') }}" method="post" class="contact-form">
                     @csrf
                     
                     <div class="form-group">
-                        <label class="form-label">Nom & Prénom *</label>
+                        <label class="form-label">{{__('Nom & Prénom')}} *</label>
                         <input type="text" 
                                class="form-input {{ $errors->has('nom') ? 'error' : '' }}" 
                                placeholder="Votre nom complet"
@@ -600,7 +599,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Adresse Email *</label>
+                        <label class="form-label">{{__('Adresse Email')}} *</label>
                         <input type="email" 
                                class="form-input {{ $errors->has('email') ? 'error' : '' }}" 
                                placeholder="votre@email.com"
@@ -616,7 +615,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Numéro de téléphone</label>
+                        <label class="form-label">{{__('Numéro de téléphone')}}</label>
                         <input type="tel" 
                                class="form-input {{ $errors->has('telephone') ? 'error' : '' }}"
                                placeholder="+228 XX XX XX XX"
@@ -631,7 +630,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="form-label">Votre message *</label>
+                        <label class="form-label">{{__('Votre message')}} *</label>
                         <textarea name="message" 
                                   class="form-input form-textarea {{ $errors->has('message') ? 'error' : '' }}"
                                   placeholder="Décrivez votre projet ou posez-nous vos questions..."
@@ -647,7 +646,7 @@
 
                     <button type="submit" class="submit-btn">
                         <i class="fas fa-paper-plane"></i>
-                        Envoyer le message
+                       {{__('Envoyer le message')}}
                     </button>
                 </form>
             </div>
@@ -656,7 +655,7 @@
             <div class="contact-info-card fade-in-up">
                 <h2 class="contact-info-title">
                     <i class="fas fa-info-circle me-2"></i>
-                    Nos coordonnées
+                   {{__('Nos coordonnées')}}
                 </h2>
                 
                 <div class="contact-info-list">
@@ -665,10 +664,10 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-info-content">
-                            <div class="contact-info-label">Adresse</div>
+                            <div class="contact-info-label">{{__('Adresse')}}</div>
                             <div class="contact-info-value">
-                                Marché de Cacavéli<br>
-                                Lomé, Togo
+                               {{__('Marché de Cacavéli, Lomé, Togo')}}<br>
+                               
                             </div>
                         </div>
                     </div>
@@ -678,7 +677,7 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div class="contact-info-content">
-                            <div class="contact-info-label">Téléphone</div>
+                            <div class="contact-info-label">{{__('Téléphone')}}</div>
                             <div class="contact-info-value">
                                 <a href="tel:+22870658816" class="contact-info-link">
                                     +228 70 65 88 16 /
@@ -695,7 +694,7 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-info-content">
-                            <div class="contact-info-label">Email</div>
+                            <div class="contact-info-label">{{__('Email')}}</div>
                             <div class="contact-info-value">
                                 <a href="mailto:contact@example.com" class="contact-info-link">
                                    gmedicsarl@gmail.com
@@ -709,10 +708,10 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <div class="contact-info-content">
-                            <div class="contact-info-label">Horaires d'ouverture</div>
+                            <div class="contact-info-label">{{__("Horaires d'ouverture")}}</div>
                             <div class="contact-info-value">
-                                Lun - Ven: 8h00 - 18h00<br>
-                                Sam: 8h00 - 13h00
+                                {{__('Lun - Ven: 8h00 - 18h00')}}<br>
+                                {{__('Sam: 8h00 - 13h00')}}
                             </div>
                         </div>
                     </div>

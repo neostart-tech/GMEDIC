@@ -12,8 +12,7 @@
                                  class="footer-logo-img">
                         </a>
                         <p class="footer-desc">
-                            Votre partenaire de confiance pour des solutions médicales innovantes 
-                            et des appareils PPC/CPAP de haute qualité.
+                           {{__('Votre_partenaire_de_confiance')}}
                         </p>
                     </div>
                     
@@ -35,42 +34,42 @@
                 
                 <!-- Colonne Liens Utiles -->
                 <div class="footer-col">
-                    <h3 class="footer-col-title">Liens Utiles</h3>
+                    <h3 class="footer-col-title">{{__('Liens Utiles')}}</h3>
                     <div class="footer-nav-links">
                         <a href="{{ route('client.accueil') }}" class="footer-nav-link">
                             <i class="fas fa-chevron-right"></i>
-                            Accueil
+                           {{__('Accueil')}}
                         </a>
                         <a href="{{ route('client.a-propos') }}" class="footer-nav-link">
                             <i class="fas fa-chevron-right"></i>
-                            À propos
+                            {{__('À propos')}}
                         </a>
                         <a href="{{ route('client.categories.index') }}" class="footer-nav-link">
                             <i class="fas fa-chevron-right"></i>
-                            Catégories d'articles
+                           {{__("Catégories d'articles")}}
                         </a>
                         <a href="{{ route('client.blogs.index') }}" class="footer-nav-link">
                             <i class="fas fa-chevron-right"></i>
-                            Blog
+                            {{__("Blog")}}
                         </a>
                         <a href="{{ route('client.contact.create') }}" class="footer-nav-link">
                             <i class="fas fa-chevron-right"></i>
-                            Nous contacter
+                            {{__('Nous contacter')}}
                         </a>
                     </div>
                 </div>
                 
                 <!-- Colonne Adresses -->
                 <div class="footer-col">
-                    <h3 class="footer-col-title">Adresses</h3>
+                    <h3 class="footer-col-title">{{__('Adresses')}}</h3>
                      <div class="footer-contact">
                         <div class="footer-contact-item">
                             <div class="footer-contact-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="footer-contact-details">
-                                <span class="footer-contact-label">Adresse</span>
-                                <span class="footer-contact-text">Agoe, en face du marché de cacavéli</span>
+                                <span class="footer-contact-label">{{__('Adresse')}}</span>
+                                <span class="footer-contact-text">{{__('Agoe, en face du marché de cacavéli')}}</span>
                             </div>
                         </div>
                         
@@ -79,7 +78,7 @@
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div class="footer-contact-details">
-                                <span class="footer-contact-label">Téléphone</span>
+                                <span class="footer-contact-label">{{__('Téléphone')}}</span>
                                 <div class="footer-phone-numbers">
                                     <a href="tel:+22870658816" class="footer-phone-link">(+228) 70 65 88 16</a>
                                     <a href="tel:+22898712020" class="footer-phone-link">(+228) 98 71 20 20</a>
@@ -92,7 +91,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="footer-contact-details">
-                                <span class="footer-contact-label">Email</span>
+                                <span class="footer-contact-label">{{__('Email')}}</span>
                                 <a href="mailto:gmedicsarl@gmail.com" class="footer-email-link">gmedicsarl@gmail.com</a>
                             </div>
                         </div>
@@ -101,11 +100,10 @@
                 
                 <!-- Colonne Newsletter -->
                 <div class="footer-col">
-                    <h3 class="footer-col-title">Newsletter</h3>
+                    <h3 class="footer-col-title">{{__('Newsletter')}}</h3>
                     <div class="footer-newsletter">
                         <p class="footer-newsletter-text">
-                            Abonnez-vous à notre newsletter pour recevoir les dernières actualités 
-                            et offres spéciales.
+                           {{__('Abonnez-vous_à_notre_newsletter')}}
                         </p>
                         <form class="footer-newsletter-form">
                             <div class="footer-input-group">

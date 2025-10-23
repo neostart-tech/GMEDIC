@@ -660,17 +660,17 @@
     <div class="blog-hero-content">
         <div class="blog-hero-badge">
             <i class="fas fa-pen-nib"></i>
-            Notre Blog
+           {{__('Notre Blog')}}
         </div>
         <h1 class="blog-hero-title">
-            Découvrez nos <span>Articles</span>
+           {!! __('Découvrez nos <span>Articles</span>') !!}
         </h1>
         <p class="blog-hero-subtitle">
-            Explorez nos derniers articles, conseils et actualités pour rester informé et inspiré.
+        {{__('Explorez nos derniers articles, conseils et actualités pour rester informé et inspiré.')}}
         </p>
         <div class="blog-count">
             <i class="fas fa-newspaper"></i>
-            {{ $blogs->total() }} article(s) publié(s)
+            {{ $blogs->total() }} {{__('article(s) publié(s)')}}
         </div>
     </div>
 </section>
@@ -694,13 +694,13 @@
                 <div class="search-actions">
                     <button type="submit" class="search-btn">
                         <i class="fas fa-search"></i>
-                        Rechercher
+                        {{__('Rechercher')}}
                     </button>
                     
                     @if($search_term)
                     <a href="{{ route('client.blogs.index') }}" class="clear-btn">
                         <i class="fas fa-times"></i>
-                        Effacer
+                        {{__('Effacer')}}
                     </a>
                     @endif
                 </div>
@@ -708,9 +708,9 @@
             
             <div class="search-stats">
                 @if($search_term)
-                    {{ $blogs->total() }} résultat(s) trouvé(s) pour "{{ $search_term }}"
+                    {{ $blogs->total() }} {{__('résultat(s) trouvé(s) pour')}} "{{ $search_term }}"
                 @else
-                    {{ $blogs->total() }} article(s) disponible(s)
+                    {{ $blogs->total() }} {{__('article(s) disponible(s)')}}
                 @endif
             </div>
         </div>
@@ -727,14 +727,14 @@
                         
                         @if($blog->created_at->diffInDays(now()) <= 7)
                             <div class="blog-badge">
-                                <i class="fas fa-star"></i> Nouveau
+                                <i class="fas fa-star"></i> {{__('Nouveau')}}
                             </div>
                         @endif
                         
                         <div class="blog-overlay">
                             <a href="{{ route('client.blogs.show', $blog) }}" class="blog-read-more">
                                 <i class="fas fa-book-open"></i>
-                                Lire l'article
+                                {{__("Lire l'article")}}
                             </a>
                         </div>
                     </div>
@@ -752,7 +752,7 @@
                             </div>
                             <a href="{{ route('client.blogs.show', $blog) }}" class="blog-btn">
                                 <i class="fas fa-eye"></i>
-                                Lire
+                                {{__('Lire')}}
                             </a>
                         </div>
                     </div>
@@ -810,8 +810,8 @@
                     </ul>
                     
                     <div class="pagination-info">
-                        Affichage de <strong>{{ $blogs->firstItem() }}</strong> à <strong>{{ $blogs->lastItem() }}</strong> 
-                        sur <strong>{{ $blogs->total() }}</strong> articles
+                        {{__('Affichage de')}} <strong>{{ $blogs->firstItem() }}</strong> {{__('à')}} <strong>{{ $blogs->lastItem() }}</strong> 
+                        {{__('sur')}} <strong>{{ $blogs->total() }}</strong> {{__('articles')}}
                     </div>
                 </div>
             </div>
@@ -824,23 +824,22 @@
             </div>
             <h2 class="empty-title">
                 @if($search_term)
-                    Aucun résultat trouvé
+                   {{__('Aucun résultat trouvé')}}
                 @else
-                    Blog en Construction
+                   {{__('Blog en Construction')}}
                 @endif
             </h2>
             <p class="empty-description">
                 @if($search_term)
-                    Aucun article ne correspond à votre recherche "{{ $search_term }}". 
-                    Essayez avec d'autres termes ou consultez tous nos articles.
+                   {{__('Aucun article ne correspond à votre recherche')}} "{{ $search_term }}". 
+                    {{__("Essayez avec d'autres termes ou consultez tous nos articles.")}}
                 @else
-                    Nous travaillons dur en coulisses pour apporter du contenu intéressant et de qualité. 
-                    Notre équipe prépare des articles captivants qui seront bientôt disponibles.
+                   {{__('Nous travaillons dur en coulisses pour apporter du contenu intéressant et de qualité. Notre équipe prépare des articles captivants qui seront bientôt disponibles.')}}
                 @endif
             </p>
             <a href="{{ route('client.blogs.index') }}" class="empty-cta">
                 <i class="fas fa-newspaper"></i>
-                Voir tous les articles
+                {{__('Voir tous les articles')}}
             </a>
         </div>
     @endif

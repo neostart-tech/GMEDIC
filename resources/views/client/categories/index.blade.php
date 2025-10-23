@@ -562,14 +562,13 @@
 	<div class="categories-hero-content">
 		<div class="categories-hero-badge">
 			<i class="fas fa-folder-open"></i>
-			Ressources Médicales
+			{{__('Ressources Médicales')}}
 		</div>
 		<h1 class="categories-hero-title">
-			Nos Catégories<span> d'Articles</span>
+			{!! __("Nos Catégories<span> d'Articles</span>") !!}
 		</h1>
 		<p class="categories-hero-description">
-			Découvrez notre collection d'articles spécialisés sur la santé respiratoire,
-			les traitements innovants et les conseils d'experts.
+			{{__('Découvrez_notre_collection')}}
 		</p>
 	</div>
 </section>
@@ -577,29 +576,15 @@
 <!-- Section Catégories -->
 <section class="categories-section">
 	<div class="section-header">
-		<div class="section-subtitle">Connaissances Expertes</div>
-		<h2 class="section-title">Explorez nos Thématiques</h2>
+		<div class="section-subtitle">{{__('Connaissances Expertes')}}</div>
+		<h2 class="section-title">{{__('Explorez nos Thématiques')}}</h2>
 		<p class="section-description">
-			Des contenus riches et variés pour mieux comprendre et gérer votre santé respiratoire
+			{{__('Des_contenus_riches')}}
 		</p>
 	</div>
 
 	@if($categories->isNotEmpty())
-	<!-- Statistiques -->
-	{{-- <div class="categories-stats">
-		<div class="stat-item">
-			<span class="stat-number">{{ $categories->total() }}</span>
-			<div class="stat-label">Catégories</div>
-		</div>
-		<div class="stat-item">
-			<span class="stat-number">{{ $totalArticles ?? '0' }}</span>
-			<div class="stat-label">Articles au total</div>
-		</div>
-		<div class="stat-item">
-			<span class="stat-number">{{ $categories->perPage() }}</span>
-			<div class="stat-label">Par page</div>
-		</div>
-	</div> --}}
+	
 
 	<!-- Grid des Catégories -->
 	<div class="categories-grid">
@@ -623,11 +608,11 @@
 				<div class="category-actions">
 					<a href="{{ route('client.categories.get-articles', $categorie) }}" class="category-btn">
 						<i class="fas fa-eye"></i>
-						Voir les Articles
+						{{__('Voir les Articles')}}
 					</a>
 					<span class="category-articles-count">
 						<i class="fas fa-file-alt"></i>
-						{{ $categorie->articles_count ?? '0' }} articles
+						{{ $categorie->articles_count ?? '0' }} {{__('articles')}}
 					</span>
 				</div>
 			</div>
@@ -686,9 +671,9 @@
 
 			{{-- Informations de pagination --}}
 			<div class="pagination-info">
-				Affichage de <strong>{{ $categories->firstItem() }}</strong> à <strong>{{ $categories->lastItem()
+				{{__('Affichage de')}} <strong>{{ $categories->firstItem() }}</strong> {{__('à')}} <strong>{{ $categories->lastItem()
 					}}</strong>
-				sur <strong>{{ $categories->total() }}</strong> catégories
+				{{__('sur')}} <strong>{{ $categories->total() }}</strong> {{__('catégories')}}
 			</div>
 		</div>
 	</div>
@@ -700,14 +685,13 @@
 		<div class="empty-icon">
 			<i class="fas fa-inbox"></i>
 		</div>
-		<h2 class="empty-title">Catalogue en Construction</h2>
+		<h2 class="empty-title">{{__('Catalogue en Construction')}}</h2>
 		<p class="empty-description">
-			Il semble que notre catalogue soit encore en construction. Notre équipe travaille
-			activement à préparer des articles passionnants et informatifs pour vous.
+			{{__('Il_semble_que_notre_catalogue_soit_encore_en_construction')}}
 		</p>
 		<a href="{{ route('client.accueil') }}" class="empty-cta">
 			<i class="fas fa-home"></i>
-			Retour à l'accueil
+			{{__("Retour à l'accueil")}}
 		</a>
 	</div>
 	@endif

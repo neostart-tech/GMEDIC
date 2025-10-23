@@ -75,7 +75,7 @@
                         <div class="text-center">
                             <a href="#">
 
-                                <img src="{{ asset('assets/images/logos/LOGO-G-MEDIC-FINAL.png') }}"
+                                <img src="{{ asset('assets/images/logos/gmedic_logo.png') }}"
                                     class="img-fluid logo-lg" alt="logo" style="height: 23%;">
                             </a>
                         </div>

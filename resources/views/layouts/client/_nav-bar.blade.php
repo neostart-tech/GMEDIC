@@ -665,33 +665,44 @@
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
 
+
+
                 <!-- Sélecteur de langue Desktop -->
                 <div class="language-selector">
                     <div class="language-current">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg=="
-                            alt="Français" class="language-flag">
+                        @php
+                        $locale = app()->getLocale();
+                        $languages = [
+                        'fr' => ['name' => 'Français', 'flag' =>
+                        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg=='],
+                        'en' => ['name' => 'English', 'flag' =>
+                        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cGF0aCBkPSJNMCAwdjMwbDYwLTNWMGwtNjAtM3oiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMCAwbDUwIDIwdjEwbC01MC0yMHoiIGZpbGw9IiNmMDJiMDAiLz48cGF0aCBkPSJNMCAyMGw1MC0yMHYxMGwtNTAgMjB6IiBmaWxsPSIjZjAyYjAwIi8+PC9zdmc+'],
+                        'zh_CN' => ['name' => '中文', 'flag' =>
+                        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxMyAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4=']
+                        ];
+                        @endphp
+
+                        @if(isset($languages[$locale]))
+                        <img src="{{ $languages[$locale]['flag'] }}" alt="{{ $languages[$locale]['name'] }}"
+                            class="language-flag">
+                        <span>{{ strtoupper(substr($languages[$locale]['name'], 0, 2)) }}</span>
+                        <i class="fas fa-chevron-down"></i>
+                        @else
+                        {{-- Fallback si la langue n'est pas trouvée --}}
+                        <img src="{{ $languages['fr']['flag'] }}" alt="Français" class="language-flag">
                         <span>FR</span>
                         <i class="fas fa-chevron-down"></i>
+                        @endif
                     </div>
                     <div class="language-dropdown">
-                        <a href="#" class="language-option active" data-lang="fr">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg=="
-                                alt="Français" class="language-flag" />
-                            <span>Français</span>
-
+                        @foreach($languages as $langCode => $language)
+                        <a href="{{ route('client.lang.switch', $langCode) }}"
+                            class="language-option {{ $locale === $langCode ? 'active' : '' }}"
+                            data-lang="{{ $langCode }}">
+                            <img src="{{ $language['flag'] }}" alt="{{ $language['name'] }}" class="language-flag" />
+                            <span>{{ $language['name'] }}</span>
                         </a>
-                        <a href="#" class="language-option" data-lang="en">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cGF0aCBkPSJNMCAwdjMwbDYwLTNWMGwtNjAtM3oiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMCAwbDUwIDIwdjEwbC01MC0yMHoiIGZpbGw9IiNmMDJiMDAiLz48cGF0aCBkPSJNMCAyMGw1MC0yMHYxMGwtNTAgMjB6IiBmaWxsPSIjZjAyYjAwIi8+PC9zdmc+"
-                                alt="English" class="language-flag" />
-                            <span>English</span>
-
-                        </a>
-                        <a href="#" class="language-option" data-lang="zh">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxMyAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4="
-                                alt="中文" class="language-flag" />
-                            <span>中文</span>
-
-                        </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -707,38 +718,55 @@
 
 
             <ul class="nav-menu">
-                    <a href="/" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>">Accueil</a>
-                <li class="nav-item"><a href="{{route('client.a-propos')}}" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'a-propos' ? 'active' : '' ?>">À propos</a></li>
-                <li class="nav-item"><a href="{{route('client.categories.index')}}" class="nav-link  <?= basename($_SERVER['PHP_SELF']) == 'liste' ? 'active' : '' ?>">Catégories</a></li>
-                <li class="nav-item"><a href="{{route('client.blogs.index')}}" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'blogs' ? 'active' : '' ?>">Blog</a></li>
-                <li class="nav-item"><a href="{{route('client.contact.create')}}" class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'nous-contacter' ? 'active' : '' ?>">Contact</a></li>
+                <a href="/"
+                    class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>">{{__('Accueil')}}</a>
+                <li class="nav-item"><a href="{{route('client.a-propos')}}"
+                        class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'a-propos' ? 'active' : '' ?>">{{__('À propos')}}</a></li>
+                <li class="nav-item"><a href="{{route('client.categories.index')}}"
+                        class="nav-link  <?= basename($_SERVER['PHP_SELF']) == 'liste' ? 'active' : '' ?>">{{__('Catégories')}}</a>
+                </li>
+                <li class="nav-item"><a href="{{route('client.blogs.index')}}"
+                        class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'blogs' ? 'active' : '' ?>">{{__('Blog')}}</a></li>
+                <li class="nav-item"><a href="{{route('client.contact.create')}}"
+                        class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'nous-contacter' ? 'active' : '' ?>">{{__('Contact')}}</a>
+                </li>
 
                 <!-- Sélecteur de langue Mobile (dans le menu) -->
                 <li class="nav-item mobile-language-selector" style="display: none">
+                    @php
+                    $locale = app()->getLocale();
+                    $languages = [
+                    'fr' => ['name' => 'Français', 'flag' =>
+                    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg=='],
+                    'en' => ['name' => 'English', 'flag' =>
+                    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cGF0aCBkPSJNMCAwdjMwbDYwLTNWMGwtNjAtM3oiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMCAwbDUwIDIwdjEwbC01MC0yMHoiIGZpbGw9IiNmMDJiMDAiLz48cGF0aCBkPSJNMCAyMGw1MC0yMHYxMGwtNTAgMjB6IiBmaWxsPSIjZjAyYjAwIi8+PC9zdmc+'],
+                    'zh_CN' => ['name' => '中文', 'flag' =>
+                    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxMyAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4=']
+                    ];
+                    @endphp
+
                     <div class="mobile-language-current">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg=="
-                            alt="Français" class="language-flag">
+                        @if(isset($languages[$locale]))
+                        <img src="{{ $languages[$locale]['flag'] }}" alt="{{ $languages[$locale]['name'] }}"
+                            class="language-flag">
+                        <span>{{ $languages[$locale]['name'] }}</span>
+                        <i class="fas fa-chevron-down"></i>
+                        @else
+                        {{-- Fallback si la langue n'est pas trouvée --}}
+                        <img src="{{ $languages['fr']['flag'] }}" alt="Français" class="language-flag">
                         <span>Français</span>
                         <i class="fas fa-chevron-down"></i>
+                        @endif
                     </div>
                     <div class="mobile-language-options">
-                        <a href="#" class="mobile-language-option active" data-lang="fr">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg=="
-                                alt="Français" class="language-flag">
-                            <span>Français</span>
+                        @foreach($languages as $langCode => $language)
+                        <a href="{{ route('client.lang.switch', $langCode) }}"
+                            class="mobile-language-option {{ $locale === $langCode ? 'active' : '' }}"
+                            data-lang="{{ $langCode }}">
+                            <img src="{{ $language['flag'] }}" alt="{{ $language['name'] }}" class="language-flag" />
+                            <span>{{ $language['name'] }}</span>
                         </a>
-                        <a href="#" class="mobile-language-option" data-lang="en">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cGF0aCBkPSJNMCAwdjMwbDYwLTNWMGwtNjAtM3oiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMCAwbDUwIDIwdjEwbC01MC0yMHoiIGZpbGw9IiNmMDJiMDAiLz48cGF0aCBkPSJNMCAyMGw1MC0yMHYxMGwtNTAgMjB6IiBmaWxsPSIjZjAyYjAwIi8+PC9zdmc+"
-                                alt="English" class="language-flag" />
-                            <span>English</span>
-
-                        </a>
-                        <a href="#" class="mobile-language-option" data-lang="zh">
-                            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxMyAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4="
-                                alt="中文" class="language-flag" />
-                            <span>中文</span>
-
-                        </a>
+                        @endforeach
                     </div>
                 </li>
             </ul>
@@ -869,35 +897,8 @@
             });
 
             // Fonction pour changer la langue
-            function changeLanguage(lang) {
-                console.log(`Changement de langue vers: ${lang}`);
-                
-                // Ici vous pouvez implémenter la logique de changement de langue
-                // Par exemple, rediriger vers une route spécifique ou faire une requête AJAX
-                
-                // Exemple de redirection (à adapter selon votre architecture)
-                // window.location.href = `/change-language/${lang}`;
-                
-                // Ou utiliser une API pour changer la langue
-                /*
-                fetch(`/api/change-language/${lang}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // Recharger la page ou mettre à jour le contenu dynamiquement
-                        window.location.reload();
-                    }
-                })
-                .catch(error => {
-                    console.error('Erreur lors du changement de langue:', error);
-                });
-                */
+            function changeLanguage(lang) {  
+                window.location.href = `/lang/${lang}`;  
             }
         });
     </script>

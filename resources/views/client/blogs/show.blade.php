@@ -643,7 +643,7 @@
     <div class="article-hero-content">
         <div class="article-hero-badge">
             <i class="fas fa-newspaper"></i>
-            Article détaillé
+           {{__('Article détaillé')}}
         </div>
         <h1 class="article-hero-title">{{ $blog->blog_title }}</h1>
         
@@ -654,12 +654,12 @@
             </div>
             <div class="article-meta-item">
                 <i class="far fa-clock"></i>
-                {{ ceil(str_word_count(strip_tags($blog->blog_content)) / 200) }} min de lecture
+                {{ ceil(str_word_count(strip_tags($blog->blog_content)) / 200) }} {{__('min de lecture')}}
             </div>
             @if($blog->created_at->diffInDays(now()) <= 7)
             <div class="article-meta-item">
                 <i class="fas fa-star"></i>
-                Nouveau
+               {{__('Nouveau')}}
             </div>
             @endif
         </div>
@@ -667,7 +667,7 @@
         <div class="article-hero-actions">
             <a href="{{ route('client.blogs.index') }}" class="article-back-btn">
                 <i class="fas fa-arrow-left"></i>
-                Retour au blog
+                {{__('Retour au blog')}}
             </a>
         </div>
     </div>
@@ -686,7 +686,7 @@
                     
                     @if($blog->created_at->diffInDays(now()) <= 7)
                         <div class="article-badge">
-                            <i class="fas fa-star"></i> Nouvel article
+                            <i class="fas fa-star"></i>{{__('Nouvel article')}}
                         </div>
                     @endif
                 </div>
@@ -697,16 +697,10 @@
                     <div class="article-meta">
                         <div class="article-meta-item">
                             <i class="far fa-calendar"></i>
-                            Publié le {{ $blog->created_at->translatedFormat('d F Y') }}
+                           {{__('Publié le')}} {{ $blog->created_at->translatedFormat('d F Y') }}
                         </div>
-                        <div class="article-meta-item">
-                            <i class="far fa-clock"></i>
-                            Temps de lecture : {{ ceil(str_word_count(strip_tags($blog->blog_content)) / 200) }} min
-                        </div>
-                        <div class="article-meta-item">
-                            <i class="far fa-eye"></i>
-                            {{ rand(50, 500) }} vues
-                        </div>
+                       
+                        
                     </div>
                     
                     <div class="article-body">
@@ -719,46 +713,30 @@
             <div class="article-sidebar">
                 <!-- Informations Article -->
                 <div class="sidebar-card">
-                    <h3 class="sidebar-title">Informations</h3>
+                    <h3 class="sidebar-title">{{__('Informations')}}</h3>
                     <ul class="article-info-list">
                         <li class="article-info-item">
                             <div class="article-info-icon">
                                 <i class="far fa-calendar"></i>
                             </div>
                             <div class="article-info-content">
-                                <div class="article-info-label">Date de publication</div>
+                                <div class="article-info-label">{{__('Date de publication')}}</div>
                                 <div class="article-info-value">{{ $blog->created_at->translatedFormat('d F Y') }}</div>
                             </div>
                         </li>
-                        <li class="article-info-item">
-                            <div class="article-info-icon">
-                                <i class="far fa-clock"></i>
-                            </div>
-                            <div class="article-info-content">
-                                <div class="article-info-label">Temps de lecture</div>
-                                <div class="article-info-value">{{ ceil(str_word_count(strip_tags($blog->blog_content)) / 200) }} minutes</div>
-                            </div>
-                        </li>
-                        <li class="article-info-item">
-                            <div class="article-info-icon">
-                                <i class="far fa-eye"></i>
-                            </div>
-                            <div class="article-info-content">
-                                <div class="article-info-label">Nombre de vues</div>
-                                <div class="article-info-value">{{ rand(50, 500) }}</div>
-                            </div>
-                        </li>
+                        
+                        
                         <li class="article-info-item">
                             <div class="article-info-icon">
                                 <i class="fas fa-tag"></i>
                             </div>
                             <div class="article-info-content">
-                                <div class="article-info-label">Statut</div>
+                                <div class="article-info-label">{{__('Statut')}}</div>
                                 <div class="article-info-value">
                                     @if($blog->created_at->diffInDays(now()) <= 7)
-                                        <span style="color: var(--accent);">Nouveau</span>
+                                        <span style="color: var(--accent);">{{__('Nouveau')}}</span>
                                     @else
-                                        <span style="color: var(--primary);">Publié</span>
+                                        <span style="color: var(--primary);">{{__('Publié')}}</span>
                                     @endif
                                 </div>
                             </div>
@@ -768,16 +746,16 @@
 
                 <!-- Actions -->
                 <div class="sidebar-card">
-                    <h3 class="sidebar-title">Actions</h3>
+                    <h3 class="sidebar-title">{{__('Actions')}}</h3>
                     <div class="action-buttons">
                         <a href="{{ route('client.blogs.index') }}" class="action-btn action-btn-primary">
                             <i class="fas fa-arrow-left"></i>
-                            Retour au blog
+                            {{__('Retour au blog')}}
                         </a>
                        
                         <button class="action-btn action-btn-secondary" onclick="shareArticle()">
                             <i class="fas fa-share-alt"></i>
-                            Partager
+                           {{__('Partager')}}
                         </button>
                     </div>
                 </div>
@@ -786,7 +764,7 @@
 
         <!-- Navigation Articles -->
         <div class="article-navigation">
-            <h3 class="nav-section-title">Articles similaires</h3>
+            <h3 class="nav-section-title">{{__('Articles similaires')}}</h3>
             
             @php
                 $relatedArticles = \App\Models\Blog::where('published', true)
@@ -819,14 +797,13 @@
                     <div class="empty-related-icon">
                         <i class="fas fa-search"></i>
                     </div>
-                    <h3 class="empty-related-title">Aucun article lié trouvé</h3>
+                    <h3 class="empty-related-title">{{__('Aucun article lié trouvé')}}</h3>
                     <p class="empty-related-description">
-                        Il n'y a pas d'autres articles similaires pour le moment. 
-                        Découvrez tous nos articles disponibles sur notre blog.
+                       {{__("Il_n_y_a_pas_d_autres_articles_similaires_pour_le_moment")}}
                     </p>
                     <a href="{{ route('client.blogs.index') }}" class="empty-related-cta">
                         <i class="fas fa-newspaper"></i>
-                        Explorer tous les articles
+                        {{__('Explorer tous les articles')}}
                     </a>
                 </div>
             @endif

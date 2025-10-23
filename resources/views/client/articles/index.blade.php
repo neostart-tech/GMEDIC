@@ -721,14 +721,14 @@
     <div class="articles-hero-content">
         <div class="articles-hero-badge">
             <i class="fas fa-newspaper"></i>
-            Articles Spécialisés
+           {{__('Articles Spécialisés')}}
         </div>
         <h1 class="articles-hero-title">
             {{ $category_name }}
         </h1>
         <div class="articles-count">
             <i class="fas fa-file-alt"></i>
-            {{ $articles->total() }} article(s)
+            {{ $articles->total() }} {{__('article(s)')}}
         </div>
     </div>
 </section>
@@ -736,8 +736,8 @@
 <!-- Breadcrumb Navigation -->
 <nav class="breadcrumb-nav">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('client.accueil') }}"><i class="fas fa-home"></i> Accueil</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('client.categories.index') }}">Catégories</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('client.accueil') }}"><i class="fas fa-home"></i>{{__('Accueil')}}</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('client.categories.index') }}">{{__('Catégories')}}</a></li>
         <li class="breadcrumb-item active">{{ $category_name }}</li>
     </ol>
 </nav>
@@ -754,7 +754,7 @@
                     <i class="fas fa-search search-icon"></i>
                 </div>
                 <div class="search-stats">
-                    {{ $articles->total() }} résultat(s) trouvé(s)
+                    {{ $articles->total() }} {{__('résultat(s) trouvé(s)')}}
                     @if(request('search'))
                     pour "{{ request('search') }}"
                     @endif
@@ -786,7 +786,7 @@
                 <div class="article-actions">
                     <button class="article-btn" onclick="displayArticleModal({{ $article->id }})">
                         <i class="fas fa-plus"></i>
-                        Détails
+                        {{__('Détails')}}
                     </button>
                     <div class="article-date">
                         <i class="far fa-calendar"></i>
@@ -805,9 +805,9 @@
             {{ $articles->links('vendor.pagination.custom') }}
 
             <div class="pagination-info">
-                Affichage de <strong>{{ $articles->firstItem() }}</strong> à <strong>{{ $articles->lastItem()
+                {{__('Affichage de')}} <strong>{{ $articles->firstItem() }}</strong> {{__('à')}} <strong>{{ $articles->lastItem()
                     }}</strong>
-                sur <strong>{{ $articles->total() }}</strong> articles
+                {{__('sur')}} <strong>{{ $articles->total() }}</strong> {{__('articles')}}
             </div>
         </div>
     </div>
@@ -819,17 +819,17 @@
         <div class="empty-icon">
             <i class="fas fa-inbox"></i>
         </div>
-        <h2 class="empty-title">Aucun Article Trouvé</h2>
+        <h2 class="empty-title">{{__('Aucun Article Trouvé')}}</h2>
         <p class="empty-description">
             @if(request('search'))
-            Aucun article ne correspond à votre recherche "{{ request('search') }}".
+           {{__('Aucun article ne correspond à votre recherche')}} "{{ request('search') }}".
             @else
-            Il n'y a pas encore d'articles dans cette catégorie.
+            {{__("Il n'y a pas encore d'articles dans cette catégorie.")}}
             @endif
         </p>
         <a href="{{ route('client.categories.index') }}" class="empty-cta">
             <i class="fas fa-arrow-left"></i>
-            Retour aux catégories
+           {{__('Retour aux catégories')}}
         </a>
     </div>
     @endif
@@ -842,7 +842,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="articleModalLabel">
-                    <i class="fas fa-file-alt me-2"></i>Détails de l'Article
+                    <i class="fas fa-file-alt me-2"></i>{{__("Détails de l'Article")}}
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -866,7 +866,7 @@
                 </div>
                 <button type="button" class="modal-close-btn" data-bs-dismiss="modal">
                     <i class="fas fa-times"></i>
-                    Fermer
+                    {{__('Fermer')}}
                 </button>
             </div>
         </div>

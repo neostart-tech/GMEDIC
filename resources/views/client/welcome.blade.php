@@ -26,35 +26,21 @@
                                     <span>Excellence Médicale</span>
                                 </div> --}}
                                 <h1 class="main-hero-title">
-                                    Bienvenue chez <span class="title-accent"> <br>{{ env('APP_NAME') }}</span>
+                                   {{__('Bienvenue chez')}} <span class="title-accent"> <br>{{ env('APP_NAME') }}</span>
                                 </h1>
                                 <p class="hero-subtitle">
-                                    Découvrez l'excellence et l'innovation qui définissent notre marque.
-                                    Une expérience unique vous attend.
+                                    {{__("Découvrez l'excellence et l'innovation qui définissent notre marque. Une expérience unique vous attend")}}
                                 </p>
                                 <div class="hero-action-buttons">
                                     <a href="{{ route('client.contact.create') }}" class="cta-btn primary-btn">
-                                        <span>Nous contacter</span>
+                                        <span>{{__('Nous contacter')}}</span>
                                         <i class="fas fa-arrow-right"></i>
                                     </a>
                                     <a href="{{ route('client.a-propos') }}" class="cta-btn secondary-btn">
-                                        <span>Découvrir</span>
+                                        <span>{{__('Découvrir')}}</span>
                                     </a>
                                 </div>
-                                {{-- <div class="achievement-stats">
-                                    <div class="stat-item">
-                                        <div class="stat-value" data-count="500">0</div>
-                                        <div class="stat-description">Clients satisfaits</div>
-                                    </div>
-                                    <div class="stat-item">
-                                        <div class="stat-value" data-count="98">0</div>
-                                        <div class="stat-description">Taux de réussite</div>
-                                    </div>
-                                    <div class="stat-item">
-                                        <div class="stat-value" data-count="24">0</div>
-                                        <div class="stat-description">Support 24/7</div>
-                                    </div>
-                                </div> --}}
+                               
                             </div>
                         </div>
                     </div>
@@ -90,21 +76,21 @@
                                 <div class="text-overlay-content">
                                     <div class="content-inner">
                                         <div class="pre-title-badge">
-                                            <span>Innovation</span>
+                                            <span>{{__('Innovation')}}</span>
                                         </div>
                                         <h1 class="main-hero-title">
-                                            {{ $slider->title ?? 'Excellence & Innovation' }}
+                                            {{ $slider->title ?? __('Excellence & Innovation')}}
                                         </h1>
                                         <p class="hero-subtitle">
                                             {{ $slider->slider_desc }}
                                         </p>
                                         <div class="hero-action-buttons">
                                             <a href="{{ route('client.contact.create') }}" class="cta-btn primary-btn">
-                                                <span>Nous contacter</span>
+                                                <span>{{__('Nous contacter')}}</span>
                                                 <i class="fas fa-arrow-right"></i>
                                             </a>
                                             <a href="{{ route('client.a-propos') }}" class="cta-btn secondary-btn">
-                                                <span>En savoir plus</span>
+                                                <span>{{__('En savoir plus')}}</span>
                                             </a>
                                         </div>
                                     </div>
@@ -153,10 +139,10 @@
                 <div class="image-wrapper">
                     <img src="{{ asset('assets/client/images/cpap-ppc.jpeg') }}" alt="Appareils PPC/CPAP">
                     <div class="image-overlay">
-                        <div class="experience-badge">
+                        {{-- <div class="experience-badge">
                             <span class="years">5+</span>
                             <span class="text">Ans d'expérience</span>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -164,16 +150,13 @@
             <div class="about-content">
                 <div class="section-header">
                     <h2 class="section-title">
-                        À propos de <span class="highlight">{{ env('APP_NAME') }}</span>
+                       {{__('À propos de')}} <span class="highlight">{{ env('APP_NAME') }}</span>
                     </h2>
                     <div class="section-divider"></div>
                 </div>
                 
                 <p class="about-description">
-                    {{ env('APP_NAME') }} est une société spécialisée dans la vente d'appareils 
-                    à pression positive continue (PPC/CPAP), constituant l'un des piliers majeurs 
-                    du traitement du syndrome d'apnée du sommeil. Notre engagement envers la qualité 
-                    et l'innovation nous permet d'offrir des solutions thérapeutiques efficaces...
+                    {{ env('APP_NAME') }} {{__("est une société spécialisée dans la vente d'appareils à pression positive continue (PPC/CPAP), constituant l'un des piliers majeurs du traitement du syndrome d'apnée du sommeil. Notre engagement envers la qualité et l'innovation nous permet d'offrir des solutions thérapeutiques efficaces...")}}
                 </p>
                 
                 <div class="about-features">
@@ -184,19 +167,19 @@
                             <i class="fas fa-cogs"></i>
                         </div>
                         <div class="feature-content">
-                            <h4>Technologie Avancée</h4>
-                            <p>Appareils dernière génération</p>
+                            <h4>{{__('Technologie Avancée')}}</h4>
+                            <p>{{__('Appareils dernière génération')}}</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="about-actions">
                     <a href="{{ route('client.a-propos') }}" class="btn btn-primary">
-                        <span>Lire plus</span>
+                        <span>{{__('Lire plus')}}</span>
                         <i class="fas fa-book-open"></i>
                     </a>
                     <a href="{{ route('client.contact.create') }}" class="btn btn-outline">
-                        <span>Nous contacter</span>
+                        <span>{{__('Nous contacter')}}</span>
                         <i class="fas fa-phone"></i>
                     </a>
                 </div>
@@ -210,10 +193,11 @@
     <div class="container">
         <div class="section-header center">
             <h2 class="section-title">
-                Nos <span class="highlight">Produits</span> Phares
+               {!! __('Nos_Produits_Phares', ['produits' => 'Produits']) !!}
+
             </h2>
             <p class="section-subtitle">
-                Découvrez notre sélection d'appareils PPC/CPAP de haute qualité
+                {{ __("Découvrez notre sélection d'appareils PPC/CPAP de haute qualité")}}
             </p>
             <div class="section-divider center"></div>
         </div>
@@ -247,7 +231,7 @@
         
         <div class="section-footer">
             <a href="{{ route('client.categories.index') }}" class="btn btn-primary">
-                <span>Voir tous les produits</span>
+                <span>{{__('Voir tous les produits')}}</span>
                 <i class="fas fa-arrow-right"></i>
             </a>
         </div>
@@ -256,8 +240,8 @@
             <div class="empty-icon">
                 <i class="fas fa-box-open"></i>
             </div>
-            <h3>Catalogue en préparation</h3>
-            <p>Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.</p>
+            <h3>{{__('Catalogue en préparation')}}</h3>
+            <p>{{__('Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.')}}</p>
         </div>
         @endif
     </div>
@@ -271,32 +255,32 @@
                 <div class="benefit-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
-                <h3>Garantie Étendue</h3>
-                <p>Tous nos appareils bénéficient d'une garantie complète de 2 ans</p>
+                <h3>{{__('Garantie Étendue')}}</h3>
+                <p>{{__("Tous nos appareils bénéficient d'une garantie complète de 2 ans")}}</p>
             </div>
             
             <div class="benefit-card">
                 <div class="benefit-icon">
                     <i class="fas fa-shipping-fast"></i>
                 </div>
-                <h3>Livraison Rapide</h3>
-                <p>Expédition sous 24h pour toutes les commandes en stock</p>
+                <h3>{{__('Livraison Rapide')}}</h3>
+                <p>{{__('Expédition sous 24h pour toutes les commandes en stock')}}</p>
             </div>
             
             <div class="benefit-card">
                 <div class="benefit-icon">
                     <i class="fas fa-headset"></i>
                 </div>
-                <h3>Support Expert</h3>
-                <p>Équipe technique disponible pour vous accompagner</p>
+                <h3>{{__('Support Expert')}}</h3>
+                <p>{{__('Équipe technique disponible pour vous accompagner')}}</p>
             </div>
             
             <div class="benefit-card">
                 <div class="benefit-icon">
                     <i class="fas fa-file-medical"></i>
                 </div>
-                <h3>Conseil Personnalisé</h3>
-                <p>Solutions adaptées à vos besoins spécifiques</p>
+                <h3>{{__('Conseil Personnalisé')}}</h3>
+                <p>{{__('Solutions adaptées à vos besoins spécifiques')}}</p>
             </div>
         </div>
     </div>

@@ -725,25 +725,24 @@
             <div class="hero-premium-text">
                 <div class="hero-premium-badge">
                     <i class="fas fa-award"></i>
-                    Excellence Médicale & Innovation
+                   {{__('Excellence Médicale & Innovation')}}
                 </div>
                 <h1 class="hero-premium-title">
-                    Votre Santé Respiratoire<br>
-                    <span>Notre Priorité Absolue</span>
+                    {{__('Votre Santé Respiratoire')}}<br>
+                    <span>{{__('Notre Priorité Absolue')}}</span>
                 </h1>
                 <p class="hero-premium-description">
-                    {{ env('APP_NAME') }} se consacre à révolutionner le traitement du syndrome d'apnée du sommeil 
-                    grâce à des technologies médicales avancées et un accompagnement personnalisé de qualité.
+                    {{ env('APP_NAME') }} {{__("se consacre à révolutionner le traitement du syndrome d'apnée du sommeil grâce à des technologies médicales avancées et un accompagnement personnalisé de qualité.")}}
                 </p>
                 
                 <div class="hero-premium-actions">
                     <a href="{{ route('client.contact.create') }}" class="btn-premium btn-premium-primary">
                         <i class="fas fa-calendar-check"></i>
-                        Consultation Gratuite
+                        {{__('Consultation Gratuite')}}
                     </a>
                     <a href="{{ route('client.categories.index') }}" class="btn-premium btn-premium-secondary">
                         <i class="fas fa-vial"></i>
-                        Découvrir nos Solutions
+                      {{__('Découvrir nos Solutions')}}
                     </a>
                 </div>
             </div>
@@ -763,10 +762,10 @@
 <!-- Section Syndrome d'Apnée Premium -->
 <section class="apnea-section-premium">
     <div class="section-header-premium">
-        <div class="section-subtitle-premium">Pathologie Complexe</div>
-        <h2 class="section-title-premium">Syndrome d'Apnées du Sommeil</h2>
+        <div class="section-subtitle-premium">{{__("Pathologie Complexe")}}</div>
+        <h2 class="section-title-premium">{{__("Syndrome d'Apnées du Sommeil")}}</h2>
         <p class="section-description">
-            Une approche scientifique pour comprendre et traiter efficacement
+           {{__('Une approche scientifique pour comprendre et traiter efficacement')}}
         </p>
     </div>
 
@@ -774,15 +773,15 @@
         <div class="tab-nav">
             <button class="tab-button active" data-tab="definition">
                 <i class="fas fa-microscope"></i>
-                Définition
+                {{__('Définition')}}
             </button>
             <button class="tab-button" data-tab="symptoms">
                 <i class="fas fa-stethoscope"></i>
-                Symptômes
+               {{__('Symptômes')}}
             </button>
             <button class="tab-button" data-tab="complications">
                 <i class="fas fa-heartbeat"></i>
-                Complications
+               {{__('Complications')}}
             </button>
         </div>
 
@@ -791,24 +790,19 @@
             <div class="tab-pane active" id="definition">
                 <div class="tab-pane-content">
                     <div class="tab-pane-text">
-                        <h3>Comprendre l'Apnée du Sommeil</h3>
+                        <h3>{{__('Comprendre l\'Apnée du Sommeil')}}</h3>
                         <p>
-                            Le syndrome d'apnées obstructives du sommeil (SAOS) est un trouble respiratoire 
-                            caractérisé par des interruptions répétées de la respiration pendant le sommeil. 
-                            Ces pauses respiratoires, pouvant durer de 10 à 30 secondes, surviennent lorsque 
-                            les voies aériennes supérieures s'affaissent partiellement ou totalement.
+                           {{__('Le_syndrome_apnées_obstructives_du_sommeil')}}
                         </p>
                         <p>
-                            Chaque épisode d'apnée provoque une chute du taux d'oxygène dans le sang, 
-                            forçant le cerveau à interrompre le sommeil pour rétablir la respiration. 
-                            Ce cycle se répète des dizaines, voire des centaines de fois par nuit.
+                           {{__('Chaque_apnée_chute_du_taux_oxygène')}}
                         </p>
                     </div>
                     <div class="tab-pane-visual">
                         <div style="background: var(--gradient-soft); padding: 35px; border-radius: 12px; text-align: center;">
                             <i class="fas fa-lungs" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 15px;"></i>
-                            <h4 style="color: var(--secondary); margin-bottom: 12px;">Respiration Interrompue</h4>
-                            <p style="color: var(--text-light); font-size: 0.95rem;">5 à 30 arrêts respiratoires par heure de sommeil</p>
+                            <h4 style="color: var(--secondary); margin-bottom: 12px;">{{__('Respiration Interrompue')}}</h4>
+                            <p style="color: var(--text-light); font-size: 0.95rem;">{{__('5 à 30 arrêts respiratoires par heure de sommeil')}}</p>
                         </div>
                     </div>
                 </div>
@@ -818,62 +812,61 @@
             <div class="tab-pane" id="symptoms">
                 <div class="tab-pane-content">
                     <div class="tab-pane-text">
-                        <h3>Signes Cliniques et Symptômes</h3>
+                        <h3>{{__('Signes Cliniques et Symptômes')}}</h3>
                         <p>
-                            Le SAOS se manifeste par des symptômes nocturnes et diurnes caractéristiques 
-                            qui impactent significativement la qualité de vie.
+                           {{__('Le_SAOS_se_manifeste_par_des_symptômes')}}
                         </p>
                         
                         <div class="symptoms-list-premium">
                             <div class="symptom-item-premium">
                                 <i class="fas fa-volume-up"></i>
                                 <div>
-                                    <strong>Ronflement Sonore</strong>
-                                    <div>Intense et intermittent</div>
+                                    <strong>{{__('Ronflement Sonore')}}</strong>
+                                    <div>{{__('Intense et intermittent')}}</div>
                                 </div>
                             </div>
                             <div class="symptom-item-premium">
                                 <i class="fas fa-tired"></i>
                                 <div>
-                                    <strong>Fatigue Matinale</strong>
-                                    <div>Réveil non réparateur</div>
+                                    <strong>{{__('Fatigue Matinale')}}</strong>
+                                    <div>{{__('Réveil non réparateur')}}</div>
                                 </div>
                             </div>
                             <div class="symptom-item-premium">
                                 <i class="fas fa-head-side-virus"></i>
                                 <div>
-                                    <strong>Céphalées Matinales</strong>
-                                    <div>Maux de tête au réveil</div>
+                                    <strong>{{__('Céphalées Matinales')}}</strong>
+                                    <div>{{__('Maux de tête au réveil')}}</div>
                                 </div>
                             </div>
                             <div class="symptom-item-premium">
                                 <i class="fas fa-bed"></i>
                                 <div>
-                                    <strong>Somnolence Diurne</strong>
-                                    <div>Endormissements incontrôlés</div>
+                                    <strong>{{__('Somnolence Diurne')}}</strong>
+                                    <div>{{__('Endormissements incontrôlés')}}</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane-visual">
                         <div style="background: var(--primary-soft); padding: 30px; border-radius: 10px;">
-                            <h4 style="color: var(--secondary); margin-bottom: 15px; text-align: center;">Autres Manifestations</h4>
+                            <h4 style="color: var(--secondary); margin-bottom: 15px; text-align: center;">{{__('Autres Manifestations')}}</h4>
                             <ul style="color: var(--text); list-style: none; padding: 0;">
                                 <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
                                     <i class="fas fa-brain" style="color: var(--primary); margin-right: 8px;"></i>
-                                    Troubles cognitifs
+                                    {{__('Troubles cognitifs')}}
                                 </li>
                                 <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
                                     <i class="fas fa-memory" style="color: var(--primary); margin-right: 8px;"></i>
-                                    Difficultés de concentration
+                                    {{__('Difficultés de concentration')}}
                                 </li>
                                 <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
                                     <i class="fas fa-restroom" style="color: var(--primary); margin-right: 8px;"></i>
-                                    Nycturie fréquente
+                                    {{__('Nycturie fréquente')}}
                                 </li>
                                 <li style="padding: 8px 0;">
                                     <i class="fas fa-user-injured" style="color: var(--primary); margin-right: 8px;"></i>
-                                    Troubles de l'humeur
+                                    {{__("Troubles de l'humeur")}}
                                 </li>
                             </ul>
                         </div>
@@ -885,10 +878,9 @@
             <div class="tab-pane" id="complications">
                 <div class="tab-pane-content">
                     <div class="tab-pane-text">
-                        <h3>Complications à Long Terme</h3>
+                        <h3>{{__('Complications à Long Terme')}}</h3>
                         <p>
-                            Non traité, le SAOS expose à des complications cardiovasculaires, 
-                            métaboliques et neurologiques sévères qui évoluent progressivement.
+                           {{__('non_traité')}}
                         </p>
                         
                         <div class="complications-flex-container">
@@ -899,11 +891,10 @@
                                         <div class="complication-icon-flex">
                                             <i class="fas fa-heart"></i>
                                         </div>
-                                        <div class="complication-title-flex">Cardiovasculaire</div>
+                                        <div class="complication-title-flex">{{__('Cardiovasculaire')}}</div>
                                     </div>
                                     <p class="complication-description-flex">
-                                        Hypertension artérielle, troubles du rythme cardiaque, 
-                                        insuffisance cardiaque et risque accru d'infarctus.
+                                       {{__('Hypertension_artérielle')}}
                                     </p>
                                 </div>
                                 
@@ -912,11 +903,10 @@
                                         <div class="complication-icon-flex">
                                             <i class="fas fa-brain"></i>
                                         </div>
-                                        <div class="complication-title-flex">Neurologique</div>
+                                        <div class="complication-title-flex">{{__('Neurologique')}}</div>
                                     </div>
                                     <p class="complication-description-flex">
-                                        Accident vasculaire cérébral (AVC), déclin cognitif, 
-                                        troubles de la mémoire et dépression.
+                                       {{__('Accident_vasculaire')}}
                                     </p>
                                 </div>
                             </div>
@@ -928,11 +918,10 @@
                                         <div class="complication-icon-flex">
                                             <i class="fas fa-car-crash"></i>
                                         </div>
-                                        <div class="complication-title-flex">Risques d'Accidents</div>
+                                        <div class="complication-title-flex">{{__("Risques d'Accidents")}}</div>
                                     </div>
                                     <p class="complication-description-flex">
-                                        Risque multiplié par 7 d'accidents de la route 
-                                        dus à la somnolence diurne excessive.
+                                        {{__('Risque_multiplié_par_7')}}
                                     </p>
                                 </div>
                                 
@@ -941,11 +930,10 @@
                                         <div class="complication-icon-flex">
                                             <i class="fas fa-weight"></i>
                                         </div>
-                                        <div class="complication-title-flex">Troubles Métaboliques</div>
+                                        <div class="complication-title-flex">{{__('Troubles Métaboliques')}}</div>
                                     </div>
                                     <p class="complication-description-flex">
-                                        Diabète de type 2, résistance à l'insuline, 
-                                        obésité et syndrome métabolique.
+                                        {{__('Diabète_de_type_2')}}
                                     </p>
                                 </div>
                             </div>
@@ -960,10 +948,10 @@
 <!-- Section Mission Premium -->
 <section class="mission-section-premium">
     <div class="section-header-premium">
-        <div class="section-subtitle-premium">Notre Engagement</div>
-        <h2 class="section-title-premium">Excellence & Innovation</h2>
+        <div class="section-subtitle-premium">{{__('Notre Engagement')}}</div>
+        <h2 class="section-title-premium">{{__('Excellence & Innovation')}}</h2>
         <p class="section-description">
-            Une approche holistique pour des résultats durables
+            {{__('Une approche holistique pour des résultats durables')}}
         </p>
     </div>
 
@@ -972,10 +960,9 @@
             <div class="mission-icon-premium">
                 <i class="fas fa-user-md"></i>
             </div>
-            <h3 class="mission-title-premium">Expertise Médicale</h3>
+            <h3 class="mission-title-premium">{{__('Expertise Médicale')}}</h3>
             <p class="mission-description-premium">
-                Collaboration étroite avec pneumologues et spécialistes du sommeil 
-                pour des diagnostics précis et des traitements personnalisés.
+               {{__('Collaboration_étroite')}}
             </p>
         </div>
 
@@ -983,10 +970,9 @@
             <div class="mission-icon-premium">
                 <i class="fas fa-rocket"></i>
             </div>
-            <h3 class="mission-title-premium">Innovation Technologique</h3>
+            <h3 class="mission-title-premium">{{__('Innovation Technologique')}}</h3>
             <p class="mission-description-premium">
-                Appareils PPC dernière génération avec suivi digital et 
-                télémédecine pour une optimisation continue du traitement.
+               {{__('Appareils_PPC')}}
             </p>
         </div>
 
@@ -994,10 +980,9 @@
             <div class="mission-icon-premium">
                 <i class="fas fa-hands-helping"></i>
             </div>
-            <h3 class="mission-title-premium">Accompagnement Global</h3>
+            <h3 class="mission-title-premium">{{__('Accompagnement Global')}}</h3>
             <p class="mission-description-premium">
-                Éducation thérapeutique, soutien psychologique et suivi à vie 
-                pour une adhérence optimale au traitement.
+              {{__('Éducation_thérapeutique')}}
             </p>
         </div>
     </div>
