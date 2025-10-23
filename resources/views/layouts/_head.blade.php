@@ -9,7 +9,7 @@
 <meta name="author" content="Phoenixcoded">
 
 <!-- [Favicon] icon -->
-<link rel="icon" href="{{ asset('assets/images/logos/favicon.ico') }}" type="image/x-icon" style="height: 20px; width: 20px;">
+<link rel="icon" href="{{ asset('assets/images/logos/gmedic_logo.png') }}" type="image/x-icon" style="height: 20px; width: 20px;">
 
 <link rel="stylesheet" href="{{ asset('assets/fonts/inter/inter.css') }}" id="main-font-link"/>
 <!-- [Tabler Icons] https://tablericons.com -->

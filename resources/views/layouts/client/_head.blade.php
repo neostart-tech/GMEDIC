@@ -19,7 +19,7 @@
 <link rel="stylesheet" type="text/css"
 			href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
-<link rel="icon" href="{{ asset('assets/images/logos/favicon.ico') }}" type="image/x-icon" style="height: 20px; width: 20px;">
+<link rel="icon" href="{{ asset('assets/images/logos/gmedic_logo.png') }}" type="image/x-icon" style="height: 20px; width: 20px;">
 
 <!-- font awesome style -->
 <link href="{{ asset('assets/client/css/font-awesome.min.css') }}" rel="stylesheet" />
