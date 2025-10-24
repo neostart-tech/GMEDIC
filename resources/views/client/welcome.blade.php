@@ -22,14 +22,14 @@
                     <div class="hero-content-wrapper">
                         <div class="text-overlay-content">
                             <div class="content-inner">
-                                {{-- <div class="pre-title-badge">
+                                <div class="pre-title-badge">
                                     <span>Excellence Médicale</span>
-                                </div> --}}
+                                </div>
                                 <h1 class="main-hero-title">
-                                   {{__('Bienvenue chez')}} <span class="title-accent"> <br>{{ env('APP_NAME') }}</span>
+                                    {{__('Bienvenue chez')}} <span class="title-accent">{{ env('APP_NAME') }}</span>
                                 </h1>
                                 <p class="hero-subtitle">
-                                    {{__("Découvrez l'excellence et l'innovation qui définissent notre marque. Une expérience unique vous attend")}}
+                                    Rendre la technologie médicale de pointe accessible, sans compromis sur la qualité ni sur la sécurité. 
                                 </p>
                                 <div class="hero-action-buttons">
                                     <a href="{{ route('client.contact.create') }}" class="cta-btn primary-btn">
@@ -40,7 +40,7 @@
                                         <span>{{__('Découvrir')}}</span>
                                     </a>
                                 </div>
-                               
+                                
                             </div>
                         </div>
                     </div>
@@ -131,6 +131,315 @@
     @endif
 </section>
 
+<!-- Section Domaines d'Expertise Redesign -->
+<section id="domaines-expertise" class="expertise-section">
+    <div class="container">
+        <div class="section-header center">
+            <h2 class="section-title text-center">{{__('domaines_expertise')}}</h2>
+            <p class="section-subtitle text-center">{{__('solutions_professionnels')}}</p>
+            <div class="section-divider center"></div>
+        </div>
+        
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <div class="card-icon-wrapper">
+                    <div class="expertise-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="icon-bg-shape"></div>
+                </div>
+                <h3>{{__('vente_equipements')}}</h3>
+                <p>{{ __('produits_certifies') }}</p>
+               
+            </div>
+            
+            <div class="expertise-card">
+                <div class="card-icon-wrapper">
+                    <div class="expertise-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="icon-bg-shape"></div>
+                </div>
+                <h3>{{__('location_equipements')}}</h3>
+                <p>{{__('solutions_flexibles')}}</p>
+              
+            </div>
+            
+            <div class="expertise-card">
+                <div class="card-icon-wrapper">
+                    <div class="expertise-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="icon-bg-shape"></div>
+                </div>
+                <h3>{{__('conseil_assistance')}}</h3>
+                <p>{{__('accompagnement')}}</p>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Notre Mission -->
+<section class="mission-section">
+    <div class="container">
+        <div class="mission-grid">
+            <div class="mission-content">
+                <div class="section-header">
+                    <h2 class="section-title">{{__('notre_mission')}}</h2>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="mission-list">
+                    <div class="mission-item">
+                        <div class="mission-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="mission-text">
+                            <h4>{{__('innovation_accessible')}}</h4>
+                            <p>{{__('innovation_accessible_slogan')}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mission-item">
+                        <div class="mission-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="mission-text">
+                            <h4>{{__('modernisation_accompagnee')}}</h4>
+                            <p> {{__('modernisation_accompagnee_slogan')}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mission-item">
+                        <div class="mission-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="mission-text">
+                            <h4>{{__('durabilite_garantie')}}</h4>
+                            <p>{{__('durabilite_garantie_slogan')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mission-visual">
+                <div class="visual-card">
+                    <div class="card-header">
+                        <h3>{{__('notre_vision')}}</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>{{__('notre_vision_slogan')}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Produits Redesign - Version Simplifiée -->
+<section class="products-section">
+    <div class="container">
+        <div class="section-header center">
+            <h2 class="section-title text-center">
+               {!! __('Nos_Produits_Phares', ['produits' => 'Produits']) !!}
+            </h2>
+            <p class="section-subtitle text-center">
+                {{ __("Découvrez notre sélection d'appareils PPC/CPAP de haute qualité")}}
+            </p>
+            <div class="section-divider center"></div>
+        </div>
+        
+        @if($articles->isNotEmpty())
+        @php $firstThreeArticles = $articles->take(3); @endphp
+        
+        <div class="products-grid">
+            @foreach($firstThreeArticles as $article)
+            <div class="product-card">
+                <div class="card-image">
+                    <img src="{{ Storage::url($article->article_image) }}" 
+                         alt="{{ $article->article_name }}"
+                         loading="lazy">
+                    <div class="card-overlay">
+                        <button class="view-btn" onclick="displayShowModal(@json($article), '{{ Storage::url($article->article_image) }}')">
+                            <i class="fas fa-eye"></i>
+                           {{__('Voir détails')}}
+                        </button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <h3 class="product-name">{{ $article->article_name }}</h3>
+                    <div class="product-category">
+                        {{ $article->category->category_name ?? 'Non catégorisé' }}
+                    </div>
+                    @if($article->article_price)
+                    <div class="product-price">
+                        {{ number_format($article->article_price, 2, ',', ' ') }} €
+                    </div>
+                    @endif
+                </div>
+            </div>
+            @endforeach
+        </div>
+        
+        <div class="section-footer">
+            <a href="{{ route('client.categories.index') }}" class="btn btn-primary">
+                <span>{{__('Voir tous les produits')}}</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        @else
+        <div class="empty-state">
+            <div class="empty-icon">
+                <i class="fas fa-box-open"></i>
+            </div>
+            <h3>{{__('Catalogue en préparation')}}</h3>
+            <p>{{__('Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.')}}</p>
+        </div>
+        @endif
+    </div>
+</section>
+
+<!-- Section Nos Valeurs Redesign -->
+<section class="values-section" style="background:white">
+    <div class="container">
+        <div class="section-header center">
+            <h2 class="section-title text-center">{{__('nos_valeurs')}}</h2>
+            <p class="section-subtitle text-center">{{__('principes_guide')}}</p>
+            <div class="section-divider center"></div>
+        </div>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon-wrapper">
+                    <div class="value-shape innovation">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="value-bg-shape"></div>
+                </div>
+                <h3>{{__('innovation')}}</h3>
+                <p>{{__('innovation_texte')}}</p>
+                <div class="value-number">01</div>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon-wrapper">
+                    <div class="value-shape quality">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="value-bg-shape"></div>
+                </div>
+                <h3>{{__('qualite')}}</h3>
+                <p>{{__('qualite_texte')}}</p>
+                <div class="value-number">02</div>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon-wrapper">
+                    <div class="value-shape security">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="value-bg-shape"></div>
+                </div>
+                <h3>{{__('securite')}}</h3>
+                <p>{{__('securite_texte')}}</p>
+                <div class="value-number">03</div>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon-wrapper">
+                    <div class="value-shape accessibility">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div class="value-bg-shape"></div>
+                </div>
+                <h3>{{__('accessibilite')}}</h3>
+                <p>{{__('accessibilite_texte')}}</p>
+                <div class="value-number">04</div>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon-wrapper">
+                    <div class="value-shape engagement">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="value-bg-shape"></div>
+                </div>
+                <h3>{{__('engagement_humain')}}</h3>
+                <p>{{__('engagement_humain_texte')}}</p>
+                <div class="value-number">05</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Nos Services Redesign -->
+<section class="services-section" style="background: #F4F7F9">
+    <div class="container">
+        <div class="section-header center">
+            <h2 class="section-title text-center">{{__('nos_services')}}</h2>
+            <p class="section-subtitle text-center"> {{__('services_intro')}}</p>
+            <div class="section-divider center"></div>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-number">01</div>
+                    <div class="service-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3>{{__('conseil_orientation')}}</h3>
+                    <p>{{__('etude_besoins')}}</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i>{{__('analyse_besoins')}}</li>
+                        <li><i class="fas fa-check-circle"></i> {{__('recommandations')}}</li>
+                        <li><i class="fas fa-check-circle"></i> {{__('solutions_sur_mesure')}}</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-number">02</div>
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3>{{__('vente_installation')}}</h3>
+                    <p>{{__('livraison_service')}}</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> {{__('livraison_site')}}</li>
+                        <li><i class="fas fa-check-circle"></i> {{__('installation_pro')}}</li>
+                        <li><i class="fas fa-check-circle"></i> {{__('formation_incluse')}}</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-number">03</div>
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                </div>
+                <div class="service-content">
+                    <h3>{{__('formation_personnel')}}</h3>
+                    <p>{{__('utilisation_optimale')}}</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> {{__('formations_pratiques')}}</li>
+                        <li><i class="fas fa-check-circle"></i>{{__('support_continu')}}</li>
+                        <li><i class="fas fa-check-circle"></i> {{__('mises_a_jour')}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Section À Propos Redesign -->
 <section class="about-section">
     <div class="container">
@@ -139,10 +448,10 @@
                 <div class="image-wrapper">
                     <img src="{{ asset('assets/client/images/cpap-ppc.jpeg') }}" alt="Appareils PPC/CPAP">
                     <div class="image-overlay">
-                        {{-- <div class="experience-badge">
+                        <div class="experience-badge">
                             <span class="years">5+</span>
-                            <span class="text">Ans d'expérience</span>
-                        </div> --}}
+                            <span class="text">{{__("Ans d'expérience")}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -156,11 +465,29 @@
                 </div>
                 
                 <p class="about-description">
-                    {{ env('APP_NAME') }} {{__("est une société spécialisée dans la vente d'appareils à pression positive continue (PPC/CPAP), constituant l'un des piliers majeurs du traitement du syndrome d'apnée du sommeil. Notre engagement envers la qualité et l'innovation nous permet d'offrir des solutions thérapeutiques efficaces...")}}
+                    {{ env('APP_NAME') }} , {{__('presentation')}}
                 </p>
                 
                 <div class="about-features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>{{__('Certification CE')}}</h4>
+                            <p>{{__('produit_certifie')}}</p>
+                        </div>
+                    </div>
                     
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>{{__('Support Expert')}}</h4>
+                            <p>{{__('equipe_technique')}}</p>
+                        </div>
+                    </div>
                     
                     <div class="feature">
                         <div class="feature-icon">
@@ -188,69 +515,8 @@
     </div>
 </section>
 
-<!-- Section Produits Redesign - Version Simplifiée -->
-<section class="products-section">
-    <div class="container">
-        <div class="section-header center">
-            <h2 class="section-title">
-               {!! __('Nos_Produits_Phares', ['produits' => 'Produits']) !!}
-
-            </h2>
-            <p class="section-subtitle">
-                {{ __("Découvrez notre sélection d'appareils PPC/CPAP de haute qualité")}}
-            </p>
-            <div class="section-divider center"></div>
-        </div>
-        
-        @if($articles->isNotEmpty())
-        @php $firstThreeArticles = $articles->take(3); @endphp
-        
-        <div class="products-grid">
-            @foreach($firstThreeArticles as $article)
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="{{ Storage::url($article->article_image) }}" 
-                         alt="{{ $article->article_name }}"
-                        >
-                    <div class="card-overlay">
-                        {{-- <button class="view-btn" onclick="displayShowModal({{ $article->id }})"> --}}
-
-                        <button class="view-btn" onclick="displayShowModal(@json($article), '{{ Storage::url($article->article_image) }}')">
-                            <i class="fas fa-eye"></i>
-                           {{__('Voir détails')}}
-                        </button>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <h3 class="product-name">{{ $article->article_name }}</h3>
-                    <div class="product-category">
-                        {{ $article->category->category_name ?? 'Non catégorisé' }}
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        
-        <div class="section-footer">
-            <a href="{{ route('client.categories.index') }}" class="btn btn-primary">
-                <span>{{__('Voir tous les produits')}}</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-        @else
-        <div class="empty-state">
-            <div class="empty-icon">
-                <i class="fas fa-box-open"></i>
-            </div>
-            <h3>{{__('Catalogue en préparation')}}</h3>
-            <p>{{__('Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.')}}</p>
-        </div>
-        @endif
-    </div>
-</section>
-
 <!-- Section Avantages -->
-<section class="benefits-section">
+<section class="benefits-section" style="background:#F4F7F9">
     <div class="container">
         <div class="benefits-grid">
             <div class="benefit-card">
@@ -288,9 +554,112 @@
     </div>
 </section>
 
-
-
-@include('client.articles._show')
+<!-- Modal pour les détails des produits - Version Améliorée -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="header-content">
+                    <h2 class="modal-title" id="productModalLabel">Détails du produit</h2>
+                    <p class="modal-subtitle" id="modalProductCategory"></p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="product-modal-content">
+                    <div class="product-modal-gallery">
+                        <div class="main-image">
+                            <img id="modalProductImage" src="" alt="Image produit" class="img-fluid">
+                        </div>
+                        <div class="image-indicators">
+                            <!-- Indicateurs d'images supplémentaires -->
+                        </div>
+                    </div>
+                    
+                    <div class="product-modal-details">
+                        <div class="product-header">
+                            <h1 id="modalProductName" class="product-title"></h1>
+                            <div class="product-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="rating-text">(4.5/5)</span>
+                            </div>
+                        </div>
+                        
+                        <div class="product-price-section">
+                            <span class="price" id="modalProductPrice"></span>
+                            <span class="price-note">TVA incluse</span>
+                        </div>
+                        
+                        <div class="product-description-section">
+                            <h3>Description</h3>
+                            <div class="description-content" id="modalProductDescription"></div>
+                        </div>
+                        
+                        <div class="product-features-section">
+                            <h3>Caractéristiques principales</h3>
+                            <div class="features-grid" id="modalProductFeatures">
+                                <!-- Caractéristiques dynamiques -->
+                            </div>
+                        </div>
+                        
+                        <div class="product-specifications-section">
+                            <h3>Spécifications techniques</h3>
+                            <div class="specs-grid" id="modalProductSpecs">
+                                <!-- Spécifications dynamiques -->
+                            </div>
+                        </div>
+                        
+                        <div class="product-benefits-section">
+                            <h3>Avantages</h3>
+                            <div class="benefits-list" id="modalProductBenefits">
+                                <!-- Avantages dynamiques -->
+                            </div>
+                        </div>
+                        
+                        <div class="product-actions-section">
+                            <div class="action-buttons">
+                                <a href="{{ route('client.contact.create') }}" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-envelope"></i>
+                                    Demander un devis
+                                </a>
+                                <a href="tel:+XXXXXXXXXX" class="btn btn-outline btn-lg">
+                                    <i class="fas fa-phone"></i>
+                                    Nous appeler
+                                </a>
+                                <button class="btn btn-secondary btn-lg" onclick="addToWishlist()">
+                                    <i class="far fa-heart"></i>
+                                    Ajouter aux favoris
+                                </button>
+                            </div>
+                            <div class="quick-info">
+                                <div class="info-item">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Livraison sous 24-48h</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Garantie 2 ans incluse</span>
+                                </div>
+                                <div class="info-item">
+                                    <i class="fas fa-headset"></i>
+                                    <span>Support technique 24/7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <style>
 /* Variables CSS - Palette de couleurs verte et bleue */
@@ -303,13 +672,18 @@
     --secondary-dark: #13294b;
     --secondary-light: #214a8c;
     --accent: #00C6A9;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
     --dark: #1e293b;
     --darker: #0f172a;
     --light: #f8fafc;
     --lighter: #ffffff;
     --text: #334155;
     --text-light: #64748b;
+    --text-lighter: #94a3b8;
     --border: #e2e8f0;
+    --border-light: #f1f5f9;
     --gradient: linear-gradient(135deg, #009D92 0%, #1A3A66 100%);
     --gradient-reverse: linear-gradient(135deg, #1A3A66 0%, #009D92 100%);
     --gradient-soft: linear-gradient(135deg, #f0f9f8 0%, #f5f7fa 100%);
@@ -345,8 +719,7 @@ body {
     width: 100%;
 }
 
-
-
+/* Hero Section Styles */
 .luxury-hero-redesign {
     position: relative;
     min-height: 100vh;
@@ -378,7 +751,6 @@ body {
     visibility: visible;
 }
 
-/* Arrière-plan avec overlay */
 .slide-background-overlay {
     position: absolute;
     top: 0;
@@ -459,7 +831,6 @@ body {
     }
 }
 
-/* Conteneur d'image */
 .slide-image-container {
     position: absolute;
     top: 0;
@@ -487,7 +858,6 @@ body {
     z-index: 1;
 }
 
-/* Contenu superposé */
 .slide-content-overlay {
     position: relative;
     z-index: 3;
@@ -550,7 +920,6 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Boutons d'action */
 .hero-action-buttons {
     display: flex;
     gap: 20px;
@@ -616,36 +985,6 @@ body {
     color: var(--primary-light);
 }
 
-/* Statistiques */
-.achievement-stats {
-    display: flex;
-    gap: 40px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.stat-item {
-    text-align: left;
-}
-
-.stat-value {
-    font-size: 2.8rem;
-    font-weight: 800;
-    color: var(--primary-light);
-    margin-bottom: 8px;
-    line-height: 1;
-    text-shadow: 2px 2px 8px rgba(0, 157, 146, 0.3);
-}
-
-.stat-description {
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    font-weight: 600;
-}
-
-/* Navigation */
 .slider-navigation-wrapper {
     position: absolute;
     bottom: 40px;
@@ -724,10 +1063,411 @@ body {
     box-shadow: 0 0 15px rgba(0, 157, 146, 0.5);
 }
 
-/* ============================
-   SECTION ABOUT
-   ============================ */
+/* Section Domaines d'Expertise Redesign */
+.expertise-section {
+    padding: 100px 0;
+    background: var(--light);
+}
 
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.expertise-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.expertise-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.expertise-card:hover::before {
+    transform: scaleX(1);
+}
+
+.expertise-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-icon-wrapper {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.expertise-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    position: relative;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.expertise-card:hover .expertise-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.icon-bg-shape {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 100px;
+    height: 100px;
+    background: var(--primary-soft);
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.expertise-card:hover .icon-bg-shape {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.expertise-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 16px;
+}
+
+.expertise-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Section Mission */
+.mission-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.mission-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mission-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.mission-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.mission-text h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 8px;
+}
+
+.mission-text p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.mission-visual {
+    display: flex;
+    justify-content: center;
+}
+
+.visual-card {
+    background: var(--gradient);
+    color: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    max-width: 400px;
+}
+
+.visual-card .card-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.visual-card .card-content p {
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Section Valeurs Redesign */
+.values-section {
+    padding: 100px 0;
+    background: var(--gradient-soft);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.value-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.value-card:hover::before {
+    opacity: 0.05;
+}
+
+.value-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.value-icon-wrapper {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.value-shape {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: white;
+    font-size: 2.5rem;
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+}
+
+.value-shape.innovation { background: var(--primary); }
+.value-shape.quality { background: var(--secondary); }
+.value-shape.security { background: #10b981; }
+.value-shape.accessibility { background: #f59e0b; }
+.value-shape.engagement { background: #ef4444; }
+
+.value-bg-shape {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    z-index: 1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.value-card:hover .value-bg-shape {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
+}
+
+.value-card:hover .value-shape {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.value-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.value-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+}
+
+.value-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-soft);
+    line-height: 1;
+    transition: var(--transition);
+}
+
+.value-card:hover .value-number {
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+/* Section Services Redesign */
+.services-section {
+    padding: 100px 0;
+    background: white;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.service-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-header {
+    background: var(--gradient);
+    color: white;
+    padding: 30px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.service-number {
+    font-size: 3rem;
+    font-weight: 800;
+    opacity: 0.3;
+    line-height: 1;
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.service-content {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+.service-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 12px;
+}
+
+.service-content > p {
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-features li {
+    padding: 8px 0;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.service-features li i {
+    color: var(--primary);
+    font-size: 0.9rem;
+}
+
+/* Section About */
 .about-section {
     padding: 100px 0;
     background: white;
@@ -814,6 +1554,12 @@ body {
 
 .section-divider.center {
     margin: 0 auto;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 24px;
 }
 
 .about-description {
@@ -903,25 +1649,10 @@ body {
     transform: translateY(-2px);
 }
 
-/* ============================
-   SECTION PRODUITS
-   ============================ */
-
+/* Section Produits */
 .products-section {
     padding: 100px 0;
     background: var(--gradient-soft);
-}
-
-.section-header.center {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto 60px;
-}
-
-.section-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    margin-bottom: 24px;
 }
 
 .products-grid {
@@ -1014,6 +1745,13 @@ body {
     font-size: 0.875rem;
 }
 
+.product-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 12px;
+}
+
 .section-footer {
     text-align: center;
 }
@@ -1041,10 +1779,6 @@ body {
     margin: 0 auto;
 }
 
-/* ============================
-   SECTION AVANTAGES
-   ============================ */
-
 .benefits-section {
     padding: 80px 0;
     background: white;
@@ -1059,14 +1793,15 @@ body {
 .benefit-card {
     text-align: center;
     padding: 40px 24px;
-    background: var(--gradient-soft);
+    background: white;
     border-radius: var(--border-radius);
     transition: var(--transition);
+    box-shadow: var(--shadow);
 }
 
 .benefit-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-lg);
 }
 
 .benefit-icon {
@@ -1094,12 +1829,455 @@ body {
     line-height: 1.6;
 }
 
-/* ============================
-   RESPONSIVE DESIGN
-   ============================ */
+/* Styles du Modal Amélioré */
+.modal-xl {
+    max-width: 1200px;
+}
 
-/* Tablettes */
-@media screen and (max-width: 1024px) {
+.modal-content {
+    border: none;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+}
+
+.modal-header {
+    background: var(--gradient);
+    color: white;
+    padding: 30px 40px;
+    border-bottom: none;
+    position: relative;
+}
+
+.modal-header .header-content {
+    flex: 1;
+}
+
+.modal-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    color: white;
+}
+
+.modal-subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin: 8px 0 0 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    opacity: 1;
+    transition: var(--transition);
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.btn-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.product-modal-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+}
+
+/* Galerie d'images */
+.product-modal-gallery {
+    background: var(--light);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.main-image img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.image-indicators {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.image-indicator {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transition);
+    opacity: 0.6;
+}
+
+.image-indicator.active {
+    border-color: var(--primary);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.image-indicator:hover {
+    opacity: 1;
+}
+
+.image-indicator img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Détails du produit */
+.product-modal-details {
+    padding: 40px;
+    background: white;
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+.product-header {
+    margin-bottom: 24px;
+}
+
+.product-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stars {
+    color: var(--warning);
+    font-size: 0.9rem;
+}
+
+.rating-text {
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+/* Section Prix */
+.product-price-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--gradient-soft);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary);
+}
+
+.price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+}
+
+.price-note {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+/* Sections de contenu */
+.product-modal-details h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin: 30px 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.product-modal-details h3:first-child {
+    margin-top: 0;
+}
+
+.description-content {
+    line-height: 1.7;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.description-content p {
+    margin-bottom: 16px;
+}
+
+.description-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Grille des caractéristiques */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-bottom: 10px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--light);
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.feature-item:hover {
+    background: var(--primary-soft);
+    transform: translateX(5px);
+}
+
+.feature-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+}
+
+.feature-text {
+    color: var(--text);
+    font-weight: 500;
+}
+
+/* Spécifications techniques */
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.spec-label {
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.spec-value {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* Liste des avantages */
+.benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--gradient-soft);
+    border-radius: 8px;
+    border-left: 4px solid var(--success);
+}
+
+.benefit-item i {
+    color: var(--success);
+    font-size: 1.1rem;
+}
+
+.benefit-text {
+    color: var(--text);
+    font-weight: 500;
+}
+
+/* Actions du produit */
+.product-actions-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid var(--border-light);
+}
+
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.btn-lg {
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: var(--transition);
+    text-decoration: none;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: white;
+    box-shadow: var(--shadow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: white;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--light);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.btn-secondary:hover {
+    background: var(--border);
+    color: var(--text);
+    transform: translateY(-2px);
+}
+
+/* Informations rapides */
+.quick-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    padding: 20px;
+    background: var(--gradient-soft);
+    border-radius: var(--border-radius);
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.info-item i {
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+/* Animation d'entrée */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal.show .modal-content {
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+/* États de chargement */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--primary-soft);
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animation pour les éléments qui apparaissent */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
     .main-hero-title {
         font-size: 3rem;
     }
@@ -1112,20 +2290,14 @@ body {
         max-width: 500px;
     }
     
-    .achievement-stats {
-        gap: 30px;
-    }
-    
-    .stat-value {
-        font-size: 2.4rem;
-    }
-    
-    .about-grid {
+    .about-grid,
+    .mission-grid {
         grid-template-columns: 1fr;
         gap: 60px;
     }
     
-    .about-image {
+    .about-image,
+    .mission-visual {
         order: -1;
     }
     
@@ -1133,10 +2305,18 @@ body {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 30px;
     }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-modal-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 }
 
-/* Tablettes portrait */
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
     .luxury-hero-redesign {
         height: 80vh;
         min-height: 600px;
@@ -1164,20 +2344,6 @@ body {
         padding: 16px 32px;
     }
     
-    .achievement-stats {
-        flex-direction: column;
-        gap: 25px;
-        padding-top: 25px;
-    }
-    
-    .stat-item {
-        text-align: center;
-    }
-    
-    .stat-value {
-        font-size: 2.2rem;
-    }
-    
     .nav-arrow {
         width: 50px;
         height: 50px;
@@ -1200,13 +2366,12 @@ body {
         font-size: 2rem;
     }
     
-    .products-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-    
+    .products-grid,
+    .expertise-grid,
+    .values-grid,
     .benefits-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
     
     .about-actions {
@@ -1216,10 +2381,65 @@ body {
     .about-actions .btn {
         width: 100%;
     }
+    
+    .mission-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .service-card {
+        padding: 30px 20px;
+    }
+    
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-xl {
+        margin: 20px;
+    }
+    
+    .modal-header {
+        padding: 20px;
+    }
+    
+    .modal-title {
+        font-size: 1.5rem;
+    }
+    
+    .btn-close {
+        top: 20px;
+        right: 20px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .product-modal-gallery,
+    .product-modal-details {
+        padding: 20px;
+    }
+    
+    .features-grid,
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .quick-info {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .product-title {
+        font-size: 1.5rem;
+    }
+    
+    .price {
+        font-size: 1.75rem;
+    }
 }
 
-/* Mobiles */
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
     .luxury-hero-redesign {
         height: 70vh;
         min-height: 500px;
@@ -1250,19 +2470,6 @@ body {
         font-size: 1rem;
     }
     
-    .achievement-stats {
-        gap: 20px;
-        padding-top: 20px;
-    }
-    
-    .stat-value {
-        font-size: 2rem;
-    }
-    
-    .stat-description {
-        font-size: 0.8rem;
-    }
-    
     .nav-arrow {
         width: 45px;
         height: 45px;
@@ -1279,95 +2486,69 @@ body {
     .products-grid {
         grid-template-columns: 1fr;
     }
-}
-
-/* Très petits mobiles */
-@media screen and (max-width: 360px) {
-    .luxury-hero-redesign {
-        height: 65vh;
-        min-height: 450px;
+    
+    .expertise-card,
+    .value-card,
+    .benefit-card {
+        padding: 30px 20px;
     }
     
-    .main-hero-title {
-        font-size: 1.8rem;
+    .service-header {
+        padding: 20px;
     }
     
-    .hero-subtitle {
-        font-size: 0.95rem;
+    .service-content {
+        padding: 20px;
     }
     
-    .cta-btn {
-        padding: 12px 24px;
-        font-size: 0.95rem;
+    .modal-xl {
+        margin: 10px;
     }
     
-    .stat-value {
-        font-size: 1.8rem;
-    }
-}
-
-/* Orientation paysage mobile */
-@media screen and (max-height: 500px) and (orientation: landscape) {
-    .luxury-hero-redesign {
-        height: 100vh;
-        min-height: 100vh;
+    .modal-header {
+        padding: 15px;
     }
     
-    .content-inner {
-        padding: 20px 0;
+    .product-modal-gallery,
+    .product-modal-details {
+        padding: 15px;
     }
     
-    .main-hero-title {
-        font-size: 2rem;
-        margin-bottom: 15px;
+    .btn-lg {
+        padding: 14px 20px;
+        font-size: 0.9rem;
     }
     
-    .hero-subtitle {
-        font-size: 1rem;
-        margin-bottom: 20px;
+    .product-title {
+        font-size: 1.25rem;
     }
     
-    .hero-action-buttons {
-        margin-bottom: 25px;
-    }
-    
-    .achievement-stats {
-        padding-top: 20px;
-        gap: 20px;
+    .price {
+        font-size: 1.5rem;
     }
 }
 
-/* Support pour les écrans haute résolution */
-@media screen and (min-width: 1400px) {
-    .container {
-        max-width: 1320px;
-    }
-    
-    .hero-content-wrapper {
-        max-width: 1320px;
-    }
-    
-    .text-overlay-content {
-        max-width: 650px;
-    }
-    
-    .main-hero-title {
-        font-size: 4rem;
-    }
+/* Scrollbar personnalisée pour le modal */
+.product-modal-details::-webkit-scrollbar {
+    width: 6px;
 }
 
-/* Correction pour Safari iOS */
-@supports (-webkit-touch-callout: none) {
-    .luxury-hero-redesign {
-        height: -webkit-fill-available;
-    }
+.product-modal-details::-webkit-scrollbar-track {
+    background: var(--light);
+}
+
+.product-modal-details::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 3px;
+}
+
+.product-modal-details::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-   
-    
     // Sélectionner tous les slides
     const heroSlides = document.querySelectorAll('.hero-slide-wrapper');
     const indicatorsContainer = document.querySelector('.slide-indicators-wrapper');
@@ -1387,21 +2568,21 @@ document.addEventListener('DOMContentLoaded', function() {
     let slideInterval;
 
     // Créer les indicateurs de navigation
-    indicatorsContainer.innerHTML = '';
-    heroSlides.forEach((_, index) => {
-        const indicator = document.createElement('div');
-        indicator.classList.add('slide-indicator');
-        if (index === 0) indicator.classList.add('active');
-        indicator.addEventListener('click', () => goToSlide(index));
-        indicatorsContainer.appendChild(indicator);
-    });
+    if (indicatorsContainer) {
+        indicatorsContainer.innerHTML = '';
+        heroSlides.forEach((_, index) => {
+            const indicator = document.createElement('div');
+            indicator.classList.add('slide-indicator');
+            if (index === 0) indicator.classList.add('active');
+            indicator.addEventListener('click', () => goToSlide(index));
+            indicatorsContainer.appendChild(indicator);
+        });
+    }
 
     const indicators = document.querySelectorAll('.slide-indicator');
 
     // Fonction pour aller à un slide spécifique
     function goToSlide(n) {
-      
-        
         // Retirer la classe active du slide et indicateur courant
         heroSlides[currentSlide].classList.remove('active');
         if (indicators[currentSlide]) {
@@ -1435,7 +2616,6 @@ document.addEventListener('DOMContentLoaded', function() {
         clearInterval(slideInterval);
         if (heroSlides.length > 1) {
             slideInterval = setInterval(nextSlide, 5000);
-           
         }
     }
 
@@ -1451,7 +2631,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const heroSection = document.querySelector('.luxury-hero-redesign');
         heroSection.addEventListener('mouseenter', () => {
             clearInterval(slideInterval);
-          
         });
         heroSection.addEventListener('mouseleave', () => {
             resetInterval();
@@ -1460,24 +2639,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const navigation = document.querySelector('.slider-navigation-wrapper');
         if (navigation) navigation.style.display = 'none';
     }
-
-    // Animation des statistiques
-    const stats = document.querySelectorAll('.stat-value');
-    stats.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-count'));
-        const suffix = stat.textContent.includes('%') ? '%' : '+';
-        let current = 0;
-        
-        const increment = target / 50;
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            stat.textContent = Math.floor(current) + suffix;
-        }, 50);
-    });
 
     // Gestion du touch swipe pour mobile
     let touchStartX = 0;
@@ -1502,53 +2663,251 @@ document.addEventListener('DOMContentLoaded', function() {
             if (Math.abs(diff) > swipeThreshold) {
                 if (diff > 0) {
                     nextSlide();
-                  
                 } else {
                     prevSlide();
-                  
                 }
             }
         }
     }
+
+    // Animation au scroll pour les nouvelles sections
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observer les éléments à animer
+    document.querySelectorAll('.expertise-card, .mission-item, .value-card, .service-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
 });
 
-// Fonction pour afficher la modal des articles
-function displayShowModal(article,image) {
-    
-        
-        if (!article) {
-            console.error('Article non trouvé:', article);
-            return;
-        }
+// Fonction améliorée pour afficher la modal des produits
+function displayShowModal(article, image) {
+    showLoadingState();
 
-        // Mettre à jour le contenu du modal
-        document.getElementById('modalArticleImage').src = image;
-        document.getElementById('modalArticleTitle').textContent = article.article_name;
-        document.getElementById('modalArticleDescription').innerHTML = article.article_desc;
-        document.getElementById('category_name').innerHTML=article.category_name
-        
-        // Formater et afficher la date
-        const articleDate = new Date(article.created_at);
-        const formattedDate = articleDate.toLocaleDateString('fr-FR', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
-        document.getElementById('modalArticleDate').textContent = formattedDate;
+    // Mettre à jour le contenu du modal après un petit délai pour l'animation
+    setTimeout(() => {
+        updateModalContent(article, image);
+        hideLoadingState();
         
         // Afficher le modal avec Bootstrap
-        // const modalElement = document.getElementById('');
-        const modalElement = document.getElementById('articleModal');
+        const modalElement = document.getElementById('productModal');
         const modal = new bootstrap.Modal(modalElement);
         modal.show();
-    
+    }, 500);
 }
+
+function showLoadingState() {
+    const modalBody = document.querySelector('.modal-body');
+    modalBody.innerHTML = `
+        <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Chargement des détails du produit...</p>
+        </div>
+    `;
+}
+
+function hideLoadingState() {
+    // Le contenu sera remplacé par updateModalContent
+}
+
+function updateModalContent(article, image) {
+    // Mettre à jour les informations de base
+    document.getElementById('modalProductImage').src = image;
+    document.getElementById('modalProductName').textContent = article.article_name;
+    document.getElementById('modalProductCategory').textContent = article.category?.category_name || 'Non catégorisé';
+    
+    // Description formatée
+    const descriptionElement = document.getElementById('modalProductDescription');
+    if (article.article_desc) {
+        descriptionElement.innerHTML = formatDescription(article.article_desc);
+    } else {
+        descriptionElement.innerHTML = '<p class="text-muted">Aucune description disponible pour ce produit.</p>';
+    }
+    
+    // Caractéristiques principales
+    updateFeatures(article);
+    
+    // Spécifications techniques
+    updateSpecifications(article);
+    
+    // Avantages
+    updateBenefits(article);
+}
+
+function formatDescription(description) {
+    // Convertir les retours à la ligne en paragraphes
+    return description.split('\n').filter(line => line.trim()).map(line => 
+        `<p>${line.trim()}</p>`
+    ).join('');
+}
+
+
+
+function updateFeatures(article) {
+    const featuresContainer = document.getElementById('modalProductFeatures');
+    
+    // Caractéristiques par défaut basées sur le type de produit
+    const defaultFeatures = getDefaultFeatures(article);
+    
+    featuresContainer.innerHTML = defaultFeatures.map(feature => `
+        <div class="feature-item fade-in">
+            <div class="feature-icon">
+                <i class="${feature.icon}"></i>
+            </div>
+            <span class="feature-text">${feature.text}</span>
+        </div>
+    `).join('');
+}
+
+function updateSpecifications(article) {
+    const specsContainer = document.getElementById('modalProductSpecs');
+    
+    const specifications = getSpecifications(article);
+    
+    specsContainer.innerHTML = specifications.map(spec => `
+        <div class="spec-item fade-in">
+            <span class="spec-label">${spec.label}</span>
+            <span class="spec-value">${spec.value}</span>
+        </div>
+    `).join('');
+}
+
+function updateBenefits(article) {
+    const benefitsContainer = document.getElementById('modalProductBenefits');
+    
+    const benefits = getBenefits(article);
+    
+    benefitsContainer.innerHTML = benefits.map(benefit => `
+        <div class="benefit-item fade-in">
+            <i class="fas fa-check-circle"></i>
+            <span class="benefit-text">${benefit}</span>
+        </div>
+    `).join('');
+}
+
+function getDefaultFeatures(article) {
+    // Caractéristiques basées sur le nom ou la catégorie du produit
+    const baseFeatures = [
+        { icon: 'fas fa-certificate', text: 'Certification CE médicale' },
+        { icon: 'fas fa-shield-alt', text: 'Normes européennes' },
+        { icon: 'fas fa-tools', text: 'Support technique inclus' },
+        { icon: 'fas fa-calendar-check', text: 'Garantie 2 ans' }
+    ];
+    
+    // Ajouter des caractéristiques spécifiques selon le produit
+    if (article.article_name?.toLowerCase().includes('cpap') || article.article_name?.toLowerCase().includes('ppc')) {
+        baseFeatures.push(
+            { icon: 'fas fa-wind', text: 'Thérapie pression positive' },
+            { icon: 'fas fa-moon', text: 'Mode confort nuit' },
+            { icon: 'fas fa-chart-line', text: 'Suivi des données' },
+            { icon: 'fas fa-volume-mute', text: 'Silencieux < 30dB' }
+        );
+    }
+    
+    return baseFeatures;
+}
+
+function getSpecifications(article) {
+    const specs = [
+        { label: 'Poids', value: '1.2 - 2.5 kg' },
+        { label: 'Dimensions', value: '18 × 12 × 8 cm' },
+        { label: 'Pression', value: '4 - 20 cmH₂O' },
+        { label: 'Alimentation', value: '100-240V AC' },
+        { label: 'Bruit', value: '< 30 décibels' },
+        { label: 'Garantie', value: '24 mois' }
+    ];
+    
+    return specs;
+}
+
+function getBenefits(article) {
+    const benefits = [
+        'Amélioration de la qualité du sommeil',
+        'Réduction des ronflements',
+        'Énergie retrouvée pendant la journée',
+        'Meilleure concentration',
+        'Appareil silencieux pour un sommeil paisible',
+        'Facile à utiliser et entretenir'
+    ];
+    
+    return benefits;
+}
+
+function addToWishlist() {
+    // Simulation d'ajout aux favoris
+    const toast = document.createElement('div');
+    toast.className = 'position-fixed top-0 end-0 p-3';
+    toast.style.zIndex = '9999';
+    toast.innerHTML = `
+        <div class="toast show" role="alert">
+            <div class="toast-header">
+                <i class="fas fa-heart text-danger me-2"></i>
+                <strong class="me-auto">Favoris</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body">
+                Produit ajouté à vos favoris !
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(toast);
+    
+    // Supprimer le toast après 3 secondes
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+// Initialisation lorsque le modal est complètement chargé
+document.addEventListener('DOMContentLoaded', function() {
+    const productModal = document.getElementById('productModal');
+    
+    if (productModal) {
+        productModal.addEventListener('shown.bs.modal', function() {
+            // Animation d'entrée pour les éléments
+            const fadeElements = this.querySelectorAll('.fade-in');
+            fadeElements.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+        
+        productModal.addEventListener('hidden.bs.modal', function() {
+            // Réinitialiser le modal
+            const modalBody = this.querySelector('.modal-body');
+            modalBody.scrollTop = 0;
+        });
+    }
+});
+
+// Gestion du clavier pour la navigation
+document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('productModal');
+    if (modal && modal.classList.contains('show')) {
+        if (e.key === 'Escape') {
+            const modalInstance = bootstrap.Modal.getInstance(modal);
+            modalInstance.hide();
+        }
+    }
+});
 </script>
 
 @endsection
 
 @section('js')
-<script>
-    // Scripts JavaScript supplémentaires si nécessaire
-</script>
+
 @endsection
