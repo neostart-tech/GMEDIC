@@ -5,10 +5,12 @@ namespace App\Models;
 use App\Traits\Routing\{GenerateUniqueSlugTrait, ModelsSlugKeyTrait};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
+
 
 class Blog extends Model
 {
-    use ModelsSlugKeyTrait, GenerateUniqueSlugTrait;
+    use ModelsSlugKeyTrait, GenerateUniqueSlugTrait,HasTranslations;
 
     protected $fillable = [
         'blog_title',
@@ -16,6 +18,9 @@ class Blog extends Model
         'blog_image',
         'published',
     ];
+
+    public $translatable = ['blog_title', 'blog_description'];
+
     public function getImageUrlAttribute()
     {
         return asset($this->blog_image);

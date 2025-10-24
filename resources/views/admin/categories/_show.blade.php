@@ -9,7 +9,7 @@
 			</div>
 
 			<div class="modal-body">
-				<span class="mb-3">Description</span>
+				<span class="mb-3">Nom de la catégorie</span>
 				<div class="mb-3" id="show-desc"></div>
 
 				<span class="mb-3">Image d'illustration</span>

@@ -285,53 +285,57 @@
             <div class="section-divider center"></div>
         </div>
         
-        @if($articles->isNotEmpty())
-        @php $firstThreeArticles = $articles->take(3); @endphp
-        
-        <div class="products-grid">
-            @foreach($firstThreeArticles as $article)
+      @if($articles->isNotEmpty())
+    @php $firstThreeArticles = $articles->take(3); @endphp
+    
+    <div class="products-grid">
+        @foreach($firstThreeArticles as $article)
             <div class="product-card">
                 <div class="card-image">
                     <img src="{{ Storage::url($article->article_image) }}" 
-                         alt="{{ $article->article_name }}"
+                         alt="{{ $article->getTranslation('article_name', app()->getLocale()) }}"
                          loading="lazy">
                     <div class="card-overlay">
                         <button class="view-btn" onclick="displayShowModal({{$article}}, '{{ Storage::url($article->article_image) }}')">
                             <i class="fas fa-eye"></i>
-                           {{__('Voir détails')}}
+                            {{ __('Voir détails') }}
                         </button>
                     </div>
                 </div>
                 <div class="card-content">
-                    <h3 class="product-name">{{ $article->article_name }}</h3>
+                    <h3 class="product-name">{{ $article->getTranslation('article_name', app()->getLocale()) }}</h3>
+                    <div class="product-desc">
+                        {!! $article->getTranslation('article_desc', app()->getLocale()) !!}
+                    </div>
                     <div class="product-category">
                         {{ $article->category->category_name ?? 'Non catégorisé' }}
                     </div>
                     @if($article->article_price)
-                    <div class="product-price">
-                        {{ number_format($article->article_price, 2, ',', ' ') }} €
-                    </div>
+                        <div class="product-price">
+                            {{ number_format($article->article_price, 2, ',', ' ') }} €
+                        </div>
                     @endif
                 </div>
             </div>
-            @endforeach
+        @endforeach
+    </div>
+    
+    <div class="section-footer">
+        <a href="{{ route('client.categories.index') }}" class="btn btn-primary">
+            <span>{{ __('Voir tous les produits') }}</span>
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+@else
+    <div class="empty-state">
+        <div class="empty-icon">
+            <i class="fas fa-box-open"></i>
         </div>
-        
-        <div class="section-footer">
-            <a href="{{ route('client.categories.index') }}" class="btn btn-primary">
-                <span>{{__('Voir tous les produits')}}</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-        @else
-        <div class="empty-state">
-            <div class="empty-icon">
-                <i class="fas fa-box-open"></i>
-            </div>
-            <h3>{{__('Catalogue en préparation')}}</h3>
-            <p>{{__('Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.')}}</p>
-        </div>
-        @endif
+        <h3>{{ __('Catalogue en préparation') }}</h3>
+        <p>{{ __('Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.') }}</p>
+    </div>
+@endif
+
     </div>
 </section>
 

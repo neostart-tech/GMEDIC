@@ -10,6 +10,7 @@ use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\{RedirectResponse, Response};
 use Illuminate\View\View;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class CategorieController extends Controller
 {
@@ -27,15 +28,43 @@ class CategorieController extends Controller
 		]);
 	}
 
+	// public function store(CategorieRequest $request): RedirectResponse
+	// {
+	// 	$filePath = $request->hasFile('image') ? $this->storeFile($request, 'image', static::$folder) : null;
+	// 	Categorie::create([
+	// 		'category_name' => $request->get('category_name'),
+	// 		'image' => $filePath
+	// 	]);
+	// 	return back()->with('success', 'Categorie créée avec succès');
+	// }
+
 	public function store(CategorieRequest $request): RedirectResponse
-	{
-		$filePath = $request->hasFile('image') ? $this->storeFile($request, 'image', static::$folder) : null;
-		Categorie::create([
-			'category_name' => $request->get('category_name'),
-			'image' => $filePath
-		]);
-		return back()->with('success', 'Categorie créée avec succès');
-	}
+{
+    $filePath = $request->hasFile('image') 
+        ? $this->storeFile($request, 'image', static::$folder) 
+        : null;
+
+    $name = $request->get('category_name');
+    $languages = ['fr', 'en', 'zh_CN'];
+    $nameTranslations = [];
+
+    // Traduction automatique
+    foreach ($languages as $lang) {
+        try {
+            $tr = new GoogleTranslate($lang);
+            $nameTranslations[$lang] = $tr->translate($name);
+        } catch (\Exception $e) {
+            $nameTranslations[$lang] = null;
+        }
+    }
+
+    Categorie::create([
+        'category_name' => $nameTranslations,
+        'image' => $filePath
+    ]);
+
+    return back()->with('success', 'Categorie créée avec succès');
+}
 
 	public function updatePublishedState(Categorie $categorie): Application|Response|\Illuminate\Contracts\Foundation\Application|ResponseFactory
 	{
@@ -49,21 +78,53 @@ class CategorieController extends Controller
 		]);
 	}
 
+	// public function update(CategorieRequest $request, Categorie $categorie): RedirectResponse
+	// {
+	// 	$filePath = $categorie->getAttribute('image');
+
+	// 	if ($request->hasFile('image')) {
+	// 		$filePath = !$filePath ? $this->storeFile($request, 'image', static::$folder) : $this->updateFile($request, 'image', static::$folder, $filePath);
+	// 	}
+
+	// 	$categorie->update([
+	// 		'category_name' => $request->get('category_name'),
+	// 		'image' => $filePath
+	// 	]);
+
+	// 	return back()->with('success', 'Categorie mise à jour avec succès');
+	// }
+
 	public function update(CategorieRequest $request, Categorie $categorie): RedirectResponse
-	{
-		$filePath = $categorie->getAttribute('image');
+{
+    $filePath = $categorie->getAttribute('image');
 
-		if ($request->hasFile('image')) {
-			$filePath = !$filePath ? $this->storeFile($request, 'image', static::$folder) : $this->updateFile($request, 'image', static::$folder, $filePath);
-		}
+    if ($request->hasFile('image')) {
+        $filePath = !$filePath
+            ? $this->storeFile($request, 'image', static::$folder)
+            : $this->updateFile($request, 'image', static::$folder, $filePath);
+    }
 
-		$categorie->update([
-			'category_name' => $request->get('category_name'),
-			'image' => $filePath
-		]);
+    $name = $request->get('category_name');
+    $languages = ['fr', 'en', 'zh_CN'];
+    $nameTranslations = [];
 
-		return back()->with('success', 'Categorie mise à jour avec succès');
-	}
+    foreach ($languages as $lang) {
+        try {
+            $tr = new GoogleTranslate($lang);
+            // $tr->setSource('auto');
+            $nameTranslations[$lang] = $tr->translate($name);
+        } catch (\Exception $e) {
+            $nameTranslations[$lang] = null;
+        }
+    }
+
+    $categorie->update([
+        'category_name' => $nameTranslations,
+        'image' => $filePath
+    ]);
+
+    return back()->with('success', 'Categorie mise à jour avec succès');
+}
 
 	public function destroy(Categorie $categorie): RedirectResponse
 	{

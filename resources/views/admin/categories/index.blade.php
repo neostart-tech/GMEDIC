@@ -43,13 +43,15 @@
 				</div>
 			</div>
 		</div>
+
 		@if($categories->isNotEmpty())
 			<div class="row">
 				@foreach($categories as $category)
+
 					<div class="col-sm-6 col-xl-4" id="card-{{$category->slug}}" data-card
 							 data-visible="{{ $category->published ? 'visible' : 'hidden' }}"
-							 data-name="{{ $category->category_name }}"
-							 data-category="{{ $category->category_name }}">
+							 data-name="{{ $category->getTranslation('category_name', app()->getLocale()) }}"
+							 data-category="{{ $category->getTranslation('category_name', app()->getLocale()) }}">
 						<div class="card product-card" style="height: 400px;">
 							<div class="card-img-top">
 								<a href="javascript:void(0);">
@@ -97,7 +99,7 @@
 								</a>
 								<div class="d-flex align-items-center justify-content-between mt-2">
 									<h4 class="mb-0 text-truncate">
-										<b>{{ Str::Limit($category->category_name, 23) }} </b>
+										<b>{{ Str::Limit($category->getTranslation('category_name', app()->getLocale()), 230) }} </b>
 									</h4>
 								</div>
 							</div>
@@ -126,12 +128,27 @@
 		let input = document.getElementById('category_name');
 		let cardTitle = document.getElementById('card-title');
 
-		function categorieEdit(article, url) {
-			createMethodField();
-			form.setAttribute('action', url)
-			cardTitle.innerText = 'Modifier une catégorie d\'articles';
-			input.value = article.category_name;
-		}
+		function categorieEdit(category, url) {
+    createMethodField();
+    form.setAttribute('action', url)
+    cardTitle.innerText = "Modifier une catégorie d'articles";
+
+    const lang = document.documentElement.lang || 'fr';
+
+    let name = category.category_name;
+
+    if (typeof name === 'string') {
+        try {
+            name = JSON.parse(name);
+        } catch (e) {
+            console.error('Erreur parsing JSON:', e);
+            name = { fr: name }; 
+        }
+    }
+
+    input.value = name[lang] || name['fr'];
+}
+
 
 		function createMethodField() {
 			const method = '{{ method_field('PUT') }}';
@@ -167,8 +184,26 @@
 		});
 
 		function displayShowModal(category, image) {
-			document.getElementById('show-desc').innerText = category.category_name;
-			document.getElementById('show-image').src = image;
-		}
+    const lang = document.documentElement.lang || 'fr';
+
+    let name = category.category_name;
+
+
+    if (typeof name === 'string') {
+        try {
+            name = JSON.parse(name);
+        } catch (e) {
+            console.error('Erreur parsing JSON:', e);
+            name = { fr: name }; 
+        }
+    }
+
+  
+    document.getElementById('show-desc').innerText = name[lang] || name['fr'];
+
+   
+    document.getElementById('show-image').src = image;
+}
+
 	</script>
 @endsection

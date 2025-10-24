@@ -6,6 +6,8 @@ use App\Traits\Routing\{GenerateUniqueSlugTrait, ModelsSlugKeyTrait};
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Translatable\HasTranslations;
+
 
 /**
  * @method static self create(array $attributes)
@@ -13,12 +15,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Categorie extends Model
 {
-	use ModelsSlugKeyTrait, GenerateUniqueSlugTrait;
+	use ModelsSlugKeyTrait, GenerateUniqueSlugTrait,HasTranslations;
 
 	public function getSlugBaseKeyName(): string
 	{
 		return "category_name";
 	}
+
+	public $translatable = ['category_name'];
+
 
 	public function hasComplexSlug(): bool
 	{

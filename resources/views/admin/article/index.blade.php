@@ -32,6 +32,7 @@
 							</select>
 						</li>
 					</ul>
+					
 					<ul class="list-inline ms-auto my-1">
 						<li class="list-inline-item">
 							<select class="form-select" id="visibility-select">
@@ -47,9 +48,11 @@
 		@if($articles->isNotEmpty())
 			<div class="row">
 				@foreach($articles as $article)
+
+				
 					<div class="col-sm-6 col-xl-4" id="card-{{$article->slug}}" data-card
 							 data-visible="{{ $article->published ? 'visible' : 'hidden' }}"
-							 data-name="{{ $article->article_name }}"
+							 data-name="{{$article->getTranslation("article_name",app()->getLocale())  }}"
 							 data-category="{{ $article->category->slug }}">
 						<div class="card product-card" style="height: 591px;">
 							<div class="card-img-top">
@@ -59,7 +62,7 @@
 								</a>
 								<div class="card-body position-absolute start-0 top-0">
 								<span class="badge bg-{{ Arr::random(['success', 'primary', 'info', 'danger', 'warning']) }}">
-									{{ $article->category->category_name }}
+									{{ $article->category->getTranslation("category_name",app()->getLocale()) }}
 								</span>
 								</div>
 								<div class="btn-prod-cart card-body position-absolute end-0 bottom-0 gap-1"
@@ -93,7 +96,7 @@
 							</div>
 							<div class="card-body">
 								<a>
-									<p class="prod-content mb-0 text-muted">{{ $article->article_name  }}</p>
+									<p class="prod-content mb-0 text-muted">{{ $article->getTranslation("article_name",app()->getLocale()) }}</p>
 								</a>
 
 							</div>
@@ -139,10 +142,22 @@
 	</script>
 	<script>
 		function displayShowModal(article, image) {
-			document.getElementById('nom').value = article.article_name;
-			document.getElementById('category').value = article.category.category_name;
-			document.getElementById('desc').innerHTML = article.article_desc;
-			document.getElementById('image').src = image;
-		}
+    const lang = document.documentElement.lang || 'fr';
+    const name = article.article_name && article.article_name[lang] 
+                    ? article.article_name[lang] 
+                    : (article.article_name['fr'] || '');
+                    
+    const desc = article.article_desc && article.article_desc[lang] 
+                    ? article.article_desc[lang] 
+                    : (article.article_desc['fr'] || '');
+		const categorie=article.category.category_name && article.category.category_name[lang]
+		? article.category.category_name[lang]  :(article.category.category_name['fr'] || '')
+
+    document.getElementById('nom').value = name;
+    document.getElementById('category').value = categorie;
+    document.getElementById('desc').innerHTML = desc;
+    document.getElementById('image').src = image;
+}
+
 	</script>
 @endsection

@@ -8,17 +8,40 @@ trait GenerateUniqueSlugTrait
 {
 	public static function bootGenerateUniqueSlugTrait(): void
 	{
-		static::saving(function ($model) {
-			if (!$model->hasSlugBaseKeyProvider()) {
-				$model->slug = uniqid();
-			} else {
-				$slug = $model->generateUniqueSlug(Str::slug($model->{$model->getSlugBaseKeyName()}));
-				if ($model->hasComplexSlug()) {
-					$slug = uniqid($slug . '-');
-				}
-				$model->slug = $slug;
-			}
-		});
+		// static::saving(function ($model) {
+		// 	if (!$model->hasSlugBaseKeyProvider()) {
+		// 		$model->slug = uniqid();
+		// 	} else {
+		// 		$slug = $model->generateUniqueSlug(Str::slug($model->{$model->getSlugBaseKeyName()}));
+		// 		if ($model->hasComplexSlug()) {
+		// 			$slug = uniqid($slug . '-');
+		// 		}
+		// 		$model->slug = $slug;
+		// 	}
+		// });
+		 static::saving(function ($model) {
+
+            if (!$model->hasSlugBaseKeyProvider()) {
+                $model->slug = uniqid();
+                return;
+            }
+
+            $baseField = $model->getSlugBaseKeyName(); 
+            $baseValue = $model->{$baseField};
+
+            if (is_array($baseValue)) {
+                $baseValue = $baseValue['fr'] ?? reset($baseValue);
+            }
+
+            $slug = $model->generateUniqueSlug(Str::slug($baseValue));
+
+            if ($model->hasComplexSlug()) {
+                $slug = uniqid($slug . '-');
+            }
+
+            $model->slug = $slug;
+        });
+    
 	}
 
 	public function generateUniqueSlug(string $slug): string
