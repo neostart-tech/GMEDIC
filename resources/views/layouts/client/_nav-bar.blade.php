@@ -2,6 +2,11 @@
 <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
     rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
+    rel="stylesheet">
 <style>
     :root {
         --primary: #009D92;
@@ -70,14 +75,15 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
 
     .contact-info {
         display: flex;
         gap: 30px;
         align-items: center;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
     }
 
     .contact-item {
@@ -87,6 +93,8 @@
         transition: var(--transition);
         padding: 5px 10px;
         border-radius: 4px;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 
     .contact-item:hover {
@@ -113,12 +121,15 @@
         display: flex;
         align-items: center;
         gap: 25px;
+        flex-shrink: 0;
+        flex-wrap: nowrap;
     }
 
     .social-links {
         display: flex;
         gap: 15px;
         align-items: center;
+        flex-shrink: 0;
     }
 
     .social-links a {
@@ -144,6 +155,7 @@
     .language-selector {
         position: relative;
         display: inline-block;
+        flex-shrink: 0;
     }
 
     .language-current {
@@ -159,6 +171,7 @@
         color: var(--white);
         font-size: 0.9rem;
         font-weight: 500;
+        white-space: nowrap;
     }
 
     .language-current:hover {
@@ -171,6 +184,7 @@
         height: 15px;
         border-radius: 2px;
         object-fit: cover;
+        flex-shrink: 0;
     }
 
     .language-dropdown {
@@ -252,6 +266,7 @@
     .logo {
         display: flex;
         align-items: center;
+        flex-shrink: 0;
     }
 
     .logo img {
@@ -267,6 +282,8 @@
         display: flex;
         list-style: none;
         gap: 35px;
+        align-items: center;
+        flex-shrink: 0;
     }
 
     .nav-link {
@@ -278,6 +295,7 @@
         padding: 10px 0;
         transition: var(--transition);
         font-family: 'Poppins', sans-serif;
+        white-space: nowrap;
     }
 
     .nav-link:after {
@@ -322,6 +340,8 @@
         text-decoration: none;
         display: inline-block;
         box-shadow: 0 4px 12px rgba(26, 111, 176, 0.3);
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 
     .cta-button:hover {
@@ -341,6 +361,7 @@
         height: 40px;
         border-radius: 4px;
         transition: var(--transition);
+        flex-shrink: 0;
     }
 
     .hamburger:hover {
@@ -373,7 +394,197 @@
         color: var(--text-light);
     }
 
-    /* Responsive Design - MOBILE FIRST */
+    /* ========================================================================== */
+    /* RESPONSIVE DESIGN - CORRECTIONS TABLETTE */
+    /* ========================================================================== */
+
+    /* Correction pour les écrans tablette (768px - 1024px) */
+    @media screen and (max-width: 1024px) and (min-width: 769px) {
+        body {
+            padding-top: 147px;
+        }
+
+        .header-top-container {
+            padding: 0 15px;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
+
+        .contact-info {
+            gap: 15px;
+            flex-wrap: nowrap;
+        }
+
+        .contact-item {
+            padding: 4px 8px;
+        }
+
+        .contact-item span {
+            font-size: 0.8rem;
+        }
+
+        .top-right-section {
+            gap: 15px;
+            flex-wrap: nowrap;
+        }
+
+        .social-links {
+            gap: 10px;
+        }
+
+        .social-links a {
+            width: 28px;
+            height: 28px;
+            font-size: 0.85rem;
+        }
+
+        .language-current {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+        }
+
+        .language-flag {
+            width: 18px;
+            height: 14px;
+        }
+
+        /* Ajustements pour la navigation principale */
+        .nav-container {
+            padding: 0 15px;
+        }
+
+        .nav-menu {
+            gap: 20px;
+        }
+
+        .nav-link {
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            padding: 10px 18px;
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Correction spécifique pour 800px */
+    @media screen and (max-width: 868px) and (min-width: 769px) {
+        .header-top-container {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info {
+            gap: 10px;
+        }
+
+        .contact-item {
+            padding: 3px 6px;
+        }
+
+        .contact-item span {
+            font-size: 0.75rem;
+        }
+
+        .contact-item i {
+            font-size: 0.8rem;
+        }
+
+        .top-right-section {
+            gap: 10px;
+        }
+
+        .social-links a {
+            width: 26px;
+            height: 26px;
+        }
+
+        .language-current {
+            padding: 5px 8px;
+        }
+
+        .language-current span {
+            display: none; /* Cache le texte, garde seulement le drapeau */
+        }
+
+        .language-flag {
+            width: 20px;
+            height: 15px;
+            margin-right: 0;
+        }
+
+        /* Ajustement navigation */
+        .nav-menu {
+            gap: 15px;
+        }
+
+        .nav-link {
+            font-size: 0.85rem;
+        }
+    }
+
+    /* Pour les très petites tablettes */
+    @media screen and (max-width: 800px) and (min-width: 769px) {
+        .header-top {
+            padding: 8px 0;
+        }
+
+        .contact-info {
+            gap: 8px;
+        }
+
+        .contact-item {
+            padding: 2px 5px;
+        }
+
+        .contact-item span {
+            font-size: 0.7rem;
+        }
+
+        .contact-item a {
+            gap: 5px;
+        }
+
+        .top-right-section {
+            gap: 8px;
+        }
+
+        /* Ajustement de l'espacement dans la nav principale */
+        .nav-menu {
+            gap: 12px;
+        }
+
+        .nav-link {
+            font-size: 0.8rem;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .cta-button {
+            padding: 8px 15px;
+            font-size: 0.8rem;
+        }
+    }
+
+    /* Optimisation pour les écrans moyens */
+    @media screen and (max-width: 1100px) and (min-width: 869px) {
+        .header-top-container {
+            padding: 0 15px;
+        }
+
+        .contact-info {
+            gap: 20px;
+        }
+
+        .top-right-section {
+            gap: 20px;
+        }
+    }
+
+    /* RESPONSIVE MOBILE (768px et moins) */
     @media screen and (max-width: 768px) {
         body {
             padding-top: 85px;
@@ -412,6 +623,7 @@
             z-index: 999;
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
+            align-items: flex-start;
         }
 
         .nav-menu.active {
@@ -427,6 +639,7 @@
             display: block;
             padding: 18px 0;
             font-size: 1.1rem;
+            width: 100%;
         }
 
         .nav-link:after {
@@ -438,6 +651,7 @@
             width: 100%;
             text-align: center;
             padding: 15px;
+            font-size: 1rem;
         }
 
         /* Sélecteur de langue mobile */
@@ -446,6 +660,7 @@
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid var(--border);
+            width: 100%;
         }
 
         .mobile-language-current {
@@ -458,6 +673,7 @@
             cursor: pointer;
             transition: var(--transition);
             margin-bottom: 10px;
+            width: 100%;
         }
 
         .mobile-language-options {
@@ -466,6 +682,7 @@
             border-radius: 6px;
             border: 1px solid var(--border);
             overflow: hidden;
+            width: 100%;
         }
 
         .mobile-language-options.active {
@@ -481,6 +698,7 @@
             color: var(--text);
             transition: var(--transition);
             border-bottom: 1px solid var(--border);
+            width: 100%;
         }
 
         .mobile-language-option:last-child {
@@ -498,119 +716,55 @@
         }
     }
 
-    /* Améliorations pour les écrans moyens */
-    @media screen and (max-width: 1100px) and (min-width: 769px) {
-        .nav-menu {
-            gap: 25px;
-        }
-
-        .contact-info {
-            gap: 20px;
-        }
-
-        .top-right-section {
-            gap: 20px;
-        }
-    }
-
-    /* Améliorations pour les écrans plus petits (tablettes) */
-    @media screen and (max-width: 868px) {
-        .header-top-container {
-            flex-direction: row;
-            justify-content: space-between;
-            gap: 15px;
-        }
-
-        .contact-info {
-            gap: 15px;
-        }
-
-        .top-right-section {
-            gap: 15px;
-        }
-
-        .contact-item span {
-            font-size: 0.85rem;
-        }
-
-        .social-links a {
-            width: 28px;
-            height: 28px;
-            font-size: 0.9rem;
-        }
-
-        .language-current {
-            padding: 6px 12px;
-            font-size: 0.85rem;
-        }
-    }
-
-    /* Améliorations pour les petits écrans */
+    /* Améliorations pour les petits écrans mobiles */
     @media screen and (max-width: 680px) {
         .header-top {
-            padding: 10px 0;
-        }
-
-        .header-top-container {
-            justify-content: center;
-        }
-
-        .contact-info {
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .top-right-section {
-            gap: 10px;
-        }
-
-        .contact-item {
-            padding: 4px 8px;
-        }
-
-        .contact-item span {
-            font-size: 0.8rem;
-        }
-
-        .social-links {
-            gap: 10px;
-        }
-
-        .social-links a {
-            width: 26px;
-            height: 26px;
-            font-size: 0.85rem;
-        }
-
-        .language-current {
-            padding: 5px 10px;
-            font-size: 0.8rem;
-        }
-
-        .language-flag {
-            width: 18px;
-            height: 13px;
-        }
-    }
-
-    /* Améliorations pour les très petits écrans */
-    @media screen and (max-width: 560px) {
-        .header-top {
             display: none;
-            /* On cache complètement le header-top sur très petits écrans */
         }
 
         body {
             padding-top: 85px;
         }
-    }
 
-    @media screen and (min-width: 769px) {
-        .mobile-language-selector {
-            display: none !important;
+        .nav-container {
+            padding: 0 15px;
+        }
+
+        .logo img {
+            height: 45px;
         }
     }
 
+    /* Améliorations pour les très petits écrans mobiles */
+    @media screen and (max-width: 480px) {
+        .nav-container {
+            padding: 0 15px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-menu {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .nav-link {
+            font-size: 1rem;
+            padding: 15px 0;
+        }
+
+        .mobile-language-current {
+            padding: 10px 12px;
+        }
+
+        .mobile-language-option {
+            padding: 10px 12px;
+        }
+    }
+
+    /* Cache le sélecteur de langue desktop en mobile */
     @media screen and (max-width: 768px) {
         .language-selector {
             display: none;
@@ -621,17 +775,13 @@
         }
     }
 
-    @media screen and (max-width: 480px) {
-        .nav-container {
-            padding: 0 15px;
-        }
-
-        .logo img {
-            height: 45px;
+    /* Affiche le sélecteur de langue desktop en desktop */
+    @media screen and (min-width: 769px) {
+        .mobile-language-selector {
+            display: none !important;
         }
     }
 </style>
-</head>
 
 <body>
     <!-- Header Top avec informations de contact - Caché en mobile -->
