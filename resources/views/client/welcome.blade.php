@@ -23,13 +23,13 @@
                         <div class="text-overlay-content">
                             <div class="content-inner">
                                 <div class="pre-title-badge">
-                                    <span>Excellence Médicale</span>
+                                    <span>{{__('excellence_medicale')}}</span>
                                 </div>
                                 <h1 class="main-hero-title">
                                     {{__('Bienvenue chez')}} <br> <span class="title-accent">{{ env('APP_NAME') }}</span>
                                 </h1>
                                 <p class="hero-subtitle">
-                                    Rendre la technologie médicale de pointe accessible, sans compromis sur la qualité ni sur la sécurité. 
+                                    {{__('nos_valeurs_slogan')}}
                                 </p>
                                 <div class="hero-action-buttons">
                                     <a href="{{ route('client.contact.create') }}" class="cta-btn primary-btn">
@@ -71,13 +71,13 @@
                         <div class="text-overlay-content">
                             <div class="content-inner">
                                 <div class="pre-title-badge">
-                                    <span>Innovation Technologique</span>
+                                    <span>{{__('innovation_technologique')}}</span>
                                 </div>
                                 <h1 class="main-hero-title">
-                                    Équipements <span class="title-accent">Haute Performance</span>
+                                 {{__('equipements_haute_performance_html')}}
                                 </h1>
                                 <p class="hero-subtitle">
-                                    Découvrez notre gamme complète d'appareils PPC/CPAP dernière génération pour un traitement optimal. 
+                                    {{__('equipements_haute_performance_slogan')}}
                                 </p>
                                 <div class="hero-action-buttons">
                                     <a href="{{ route('client.contact.create') }}" class="cta-btn primary-btn">

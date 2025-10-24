@@ -6,7 +6,7 @@
                 <!-- Colonne Logo et Contact -->
                 <div class="footer-col">
                     <div class="footer-brand ">
-                        <a href="{{ route('client.accueil') }}" class="footer-logo-link footer-newsletter">
+                        <a href="{{ route('client.accueil') }}" class="footer-logo-link footer-newsletter d-flex justify-content-center" style="background:white !important">
                             <img src="{{ asset('assets/images/logos/gmedic_logo.png') }}" 
                                  alt="{{ env('APP_NAME') }}" 
                                  class="footer-logo-img">

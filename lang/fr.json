@@ -261,7 +261,7 @@
     "Technologie Avancée": "Technologie Avancée",
     "Appareils dernière génération": "Appareils dernière génération",
     "Nos_Produits_Phares": "Nos <span class=\"highlight\">Produits</span> Phares",
-    "Découvrez notre sélection d'appareils PPC/CPAP de haute qualité": "Découvrez notre sélection d'appareils PPC/CPAP de haute qualité",
+    "z z notre sélection d'appareils PPC/CPAP de haute qualité": "Découvrez notre sélection d'appareils PPC/CPAP de haute qualité",
     "Garantie Étendue": "Garantie Étendue",
     "Tous nos appareils bénéficient d'une garantie complète de 2 ans": "Tous nos appareils bénéficient d'une garantie complète de 2 ans",
     "Livraison Rapide": "Livraison Rapide",
@@ -280,6 +280,7 @@
     "Catalogue en préparation":"Catalogue en préparation",
     "Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.": "Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.",
     "Excellence Médicale & Innovation": "Excellence Médicale & Innovation",
+     "excellence_medicale": "Excellence Médicale",
     "Votre Santé Respiratoire": "Votre Santé Respiratoire",
     "Notre Priorité Absolue": "Notre Priorité Absolue",
     "se consacre à révolutionner le traitement du syndrome d'apnée du sommeil grâce à des technologies médicales avancées et un accompagnement personnalisé de qualité.": "se consacre à révolutionner le traitement du syndrome d'apnée du sommeil grâce à des technologies médicales avancées et un accompagnement personnalisé de qualité.",
@@ -495,6 +496,15 @@
   "notre_vision": "Notre Vision",
   "notre_vision_slogan": "Offrir à chaque professionnel de santé la possibilité d'exercer avec les meilleurs outils du monde médical, au service de la vie humaine.",
   "nos_valeurs": "Nos valeurs",
-  "nos_valeurs_slogan": "Rendre la technologie médicale de pointe accessible, sans compromis sur la qualité ni sur la sécurité."
+  "nos_valeurs_slogan": "Rendre la technologie médicale de pointe accessible, sans compromis sur la qualité ni sur la sécurité.",
+   "support_expert": "Support Expert",
+  "accompagnement_personnalise": "Accompagnement Personnalisé",
+  "accompagnement_personnalise_slogan": "Notre équipe d'experts vous accompagne dans le choix, l'installation et la maintenance de vos équipements.",
+  "innovation_technologique": "Innovation Technologique",
+  "equipements_haute_performance": "Équipements Haute Performance",
+  "equipements_haute_performance_slogan": "Découvrez notre gamme complète d'appareils PPC/CPAP dernière génération pour un traitement optimal.",
+  "voir_nos_produits": "Voir nos produits",
+    "equipements_haute_performance_html": "Équipements <span class=\"title-accent\">Haute Performance</span>"
+
 
 }
