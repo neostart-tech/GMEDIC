@@ -6,7 +6,7 @@
 <!-- Hero Slider Luxueux Redesign -->
 <section class="luxury-hero-redesign">
     <div class="hero-slider-container">
-        <!-- Slide par défaut -->
+        <!-- Slide 1 -->
         <div class="hero-slide-wrapper active">
             <div class="slide-background-overlay">
                 <div class="background-gradient"></div>
@@ -26,7 +26,7 @@
                                     <span>Excellence Médicale</span>
                                 </div>
                                 <h1 class="main-hero-title">
-                                    {{__('Bienvenue chez')}} <span class="title-accent">{{ env('APP_NAME') }}</span>
+                                    {{__('Bienvenue chez')}} <br> <span class="title-accent">{{ env('APP_NAME') }}</span>
                                 </h1>
                                 <p class="hero-subtitle">
                                     Rendre la technologie médicale de pointe accessible, sans compromis sur la qualité ni sur la sécurité. 
@@ -40,7 +40,6 @@
                                         <span>{{__('Découvrir')}}</span>
                                     </a>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -55,64 +54,104 @@
             </div>
         </div>
 
-        <!-- Slides dynamiques -->
-        @php $validSliders = 0; @endphp
-        @foreach ($sliders as $slider)
-            @if($slider->slide_image && $slider->slider_desc && !empty(trim($slider->slider_desc)))
-                @php $validSliders++; @endphp
-                <div class="hero-slide-wrapper">
-                    <div class="slide-background-overlay">
-                        <div class="background-gradient"></div>
-                        <div class="animated-shapes">
-                            <div class="floating-element element-1"></div>
-                            <div class="floating-element element-2"></div>
-                            <div class="floating-element element-3"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="slide-content-overlay">
-                        <div class="container">
-                            <div class="hero-content-wrapper">
-                                <div class="text-overlay-content">
-                                    <div class="content-inner">
-                                        <div class="pre-title-badge">
-                                            <span>{{__('Innovation')}}</span>
-                                        </div>
-                                        <h1 class="main-hero-title">
-                                            {{ $slider->title ?? __('Excellence & Innovation')}}
-                                        </h1>
-                                        <p class="hero-subtitle">
-                                            {{ $slider->slider_desc }}
-                                        </p>
-                                        <div class="hero-action-buttons">
-                                            <a href="{{ route('client.contact.create') }}" class="cta-btn primary-btn">
-                                                <span>{{__('Nous contacter')}}</span>
-                                                <i class="fas fa-arrow-right"></i>
-                                            </a>
-                                            <a href="{{ route('client.a-propos') }}" class="cta-btn secondary-btn">
-                                                <span>{{__('En savoir plus')}}</span>
-                                            </a>
-                                        </div>
-                                    </div>
+        <!-- Slide 2 -->
+        <div class="hero-slide-wrapper">
+            <div class="slide-background-overlay">
+                <div class="background-gradient"></div>
+                <div class="animated-shapes">
+                    <div class="floating-element element-1"></div>
+                    <div class="floating-element element-2"></div>
+                    <div class="floating-element element-3"></div>
+                </div>
+            </div>
+            
+            <div class="slide-content-overlay">
+                <div class="container">
+                    <div class="hero-content-wrapper">
+                        <div class="text-overlay-content">
+                            <div class="content-inner">
+                                <div class="pre-title-badge">
+                                    <span>Innovation Technologique</span>
+                                </div>
+                                <h1 class="main-hero-title">
+                                    Équipements <span class="title-accent">Haute Performance</span>
+                                </h1>
+                                <p class="hero-subtitle">
+                                    Découvrez notre gamme complète d'appareils PPC/CPAP dernière génération pour un traitement optimal. 
+                                </p>
+                                <div class="hero-action-buttons">
+                                    <a href="{{ route('client.contact.create') }}" class="cta-btn primary-btn">
+                                        <span>{{__('Nous contacter')}}</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <a href="{{ route('client.categories.index') }}" class="cta-btn secondary-btn">
+                                        <span>Voir nos produits</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="slide-image-container">
-                        <img src="{{ Storage::url($slider->slide_image) }}" 
-                             alt="{{ $slider->title ?? 'Slide' }}" 
-                             class="hero-background-image"
-                             onerror="this.style.display='none'">
-                        <div class="image-overlay-gradient"></div>
+                </div>
+            </div>
+            
+            <div class="slide-image-container">
+                <img src="{{ asset('assets/client/images/slider-img.jpg') }}" 
+                     alt="Équipements médicaux haute performance" 
+                     class="hero-background-image">
+                <div class="image-overlay-gradient"></div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="hero-slide-wrapper">
+            <div class="slide-background-overlay">
+                <div class="background-gradient"></div>
+                <div class="animated-shapes">
+                    <div class="floating-element element-1"></div>
+                    <div class="floating-element element-2"></div>
+                    <div class="floating-element element-3"></div>
+                </div>
+            </div>
+            
+            <div class="slide-content-overlay">
+                <div class="container">
+                    <div class="hero-content-wrapper">
+                        <div class="text-overlay-content">
+                            <div class="content-inner">
+                                <div class="pre-title-badge">
+                                    <span>Support Expert</span>
+                                </div>
+                                <h1 class="main-hero-title">
+                                    Accompagnement <span class="title-accent">Personnalisé</span>
+                                </h1>
+                                <p class="hero-subtitle">
+                                    Notre équipe d'experts vous accompagne dans le choix, l'installation et la maintenance de vos équipements. 
+                                </p>
+                                <div class="hero-action-buttons">
+                                    <a href="{{ route('client.contact.create') }}" class="cta-btn primary-btn">
+                                        <span>{{__('Nous contacter')}}</span>
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                    <a href="{{ route('client.a-propos') }}" class="cta-btn secondary-btn">
+                                        <span>En savoir plus</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            @endif
-        @endforeach
+            </div>
+            
+            <div class="slide-image-container">
+                <img src="{{ asset('assets/client/images/slider-img.jpg') }}" 
+                     alt="Support et accompagnement personnalisé" 
+                     class="hero-background-image">
+                <div class="image-overlay-gradient"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Navigation du slider -->
-    @if($validSliders > 0)
     <div class="slider-navigation-wrapper">
         <div class="nav-container">
             <button class="nav-arrow prev-arrow" aria-label="Slide précédent">
@@ -128,7 +167,6 @@
             </button>
         </div>
     </div>
-    @endif
 </section>
 
 <!-- Section Domaines d'Expertise Redesign -->
@@ -150,7 +188,6 @@
                 </div>
                 <h3>{{__('vente_equipements')}}</h3>
                 <p>{{ __('produits_certifies') }}</p>
-               
             </div>
             
             <div class="expertise-card">
@@ -162,7 +199,6 @@
                 </div>
                 <h3>{{__('location_equipements')}}</h3>
                 <p>{{__('solutions_flexibles')}}</p>
-              
             </div>
             
             <div class="expertise-card">
@@ -174,7 +210,6 @@
                 </div>
                 <h3>{{__('conseil_assistance')}}</h3>
                 <p>{{__('accompagnement')}}</p>
-                
             </div>
         </div>
     </div>
@@ -261,7 +296,7 @@
                          alt="{{ $article->article_name }}"
                          loading="lazy">
                     <div class="card-overlay">
-                        <button class="view-btn" onclick="displayShowModal(@json($article), '{{ Storage::url($article->article_image) }}')">
+                        <button class="view-btn" onclick="displayShowModal({{$article}}, '{{ Storage::url($article->article_image) }}')">
                             <i class="fas fa-eye"></i>
                            {{__('Voir détails')}}
                         </button>
@@ -475,7 +510,7 @@
                         </div>
                         <div class="feature-content">
                             <h4>{{__('Certification CE')}}</h4>
-                            <p>{{__('produit_certifie')}}</p>
+                            <p>{{__('Tous nos produits sont certifiés')}}</p>
                         </div>
                     </div>
                     
@@ -554,27 +589,24 @@
     </div>
 </section>
 
-<!-- Modal pour les détails des produits - Version Améliorée -->
+<!-- Modal pour les détails des produits - Version Corrigée -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="header-content">
                     <h2 class="modal-title" id="productModalLabel">Détails du produit</h2>
                     <p class="modal-subtitle" id="modalProductCategory"></p>
                 </div>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                {{-- <button type="button" onclick="close()" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times"></i>
-                </button>
+                </button> --}}
             </div>
             <div class="modal-body">
                 <div class="product-modal-content">
                     <div class="product-modal-gallery">
                         <div class="main-image">
                             <img id="modalProductImage" src="" alt="Image produit" class="img-fluid">
-                        </div>
-                        <div class="image-indicators">
-                            <!-- Indicateurs d'images supplémentaires -->
                         </div>
                     </div>
                     
@@ -603,26 +635,7 @@
                             <div class="description-content" id="modalProductDescription"></div>
                         </div>
                         
-                        <div class="product-features-section">
-                            <h3>Caractéristiques principales</h3>
-                            <div class="features-grid" id="modalProductFeatures">
-                                <!-- Caractéristiques dynamiques -->
-                            </div>
-                        </div>
                         
-                        <div class="product-specifications-section">
-                            <h3>Spécifications techniques</h3>
-                            <div class="specs-grid" id="modalProductSpecs">
-                                <!-- Spécifications dynamiques -->
-                            </div>
-                        </div>
-                        
-                        <div class="product-benefits-section">
-                            <h3>Avantages</h3>
-                            <div class="benefits-list" id="modalProductBenefits">
-                                <!-- Avantages dynamiques -->
-                            </div>
-                        </div>
                         
                         <div class="product-actions-section">
                             <div class="action-buttons">
@@ -630,14 +643,10 @@
                                     <i class="fas fa-envelope"></i>
                                     Demander un devis
                                 </a>
-                                <a href="tel:+XXXXXXXXXX" class="btn btn-outline btn-lg">
+                                <a href="tel:+22870658816" class="btn btn-outline btn-lg">
                                     <i class="fas fa-phone"></i>
                                     Nous appeler
                                 </a>
-                                <button class="btn btn-secondary btn-lg" onclick="addToWishlist()">
-                                    <i class="far fa-heart"></i>
-                                    Ajouter aux favoris
-                                </button>
                             </div>
                             <div class="quick-info">
                                 <div class="info-item">
@@ -1829,7 +1838,7 @@ body {
     line-height: 1.6;
 }
 
-/* Styles du Modal Amélioré */
+/* Styles du Modal Corrigé */
 .modal-xl {
     max-width: 1200px;
 }
@@ -1925,39 +1934,6 @@ body {
     max-height: 400px;
     object-fit: contain;
     transition: var(--transition);
-}
-
-.image-indicators {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.image-indicator {
-    width: 60px;
-    height: 60px;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: var(--transition);
-    opacity: 0.6;
-}
-
-.image-indicator.active {
-    border-color: var(--primary);
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-.image-indicator:hover {
-    opacity: 1;
-}
-
-.image-indicator img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 /* Détails du produit */
@@ -2086,57 +2062,6 @@ body {
     font-weight: 500;
 }
 
-/* Spécifications techniques */
-.specs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-}
-
-.spec-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-light);
-}
-
-.spec-label {
-    color: var(--text-light);
-    font-weight: 500;
-}
-
-.spec-value {
-    color: var(--text);
-    font-weight: 600;
-}
-
-/* Liste des avantages */
-.benefits-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.benefit-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    background: var(--gradient-soft);
-    border-radius: 8px;
-    border-left: 4px solid var(--success);
-}
-
-.benefit-item i {
-    color: var(--success);
-    font-size: 1.1rem;
-}
-
-.benefit-text {
-    color: var(--text);
-    font-weight: 500;
-}
-
 /* Actions du produit */
 .product-actions-section {
     margin-top: 40px;
@@ -2186,18 +2111,6 @@ body {
 .btn-outline:hover {
     background: var(--primary);
     color: white;
-    transform: translateY(-2px);
-}
-
-.btn-secondary {
-    background: var(--light);
-    color: var(--text);
-    border-color: var(--border);
-}
-
-.btn-secondary:hover {
-    background: var(--border);
-    color: var(--text);
     transform: translateY(-2px);
 }
 
@@ -2554,21 +2467,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const indicatorsContainer = document.querySelector('.slide-indicators-wrapper');
     const prevBtn = document.querySelector('.prev-arrow');
     const nextBtn = document.querySelector('.next-arrow');
-    
-
-    // Si aucun slide valide, on arrête
-    if (heroSlides.length === 0) {
-        
-        const navigation = document.querySelector('.slider-navigation-wrapper');
-        if (navigation) navigation.style.display = 'none';
-        return;
-    }
 
     let currentSlide = 0;
     let slideInterval;
 
     // Créer les indicateurs de navigation
-    if (indicatorsContainer) {
+    if (indicatorsContainer && heroSlides.length > 0) {
         indicatorsContainer.innerHTML = '';
         heroSlides.forEach((_, index) => {
             const indicator = document.createElement('div');
@@ -2629,15 +2533,14 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Pause au survol
         const heroSection = document.querySelector('.luxury-hero-redesign');
-        heroSection.addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
-        });
-        heroSection.addEventListener('mouseleave', () => {
-            resetInterval();
-        });
-    } else {
-        const navigation = document.querySelector('.slider-navigation-wrapper');
-        if (navigation) navigation.style.display = 'none';
+        if (heroSection) {
+            heroSection.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            heroSection.addEventListener('mouseleave', () => {
+                resetInterval();
+            });
+        }
     }
 
     // Gestion du touch swipe pour mobile
@@ -2647,30 +2550,32 @@ document.addEventListener('DOMContentLoaded', function() {
     if (heroSlides.length > 1) {
         const slider = document.querySelector('.luxury-hero-redesign');
         
-        slider.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
+        if (slider) {
+            slider.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
 
-        slider.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
+            slider.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
 
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
 
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    nextSlide();
-                } else {
-                    prevSlide();
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
                 }
             }
         }
     }
 
-    // Animation au scroll pour les nouvelles sections
+    // Animation au scroll pour les sections
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -2694,107 +2599,94 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Fonction améliorée pour afficher la modal des produits
+// Fonction corrigée pour afficher la modal des produits
 function displayShowModal(article, image) {
-    showLoadingState();
-
-    // Mettre à jour le contenu du modal après un petit délai pour l'animation
-    setTimeout(() => {
-        updateModalContent(article, image);
-        hideLoadingState();
-        
-        // Afficher le modal avec Bootstrap
-        const modalElement = document.getElementById('productModal');
+    // Mettre à jour le contenu du modal
+    updateModalContent(article, image);
+    
+    // Afficher le modal avec Bootstrap
+    const modalElement = document.getElementById('productModal');
+    if (modalElement) {
         const modal = new bootstrap.Modal(modalElement);
         modal.show();
-    }, 500);
-}
-
-function showLoadingState() {
-    const modalBody = document.querySelector('.modal-body');
-    modalBody.innerHTML = `
-        <div class="loading-state">
-            <div class="loading-spinner"></div>
-            <p>Chargement des détails du produit...</p>
-        </div>
-    `;
-}
-
-function hideLoadingState() {
-    // Le contenu sera remplacé par updateModalContent
+    }
 }
 
 function updateModalContent(article, image) {
     // Mettre à jour les informations de base
-    document.getElementById('modalProductImage').src = image;
-    document.getElementById('modalProductName').textContent = article.article_name;
-    document.getElementById('modalProductCategory').textContent = article.category?.category_name || 'Non catégorisé';
+    const productImage = document.getElementById('modalProductImage');
+    const productName = document.getElementById('modalProductName');
+    const productCategory = document.getElementById('modalProductCategory');
+    const productPrice = document.getElementById('modalProductPrice');
+    const productDescription = document.getElementById('modalProductDescription');
+    const productFeatures = document.getElementById('modalProductFeatures');
+
+    if (productImage) productImage.src = image;
+    if (productName) productName.textContent = article.article_name;
+    if (productCategory) productCategory.textContent = article.category?.category_name || 'Non catégorisé';
+    
+    // Prix
+    if (productPrice && article.article_price) {
+        productPrice.textContent = `${number_format(article.article_price, 2, ',', ' ')} €`;
+    } else if (productPrice) {
+        productPrice.textContent = 'Prix sur demande';
+    }
     
     // Description formatée
-    const descriptionElement = document.getElementById('modalProductDescription');
-    if (article.article_desc) {
-        descriptionElement.innerHTML = formatDescription(article.article_desc);
-    } else {
-        descriptionElement.innerHTML = '<p class="text-muted">Aucune description disponible pour ce produit.</p>';
+    if (productDescription) {
+        if (article.article_desc) {
+            productDescription.innerHTML = formatDescription(article.article_desc);
+        } else {
+            productDescription.innerHTML = '<p class="text-muted">Aucune description disponible pour ce produit.</p>';
+        }
     }
     
     // Caractéristiques principales
-    updateFeatures(article);
-    
-    // Spécifications techniques
-    updateSpecifications(article);
-    
-    // Avantages
-    updateBenefits(article);
+    if (productFeatures) {
+        updateFeatures(article, productFeatures);
+    }
 }
 
 function formatDescription(description) {
     // Convertir les retours à la ligne en paragraphes
+    if (!description) return '';
     return description.split('\n').filter(line => line.trim()).map(line => 
         `<p>${line.trim()}</p>`
     ).join('');
 }
 
+function number_format(number, decimals, dec_point, thousands_sep) {
+    number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
+    var n = !isFinite(+number) ? 0 : +number,
+        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
+        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
+        s = '',
+        toFixedFix = function (n, prec) {
+            var k = Math.pow(10, prec);
+            return '' + Math.round(n * k) / k;
+        };
+    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+    if (s[0].length > 3) {
+        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+    }
+    if ((s[1] || '').length < prec) {
+        s[1] = s[1] || '';
+        s[1] += new Array(prec - s[1].length + 1).join('0');
+    }
+    return s.join(dec);
+}
 
-
-function updateFeatures(article) {
-    const featuresContainer = document.getElementById('modalProductFeatures');
-    
+function updateFeatures(article, container) {
     // Caractéristiques par défaut basées sur le type de produit
     const defaultFeatures = getDefaultFeatures(article);
     
-    featuresContainer.innerHTML = defaultFeatures.map(feature => `
+    container.innerHTML = defaultFeatures.map(feature => `
         <div class="feature-item fade-in">
             <div class="feature-icon">
                 <i class="${feature.icon}"></i>
             </div>
             <span class="feature-text">${feature.text}</span>
-        </div>
-    `).join('');
-}
-
-function updateSpecifications(article) {
-    const specsContainer = document.getElementById('modalProductSpecs');
-    
-    const specifications = getSpecifications(article);
-    
-    specsContainer.innerHTML = specifications.map(spec => `
-        <div class="spec-item fade-in">
-            <span class="spec-label">${spec.label}</span>
-            <span class="spec-value">${spec.value}</span>
-        </div>
-    `).join('');
-}
-
-function updateBenefits(article) {
-    const benefitsContainer = document.getElementById('modalProductBenefits');
-    
-    const benefits = getBenefits(article);
-    
-    benefitsContainer.innerHTML = benefits.map(benefit => `
-        <div class="benefit-item fade-in">
-            <i class="fas fa-check-circle"></i>
-            <span class="benefit-text">${benefit}</span>
         </div>
     `).join('');
 }
@@ -2821,58 +2713,6 @@ function getDefaultFeatures(article) {
     return baseFeatures;
 }
 
-function getSpecifications(article) {
-    const specs = [
-        { label: 'Poids', value: '1.2 - 2.5 kg' },
-        { label: 'Dimensions', value: '18 × 12 × 8 cm' },
-        { label: 'Pression', value: '4 - 20 cmH₂O' },
-        { label: 'Alimentation', value: '100-240V AC' },
-        { label: 'Bruit', value: '< 30 décibels' },
-        { label: 'Garantie', value: '24 mois' }
-    ];
-    
-    return specs;
-}
-
-function getBenefits(article) {
-    const benefits = [
-        'Amélioration de la qualité du sommeil',
-        'Réduction des ronflements',
-        'Énergie retrouvée pendant la journée',
-        'Meilleure concentration',
-        'Appareil silencieux pour un sommeil paisible',
-        'Facile à utiliser et entretenir'
-    ];
-    
-    return benefits;
-}
-
-function addToWishlist() {
-    // Simulation d'ajout aux favoris
-    const toast = document.createElement('div');
-    toast.className = 'position-fixed top-0 end-0 p-3';
-    toast.style.zIndex = '9999';
-    toast.innerHTML = `
-        <div class="toast show" role="alert">
-            <div class="toast-header">
-                <i class="fas fa-heart text-danger me-2"></i>
-                <strong class="me-auto">Favoris</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-            </div>
-            <div class="toast-body">
-                Produit ajouté à vos favoris !
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(toast);
-    
-    // Supprimer le toast après 3 secondes
-    setTimeout(() => {
-        toast.remove();
-    }, 3000);
-}
-
 // Initialisation lorsque le modal est complètement chargé
 document.addEventListener('DOMContentLoaded', function() {
     const productModal = document.getElementById('productModal');
@@ -2889,7 +2729,7 @@ document.addEventListener('DOMContentLoaded', function() {
         productModal.addEventListener('hidden.bs.modal', function() {
             // Réinitialiser le modal
             const modalBody = this.querySelector('.modal-body');
-            modalBody.scrollTop = 0;
+            if (modalBody) modalBody.scrollTop = 0;
         });
     }
 });
@@ -2900,7 +2740,7 @@ document.addEventListener('keydown', function(e) {
     if (modal && modal.classList.contains('show')) {
         if (e.key === 'Escape') {
             const modalInstance = bootstrap.Modal.getInstance(modal);
-            modalInstance.hide();
+            if (modalInstance) modalInstance.hide();
         }
     }
 });
