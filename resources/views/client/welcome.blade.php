@@ -74,7 +74,7 @@
                                     <span>{{__('innovation_technologique')}}</span>
                                 </div>
                                 <h1 class="main-hero-title">
-                                 {{__('equipements_haute_performance_html')}}
+                                 {!! __('equipements_haute_performance_html') !!}
                                 </h1>
                                 <p class="hero-subtitle">
                                     {{__('equipements_haute_performance_slogan')}}
@@ -85,7 +85,7 @@
                                         <i class="fas fa-arrow-right"></i>
                                     </a>
                                     <a href="{{ route('client.categories.index') }}" class="cta-btn secondary-btn">
-                                        <span>Voir nos produits</span>
+                                        <span>{{__('voir_nos_produits')}}</span>
                                     </a>
                                 </div>
                             </div>
@@ -119,13 +119,13 @@
                         <div class="text-overlay-content">
                             <div class="content-inner">
                                 <div class="pre-title-badge">
-                                    <span>Support Expert</span>
+                                    <span>{{__('Support Expert')}}</span>
                                 </div>
                                 <h1 class="main-hero-title">
-                                    Accompagnement <span class="title-accent">Personnalisé</span>
+                                   {!! __('accompagnement_personnalise_html') !!}
                                 </h1>
                                 <p class="hero-subtitle">
-                                    Notre équipe d'experts vous accompagne dans le choix, l'installation et la maintenance de vos équipements. 
+                                    {{__('accompagnement_personnalise_slogan')}}
                                 </p>
                                 <div class="hero-action-buttons">
                                     <a href="{{ route('client.contact.create') }}" class="cta-btn primary-btn">
@@ -133,7 +133,7 @@
                                         <i class="fas fa-arrow-right"></i>
                                     </a>
                                     <a href="{{ route('client.a-propos') }}" class="cta-btn secondary-btn">
-                                        <span>En savoir plus</span>
+                                        <span>{{__('En savoir plus')}}</span>
                                     </a>
                                 </div>
                             </div>
@@ -500,7 +500,7 @@
                 </div>
                 
                 <p class="about-description">
-                    {{ env('APP_NAME') }} , {{__('presentation')}}
+                     {{__('presentation')}}
                 </p>
                 
                 <div class="about-features">
@@ -509,8 +509,8 @@
                             <i class="fas fa-shield-alt"></i>
                         </div>
                         <div class="feature-content">
-                            <h4>{{__('Certification CE')}}</h4>
-                            <p>{{__('Tous nos produits sont certifiés')}}</p>
+                            <h4>{{__('certification_ce')}}</h4>
+                            <p>{{__('tous_nos_produits_certifies')}}</p>
                         </div>
                     </div>
                     

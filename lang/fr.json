@@ -504,7 +504,10 @@
   "equipements_haute_performance": "Équipements Haute Performance",
   "equipements_haute_performance_slogan": "Découvrez notre gamme complète d'appareils PPC/CPAP dernière génération pour un traitement optimal.",
   "voir_nos_produits": "Voir nos produits",
-    "equipements_haute_performance_html": "Équipements <span class=\"title-accent\">Haute Performance</span>"
+    "equipements_haute_performance_html": "Équipements <span class=\"title-accent\">Haute Performance</span>",
+  "accompagnement_personnalise_html": "Accompagnement <span class=\"title-accent\">Personnalisé</span>",
+    "tous_nos_produits_certifies": "Tous nos produits sont certifiés"
+
 
 
 }
