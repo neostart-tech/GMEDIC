@@ -215,7 +215,7 @@
     </div>
 </section>
 
-<!-- Section Notre Mission -->
+
 <section class="mission-section">
     <div class="container">
         <div class="mission-grid">
@@ -272,7 +272,7 @@
     </div>
 </section>
 
-<!-- Section Produits Redesign - Version Simplifiée -->
+
 <section class="products-section">
     <div class="container">
         <div class="section-header center">
@@ -412,7 +412,7 @@
     </div>
 </section>
 
-<!-- Section Nos Services Redesign -->
+<!-- Section Nos Services  -->
 <section class="services-section" style="background: #F4F7F9">
     <div class="container">
         <div class="section-header center">
@@ -480,18 +480,73 @@
 </section>
 
 <!-- Section À Propos Redesign -->
+<!-- Section À Propos Redesign avec Slider d'Images -->
 <section class="about-section">
     <div class="container">
         <div class="about-grid">
             <div class="about-image">
-                <div class="image-wrapper">
-                    <img src="{{ asset('assets/client/images/cpap-ppc.jpeg') }}" alt="Appareils PPC/CPAP">
-                    <div class="image-overlay">
-                        <div class="experience-badge">
-                            <span class="years">5+</span>
-                            <span class="text">{{__("Ans d'expérience")}}</span>
+                <div class="about-slider-container">
+                    <div class="about-slider">
+                        <!-- Slide 1 - Échographie -->
+                        <div class="about-slide active">
+                            <div class="slide-image-wrapper">
+                                <img src="{{ asset('assets/images/slider/image-slide1.jpg') }}" alt="Échographie médicale" loading="lazy">
+                                <div class="slide-overlay">
+                                    <div class="slide-badge">
+                                        {{-- <i class="fas fa-wave-square"></i> --}}
+                                        <span>Cardiogramme </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        
+                        <!-- Slide 2 - Tensiomètre -->
+                        <div class="about-slide">
+                            <div class="slide-image-wrapper">
+                                <img src="{{ asset('assets/images/slider/image-slide2.jpg') }}" alt="Tensiomètre numérique" loading="lazy">
+                                <div class="slide-overlay">
+                                    <div class="slide-badge">
+                                        <span>Tensiomètre</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 3 - CPAP -->
+                        <div class="about-slide">
+                            <div class="slide-image-wrapper">
+                                <img src="{{ asset('assets/images/slider/image-slide3.jpg') }}" alt="Appareil CPAP/PPC" loading="lazy">
+                                <div class="slide-overlay">
+                                    <div class="slide-badge">
+                                        <span>Echographe</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 4 - Électrocardiogramme -->
+                        
                     </div>
+                    
+                    <!-- Navigation du slider -->
+                    <div class="about-slider-nav">
+                        <button class="about-nav-btn prev-about" aria-label="Image précédente">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <div class="about-indicators">
+                            <span class="about-indicator active" data-slide="0"></span>
+                            <span class="about-indicator" data-slide="1"></span>
+                            <span class="about-indicator" data-slide="2"></span>
+                        </div>
+                        
+                        <button class="about-nav-btn next-about" aria-label="Image suivante">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Badge d'expérience -->
+                   
                 </div>
             </div>
             
@@ -2233,6 +2288,245 @@ body {
     }
 }
 
+
+/* Styles pour le slider de la section About */
+.about-slider-container {
+    position: relative;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    height: 500px;
+}
+
+.about-slider {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.about-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.about-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.about-slide.active .slide-image-wrapper img {
+    transform: scale(1.05);
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 157, 146, 0.1) 0%, rgba(26, 58, 102, 0.1) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 30px;
+}
+
+.slide-badge {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px 20px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: var(--secondary);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+}
+
+.slide-badge i {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+/* Navigation du slider About */
+.about-slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+}
+
+.about-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-nav-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow);
+}
+
+.about-indicators {
+    display: flex;
+    gap: 8px;
+}
+
+.about-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.about-indicator.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+/* Badge d'expérience */
+.experience-badge {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: var(--gradient);
+    color: white;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    z-index: 10;
+}
+
+.years {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.text {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+/* Responsive pour le slider About */
+@media (max-width: 768px) {
+    .about-slider-container {
+        height: 400px;
+    }
+    
+    .about-slider-nav {
+        bottom: 15px;
+        gap: 15px;
+        padding: 10px 16px;
+    }
+    
+    .about-nav-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .slide-overlay {
+        padding: 20px;
+    }
+    
+    .slide-badge {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .experience-badge {
+        top: 20px;
+        right: 20px;
+        padding: 15px;
+    }
+    
+    .years {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-slider-container {
+        height: 350px;
+    }
+    
+    .about-slider-nav {
+        bottom: 10px;
+        gap: 12px;
+        padding: 8px 14px;
+    }
+    
+    .about-nav-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .about-indicator {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .slide-overlay {
+        padding: 15px;
+    }
+    
+    .slide-badge {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+    
+    .experience-badge {
+        top: 15px;
+        right: 15px;
+        padding: 12px;
+    }
+    
+    .years {
+        font-size: 1.5rem;
+    }
+}
+
 @media (max-width: 768px) {
     .luxury-hero-redesign {
         height: 80vh;
@@ -2747,6 +3041,111 @@ document.addEventListener('keydown', function(e) {
             if (modalInstance) modalInstance.hide();
         }
     }
+});
+
+// Initialisation du slider About
+function initAboutSlider() {
+    const slides = document.querySelectorAll('.about-slide');
+    const indicators = document.querySelectorAll('.about-indicator');
+    const prevBtn = document.querySelector('.prev-about');
+    const nextBtn = document.querySelector('.next-about');
+    
+    let currentAboutSlide = 0;
+    let aboutInterval;
+    
+    if (slides.length === 0) return;
+    
+    function goToAboutSlide(n) {
+        // Retirer la classe active du slide et indicateur courant
+        slides[currentAboutSlide].classList.remove('active');
+        indicators[currentAboutSlide].classList.remove('active');
+        
+        // Calculer le nouvel index
+        currentAboutSlide = (n + slides.length) % slides.length;
+        
+        // Ajouter la classe active au nouveau slide et indicateur
+        slides[currentAboutSlide].classList.add('active');
+        indicators[currentAboutSlide].classList.add('active');
+        
+        resetAboutInterval();
+    }
+    
+    function nextAboutSlide() {
+        goToAboutSlide(currentAboutSlide + 1);
+    }
+    
+    function prevAboutSlide() {
+        goToAboutSlide(currentAboutSlide - 1);
+    }
+    
+    function resetAboutInterval() {
+        clearInterval(aboutInterval);
+        if (slides.length > 1) {
+            aboutInterval = setInterval(nextAboutSlide, 5000);
+        }
+    }
+    
+    // Événements des boutons
+    if (prevBtn) prevBtn.addEventListener('click', prevAboutSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextAboutSlide);
+    
+    // Événements des indicateurs
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => goToAboutSlide(index));
+    });
+    
+    // Défilement automatique
+    if (slides.length > 1) {
+        resetAboutInterval();
+        
+        // Pause au survol
+        const sliderContainer = document.querySelector('.about-slider-container');
+        if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(aboutInterval);
+            });
+            sliderContainer.addEventListener('mouseleave', () => {
+                resetAboutInterval();
+            });
+        }
+    }
+    
+    // Gestion du touch swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    if (slides.length > 1) {
+        const slider = document.querySelector('.about-slider-container');
+        
+        if (slider) {
+            slider.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            slider.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleAboutSwipe();
+            });
+            
+            function handleAboutSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        nextAboutSlide();
+                    } else {
+                        prevAboutSlide();
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Initialiser le slider quand la page est chargée
+document.addEventListener('DOMContentLoaded', function() {
+    initAboutSlider();
 });
 </script>
 

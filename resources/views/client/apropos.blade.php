@@ -126,6 +126,8 @@
         animation: slideInUp 0.8s ease-out 0.6s both;
     }
 
+
+
     .btn-premium {
         padding: 16px 36px;
         border-radius: 12px;
@@ -254,6 +256,223 @@
             transform: translateY(0);
         }
     }
+
+
+    /* Styles pour le slider Hero */
+.hero-slider-container {
+    position: relative;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    height: 480px;
+    width: 100%;
+}
+
+.hero-slider {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slide-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.hero-slide.active .slide-image-wrapper img {
+    transform: scale(1.05);
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 157, 146, 0.2) 0%, rgba(26, 58, 102, 0.2) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: 30px;
+}
+
+.slide-badge {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px 20px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: var(--secondary);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    transform: translateY(20px);
+    transition: transform 0.5s ease 0.3s;
+}
+
+.hero-slide.active .slide-badge {
+    transform: translateY(0);
+}
+
+.slide-badge i {
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+/* Navigation du slider Hero */
+.hero-slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px 20px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    z-index: 10;
+}
+
+.hero-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-nav-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow);
+}
+
+.hero-indicators {
+    display: flex;
+    gap: 8px;
+}
+
+.hero-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hero-indicator.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+/* Animation d'entrée pour les slides */
+@keyframes slideInHero {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.hero-slide.active {
+    animation: slideInHero 0.8s ease-out;
+}
+
+/* Responsive pour le slider Hero */
+@media (max-width: 768px) {
+    .hero-slider-container {
+        height: 400px;
+    }
+    
+    .hero-slider-nav {
+        bottom: 15px;
+        gap: 15px;
+        padding: 10px 16px;
+    }
+    
+    .hero-nav-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .slide-overlay {
+        padding: 20px;
+    }
+    
+    .slide-badge {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-slider-container {
+        height: 350px;
+    }
+    
+    .hero-slider-nav {
+        bottom: 10px;
+        gap: 12px;
+        padding: 8px 14px;
+    }
+    
+    .hero-nav-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .hero-indicator {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .slide-overlay {
+        padding: 15px;
+    }
+    
+    .slide-badge {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+}
 
     /* Section Histoire et Expertise */
     .history-section {
@@ -952,6 +1171,7 @@
 </style>
 
 <!-- Hero Section -->
+<!-- Hero Section avec Slider d'Images -->
 <section class="about-hero-premium">
     <div class="hero-premium-content">
         <div class="hero-premium-grid">
@@ -982,16 +1202,58 @@
             
             <div class="hero-premium-visual">
                 <div class="visual-container">
-                    <div class="visual-main">
-                        <img src="{{ asset('assets/client/images/cpap-ppc.jpeg') }}" alt="Technologie PPC Avancée">
-                        <div class="visual-overlay"></div>
+                    <div class="hero-slider-container">
+                        <div class="hero-slider">
+                            <!-- Slide 1 - Échographie -->
+                            <div class="hero-slide active">
+                                <div class="slide-image-wrapper">
+                                    <img src="{{ asset('assets/images/slider/image-slide1.jpg') }}" alt="Échographie médicale" loading="lazy">
+                                    
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 2 - Tensiomètre -->
+                            <div class="hero-slide">
+                                <div class="slide-image-wrapper">
+                                    <img src="{{ asset('assets/images/slider/image-slide2.jpg') }}" alt="Tensiomètre numérique" loading="lazy">
+                                   
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 3 - CPAP -->
+                            <div class="hero-slide">
+                                <div class="slide-image-wrapper">
+                                    <img src="{{ asset('assets/images/slider/image-slide3.jpg') }}" alt="Appareil CPAP/PPC" loading="lazy">
+                                    
+                                </div>
+                            </div>
+                            
+                            <!-- Slide 4 - Électrocardiogramme -->
+                          
+                        </div>
+                        
+                        <!-- Navigation du slider -->
+                        <div class="hero-slider-nav">
+                            <button class="hero-nav-btn prev-hero" aria-label="Image précédente">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            
+                            <div class="hero-indicators">
+                                <span class="hero-indicator active" data-slide="0"></span>
+                                <span class="hero-indicator" data-slide="1"></span>
+                                <span class="hero-indicator" data-slide="2"></span>
+                            </div>
+                            
+                            <button class="hero-nav-btn next-hero" aria-label="Image suivante">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 <!-- Section Histoire et Expertise -->
 <section class="history-section">
     <div class="history-container">
@@ -1308,6 +1570,134 @@
             observer.observe(el);
         });
     });
+    // Initialisation du slider Hero
+function initHeroSlider() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const indicators = document.querySelectorAll('.hero-indicator');
+    const prevBtn = document.querySelector('.prev-hero');
+    const nextBtn = document.querySelector('.next-hero');
+    
+    let currentHeroSlide = 0;
+    let heroInterval;
+    
+    if (slides.length === 0) return;
+    
+    function goToHeroSlide(n) {
+        // Retirer la classe active du slide et indicateur courant
+        slides[currentHeroSlide].classList.remove('active');
+        indicators[currentHeroSlide].classList.remove('active');
+        
+        // Calculer le nouvel index
+        currentHeroSlide = (n + slides.length) % slides.length;
+        
+        // Ajouter la classe active au nouveau slide et indicateur
+        slides[currentHeroSlide].classList.add('active');
+        indicators[currentHeroSlide].classList.add('active');
+        
+        resetHeroInterval();
+    }
+    
+    function nextHeroSlide() {
+        goToHeroSlide(currentHeroSlide + 1);
+    }
+    
+    function prevHeroSlide() {
+        goToHeroSlide(currentHeroSlide - 1);
+    }
+    
+    function resetHeroInterval() {
+        clearInterval(heroInterval);
+        if (slides.length > 1) {
+            heroInterval = setInterval(nextHeroSlide, 5000);
+        }
+    }
+    
+    // Événements des boutons
+    if (prevBtn) prevBtn.addEventListener('click', prevHeroSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextHeroSlide);
+    
+    // Événements des indicateurs
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => goToHeroSlide(index));
+    });
+    
+    // Défilement automatique
+    if (slides.length > 1) {
+        resetHeroInterval();
+        
+        // Pause au survol
+        const sliderContainer = document.querySelector('.hero-slider-container');
+        if (sliderContainer) {
+            sliderContainer.addEventListener('mouseenter', () => {
+                clearInterval(heroInterval);
+            });
+            sliderContainer.addEventListener('mouseleave', () => {
+                resetHeroInterval();
+            });
+        }
+    }
+    
+    // Gestion du touch swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    if (slides.length > 1) {
+        const slider = document.querySelector('.hero-slider-container');
+        
+        if (slider) {
+            slider.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            slider.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleHeroSwipe();
+            });
+            
+            function handleHeroSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        nextHeroSlide();
+                    } else {
+                        prevHeroSlide();
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Initialiser le slider quand la page est chargée
+document.addEventListener('DOMContentLoaded', function() {
+    initHeroSlider();
+    
+    // Animation au scroll pour les éléments
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observer les éléments à animer
+    const animatedElements = document.querySelectorAll('.hero-premium-text, .hero-premium-visual');
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(25px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+});
 </script>
 
 @endsection
