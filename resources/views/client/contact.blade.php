@@ -697,7 +697,7 @@
                             <div class="contact-info-label">{{__('Email')}}</div>
                             <div class="contact-info-value">
                                 <a href="mailto:contact@example.com" class="contact-info-link">
-                                   gmedicsarl@gmail.com
+                                   contact@gmedic.tg
                                 </a>
                             </div>
                         </div>
