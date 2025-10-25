@@ -802,8 +802,8 @@
     @if($articles->hasPages())
     <div class="pagination-container">
         <div>
-            {{ $articles->links('vendor.pagination.custom') }}
-
+            {{-- {{ $articles->links('vendor.pagination.custom') }} --}}
+{{ $articles->links() }}
             <div class="pagination-info">
                 {{__('Affichage de')}} <strong>{{ $articles->firstItem() }}</strong> {{__('à')}} <strong>{{ $articles->lastItem()
                     }}</strong>
