@@ -83,7 +83,7 @@ class BlogController extends Controller
     ]);
 
     return redirect()
-        ->route('admin.articles.index')
+        ->back()
         ->with('success', 'Blog créé et traduit avec succès !');
 }
 
