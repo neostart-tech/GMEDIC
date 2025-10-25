@@ -346,17 +346,7 @@
         position: relative;
     }
 
-    .history-title span::after {
-        content: '';
-        position: absolute;
-        bottom: 5px;
-        left: 0;
-        width: 100%;
-        height: 6px;
-        background: var(--primary-soft);
-        z-index: -1;
-        border-radius: 3px;
-    }
+ 
 
     .history-description {
         font-size: 1.1rem;
@@ -1015,7 +1005,7 @@
                     {{__('À Propos de')}} <span>{{ env('APP_NAME') }}</span>
                 </h2>
                 <p class="history-description">
-                    {{__('Fondée avec une vision claire : révolutionner la prise en charge des troubles respiratoires du sommeil en Afrique. Notre engagement est de fournir des solutions médicales innovantes accessibles à tous.')}}
+                    {{__('Animée par l’excellence : G-MEDIC offre des équipements médicaux innovants, alliant performance, sécurité et accompagnement professionnel pour chaque besoin de santé.')}}
                 </p>
                 
                 <div class="history-features">
@@ -1025,7 +1015,7 @@
                         </div>
                         <div class="feature-content">
                             <h4>{{__('Notre Mission')}}</h4>
-                            <p>{{__('Améliorer la qualité de vie des patients grâce à des technologies médicales avancées et un accompagnement personnalisé.')}}</p>
+                            <p>{{__('Fournir des équipements médicaux innovants et certifiés pour améliorer la qualité des soins et accompagner les professionnels de santé dans leur pratique.')}}</p>
                         </div>
                     </div>
                     
@@ -1035,7 +1025,7 @@
                         </div>
                         <div class="feature-content">
                             <h4>{{__('Notre Vision')}}</h4>
-                            <p>{{__('Devenir le leader africain de référence dans le traitement des apnées du sommeil et la ventilation à domicile.')}}</p>
+                            <p>{{__('Devenir une référence dans la distribution d’équipements médicaux performants, en alliant technologie, fiabilité et service client de qualité.')}}</p>
                         </div>
                     </div>
                     
@@ -1045,7 +1035,7 @@
                         </div>
                         <div class="feature-content">
                             <h4>{{__('Nos Valeurs')}}</h4>
-                            <p>{{__('Innovation, Excellence, Empathie et Engagement envers chaque patient.')}}</p>
+                            <p>{{__('Innovation, Qualité, Confiance et Engagement au service des professionnels de santé et de leurs patients.')}}</p>
                         </div>
                     </div>
                 </div>

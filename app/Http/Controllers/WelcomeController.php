@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Article, Slider};
+use App\Models\{Article, Slider,Categorie};
 use Illuminate\View\View;
 
 class WelcomeController extends Controller
@@ -17,5 +17,13 @@ class WelcomeController extends Controller
 			'sliders' => Slider::query()->where('published', true)->get(),
 			'articles' => $articles
 		]);
+	}
+
+
+	public function showAbout(){
+	    $articles = Categorie::query()->where('published', true)->whereHas('articles')->get();
+
+
+		return view('client.apropos',compact('articles'));
 	}
 }

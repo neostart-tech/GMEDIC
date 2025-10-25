@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::name('client.')->group(function () {
 	Route::get('', WelcomeController::class)->name('accueil');
-	Route::view('a-propos', 'client.apropos')->name('a-propos');
+	Route::get('a-propos',[WelcomeController::class,'showAbout'])->name('a-propos');
 
 	Route::controller(BlogController::class)->prefix('blogs')->name('blogs.')->group(function () {
 		Route::get('', 'index')->name('index');
