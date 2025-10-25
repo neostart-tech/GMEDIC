@@ -281,9 +281,9 @@
     "Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.": "Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.",
     "Excellence Médicale & Innovation": "L’innovation médicale à votre service",
      "excellence_medicale": "Excellence Médicale",
-    "Votre Santé Respiratoire": "Votre Santé Respiratoire",
-    "Notre Priorité Absolue": "Notre Priorité Absolue",
-    "se consacre à révolutionner le traitement du syndrome d'apnée du sommeil grâce à des technologies médicales avancées et un accompagnement personnalisé de qualité.": "se consacre à révolutionner le traitement du syndrome d'apnée du sommeil grâce à des technologies médicales avancées et un accompagnement personnalisé de qualité.",
+  "Votre Santé Respiratoire": "Votre partenaire de confiance",
+    "Notre Priorité Absolue": "Pour des équipements médicaux certifiés",
+    "Description_equipements": "propose une gamme complète d’équipements médicaux certifiés, conçus pour allier fiabilité, performance et innovation, afin de soutenir efficacement les professionnels de santé.",
     "Consultation Gratuite": "Consultation Gratuite",
     "Découvrir nos Solutions": "Découvrir nos Solutions",
     "Technologie PPC Avancée": "Technologie PPC Avancée",
@@ -333,12 +333,12 @@
     "Éducation_thérapeutique": "Éducation thérapeutique, soutien psychologique et suivi à vie pour une adhérence optimale au traitement.",
     "Ressources Médicales": "Ressources Médicales",
     "Nos Catégories<span> d'Articles</span>": "Nos Catégories<span> d'Articles</span>",
-    "Découvrez_notre_collection": "Découvrez notre collection d'articles spécialisés sur la santé respiratoire, les traitements innovants et les conseils d'experts.",
+    "Découvrez_notre_collection": "Découvrez nos équipements médicaux fiables et certifiés pour tous vos besoins",
     "Connaissances Expertes": "Connaissances Expertes",
     "Explorez nos Thématiques": "Explorez nos Thématiques",
      "Voir les Articles": "Voir les articles",
     "Des_contenus_riches": "Des contenus riches et variés pour mieux comprendre et gérer votre santé respiratoire",
-     "Explorez_nos_articles": "Explorez nos articles spécialisés sur cette thématique médicale importante.",
+     "tre": "Explorez nos articles spécialisés sur cette thématique médicale importante.",
     "Des contenus rédigés par des experts pour vous accompagner.": "Des contenus rédigés par des experts pour vous accompagner.",
     "articles": "articles",
     "Accueil": "Accueil",
@@ -481,7 +481,7 @@
     "formations_pratiques": "Formations pratiques",
     "support_continu": "Support continu",
     "mises_a_jour": "Mises à jour régulières",
-     "presentation": "est spécialisée dans la distribution, la location et le conseil en équipements médicaux de pointe. Notre mission : rendre les technologies médicales avancées accessibles à tous, en alliant qualité, sécurité et fiabilité.",
+     "presentation": "G-MEDIC est spécialisée dans la distribution, la location et le conseil en équipements médicaux de pointe. Notre mission : rendre les technologies médicales avancées accessibles à tous, en alliant qualité, sécurité et fiabilité.",
     "certification_ce": "Certification CE",
     "produit_certifie": "Tous nos articles sont certifiés",
     "expert_support": "Support expert",
@@ -503,10 +503,12 @@
   "innovation_technologique": "Innovation Technologique",
   "equipements_haute_performance": "Équipements Haute Performance",
   "equipements_haute_performance_slogan": "Découvrez notre gamme complète d'appareils PPC/CPAP dernière génération pour un traitement optimal.",
-  "voir_nos_produits": "Voir nos produits",
+  "voir_nos_produits": "Voir nos articles",
     "equipements_haute_performance_html": "Équipements <span class=\"title-accent\">Haute Performance</span>",
   "accompagnement_personnalise_html": "Accompagnement <span class=\"title-accent\">Personnalisé</span>",
-    "tous_nos_produits_certifies": "Tous nos produits sont certifiés"
+    "tous_nos_produits_certifies": "Tous nos produits sont certifiés",
+    "Description_categorie_defaut": "Découvrez une sélection complète d’équipements médicaux fiables et performants, conçus pour répondre aux besoins des professionnels de santé"
+
 
 
 

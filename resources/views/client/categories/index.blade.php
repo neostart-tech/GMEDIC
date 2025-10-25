@@ -602,8 +602,7 @@
 			<div class="category-content">
 				<h3 class="category-title">{{ $categorie->category_name }}</h3>
 				<p class="category-description">
-					Explorez nos articles spécialisés sur cette thématique médicale importante.
-					Des contenus rédigés par des experts pour vous accompagner.
+					{{ __('Description_categorie_defaut') }}
 				</p>
 				<div class="category-actions">
 					<a href="{{ route('client.categories.get-articles', $categorie) }}" class="category-btn">

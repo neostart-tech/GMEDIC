@@ -732,17 +732,17 @@
                     <span>{{__('Notre Priorité Absolue')}}</span>
                 </h1>
                 <p class="hero-premium-description">
-                    {{ env('APP_NAME') }} {{__("se consacre à révolutionner le traitement du syndrome d'apnée du sommeil grâce à des technologies médicales avancées et un accompagnement personnalisé de qualité.")}}
+                    {{ env('APP_NAME') }} {{__("Description_equipements")}}
                 </p>
                 
                 <div class="hero-premium-actions">
                     <a href="{{ route('client.contact.create') }}" class="btn-premium btn-premium-primary">
                         <i class="fas fa-calendar-check"></i>
-                        {{__('Consultation Gratuite')}}
+                        {{__('Nous contacter')}}
                     </a>
                     <a href="{{ route('client.categories.index') }}" class="btn-premium btn-premium-secondary">
                         <i class="fas fa-vial"></i>
-                      {{__('Découvrir nos Solutions')}}
+                      {{__('voir_nos_produits')}}
                     </a>
                 </div>
             </div>

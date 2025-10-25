@@ -281,8 +281,8 @@
     "Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.": "Our product catalog is currently under construction. Please come back soon to discover our latest innovations.",
      
 "Excellence Médicale & Innovation": "Medical innovation at your service",
-    "Votre Santé Respiratoire": "Your Respiratory Health",
-    "Notre Priorité Absolue": "Our Absolute Priority",
+    "Votre Santé Respiratoire": "Your trusted partner",
+    "Notre Priorité Absolue": "For certified medical equipment",
     "se consacre à révolutionner le traitement du syndrome d'apnée du sommeil grâce à des technologies médicales avancées et un accompagnement personnalisé de qualité.": "is dedicated to revolutionizing the treatment of sleep apnea syndrome through advanced medical technologies and high‑quality personalized support.",
     "Consultation Gratuite": "Free Consultation",
     "Découvrir nos Solutions": "Discover Our Solutions",
@@ -333,7 +333,7 @@
     "Éducation_thérapeutique": "Therapeutic education, psychological support and lifelong follow‑up for optimal treatment adherence.",
      "Ressources Médicales": "Medical Resources",
      "Nos Catégories<span> d'Articles</span>": "Our Categories<span> of Articles</span>",
-    "Découvrez_notre_collection": "Discover our collection of specialized articles on respiratory health, innovative treatments, and expert advice.",
+    "Découvrez_notre_collection": "Discover our reliable and certified medical equipment for all your needs.",
     "Connaissances Expertes": "Expert Knowledge",
     "Explorez nos Thématiques": "Explore Our Topics",
     "Voir les Articles": "View articles",
@@ -507,7 +507,10 @@
   "excellence_medicale": "Medical Excellence",
     "equipements_haute_performance_html": "High-<span class=\"title-accent\">Performance Equipment</span>",
       "accompagnement_personnalise_html": "Personalized <span class=\"title-accent\">Support</span>",
-      "tous_nos_produits_certifies": "All our products are certified"
+      "tous_nos_produits_certifies": "All our products are certified",
+          "Description_categorie_defaut": "Discover a complete selection of reliable and high-performance medical equipment designed to meet the needs of healthcare professionals",
+    "Description_equipements": "offers a complete range of certified medical equipment, designed to combine reliability, performance, and innovation, effectively supporting healthcare professionals."
+
 
 
 

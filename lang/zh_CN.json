@@ -279,8 +279,8 @@
       "Catalogue en préparation":"目录正在准备中",
         "Notre catalogue de produits est actuellement en cours de construction. Revenez bientôt pour découvrir nos dernières innovations.": "我们的产品目录正在建设中。请稍后回来，发现我们的最新创新。",
         "Excellence Médicale & Innovation": "医疗创新为您服务",
-    "Votre Santé Respiratoire": "您的呼吸健康",
-    "Notre Priorité Absolue": "我们的首要任务",
+       "Votre Santé Respiratoire": "您值得信赖的合作伙伴",
+    "Notre Priorité Absolue": "提供经过认证的医疗设备",
     "se consacre à révolutionner le traitement du syndrome d'apnée du sommeil grâce à des technologies médicales avancées et un accompagnement personnalisé de qualité.": "致力于通过先进的医疗技术和高品质的个性化支持来革新睡眠呼吸暂停综合症的治疗。",
     "Consultation Gratuite": "免费咨询",
     "Découvrir nos Solutions": "探索我们的解决方案",
@@ -332,7 +332,7 @@
     "Éducation_thérapeutique": "治疗教育、心理支持与终身随访，确保最佳治疗依从性。",
     "Ressources Médicales": "医疗资源",
      "Nos Catégories<span> d'Articles</span>": "我们的 <span>文章分类</span>",
-    "Découvrez_notre_collection": "探索我们关于呼吸健康、创新疗法和专家建议的专业文章合集。",
+    "Découvrez_notre_collection": "探索我们可靠且经过认证的医疗设备，以满足您的所有需求。",
     "Connaissances Expertes": "专业知识",
     "Explorez nos Thématiques": "探索我们的主题",
     "Des_contenus_riches": "丰富多样的内容助您更好地理解和管理呼吸健康",
@@ -507,7 +507,11 @@
   "excellence_medicale": "卓越医疗",
   "equipements_haute_performance_html": "高<span class=\"title-accent\">性能设备</span>",
     "accompagnement_personnalise_html": "个性化<span class=\"title-accent\">支持</span>",
-    "tous_nos_produits_certifies": "我们的所有产品均已通过认证"
+    "tous_nos_produits_certifies": "我们的所有产品均已通过认证",
+        "Description_categorie_defaut": "探索我们全面的高性能医疗设备精选，旨在满足医疗专业人员的需求",
+            "Description_equipements": "提供全面的认证医疗设备系列，旨在将可靠性、性能与创新结合，有效支持医疗专业人员。"
+
+
 
 
 
