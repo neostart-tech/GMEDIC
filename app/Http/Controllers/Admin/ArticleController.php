@@ -20,7 +20,7 @@ class ArticleController extends Controller
 	{
 		// dd(Article::with('category:id,category_name,slug')->orderByDesc('created_at')->get());
 		return view('admin.article.index', [
-			'articles' => Article::with('category:id,category_name,slug')->orderByDesc('created_at')->get(),
+			'articles' => Article::with('category:id,category_name,slug')->orderByDesc('created_at')->paginate(9),
 			'categories' => Categorie::query()->has('articles')->orderBy('category_name')->get()
 		]);
 	}

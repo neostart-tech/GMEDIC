@@ -20,7 +20,7 @@ class BlogController extends Controller
 	public function index(): View
 	{
 		return view("admin.blogs.index")->with([
-			'blogs' => Blog::all()
+			'blogs' => Blog::paginate(9)
 		]);
 	}
 
