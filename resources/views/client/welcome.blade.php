@@ -305,7 +305,7 @@
                 <div class="card-content">
                     <h3 class="product-name">{{ $article->getTranslation('article_name', app()->getLocale()) }}</h3>
                     <div class="product-desc">
-                        {!! $article->getTranslation('article_desc', app()->getLocale()) !!}
+                        {{-- {!! substr($article->getTranslation('article_desc', app()->getLocale()),100) !!} --}}
                     </div>
                     <div class="product-category">
                         {{ $article->category->category_name ?? 'Non catégorisé' }}
