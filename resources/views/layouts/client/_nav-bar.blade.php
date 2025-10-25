@@ -871,19 +871,18 @@
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a href="/"
-                        class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : '' ?>">{{__('Accueil')}}</a>
+                        class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'index.php' ? 'active' : '' ?>">{{__('Accueil')}}</a>
                 </li>
                 <li class="nav-item"><a href="{{route('client.a-propos')}}"
-                        class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'a-propos' ? 'active' : '' ?>">{{__('À
-                        propos')}}</a></li>
+                        class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'a-propos' ? 'active' : '' ?>">{{__('À propos')}}</a></li>
                 <li class="nav-item"><a href="{{route('client.categories.index')}}"
-                        class="nav-link  <?= basename($_SERVER['PHP_SELF']) == 'liste' ? 'active' : '' ?>">{{__('Catégories')}}</a>
+                        class="nav-link  <?= basename($_SERVER['PHP_SELF']) === 'liste' ? 'active' : '' ?>">{{__('Catégories')}}</a>
                 </li>
                 <li class="nav-item"><a href="{{route('client.blogs.index')}}"
-                        class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'blogs' ? 'active' : '' ?>">{{__('Blog')}}</a>
+                        class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'blogs' ? 'active' : '' ?>">{{__('Blog')}}</a>
                 </li>
                 <li class="nav-item"><a href="{{route('client.contact.create')}}"
-                        class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'nous-contacter' ? 'active' : '' ?>">{{__('Contact')}}</a>
+                        class="nav-link <?= basename($_SERVER['PHP_SELF']) === 'nous-contacter' ? 'active' : '' ?>">{{__('Contact')}}</a>
                 </li>
 
                 <!-- Sélecteur de langue Mobile (dans le menu) -->

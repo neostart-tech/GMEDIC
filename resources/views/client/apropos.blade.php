@@ -1,5 +1,5 @@
 @extends('client.base', [
-	'title' => 'À propos - ' . env('APP_NAME')
+    'title' => 'À propos - ' . env('APP_NAME')
 ])
 @section('content')
 
@@ -34,10 +34,10 @@
         --border-radius-lg: 24px;
     }
 
-    /* Hero Section Refined */
+    /* Hero Section */
     .about-hero-premium {
         background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
-        padding: 100px 0 80px;
+        padding: 120px 0 80px;
         position: relative;
         overflow: hidden;
         color: white;
@@ -110,8 +110,6 @@
         background-clip: text;
         position: relative;
     }
-
-   
 
     .hero-premium-description {
         font-size: 1.25rem;
@@ -257,10 +255,10 @@
         }
     }
 
-    /* Section Syndrome Premium */
-    .apnea-section-premium {
+    /* Section Histoire et Expertise */
+    .history-section {
         padding: 100px 0;
-        background: var(--light);
+        background: white;
         position: relative;
     }
 
@@ -303,206 +301,134 @@
         line-height: 1.2;
     }
 
-    .apnea-tabs {
+    .history-container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
     }
 
-    .tab-nav {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin-bottom: 40px;
-        flex-wrap: wrap;
-    }
-
-    .tab-button {
-        background: white;
-        border: 2px solid var(--border);
-        padding: 16px 28px;
-        border-radius: 10px;
-        font-weight: 600;
-        color: var(--text-light);
-        cursor: pointer;
-        transition: var(--transition);
-        font-family: 'Poppins', sans-serif;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .tab-button.active {
-        background: var(--gradient);
-        color: white;
-        border-color: var(--primary);
-        transform: translateY(-2px);
-        box-shadow: var(--shadow);
-    }
-
-    .tab-button i {
-        font-size: 1.1rem;
-    }
-
-    .tab-content {
-        background: white;
-        border-radius: var(--border-radius-lg);
-        padding: 40px;
-        box-shadow: var(--shadow);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .tab-pane {
-        display: none;
-    }
-
-    .tab-pane.active {
-        display: block;
-        animation: fadeIn 0.5s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(15px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .tab-pane-content {
+    .history-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 40px;
+        gap: 60px;
         align-items: center;
     }
 
-    .tab-pane-text h3 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: var(--secondary);
-        margin-bottom: 15px;
+    .history-content {
+        position: relative;
+    }
+
+    .history-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--gradient);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 25px;
         font-family: 'Poppins', sans-serif;
     }
 
-    .tab-pane-text p {
+    .history-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--secondary);
+        margin-bottom: 20px;
+        line-height: 1.2;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .history-title span {
+        color: var(--primary);
+        position: relative;
+    }
+
+    .history-title span::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: var(--primary-soft);
+        z-index: -1;
+        border-radius: 3px;
+    }
+
+    .history-description {
         font-size: 1.1rem;
         line-height: 1.7;
         color: var(--text);
-        margin-bottom: 25px;
+        margin-bottom: 30px;
     }
 
-    .symptoms-list-premium {
+    .history-features {
         display: grid;
-        gap: 12px;
+        gap: 20px;
+        margin-bottom: 40px;
     }
 
-    .symptom-item-premium {
+    .feature-item {
         display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px;
-        background: var(--primary-soft);
-        border-radius: 8px;
-        transition: var(--transition);
-    }
-
-    .symptom-item-premium:hover {
-        transform: translateX(8px);
-        background: var(--primary-light);
-        color: white;
-    }
-
-    .symptom-item-premium i {
-        color: var(--primary);
-        font-size: 1rem;
-    }
-
-    /* NOUVEAU DESIGN COMPLICATIONS EN FLEX HORIZONTAL */
-    .complications-flex-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 25px;
-        margin-top: 30px;
-        justify-content: center;
-    }
-
-    .complication-row {
-        display: flex;
-        gap: 25px;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .complication-card-flex {
-        background: linear-gradient(135deg, var(--lighter) 0%, var(--primary-soft) 100%);
-        padding: 25px;
-        border-radius: 12px;
-        border-left: 4px solid var(--primary);
-        transition: var(--transition);
-        position: relative;
-        overflow: hidden;
-        flex: 1;
-        min-width: 280px;
-        max-width: 320px;
-    }
-
-    .complication-card-flex::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-        transition: left 0.6s;
-    }
-
-    .complication-card-flex:hover::before {
-        left: 100%;
-    }
-
-    .complication-card-flex:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-        border-left-color: var(--accent);
-    }
-
-    .complication-header-flex {
-        display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 15px;
-        margin-bottom: 15px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
     }
 
-    .complication-icon-flex {
-        width: 50px;
-        height: 50px;
+    .feature-item:hover {
+        transform: translateX(8px);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: var(--shadow);
+    }
+
+    .feature-icon {
+        width: 45px;
+        height: 45px;
         background: var(--gradient);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         flex-shrink: 0;
     }
 
-    .complication-title-flex {
-        font-weight: 700;
+    .feature-content h4 {
+        font-weight: 600;
         color: var(--secondary);
-        font-size: 1.1rem;
-        line-height: 1.3;
+        margin-bottom: 5px;
+        font-size: 1rem;
     }
 
-    .complication-description-flex {
+    .feature-content p {
         color: var(--text-light);
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         line-height: 1.5;
-        margin-bottom: 0;
+        margin: 0;
+    }
+
+    .history-visual {
+        position: relative;
+    }
+
+    .history-image {
+        width: 100%;
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-xl);
     }
 
     /* Section Mission Premium */
     .mission-section-premium {
         padding: 100px 0;
-        background: white;
+        background: var(--light);
         position: relative;
     }
 
@@ -586,190 +512,172 @@
         font-size: 1rem;
     }
 
-    /* NOUVELLE SECTION À PROPOS DE NOUS */
-    .about-us-section {
+    /* Section Expertise Médicale */
+    .expertise-section {
         padding: 100px 0;
-        background: linear-gradient(135deg, var(--light) 0%, var(--primary-soft) 100%);
+        background: white;
         position: relative;
-        overflow: hidden;
     }
 
-    .about-us-section::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
-        opacity: 0.1;
-        border-radius: 50%;
-    }
-
-    .about-us-container {
+    .expertise-container {
         max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
-        position: relative;
-        z-index: 2;
     }
 
-    .about-us-grid {
+    .expertise-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
     }
 
-    .about-us-content {
-        position: relative;
-    }
-
-    .about-us-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: var(--gradient);
-        color: white;
-        padding: 10px 20px;
-        border-radius: 50px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        margin-bottom: 25px;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .about-us-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--secondary);
-        margin-bottom: 20px;
-        line-height: 1.2;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .about-us-title span {
-        color: var(--primary);
-        position: relative;
-    }
-
-    .about-us-title span::after {
-        content: '';
-        position: absolute;
-        bottom: 5px;
-        left: 0;
-        width: 100%;
-        height: 6px;
-        background: var(--primary-soft);
-        z-index: -1;
-        border-radius: 3px;
-    }
-
-    .about-us-description {
-        font-size: 1.1rem;
-        line-height: 1.7;
-        color: var(--text);
-        margin-bottom: 30px;
-    }
-
-    .about-us-features {
-        display: grid;
-        gap: 20px;
-        margin-bottom: 40px;
-    }
-
-    .feature-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 15px;
-        padding: 15px;
-        background: rgba(255, 255, 255, 0.7);
-        border-radius: 10px;
-        transition: var(--transition);
-        backdrop-filter: blur(10px);
-    }
-
-    .feature-item:hover {
-        transform: translateX(8px);
-        background: rgba(255, 255, 255, 0.9);
+    .expertise-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
         box-shadow: var(--shadow);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        border-top: 4px solid var(--primary);
     }
 
-    .feature-icon {
-        width: 45px;
-        height: 45px;
+    .expertise-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .expertise-icon {
+        width: 60px;
+        height: 60px;
         background: var(--gradient);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 20px;
         color: white;
-        font-size: 1.1rem;
-        flex-shrink: 0;
+        font-size: 1.5rem;
     }
 
-    .feature-content h4 {
-        font-weight: 600;
+    .expertise-title {
+        font-size: 1.3rem;
+        font-weight: 700;
         color: var(--secondary);
-        margin-bottom: 5px;
-        font-size: 1rem;
+        margin-bottom: 15px;
+        font-family: 'Poppins', sans-serif;
     }
 
-    .feature-content p {
+    .expertise-description {
         color: var(--text-light);
-        font-size: 0.9rem;
-        line-height: 1.5;
-        margin: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
     }
 
-    .about-us-stats {
+    /* Section Équipements */
+    .equipments-section {
+        padding: 100px 0;
+        background: var(--light);
+        position: relative;
+    }
+
+    .equipments-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .equipments-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        text-align: center;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
     }
 
-    .stat-item {
-        padding: 20px;
+    .equipment-card {
         background: white;
-        border-radius: 10px;
+        border-radius: var(--border-radius);
+        overflow: hidden;
         box-shadow: var(--shadow);
         transition: var(--transition);
     }
 
-    .stat-item:hover {
+    .equipment-card:hover {
         transform: translateY(-5px);
         box-shadow: var(--shadow-lg);
     }
 
-    .stat-number {
-        font-size: 2rem;
+    .equipment-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .equipment-content {
+        padding: 25px;
+    }
+
+    .equipment-title {
+        font-size: 1.2rem;
         font-weight: 700;
-        color: var(--primary);
-        margin-bottom: 5px;
+        color: var(--secondary);
+        margin-bottom: 10px;
         font-family: 'Poppins', sans-serif;
     }
 
-    .stat-label {
-        font-size: 0.85rem;
+    .equipment-description {
         color: var(--text-light);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    .equipment-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+
+    .equipment-feature {
+        background: var(--primary-soft);
+        color: var(--primary-dark);
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
         font-weight: 500;
     }
 
-    .about-us-visual {
+    /* Section Services Additionnels */
+    .services-section {
+        padding: 100px 0;
+        background: white;
         position: relative;
     }
 
-    .visual-card {
+    .services-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .service-card {
         background: white;
-        border-radius: var(--border-radius-lg);
-        padding: 30px;
-        box-shadow: var(--shadow-xl);
+        padding: 40px 30px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        text-align: center;
         position: relative;
         overflow: hidden;
     }
 
-    .visual-card::before {
+    .service-card::before {
         content: '';
         position: absolute;
         top: 0;
@@ -779,42 +687,173 @@
         background: var(--gradient);
     }
 
-    .team-image {
-        width: 100%;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 10px;
-        margin-bottom: 25px;
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
     }
 
-    .visual-quote {
-        text-align: center;
+    .service-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--gradient);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: white;
+        font-size: 1.8rem;
+    }
+
+    .service-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--secondary);
+        margin-bottom: 15px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .service-description {
+        color: var(--text-light);
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* Section Garanties */
+    .guarantees-section {
+        padding: 80px 0;
+        background: var(--light);
         position: relative;
     }
 
-    .quote-icon {
-        font-size: 2rem;
-        color: var(--primary-soft);
-        margin-bottom: 15px;
+    .guarantees-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
     }
 
-    .quote-text {
+    .guarantees-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .guarantee-item {
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .guarantee-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .guarantee-title {
         font-size: 1.1rem;
-        font-style: italic;
-        color: var(--text);
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
-
-    .quote-author {
         font-weight: 600;
         color: var(--secondary);
-        font-size: 1rem;
+        margin-bottom: 10px;
+        font-family: 'Poppins', sans-serif;
     }
 
-    .quote-role {
+    .guarantee-description {
         color: var(--text-light);
         font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* Section CTA */
+    .cta-section {
+        padding: 100px 0;
+        background: var(--gradient);
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 70% 30%, rgba(0, 198, 169, 0.1) 0%, transparent 50%);
+    }
+
+    .cta-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .cta-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .cta-description {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        opacity: 0.9;
+        line-height: 1.6;
+    }
+
+    .cta-actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .btn-cta {
+        padding: 16px 36px;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: var(--transition);
+        font-family: 'Poppins', sans-serif;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .btn-cta-primary {
+        background: white;
+        color: var(--primary);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .btn-cta-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-xl);
+    }
+
+    .btn-cta-secondary {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-cta-secondary:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px);
     }
 
     /* Responsive Design */
@@ -827,26 +866,18 @@
             font-size: 3rem;
         }
         
-        .complication-row {
-            flex-wrap: wrap;
-        }
-        
-        .complication-card-flex {
-            min-width: calc(50% - 15px);
-        }
-        
-        .about-us-grid {
+        .history-grid {
             gap: 40px;
         }
         
-        .about-us-title {
+        .history-title {
             font-size: 2.2rem;
         }
     }
 
     @media (max-width: 768px) {
         .about-hero-premium {
-            padding: 80px 0 60px;
+            padding: 100px 0 60px;
             min-height: auto;
         }
         
@@ -864,47 +895,37 @@
             font-size: 1.1rem;
         }
         
-        .tab-pane-content {
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-        
-        .tab-nav {
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .tab-button {
-            width: 100%;
-            max-width: 280px;
-            justify-content: center;
-        }
-        
         .mission-grid-premium {
             grid-template-columns: 1fr;
-        }
-        
-        .complication-card-flex {
-            min-width: 100%;
-            max-width: 100%;
         }
         
         .hero-premium-actions {
             justify-content: center;
         }
         
-        .about-us-grid {
+        .history-grid {
             grid-template-columns: 1fr;
             gap: 40px;
             text-align: center;
         }
         
-        .about-us-stats {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        
         .feature-item {
             text-align: left;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+        }
+        
+        .cta-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .btn-cta {
+            width: 100%;
+            max-width: 280px;
+            justify-content: center;
         }
     }
 
@@ -926,60 +947,28 @@
             justify-content: center;
         }
         
-        .tab-content {
-            padding: 25px 15px;
-        }
-        
         .mission-card-premium {
             padding: 30px 20px;
         }
         
-        .complication-card-flex {
-            padding: 20px;
-        }
-        
-        .complication-header-flex {
-            gap: 12px;
-        }
-        
-        .complication-icon-flex {
-            width: 45px;
-            height: 45px;
-            font-size: 1.1rem;
-        }
-        
-        .about-us-title {
+        .history-title {
             font-size: 2rem;
         }
         
-        .about-us-stats {
-            grid-template-columns: 1fr;
-        }
-        
-        .stat-number {
+        .cta-title {
             font-size: 1.8rem;
-        }
-    }
-
-    @media (min-width: 1200px) {
-        .complication-row {
-            justify-content: space-between;
-        }
-        
-        .complication-card-flex {
-            flex: 0 1 calc(50% - 15px);
         }
     }
 </style>
 
-<!-- Hero Section Refined -->
+<!-- Hero Section -->
 <section class="about-hero-premium">
     <div class="hero-premium-content">
         <div class="hero-premium-grid">
             <div class="hero-premium-text">
                 <div class="hero-premium-badge">
                     <i class="fas fa-award"></i>
-                   {{__('Excellence Médicale & Innovation')}}
+                    {{__('Excellence Médicale & Innovation')}}
                 </div>
                 <h1 class="hero-premium-title">
                     {{__('Votre Santé Respiratoire')}}<br>
@@ -1013,25 +1002,23 @@
     </div>
 </section>
 
-<!-- Section Syndrome d'Apnée Premium -->
-
-<!-- NOUVELLE SECTION À PROPOS DE NOUS -->
-<section class="about-us-section">
-    <div class="about-us-container">
-        <div class="about-us-grid">
-            <div class="about-us-content">
-                <div class="about-us-badge">
-                    <i class="fas fa-heartbeat"></i>
+<!-- Section Histoire et Expertise -->
+<section class="history-section">
+    <div class="history-container">
+        <div class="history-grid">
+            <div class="history-content">
+                <div class="history-badge">
+                    <i class="fas fa-history"></i>
                     {{__('Notre Histoire')}}
                 </div>
-                <h2 class="about-us-title">
+                <h2 class="history-title">
                     {{__('À Propos de')}} <span>{{ env('APP_NAME') }}</span>
                 </h2>
-                <p class="about-us-description">
+                <p class="history-description">
                     {{__('Fondée avec une vision claire : révolutionner la prise en charge des troubles respiratoires du sommeil en Afrique. Notre engagement est de fournir des solutions médicales innovantes accessibles à tous.')}}
                 </p>
                 
-                <div class="about-us-features">
+                <div class="history-features">
                     <div class="feature-item">
                         <div class="feature-icon">
                             <i class="fas fa-bullseye"></i>
@@ -1063,10 +1050,17 @@
                     </div>
                 </div>
                 
-                
+                <div class="hero-premium-actions">
+                    <a href="{{ route('client.contact.create') }}" class="btn-premium btn-premium-primary">
+                        <i class="fas fa-phone-alt"></i>
+                        {{__('Nous contacter')}}
+                    </a>
+                </div>
             </div>
             
-            
+            <div class="history-visual">
+                <img src="{{ asset('assets/client/images/medical-equipment.jpg') }}" alt="Équipements médicaux" class="history-image">
+            </div>
         </div>
     </div>
 </section>
@@ -1114,30 +1108,233 @@
     </div>
 </section>
 
+<!-- Section Expertise Médicale -->
+<section class="expertise-section">
+    <div class="section-header-premium">
+        <div class="section-subtitle-premium">{{__('Domaines d\'Expertise')}}</div>
+        <h2 class="section-title-premium">{{__('Spécialisations Médicales')}}</h2>
+        <p class="section-description">
+            {{__('Notre expertise couvre tous les aspects du traitement des troubles respiratoires du sommeil')}}
+        </p>
+    </div>
+
+    <div class="expertise-container">
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <i class="fas fa-lungs"></i>
+                </div>
+                <h3 class="expertise-title">{{__('Apnée du Sommeil')}}</h3>
+                <p class="expertise-description">
+                    {{__('Diagnostic et traitement des syndromes d\'apnées obstructives du sommeil (SAOS) avec des solutions PPC/CPAP adaptées.')}}
+                </p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <i class="fas fa-wind"></i>
+                </div>
+                <h3 class="expertise-title">{{__('Ventilation à Domicile')}}</h3>
+                <p class="expertise-description">
+                    {{__('Solutions de ventilation non invasive pour les patients atteints de pathologies respiratoires chroniques.')}}
+                </p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="expertise-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <h3 class="expertise-title">{{__('Suivi Médical')}}</h3>
+                <p class="expertise-description">
+                    {{__('Accompagnement personnalisé et suivi régulier pour optimiser l\'efficacité des traitements et améliorer l\'observance.')}}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Équipements -->
+<section class="equipments-section">
+    <div class="section-header-premium">
+        <div class="section-subtitle-premium">{{__('Nos Solutions')}}</div>
+        <h2 class="section-title-premium">{{__('Équipements Médicaux')}}</h2>
+        <p class="section-description">
+            {{__('Des technologies de pointe pour un traitement efficace et confortable')}}
+        </p>
+    </div>
+
+    <div class="equipments-container">
+        <div class="equipments-grid">
+            <div class="equipment-card">
+                <img src="{{ asset('assets/client/images/cpap-machine.jpg') }}" alt="Appareil PPC" class="equipment-image">
+                <div class="equipment-content">
+                    <h3 class="equipment-title">{{__('Appareils PPC/CPAP')}}</h3>
+                    <p class="equipment-description">
+                        {{__('Appareils de pression positive continue pour le traitement de l\'apnée du sommeil.')}}
+                    </p>
+                    <div class="equipment-features">
+                        <span class="equipment-feature">{{__('Automatique')}}</span>
+                        <span class="equipment-feature">{{__('Silencieux')}}</span>
+                        <span class="equipment-feature">{{__('Humidification')}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equipment-card">
+                <img src="{{ asset('assets/client/images/masks.jpg') }}" alt="Masques PPC" class="equipment-image">
+                <div class="equipment-content">
+                    <h3 class="equipment-title">{{__('Masques et Interfaces')}}</h3>
+                    <p class="equipment-description">
+                        {{__('Large gamme de masques nasaux, narinaires et faciaux pour un confort optimal.')}}
+                    </p>
+                    <div class="equipment-features">
+                        <span class="equipment-feature">{{__('Confort')}}</span>
+                        <span class="equipment-feature">{{__('Étanchéité')}}</span>
+                        <span class="equipment-feature">{{__('Adaptabilité')}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equipment-card">
+                <img src="{{ asset('assets/client/images/oximeter.jpg') }}" alt="Oxymètre" class="equipment-image">
+                <div class="equipment-content">
+                    <h3 class="equipment-title">{{__('Diagnostic et Monitoring')}}</h3>
+                    <p class="equipment-description">
+                        {{__('Appareils de diagnostic et de suivi pour évaluer l\'efficacité du traitement.')}}
+                    </p>
+                    <div class="equipment-features">
+                        <span class="equipment-feature">{{__('Précision')}}</span>
+                        <span class="equipment-feature">{{__('Connectivité')}}</span>
+                        <span class="equipment-feature">{{__('Analyse')}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Services Additionnels -->
+<section class="services-section">
+    <div class="section-header-premium">
+        <div class="section-subtitle-premium">{{__('Services Complémentaires')}}</div>
+        <h2 class="section-title-premium">{{__('Notre Accompagnement')}}</h2>
+        <p class="section-description">
+            {{__('Au-delà de la vente d\'équipements, nous vous accompagnons à chaque étape')}}
+        </p>
+    </div>
+
+    <div class="services-container">
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3 class="service-title">{{__('Installation à Domicile')}}</h3>
+                <p class="service-description">
+                    {{__('Nos techniciens spécialisés installent et configurent vos équipements directement chez vous.')}}
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="service-title">{{__('Formation Patient')}}</h3>
+                <p class="service-description">
+                    {{__('Apprentissage complet de l\'utilisation et de l\'entretien de vos équipements médicaux.')}}
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3 class="service-title">{{__('Maintenance & SAV')}}</h3>
+                <p class="service-description">
+                    {{__('Service après-vente réactif et maintenance préventive pour garantir la longévité des équipements.')}}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section Garanties -->
+<section class="guarantees-section">
+    <div class="section-header-premium">
+        <div class="section-subtitle-premium">{{__('Nos Engagements')}}</div>
+        <h2 class="section-title-premium">{{__('Garanties & Qualité')}}</h2>
+        <p class="section-description">
+            {{__('La qualité et la sécurité au cœur de notre démarche')}}
+        </p>
+    </div>
+
+    <div class="guarantees-container">
+        <div class="guarantees-grid">
+            <div class="guarantee-item">
+                <div class="guarantee-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="guarantee-title">{{__('Certifications CE')}}</h3>
+                <p class="guarantee-description">
+                    {{__('Tous nos équipements sont certifiés CE et répondent aux normes médicales européennes.')}}
+                </p>
+            </div>
+
+            <div class="guarantee-item">
+                <div class="guarantee-icon">
+                    <i class="fas fa-medkit"></i>
+                </div>
+                <h3 class="guarantee-title">{{__('Qualité Médicale')}}</h3>
+                <p class="guarantee-description">
+                    {{__('Produits de qualité médicale pour une efficacité et une sécurité optimales.')}}
+                </p>
+            </div>
+
+            <div class="guarantee-item">
+                <div class="guarantee-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3 class="guarantee-title">{{__('Livraison Rapide')}}</h3>
+                <p class="guarantee-description">
+                    {{__('Livraison express partout en Afrique pour répondre à vos besoins urgents.')}}
+                </p>
+            </div>
+
+            <div class="guarantee-item">
+                <div class="guarantee-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3 class="guarantee-title">{{__('Support 24/7')}}</h3>
+                <p class="guarantee-description">
+                    {{__('Assistance technique disponible pour répondre à toutes vos questions.')}}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section CTA -->
+<section class="cta-section">
+    <div class="cta-container">
+        <h2 class="cta-title">{{__('Prêt à améliorer votre qualité de sommeil ?')}}</h2>
+        <p class="cta-description">
+            {{__('Contactez nos experts pour une évaluation personnalisée et découvrez la solution adaptée à vos besoins.')}}
+        </p>
+        <div class="cta-actions">
+            <a href="{{ route('client.contact.create') }}" class="btn-cta btn-cta-primary">
+                <i class="fas fa-calendar-check"></i>
+                {{__('Prendre Rendez-vous')}}
+            </a>
+            <a href="{{ route('client.categories.index') }}" class="btn-cta btn-cta-secondary">
+                <i class="fas fa-box-open"></i>
+                {{__('Découvrir nos Produits')}}
+            </a>
+        </div>
+    </div>
+</section>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Gestion des tabs
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabPanes = document.querySelectorAll('.tab-pane');
-        
-        tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const targetTab = this.getAttribute('data-tab');
-                
-                // Mettre à jour les boutons
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Mettre à jour les panneaux
-                tabPanes.forEach(pane => {
-                    pane.classList.remove('active');
-                    if (pane.id === targetTab) {
-                        pane.classList.add('active');
-                    }
-                });
-            });
-        });
-        
         // Animations au scroll
         const observerOptions = {
             threshold: 0.1,
@@ -1154,7 +1351,7 @@
         }, observerOptions);
         
         // Observer les éléments à animer
-        const animatedElements = document.querySelectorAll('.mission-card-premium, .tab-content, .hero-premium-text, .hero-premium-visual, .complication-card-flex, .about-us-content, .about-us-visual, .feature-item, .stat-item');
+        const animatedElements = document.querySelectorAll('.mission-card-premium, .hero-premium-text, .hero-premium-visual, .history-content, .history-visual, .feature-item, .expertise-card, .equipment-card, .service-card, .guarantee-item');
         animatedElements.forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(25px)';
