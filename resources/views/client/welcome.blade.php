@@ -47,7 +47,7 @@
             </div>
             
             <div class="slide-image-container">
-                <img src="{{ asset('assets/client/images/slider-img.jpg') }}" 
+                <img src="{{ asset('assets/images/slider/image-slide2.jpg') }}" 
                      alt="Présentation {{ env('APP_NAME') }}" 
                      class="hero-background-image">
                 <div class="image-overlay-gradient"></div>
@@ -95,7 +95,7 @@
             </div>
             
             <div class="slide-image-container">
-                <img src="{{ asset('assets/client/images/slider-img.jpg') }}" 
+                <img src="{{ asset('assets/images/slider/image-slide3.jpg') }}" 
                      alt="Équipements médicaux haute performance" 
                      class="hero-background-image">
                 <div class="image-overlay-gradient"></div>
@@ -143,7 +143,7 @@
             </div>
             
             <div class="slide-image-container">
-                <img src="{{ asset('assets/client/images/slider-img.jpg') }}" 
+                <img src="{{ asset('assets/images/slider/image-slide1.jpg') }}" 
                      alt="Support et accompagnement personnalisé" 
                      class="hero-background-image">
                 <div class="image-overlay-gradient"></div>
@@ -657,9 +657,9 @@
                     <h2 class="modal-title" id="productModalLabel">Détails du produit</h2>
                     <p class="modal-subtitle" id="modalProductCategory"></p>
                 </div>
-                {{-- <button type="button" onclick="close()" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <button type="button" onclick="closeModal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fas fa-times"></i>
-                </button> --}}
+                </button>
             </div>
             <div class="modal-body">
                 <div class="product-modal-content">
@@ -2912,6 +2912,7 @@ function displayShowModal(article, image) {
 
 function updateModalContent(article, image) {
     // Mettre à jour les informations de base
+    const el=document.documentElement
     const productImage = document.getElementById('modalProductImage');
     const productName = document.getElementById('modalProductName');
     const productCategory = document.getElementById('modalProductCategory');
@@ -2933,7 +2934,7 @@ function updateModalContent(article, image) {
     // Description formatée
     if (productDescription) {
         if (article.article_desc) {
-            productDescription.innerHTML = formatDescription(article.article_desc);
+            productDescription.innerHTML = article.article_desc;
         } else {
             productDescription.innerHTML = '<p class="text-muted">Aucune description disponible pour ce produit.</p>';
         }
@@ -2945,13 +2946,13 @@ function updateModalContent(article, image) {
     }
 }
 
-function formatDescription(description) {
-    // Convertir les retours à la ligne en paragraphes
-    if (!description) return '';
-    return description.split('\n').filter(line => line.trim()).map(line => 
-        `<p>${line.trim()}</p>`
-    ).join('');
-}
+// function formatDescription(description) {
+//     // Convertir les retours à la ligne en paragraphes
+//     if (!description) return '';
+//     return description.split('\n').filter(line => line.trim()).map(line => 
+//         `<p>${line.trim()}</p>`
+//     ).join('');
+// }
 
 function number_format(number, decimals, dec_point, thousands_sep) {
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
@@ -3147,6 +3148,11 @@ function initAboutSlider() {
 document.addEventListener('DOMContentLoaded', function() {
     initAboutSlider();
 });
+
+function closeModal(){
+     const modal = new bootstrap.Modal(modalElement);
+        modal.close();
+}
 </script>
 
 @endsection
