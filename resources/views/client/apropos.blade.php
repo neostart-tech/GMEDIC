@@ -111,18 +111,7 @@
         position: relative;
     }
 
-    .hero-premium-title span::after {
-        content: '';
-        position: absolute;
-        bottom: 5px;
-        left: 0;
-        width: 100%;
-        height: 8px;
-        background: linear-gradient(90deg, var(--accent), transparent);
-        opacity: 0.3;
-        border-radius: 4px;
-        z-index: -1;
-    }
+   
 
     .hero-premium-description {
         font-size: 1.25rem;
@@ -597,6 +586,237 @@
         font-size: 1rem;
     }
 
+    /* NOUVELLE SECTION À PROPOS DE NOUS */
+    .about-us-section {
+        padding: 100px 0;
+        background: linear-gradient(135deg, var(--light) 0%, var(--primary-soft) 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about-us-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+        opacity: 0.1;
+        border-radius: 50%;
+    }
+
+    .about-us-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .about-us-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .about-us-content {
+        position: relative;
+    }
+
+    .about-us-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--gradient);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 25px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .about-us-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--secondary);
+        margin-bottom: 20px;
+        line-height: 1.2;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .about-us-title span {
+        color: var(--primary);
+        position: relative;
+    }
+
+    .about-us-title span::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: var(--primary-soft);
+        z-index: -1;
+        border-radius: 3px;
+    }
+
+    .about-us-description {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: var(--text);
+        margin-bottom: 30px;
+    }
+
+    .about-us-features {
+        display: grid;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+    }
+
+    .feature-item:hover {
+        transform: translateX(8px);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: var(--shadow);
+    }
+
+    .feature-icon {
+        width: 45px;
+        height: 45px;
+        background: var(--gradient);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+    }
+
+    .feature-content h4 {
+        font-weight: 600;
+        color: var(--secondary);
+        margin-bottom: 5px;
+        font-size: 1rem;
+    }
+
+    .feature-content p {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .about-us-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        text-align: center;
+    }
+
+    .stat-item {
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+    }
+
+    .stat-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 5px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        font-weight: 500;
+    }
+
+    .about-us-visual {
+        position: relative;
+    }
+
+    .visual-card {
+        background: white;
+        border-radius: var(--border-radius-lg);
+        padding: 30px;
+        box-shadow: var(--shadow-xl);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .visual-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient);
+    }
+
+    .team-image {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 25px;
+    }
+
+    .visual-quote {
+        text-align: center;
+        position: relative;
+    }
+
+    .quote-icon {
+        font-size: 2rem;
+        color: var(--primary-soft);
+        margin-bottom: 15px;
+    }
+
+    .quote-text {
+        font-size: 1.1rem;
+        font-style: italic;
+        color: var(--text);
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .quote-author {
+        font-weight: 600;
+        color: var(--secondary);
+        font-size: 1rem;
+    }
+
+    .quote-role {
+        color: var(--text-light);
+        font-size: 0.9rem;
+    }
+
     /* Responsive Design */
     @media (max-width: 1024px) {
         .hero-premium-grid {
@@ -613,6 +833,14 @@
         
         .complication-card-flex {
             min-width: calc(50% - 15px);
+        }
+        
+        .about-us-grid {
+            gap: 40px;
+        }
+        
+        .about-us-title {
+            font-size: 2.2rem;
         }
     }
 
@@ -664,6 +892,20 @@
         .hero-premium-actions {
             justify-content: center;
         }
+        
+        .about-us-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .about-us-stats {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .feature-item {
+            text-align: left;
+        }
     }
 
     @media (max-width: 480px) {
@@ -704,6 +946,18 @@
             width: 45px;
             height: 45px;
             font-size: 1.1rem;
+        }
+        
+        .about-us-title {
+            font-size: 2rem;
+        }
+        
+        .about-us-stats {
+            grid-template-columns: 1fr;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
         }
     }
 
@@ -760,187 +1014,59 @@
 </section>
 
 <!-- Section Syndrome d'Apnée Premium -->
-<section class="apnea-section-premium">
-    <div class="section-header-premium">
-        <div class="section-subtitle-premium">{{__("Pathologie Complexe")}}</div>
-        <h2 class="section-title-premium">{{__("Syndrome d'Apnées du Sommeil")}}</h2>
-        <p class="section-description">
-           {{__('Une approche scientifique pour comprendre et traiter efficacement')}}
-        </p>
-    </div>
 
-    <div class="apnea-tabs">
-        <div class="tab-nav">
-            <button class="tab-button active" data-tab="definition">
-                <i class="fas fa-microscope"></i>
-                {{__('Définition')}}
-            </button>
-            <button class="tab-button" data-tab="symptoms">
-                <i class="fas fa-stethoscope"></i>
-               {{__('Symptômes')}}
-            </button>
-            <button class="tab-button" data-tab="complications">
-                <i class="fas fa-heartbeat"></i>
-               {{__('Complications')}}
-            </button>
-        </div>
-
-        <div class="tab-content">
-            <!-- Tab 1: Définition -->
-            <div class="tab-pane active" id="definition">
-                <div class="tab-pane-content">
-                    <div class="tab-pane-text">
-                        <h3>{{__('Comprendre l\'Apnée du Sommeil')}}</h3>
-                        <p>
-                           {{__('Le_syndrome_apnées_obstructives_du_sommeil')}}
-                        </p>
-                        <p>
-                           {{__('Chaque_apnée_chute_du_taux_oxygène')}}
-                        </p>
+<!-- NOUVELLE SECTION À PROPOS DE NOUS -->
+<section class="about-us-section">
+    <div class="about-us-container">
+        <div class="about-us-grid">
+            <div class="about-us-content">
+                <div class="about-us-badge">
+                    <i class="fas fa-heartbeat"></i>
+                    {{__('Notre Histoire')}}
+                </div>
+                <h2 class="about-us-title">
+                    {{__('À Propos de')}} <span>{{ env('APP_NAME') }}</span>
+                </h2>
+                <p class="about-us-description">
+                    {{__('Fondée avec une vision claire : révolutionner la prise en charge des troubles respiratoires du sommeil en Afrique. Notre engagement est de fournir des solutions médicales innovantes accessibles à tous.')}}
+                </p>
+                
+                <div class="about-us-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>{{__('Notre Mission')}}</h4>
+                            <p>{{__('Améliorer la qualité de vie des patients grâce à des technologies médicales avancées et un accompagnement personnalisé.')}}</p>
+                        </div>
                     </div>
-                    <div class="tab-pane-visual">
-                        <div style="background: var(--gradient-soft); padding: 35px; border-radius: 12px; text-align: center;">
-                            <i class="fas fa-lungs" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 15px;"></i>
-                            <h4 style="color: var(--secondary); margin-bottom: 12px;">{{__('Respiration Interrompue')}}</h4>
-                            <p style="color: var(--text-light); font-size: 0.95rem;">{{__('5 à 30 arrêts respiratoires par heure de sommeil')}}</p>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>{{__('Notre Vision')}}</h4>
+                            <p>{{__('Devenir le leader africain de référence dans le traitement des apnées du sommeil et la ventilation à domicile.')}}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>{{__('Nos Valeurs')}}</h4>
+                            <p>{{__('Innovation, Excellence, Empathie et Engagement envers chaque patient.')}}</p>
                         </div>
                     </div>
                 </div>
+                
+                
             </div>
-
-            <!-- Tab 2: Symptômes -->
-            <div class="tab-pane" id="symptoms">
-                <div class="tab-pane-content">
-                    <div class="tab-pane-text">
-                        <h3>{{__('Signes Cliniques et Symptômes')}}</h3>
-                        <p>
-                           {{__('Le_SAOS_se_manifeste_par_des_symptômes')}}
-                        </p>
-                        
-                        <div class="symptoms-list-premium">
-                            <div class="symptom-item-premium">
-                                <i class="fas fa-volume-up"></i>
-                                <div>
-                                    <strong>{{__('Ronflement Sonore')}}</strong>
-                                    <div>{{__('Intense et intermittent')}}</div>
-                                </div>
-                            </div>
-                            <div class="symptom-item-premium">
-                                <i class="fas fa-tired"></i>
-                                <div>
-                                    <strong>{{__('Fatigue Matinale')}}</strong>
-                                    <div>{{__('Réveil non réparateur')}}</div>
-                                </div>
-                            </div>
-                            <div class="symptom-item-premium">
-                                <i class="fas fa-head-side-virus"></i>
-                                <div>
-                                    <strong>{{__('Céphalées Matinales')}}</strong>
-                                    <div>{{__('Maux de tête au réveil')}}</div>
-                                </div>
-                            </div>
-                            <div class="symptom-item-premium">
-                                <i class="fas fa-bed"></i>
-                                <div>
-                                    <strong>{{__('Somnolence Diurne')}}</strong>
-                                    <div>{{__('Endormissements incontrôlés')}}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane-visual">
-                        <div style="background: var(--primary-soft); padding: 30px; border-radius: 10px;">
-                            <h4 style="color: var(--secondary); margin-bottom: 15px; text-align: center;">{{__('Autres Manifestations')}}</h4>
-                            <ul style="color: var(--text); list-style: none; padding: 0;">
-                                <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
-                                    <i class="fas fa-brain" style="color: var(--primary); margin-right: 8px;"></i>
-                                    {{__('Troubles cognitifs')}}
-                                </li>
-                                <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
-                                    <i class="fas fa-memory" style="color: var(--primary); margin-right: 8px;"></i>
-                                    {{__('Difficultés de concentration')}}
-                                </li>
-                                <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">
-                                    <i class="fas fa-restroom" style="color: var(--primary); margin-right: 8px;"></i>
-                                    {{__('Nycturie fréquente')}}
-                                </li>
-                                <li style="padding: 8px 0;">
-                                    <i class="fas fa-user-injured" style="color: var(--primary); margin-right: 8px;"></i>
-                                    {{__("Troubles de l'humeur")}}
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tab 3: Complications - NOUVEAU DESIGN FLEX HORIZONTAL -->
-            <div class="tab-pane" id="complications">
-                <div class="tab-pane-content">
-                    <div class="tab-pane-text">
-                        <h3>{{__('Complications à Long Terme')}}</h3>
-                        <p>
-                           {{__('non_traité')}}
-                        </p>
-                        
-                        <div class="complications-flex-container">
-                            <!-- Première ligne - 2 cartes côte à côte -->
-                            <div class="complication-row">
-                                <div class="complication-card-flex">
-                                    <div class="complication-header-flex">
-                                        <div class="complication-icon-flex">
-                                            <i class="fas fa-heart"></i>
-                                        </div>
-                                        <div class="complication-title-flex">{{__('Cardiovasculaire')}}</div>
-                                    </div>
-                                    <p class="complication-description-flex">
-                                       {{__('Hypertension_artérielle')}}
-                                    </p>
-                                </div>
-                                
-                                <div class="complication-card-flex">
-                                    <div class="complication-header-flex">
-                                        <div class="complication-icon-flex">
-                                            <i class="fas fa-brain"></i>
-                                        </div>
-                                        <div class="complication-title-flex">{{__('Neurologique')}}</div>
-                                    </div>
-                                    <p class="complication-description-flex">
-                                       {{__('Accident_vasculaire')}}
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <!-- Deuxième ligne - 2 cartes côte à côte -->
-                            <div class="complication-row">
-                                <div class="complication-card-flex">
-                                    <div class="complication-header-flex">
-                                        <div class="complication-icon-flex">
-                                            <i class="fas fa-car-crash"></i>
-                                        </div>
-                                        <div class="complication-title-flex">{{__("Risques d'Accidents")}}</div>
-                                    </div>
-                                    <p class="complication-description-flex">
-                                        {{__('Risque_multiplié_par_7')}}
-                                    </p>
-                                </div>
-                                
-                                <div class="complication-card-flex">
-                                    <div class="complication-header-flex">
-                                        <div class="complication-icon-flex">
-                                            <i class="fas fa-weight"></i>
-                                        </div>
-                                        <div class="complication-title-flex">{{__('Troubles Métaboliques')}}</div>
-                                    </div>
-                                    <p class="complication-description-flex">
-                                        {{__('Diabète_de_type_2')}}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            
         </div>
     </div>
 </section>
@@ -1028,7 +1154,7 @@
         }, observerOptions);
         
         // Observer les éléments à animer
-        const animatedElements = document.querySelectorAll('.mission-card-premium, .tab-content, .hero-premium-text, .hero-premium-visual, .complication-card-flex');
+        const animatedElements = document.querySelectorAll('.mission-card-premium, .tab-content, .hero-premium-text, .hero-premium-visual, .complication-card-flex, .about-us-content, .about-us-visual, .feature-item, .stat-item');
         animatedElements.forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(25px)';
