@@ -1049,7 +1049,7 @@
             </div>
             
             <div class="history-visual">
-                <img src="{{ asset('assets/client/images/medical-equipment.jpg') }}" alt="Équipements médicaux" class="history-image">
+                <img src="{{ asset('assets/images/pages/vente-equipement.jpg') }}" alt="Équipements médicaux" class="history-image">
             </div>
         </div>
     </div>
