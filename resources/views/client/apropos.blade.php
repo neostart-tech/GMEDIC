@@ -1056,47 +1056,51 @@
 </section>
 
 <!-- Section Mission Premium -->
-<section class="mission-section-premium">
+<section class="mission-section-premium" >
     <div class="section-header-premium">
         <div class="section-subtitle-premium">{{__('Notre Engagement')}}</div>
-        <h2 class="section-title-premium">{{__('Excellence & Innovation')}}</h2>
+        <h2 class="section-title-premium">{{__('Qualité & Expertise')}}</h2>
         <p class="section-description">
-            {{__('Une approche holistique pour des résultats durables')}}
+            {{__('Des équipements médicaux performants, adaptés à chaque spécialité et à chaque besoin professionnel.')}}
         </p>
     </div>
 
     <div class="mission-grid-premium">
+        <!-- Carte 1 -->
         <div class="mission-card-premium">
             <div class="mission-icon-premium">
-                <i class="fas fa-user-md"></i>
+                <i class="fas fa-stethoscope"></i>
             </div>
             <h3 class="mission-title-premium">{{__('Expertise Médicale')}}</h3>
             <p class="mission-description-premium">
-               {{__('Collaboration_étroite')}}
+                {{__('Nous sélectionnons des équipements médicaux certifiés pour garantir fiabilité, précision et sécurité dans toutes les disciplines.')}}
             </p>
         </div>
 
+        <!-- Carte 2 -->
         <div class="mission-card-premium">
             <div class="mission-icon-premium">
-                <i class="fas fa-rocket"></i>
+                <i class="fas fa-microscope"></i>
             </div>
             <h3 class="mission-title-premium">{{__('Innovation Technologique')}}</h3>
             <p class="mission-description-premium">
-               {{__('Appareils_PPC')}}
+                {{__('Nous proposons des dispositifs à la pointe de la technologie, conçus pour améliorer les performances médicales et le confort des utilisateurs.')}}
             </p>
         </div>
 
+        <!-- Carte 3 -->
         <div class="mission-card-premium">
             <div class="mission-icon-premium">
-                <i class="fas fa-hands-helping"></i>
+                <i class="fas fa-hand-holding-medical"></i>
             </div>
             <h3 class="mission-title-premium">{{__('Accompagnement Global')}}</h3>
             <p class="mission-description-premium">
-              {{__('Éducation_thérapeutique')}}
+                {{__('De la sélection du matériel à l’installation, nous accompagnons les professionnels avec un service personnalisé et durable.')}}
             </p>
         </div>
     </div>
 </section>
+
 
 <!-- Section Expertise Médicale -->
 <section class="expertise-section">
@@ -1104,149 +1108,103 @@
         <div class="section-subtitle-premium">{{__('Domaines d\'Expertise')}}</div>
         <h2 class="section-title-premium">{{__('Spécialisations Médicales')}}</h2>
         <p class="section-description">
-            {{__('Notre expertise couvre tous les aspects du traitement des troubles respiratoires du sommeil')}}
+            {{__('Notre expertise s’étend à la vente d’équipements médicaux dans tous les domaines de la santé, du diagnostic à la rééducation.')}}
         </p>
     </div>
 
     <div class="expertise-container">
         <div class="expertise-grid">
+
+            <!-- Diagnostic médical -->
             <div class="expertise-card">
                 <div class="expertise-icon">
-                    <i class="fas fa-lungs"></i>
+                    <i class="fas fa-microscope"></i>
                 </div>
-                <h3 class="expertise-title">{{__('Apnée du Sommeil')}}</h3>
+                <h3 class="expertise-title">{{__('Diagnostic Médical')}}</h3>
                 <p class="expertise-description">
-                    {{__('Diagnostic et traitement des syndromes d\'apnées obstructives du sommeil (SAOS) avec des solutions PPC/CPAP adaptées.')}}
+                    {{__('Fourniture d’appareils de diagnostic précis et certifiés pour les hôpitaux, cliniques et laboratoires médicaux.')}}
                 </p>
             </div>
 
+            <!-- Équipements de soins -->
             <div class="expertise-card">
                 <div class="expertise-icon">
-                    <i class="fas fa-wind"></i>
+                    <i class="fas fa-hospital-user"></i>
                 </div>
-                <h3 class="expertise-title">{{__('Ventilation à Domicile')}}</h3>
+                <h3 class="expertise-title">{{__('Équipements de Soins')}}</h3>
                 <p class="expertise-description">
-                    {{__('Solutions de ventilation non invasive pour les patients atteints de pathologies respiratoires chroniques.')}}
+                    {{__('Distribution d’équipements médicaux essentiels pour les soins, la chirurgie et la surveillance des patients.')}}
                 </p>
             </div>
 
+            <!-- Rééducation et bien-être -->
             <div class="expertise-card">
                 <div class="expertise-icon">
-                    <i class="fas fa-stethoscope"></i>
+                    <i class="fas fa-heartbeat"></i>
                 </div>
-                <h3 class="expertise-title">{{__('Suivi Médical')}}</h3>
+                <h3 class="expertise-title">{{__('Rééducation & Bien-être')}}</h3>
                 <p class="expertise-description">
-                    {{__('Accompagnement personnalisé et suivi régulier pour optimiser l\'efficacité des traitements et améliorer l\'observance.')}}
+                    {{__('Solutions complètes pour la rééducation, la mobilité et le confort, destinées aux établissements et aux particuliers.')}}
                 </p>
             </div>
         </div>
     </div>
 </section>
+
 
 <!-- Section Équipements -->
-<section class="equipments-section">
-    <div class="section-header-premium">
-        <div class="section-subtitle-premium">{{__('Nos Solutions')}}</div>
-        <h2 class="section-title-premium">{{__('Équipements Médicaux')}}</h2>
-        <p class="section-description">
-            {{__('Des technologies de pointe pour un traitement efficace et confortable')}}
-        </p>
-    </div>
 
-    <div class="equipments-container">
-        <div class="equipments-grid">
-            <div class="equipment-card">
-                <img src="{{ asset('assets/client/images/cpap-machine.jpg') }}" alt="Appareil PPC" class="equipment-image">
-                <div class="equipment-content">
-                    <h3 class="equipment-title">{{__('Appareils PPC/CPAP')}}</h3>
-                    <p class="equipment-description">
-                        {{__('Appareils de pression positive continue pour le traitement de l\'apnée du sommeil.')}}
-                    </p>
-                    <div class="equipment-features">
-                        <span class="equipment-feature">{{__('Automatique')}}</span>
-                        <span class="equipment-feature">{{__('Silencieux')}}</span>
-                        <span class="equipment-feature">{{__('Humidification')}}</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="equipment-card">
-                <img src="{{ asset('assets/client/images/masks.jpg') }}" alt="Masques PPC" class="equipment-image">
-                <div class="equipment-content">
-                    <h3 class="equipment-title">{{__('Masques et Interfaces')}}</h3>
-                    <p class="equipment-description">
-                        {{__('Large gamme de masques nasaux, narinaires et faciaux pour un confort optimal.')}}
-                    </p>
-                    <div class="equipment-features">
-                        <span class="equipment-feature">{{__('Confort')}}</span>
-                        <span class="equipment-feature">{{__('Étanchéité')}}</span>
-                        <span class="equipment-feature">{{__('Adaptabilité')}}</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="equipment-card">
-                <img src="{{ asset('assets/client/images/oximeter.jpg') }}" alt="Oxymètre" class="equipment-image">
-                <div class="equipment-content">
-                    <h3 class="equipment-title">{{__('Diagnostic et Monitoring')}}</h3>
-                    <p class="equipment-description">
-                        {{__('Appareils de diagnostic et de suivi pour évaluer l\'efficacité du traitement.')}}
-                    </p>
-                    <div class="equipment-features">
-                        <span class="equipment-feature">{{__('Précision')}}</span>
-                        <span class="equipment-feature">{{__('Connectivité')}}</span>
-                        <span class="equipment-feature">{{__('Analyse')}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Section Services Additionnels -->
-<section class="services-section">
+<section class="services-section" style="background: #fff">
     <div class="section-header-premium">
         <div class="section-subtitle-premium">{{__('Services Complémentaires')}}</div>
         <h2 class="section-title-premium">{{__('Notre Accompagnement')}}</h2>
         <p class="section-description">
-            {{__('Au-delà de la vente d\'équipements, nous vous accompagnons à chaque étape')}}
+            {{__('Au-delà de la vente d’équipements médicaux, nous vous accompagnons avec des services sur mesure pour garantir performance et satisfaction.')}}
         </p>
     </div>
 
     <div class="services-container">
         <div class="services-grid">
+            
+            <!-- Conseil et sélection -->
             <div class="service-card">
                 <div class="service-icon">
-                    <i class="fas fa-home"></i>
+                    <i class="fas fa-handshake"></i>
                 </div>
-                <h3 class="service-title">{{__('Installation à Domicile')}}</h3>
+                <h3 class="service-title">{{__('Conseil & Sélection')}}</h3>
                 <p class="service-description">
-                    {{__('Nos techniciens spécialisés installent et configurent vos équipements directement chez vous.')}}
+                    {{__('Nos experts vous orientent vers les solutions médicales les mieux adaptées à vos besoins et à votre spécialité.')}}
                 </p>
             </div>
 
+            <!-- Installation et configuration -->
             <div class="service-card">
                 <div class="service-icon">
-                    <i class="fas fa-graduation-cap"></i>
+                    <i class="fas fa-cogs"></i>
                 </div>
-                <h3 class="service-title">{{__('Formation Patient')}}</h3>
+                <h3 class="service-title">{{__('Installation & Configuration')}}</h3>
                 <p class="service-description">
-                    {{__('Apprentissage complet de l\'utilisation et de l\'entretien de vos équipements médicaux.')}}
+                    {{__('Mise en place professionnelle de vos équipements médicaux, avec vérification complète du bon fonctionnement.')}}
                 </p>
             </div>
 
+            <!-- Maintenance et support -->
             <div class="service-card">
                 <div class="service-icon">
                     <i class="fas fa-tools"></i>
                 </div>
-                <h3 class="service-title">{{__('Maintenance & SAV')}}</h3>
+                <h3 class="service-title">{{__('Maintenance & Support')}}</h3>
                 <p class="service-description">
-                    {{__('Service après-vente réactif et maintenance préventive pour garantir la longévité des équipements.')}}
+                    {{__('Un service après-vente réactif, incluant maintenance préventive, assistance technique et remplacement rapide des pièces.')}}
                 </p>
             </div>
+
         </div>
     </div>
 </section>
+
 
 <!-- Section Garanties -->
 <section class="guarantees-section">
@@ -1306,22 +1264,23 @@
 <!-- Section CTA -->
 <section class="cta-section">
     <div class="cta-container">
-        <h2 class="cta-title">{{__('Prêt à améliorer votre qualité de sommeil ?')}}</h2>
+        <h2 class="cta-title">{{__('Prêt à équiper votre établissement médical ?')}}</h2>
         <p class="cta-description">
-            {{__('Contactez nos experts pour une évaluation personnalisée et découvrez la solution adaptée à vos besoins.')}}
+            {{__('Contactez nos conseillers pour obtenir une recommandation personnalisée et découvrez nos équipements médicaux certifiés.')}}
         </p>
         <div class="cta-actions">
             <a href="{{ route('client.contact.create') }}" class="btn-cta btn-cta-primary">
-                <i class="fas fa-calendar-check"></i>
-                {{__('Prendre Rendez-vous')}}
+                <i class="fas fa-headset"></i>
+                {{__('Contacter un Expert')}}
             </a>
             <a href="{{ route('client.categories.index') }}" class="btn-cta btn-cta-secondary">
                 <i class="fas fa-box-open"></i>
-                {{__('Découvrir nos Produits')}}
+                {{__('Découvrir nos Équipements')}}
             </a>
         </div>
     </div>
 </section>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
