@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\CategorieRessource;
 
 class ArticleResource extends JsonResource
 {
@@ -22,7 +23,7 @@ class ArticleResource extends JsonResource
             'published' => $this->published,
             'slug' => $this->slug,
             'categorie_id' => $this->categorie_id,
-            'category' => $this->category
+            'category' => new CategorieRessource($this->category),
         ];
     }
 }

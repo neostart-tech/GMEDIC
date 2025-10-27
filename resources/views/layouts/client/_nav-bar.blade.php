@@ -879,6 +879,12 @@
 
 
             <ul class="nav-menu">
+                 <li class="nav-item">
+                    <a href="{{ route('client.show-article') }}"
+                        class="nav-link {{ Request::routeIs('client.show-article') ? 'active' : '' }}">
+                        {{ __('Articles') }}
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('client.accueil') }}"
                         class="nav-link {{ Request::routeIs('client.accueil') ? 'active' : '' }}">

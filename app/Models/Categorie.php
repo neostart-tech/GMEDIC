@@ -42,4 +42,8 @@ class Categorie extends Model
 	{
 		return $this->hasMany(Article::class, 'categorie_id', 'id');
 	}
+
+	public function getCategory(){
+		return $this->getTranslation('category_name',app()->getLocale());
+	}
 }

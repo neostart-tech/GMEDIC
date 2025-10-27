@@ -63,6 +63,14 @@
 					</a>
 				</li>
 
+				<li class="pc-item">
+					<a href="{{ route('admin.sub-categories.index') }}" class="pc-link">
+						<span class="pc-micon">
+								<i class="ph-duotone ph-stack"></i>
+						</span>
+						<span class="pc-mtext">Sous Catégories d'articles</span>
+					</a>
+				</li>
 				{{-- Articles --}}
 				<li class="pc-item pc-hasmenu">
 					<a href="#" class="pc-link">
