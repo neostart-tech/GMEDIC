@@ -8,6 +8,7 @@ use App\Models\SubCategorie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Stichoza\GoogleTranslate\GoogleTranslate;
+use App\Http\Resources\SousCategorieResource;
 
 class SubCategorieController extends Controller
 {
@@ -88,24 +89,21 @@ class SubCategorieController extends Controller
     return redirect()->route('admin.sub-categories.index')
         ->with('success', 'Sous-catégorie mise à jour et traduite avec succès.');
 }
-    /**
-     * Remove the specified resource from storage.
-     */
-    // public function destroy(SubCategorie $subCategorie)
-    // {
-    //     $subCategorie->delete();
+   
+    public function destroy(SubCategorie $subCategorie)
+    {
+        $subCategorie->delete();
 
-    //     // return redirect()->route('admin.sub-categories.index')
-    //     //     ->with('success', 'Sous-catégorie supprimée avec succès.');
-    // }
+        return redirect()->back()
+            ->with('success', 'Sous-catégorie supprimée avec succès.');
+    }
 
-    /**
-     * Get subcategories by category ID (for AJAX requests)
-     */
-    // public function getByCategory($categoryId)
-    // {
-    //     $subCategories = SubCategorie::where('categorie_id', $categoryId)->get();
 
-    //     return response()->json($subCategories);
-    // }
+   
+    public function getByCategory($categoryId)
+    {
+        $subCategories = SubCategorie::where('categorie_id', $categoryId)->get();
+
+        return SousCategorieResource::collection($subCategories);
+    }
 }

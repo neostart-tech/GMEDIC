@@ -45,6 +45,8 @@
 				</div>
 			</div>
 		</div>
+
+	{{-- {{ dd($articles) }} --}}
 		@if($articles->isNotEmpty())
 			<div class="row">
 				@foreach($articles as $article)
@@ -148,15 +150,21 @@
     const name = article.article_name && article.article_name[lang] 
                     ? article.article_name[lang] 
                     : (article.article_name['fr'] || '');
+
                     
     const desc = article.article_desc && article.article_desc[lang] 
                     ? article.article_desc[lang] 
                     : (article.article_desc['fr'] || '');
-		const categorie=article.category.category_name && article.category.category_name[lang]
+		const souscategory=article.category.category_name && article.category.category_name[lang]
+		? article.category.category_name[lang]  :(article.category.category_name['fr'] || '')
+				const categorie=article.category.category_name && article.category.category_name[lang]
 		? article.category.category_name[lang]  :(article.category.category_name['fr'] || '')
 
     document.getElementById('nom').value = name;
     document.getElementById('category').value = categorie;
+	    document.getElementById('category').value = souscategory;
+
+	
     document.getElementById('desc').innerHTML = desc;
     document.getElementById('image').src = image;
 }

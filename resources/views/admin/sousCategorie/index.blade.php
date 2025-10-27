@@ -60,7 +60,7 @@
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <p class="text-muted mb-1">Catégorie parente :</p>
+                                    <p class="text-muted mb-1">Catégorie</p>
                                     <h6 class="text-primary">
                                         {{ $subCategorie->categorie->getTranslation('category_name', app()->getLocale()) }}
                                     </h6>

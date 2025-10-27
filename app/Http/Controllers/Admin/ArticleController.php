@@ -19,8 +19,9 @@ class ArticleController extends Controller
 	public function index(): View
 	{
 		// dd(Article::with('category:id,category_name,slug')->orderByDesc('created_at')->get());
+        
 		return view('admin.article.index', [
-			'articles' => Article::with('category:id,category_name,slug')->orderByDesc('created_at')->paginate(9),
+			'articles' => Article::with(['category:id,category_name,slug','subCategorie:id,sub_categorie_name,slug'])->orderByDesc('created_at')->paginate(9),
 			'categories' => Categorie::query()->has('articles')->orderBy('category_name')->get()
 		]);
 	}
@@ -82,6 +83,7 @@ class ArticleController extends Controller
     Article::query()->create([
         'article_name' => $titleTranslations,         
         'categorie_id' => $request->get('categorie_id'),
+        'sub_categorie_id'=>$request->get('sub_categorie_id'),
         'article_desc' => $descTranslations,        
         'article_image' => $filePath,
     ]);
@@ -144,6 +146,7 @@ class ArticleController extends Controller
     $article->update([
         'article_name' =>$titleTranslations,
         'categorie_id' => $request->get('categorie_id'),
+        'sub_categorie_id'=>$request->get('sub_categorie_id'),
         'article_desc' => $descTranslations,
         'article_image' => $filePath,
     ]);

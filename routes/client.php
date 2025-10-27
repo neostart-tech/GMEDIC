@@ -5,11 +5,12 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContacterController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\PanierController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('client.')->group(function () {
     Route::controller(WelcomeController::class)->group(function () {
-        Route::get('','__invoke')->name('accueil');
+        Route::get('', '__invoke')->name('accueil');
         Route::get('a-propos', 'showAbout')->name('a-propos');
         Route::get('/liste-des-articles', 'showArticles')->name('show-article');
         Route::get('/panier', 'showPanier')->name('show-panier');
@@ -31,5 +32,13 @@ Route::name('client.')->group(function () {
     });
 
     Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('lang.switch');
+
+    Route::controller(PanierController::class)->prefix('cart')->group(function () {
+        Route::get('/', 'index');
+        Route::post('/add', 'add');
+        Route::put('/update/{rowId}', 'update');
+        Route::delete('/remove/{rowId}', 'remove');
+        Route::delete('/clear', 'clear');
+    });
 
 });

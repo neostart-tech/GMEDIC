@@ -68,7 +68,7 @@
 						<span class="pc-micon">
 								<i class="ph-duotone ph-stack"></i>
 						</span>
-						<span class="pc-mtext">Sous Catégories d'articles</span>
+						<span class="pc-mtext">Sous Catégories</span>
 					</a>
 				</li>
 				{{-- Articles --}}

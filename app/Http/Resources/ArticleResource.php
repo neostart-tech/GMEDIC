@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\CategorieRessource;
+use App\Http\Resources\SousCategorieResource;
 
 class ArticleResource extends JsonResource
 {
@@ -16,7 +17,7 @@ class ArticleResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
+            'id' => $this->resource->id,
             'article_desc' => $this->article_desc,
             'article_image' => $this->article_image,
             'article_name' => $this->article_name,
@@ -24,6 +25,9 @@ class ArticleResource extends JsonResource
             'slug' => $this->slug,
             'categorie_id' => $this->categorie_id,
             'category' => new CategorieRessource($this->category),
+            'SubCategory'=> new SousCategorieResource($this->subCategorie),
+           
+
         ];
     }
 }

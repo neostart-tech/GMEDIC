@@ -20,4 +20,9 @@ class SubCategorie extends Model
         return $this->belongsTo(Categorie::class);
     }
 
+
+    public function getName(){
+        return $this->getTranslation("sub_categorie_name",app()->getLocale());
+    }
+
 }

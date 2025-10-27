@@ -21,6 +21,13 @@
 						<input type="text" id="category" class="form-control" readonly>
 					</div>
 				</div>
+				<div class="row">
+					<div class="form-group col-12">
+						<label for="category" class="form-label">Sous Categorie</label>
+						<input type="text" id="souscategory" class="form-control" readonly>
+					</div>
+				</div>
+
 
 				<div class="form-group">
 					<label for="desc" class="mb-3">Description</label>

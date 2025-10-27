@@ -20,6 +20,7 @@ class Article extends Model
         'article_image',
         'published',
         'categorie_id',
+        'sub_categorie_id'
 
     ];
 
@@ -54,5 +55,10 @@ class Article extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Categorie::class, 'categorie_id', 'id');
+    }
+
+     public function subCategorie(): BelongsTo
+    {
+        return $this->belongsTo(SubCategorie::class);
     }
 }

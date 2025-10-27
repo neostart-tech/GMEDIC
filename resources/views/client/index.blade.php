@@ -30,8 +30,8 @@
         --shadow-lg: 0 5px 20px rgba(0, 0, 0, 0.12);
         --shadow-xl: 0 10px 30px rgba(0, 0, 0, 0.15);
         --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        --border-radius: 10px;
-        --border-radius-lg: 15px;
+        --border-radius: 12px;
+        --border-radius-lg: 18px;
     }
 
     * {
@@ -45,13 +45,14 @@
         line-height: 1.6;
         color: var(--text);
         background: var(--light);
+        min-height: 100vh;
     }
 
     /* Header Section avec Panier */
     .page-header {
         background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        padding: 40px 0;
-        margin-bottom: 40px;
+        padding: 50px 0;
+        margin-bottom: 50px;
         position: relative;
         overflow: hidden;
     }
@@ -67,16 +68,16 @@
     }
 
     .page-header-content {
-        max-width: 1400px;
+        max-width: 1600px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 40px;
         position: relative;
         z-index: 2;
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 25px;
     }
 
     .header-text {
@@ -85,9 +86,9 @@
     }
 
     .page-title {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
         font-weight: 800;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -95,7 +96,7 @@
     }
 
     .page-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         opacity: 0.9;
         font-weight: 400;
     }
@@ -104,15 +105,15 @@
     .cart-header {
         display: flex;
         align-items: center;
-        gap: 15px;
+        gap: 20px;
     }
 
     .cart-header-icon {
         position: relative;
         background: rgba(255, 255, 255, 0.2);
         border-radius: 50%;
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -127,7 +128,7 @@
     }
 
     .cart-header-icon i {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         color: white;
     }
 
@@ -138,12 +139,12 @@
         background: var(--accent);
         color: white;
         border-radius: 50%;
-        width: 22px;
-        height: 22px;
+        width: 26px;
+        height: 26px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         font-weight: 700;
         border: 2px solid var(--primary);
     }
@@ -154,32 +155,33 @@
     }
 
     .cart-header-total {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         font-weight: 700;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
     }
 
     .cart-header-items {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         opacity: 0.9;
     }
 
     /* Main Layout */
     .shop-container {
-        max-width: 1400px;
+        max-width: 1600px;
         margin: 0 auto;
-        padding: 0 20px 40px;
+        padding: 0 40px 50px;
         display: grid;
-        grid-template-columns: 300px 1fr;
-        gap: 30px;
+        grid-template-columns: 450px 1fr;
+        gap: 50px;
         align-items: start;
+        min-height: 60vh;
     }
 
     /* Mobile Filter Dropdown */
     .mobile-filter-dropdown {
         display: none;
         position: relative;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
 
     .mobile-filter-toggle {
@@ -187,7 +189,7 @@
         background: var(--lighter);
         border: 2px solid var(--primary);
         border-radius: var(--border-radius);
-        padding: 14px 20px;
+        padding: 18px 25px;
         font-weight: 600;
         cursor: pointer;
         transition: var(--transition);
@@ -196,6 +198,7 @@
         align-items: center;
         color: var(--primary);
         box-shadow: var(--shadow);
+        font-size: 1rem;
     }
 
     .mobile-filter-toggle:hover {
@@ -217,10 +220,10 @@
         border: 2px solid var(--primary);
         border-top: none;
         border-radius: 0 0 var(--border-radius) var(--border-radius);
-        padding: 20px;
+        padding: 25px;
         box-shadow: var(--shadow-lg);
         z-index: 100;
-        max-height: 70vh;
+        max-height: 80vh;
         overflow-y: auto;
     }
 
@@ -244,35 +247,37 @@
     .filters-sidebar {
         background: var(--lighter);
         border-radius: var(--border-radius-lg);
-        padding: 25px;
+        padding: 35px;
         box-shadow: var(--shadow);
         height: fit-content;
         position: sticky;
-        top: 120px;
+        top: 140px;
         border: 1px solid var(--border);
+        max-height: 85vh;
+        overflow-y: auto;
     }
 
     .filter-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 25px;
-        padding-bottom: 20px;
+        margin-bottom: 35px;
+        padding-bottom: 25px;
         border-bottom: 2px solid var(--primary-soft);
     }
 
     .filter-title-main {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         font-weight: 700;
         color: var(--secondary);
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
     }
 
     .filter-section {
-        margin-bottom: 25px;
-        padding-bottom: 20px;
+        margin-bottom: 35px;
+        padding-bottom: 25px;
         border-bottom: 1px solid var(--border);
     }
 
@@ -282,64 +287,29 @@
     }
 
     .filter-section-title {
-        font-size: 0.95rem;
+        font-size: 1.15rem;
         font-weight: 700;
         color: var(--secondary);
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-    }
-
-    .filter-options {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .filter-option {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        cursor: pointer;
-        padding: 8px 12px;
-        transition: var(--transition);
-        font-size: 0.9rem;
-        border-radius: 6px;
-    }
-
-    .filter-option:hover {
-        background: var(--primary-soft);
-        transform: translateX(5px);
-    }
-
-    .filter-option input[type="checkbox"] {
-        width: 18px;
-        height: 18px;
-        border: 2px solid var(--border);
-        border-radius: 4px;
-        cursor: pointer;
-        transition: var(--transition);
-    }
-
-    .filter-option input[type="checkbox"]:checked {
-        background: var(--primary);
-        border-color: var(--primary);
     }
 
     /* Search Input */
     .search-container {
         position: relative;
+        margin-bottom: 10px;
     }
 
     .search-input {
         width: 100%;
-        padding: 12px 20px 12px 45px;
+        padding: 16px 25px 16px 55px;
         border: 2px solid var(--border);
         border-radius: var(--border-radius);
-        font-size: 0.95rem;
+        font-size: 1.05rem;
         transition: var(--transition);
         background: var(--lighter);
     }
@@ -352,38 +322,40 @@
 
     .search-icon {
         position: absolute;
-        left: 15px;
+        left: 22px;
         top: 50%;
         transform: translateY(-50%);
         color: var(--text-light);
+        font-size: 1.2rem;
     }
 
     /* Price Range */
     .price-range-container {
-        padding: 15px 0;
+        padding: 20px 0;
     }
 
     .price-display {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 15px;
-        font-size: 0.9rem;
+        margin-bottom: 20px;
+        font-size: 1.05rem;
         color: var(--text);
         font-weight: 600;
     }
 
     .range-slider-container {
         position: relative;
-        height: 40px;
+        height: 50px;
         display: flex;
         align-items: center;
+        padding: 0 10px;
     }
 
     .range-slider {
         width: 100%;
-        height: 6px;
+        height: 8px;
         background: var(--border);
-        border-radius: 3px;
+        border-radius: 4px;
         outline: none;
         -webkit-appearance: none;
         position: relative;
@@ -391,12 +363,12 @@
 
     .range-slider::-webkit-slider-thumb {
         -webkit-appearance: none;
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
         background: var(--primary);
         border-radius: 50%;
         cursor: pointer;
-        border: 3px solid var(--lighter);
+        border: 4px solid var(--lighter);
         box-shadow: var(--shadow);
         transition: var(--transition);
     }
@@ -407,12 +379,12 @@
     }
 
     .range-slider::-moz-range-thumb {
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
         background: var(--primary);
         border-radius: 50%;
         cursor: pointer;
-        border: 3px solid var(--lighter);
+        border: 4px solid var(--lighter);
         box-shadow: var(--shadow);
         transition: var(--transition);
     }
@@ -423,24 +395,24 @@
     }
 
     .range-slider::-webkit-slider-track {
-        height: 6px;
+        height: 8px;
         background: linear-gradient(to right, var(--primary) 0%, var(--primary) var(--range-progress, 50%), var(--border) var(--range-progress, 50%), var(--border) 100%);
-        border-radius: 3px;
+        border-radius: 4px;
     }
 
     /* Filter Actions */
     .filter-actions {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        margin-top: 25px;
+        gap: 15px;
+        margin-top: 35px;
     }
 
     .btn-primary {
         background: var(--gradient);
         color: white;
         border: none;
-        padding: 12px 20px;
+        padding: 16px 28px;
         border-radius: var(--border-radius);
         font-weight: 600;
         cursor: pointer;
@@ -449,8 +421,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-        font-size: 0.95rem;
+        gap: 10px;
+        font-size: 1.05rem;
         box-shadow: var(--shadow);
     }
 
@@ -463,7 +435,7 @@
         background: transparent;
         border: 2px solid var(--border);
         color: var(--text);
-        padding: 10px 20px;
+        padding: 14px 28px;
         border-radius: var(--border-radius);
         cursor: pointer;
         transition: var(--transition);
@@ -471,8 +443,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-        font-size: 0.95rem;
+        gap: 10px;
+        font-size: 1.05rem;
     }
 
     .btn-secondary:hover {
@@ -484,6 +456,7 @@
     /* Products Section */
     .products-main {
         min-height: 500px;
+        flex: 1;
     }
 
     /* Products Toolbar */
@@ -491,18 +464,18 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 25px;
         background: var(--lighter);
-        padding: 20px 25px;
+        padding: 28px 35px;
         border-radius: var(--border-radius-lg);
         box-shadow: var(--shadow);
         border: 1px solid var(--border);
     }
 
     .products-count {
-        font-size: 1rem;
+        font-size: 1.15rem;
         color: var(--text);
         font-weight: 700;
     }
@@ -510,20 +483,20 @@
     .toolbar-controls {
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 25px;
         flex-wrap: wrap;
     }
 
     .sort-select {
-        padding: 10px 15px;
+        padding: 14px 22px;
         border: 2px solid var(--border);
         border-radius: var(--border-radius);
         background: var(--lighter);
         cursor: pointer;
         font-family: inherit;
-        font-size: 0.9rem;
+        font-size: 1.05rem;
         transition: var(--transition);
-        min-width: 200px;
+        min-width: 240px;
     }
 
     .sort-select:focus {
@@ -533,16 +506,16 @@
 
     .view-options {
         display: flex;
-        gap: 8px;
+        gap: 10px;
         background: var(--primary-soft);
-        padding: 5px;
+        padding: 8px;
         border-radius: var(--border-radius);
     }
 
     .view-btn {
-        padding: 8px 12px;
+        padding: 12px 16px;
         border: none;
-        border-radius: 6px;
+        border-radius: 8px;
         background: transparent;
         color: var(--text-light);
         cursor: pointer;
@@ -550,7 +523,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.85rem;
+        font-size: 1.1rem;
     }
 
     .view-btn.active {
@@ -559,11 +532,12 @@
         box-shadow: var(--shadow);
     }
 
-    /* Products Grid */
+    /* Products Grid - 3 à 4 articles par ligne */
     .products-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 25px;
+        gap: 30px;
+        margin-bottom: 50px;
     }
 
     .products-grid.list-view {
@@ -590,12 +564,12 @@
 
     .products-grid.list-view .product-card {
         display: flex;
-        height: 200px;
+        height: 280px;
     }
 
     .products-grid.list-view .product-image-container {
-        width: 200px;
-        height: 200px;
+        width: 280px;
+        height: 280px;
         flex-shrink: 0;
     }
 
@@ -604,18 +578,18 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 25px;
+        padding: 35px;
     }
 
     .product-badge {
         position: absolute;
-        top: 12px;
-        left: 12px;
+        top: 18px;
+        left: 18px;
         background: var(--accent);
         color: white;
-        padding: 6px 12px;
+        padding: 10px 18px;
         border-radius: 20px;
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         font-weight: 700;
         z-index: 2;
         box-shadow: var(--shadow);
@@ -632,7 +606,7 @@
     .product-image-container {
         position: relative;
         overflow: hidden;
-        height: 220px;
+        height: 250px;
         background: var(--light);
         display: flex;
         align-items: center;
@@ -662,7 +636,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 15px;
+        gap: 20px;
     }
 
     .product-card:hover .product-overlay {
@@ -670,8 +644,8 @@
     }
 
     .product-action {
-        width: 45px;
-        height: 45px;
+        width: 55px;
+        height: 55px;
         background: var(--lighter);
         border-radius: 50%;
         display: flex;
@@ -695,24 +669,24 @@
     }
 
     .product-content {
-        padding: 20px;
+        padding: 25px;
     }
 
     .product-category {
         color: var(--primary);
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         font-weight: 700;
         text-transform: uppercase;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         display: block;
         letter-spacing: 0.5px;
     }
 
     .product-title {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         font-weight: 700;
         color: var(--secondary);
-        margin-bottom: 10px;
+        margin-bottom: 12px;
         line-height: 1.4;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -722,14 +696,14 @@
 
     .products-grid.list-view .product-title {
         -webkit-line-clamp: 1;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
     .product-description {
         color: var(--text-light);
-        font-size: 0.85rem;
-        line-height: 1.5;
-        margin-bottom: 15px;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 18px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
@@ -745,13 +719,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 15px;
-        padding-bottom: 15px;
+        margin-bottom: 18px;
+        padding-bottom: 18px;
         border-bottom: 1px solid var(--border);
     }
 
     .product-price {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         font-weight: 800;
         color: var(--primary);
     }
@@ -759,18 +733,18 @@
     .price-old {
         text-decoration: line-through;
         color: var(--text-light);
-        font-size: 0.9rem;
-        margin-left: 8px;
+        font-size: 1rem;
+        margin-left: 10px;
         font-weight: 500;
     }
 
     .product-stock {
-        font-size: 0.8rem;
+        font-size: 0.85rem;
         color: var(--success);
         font-weight: 700;
-        padding: 4px 8px;
+        padding: 6px 12px;
         background: var(--primary-soft);
-        border-radius: 12px;
+        border-radius: 15px;
     }
 
     .product-stock.low {
@@ -785,7 +759,7 @@
 
     .product-actions {
         display: flex;
-        gap: 10px;
+        gap: 12px;
     }
 
     .products-grid.list-view .product-actions {
@@ -802,11 +776,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 10px;
         flex: 1;
-        padding: 10px 15px;
+        padding: 12px 18px;
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 1rem;
         box-shadow: var(--shadow);
     }
 
@@ -816,29 +790,76 @@
         box-shadow: var(--shadow-lg);
     }
 
-    .btn-wishlist {
-        background: transparent;
+    /* Pagination Styles */
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        padding: 30px 0;
+    }
+
+    .pagination {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .pagination-btn {
+        padding: 12px 20px;
         border: 2px solid var(--border);
+        background: var(--lighter);
         color: var(--text);
         border-radius: var(--border-radius);
         cursor: pointer;
         transition: var(--transition);
+        font-weight: 600;
+        font-size: 1rem;
+        min-width: 48px;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 45px;
     }
 
-    .btn-wishlist:hover {
+    .pagination-btn:hover:not(.disabled) {
         border-color: var(--primary);
         color: var(--primary);
         transform: translateY(-1px);
     }
 
+    .pagination-btn.active {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+    }
+
+    .pagination-btn.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .pagination-dots {
+        padding: 12px 8px;
+        color: var(--text-light);
+        font-weight: 600;
+    }
+
+    .pagination-info {
+        margin-left: 25px;
+        color: var(--text-light);
+        font-size: 0.95rem;
+        background: var(--primary-soft);
+        padding: 10px 18px;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+    }
+
     /* Empty State Refined */
     .empty-state {
         text-align: center;
-        padding: 80px 20px;
+        padding: 100px 20px;
         grid-column: 1 / -1;
         background: var(--lighter);
         border-radius: var(--border-radius-lg);
@@ -848,24 +869,24 @@
     }
 
     .empty-icon {
-        width: 100px;
-        height: 100px;
+        width: 140px;
+        height: 140px;
         background: linear-gradient(135deg, var(--primary-soft) 0%, var(--light) 100%);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 30px;
+        margin: 0 auto 35px;
         color: var(--primary);
-        font-size: 2.5rem;
+        font-size: 3.5rem;
         box-shadow: var(--shadow);
     }
 
     .empty-title {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
         font-weight: 800;
         color: var(--secondary);
-        margin-bottom: 15px;
+        margin-bottom: 18px;
         background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -873,18 +894,18 @@
     }
 
     .empty-description {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         color: var(--text-light);
         line-height: 1.6;
-        margin-bottom: 30px;
-        max-width: 500px;
+        margin-bottom: 35px;
+        max-width: 550px;
         margin-left: auto;
         margin-right: auto;
     }
 
     .empty-actions {
         display: flex;
-        gap: 15px;
+        gap: 18px;
         justify-content: center;
         flex-wrap: wrap;
     }
@@ -893,20 +914,20 @@
     .active-filters {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 20px;
+        gap: 14px;
+        margin-bottom: 30px;
     }
 
     .active-filter {
         background: var(--primary-soft);
         color: var(--primary);
-        padding: 6px 12px;
+        padding: 10px 18px;
         border-radius: 20px;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         font-weight: 600;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 12px;
         box-shadow: var(--shadow);
     }
 
@@ -918,26 +939,26 @@
         padding: 0;
         display: flex;
         align-items: center;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 
     /* Notification */
     .notification {
         position: fixed;
-        top: 20px;
-        right: 20px;
+        top: 30px;
+        right: 30px;
         background: var(--success);
         color: white;
-        padding: 15px 25px;
+        padding: 20px 32px;
         border-radius: var(--border-radius);
         box-shadow: var(--shadow-xl);
- z-index: 9999;
-         transform: translateX(400px);
+        z-index: 9999;
+        transform: translateX(400px);
         transition: transform 0.3s ease;
         display: flex;
         align-items: center;
-        gap: 10px;
-        max-width: 350px;
+        gap: 12px;
+        max-width: 420px;
     }
 
     .notification.show {
@@ -952,28 +973,172 @@
         background: var(--warning);
     }
 
+    /* Styles pour les dropdowns de filtres - TAILLES AUGMENTÉES */
+    .filter-dropdown {
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    .filter-dropdown-toggle {
+        width: 100%;
+        background: var(--lighter);
+        border: 2px solid var(--border);
+        border-radius: var(--border-radius);
+        padding: 18px 28px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--text);
+        box-shadow: var(--shadow);
+        font-size: 1.1rem;
+    }
+
+    .filter-dropdown-toggle:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+    .filter-dropdown-toggle.active {
+        border-color: var(--primary);
+        background: var(--primary-soft);
+        color: var(--primary);
+    }
+
+    .filter-dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--lighter);
+        border: 2px solid var(--primary);
+        border-top: none;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        padding: 28px;
+        box-shadow: var(--shadow-lg);
+        z-index: 100;
+        max-height: 500px;
+        overflow-y: auto;
+        min-width: 420px;
+    }
+
+    .filter-dropdown-content.active {
+        display: block;
+        animation: slideDown 0.3s ease;
+    }
+
+    .filter-dropdown-search {
+        margin-bottom: 22px;
+    }
+
+    .filter-dropdown-search input {
+        width: 100%;
+        padding: 14px 20px;
+        border: 2px solid var(--border);
+        border-radius: var(--border-radius);
+        font-size: 1.05rem;
+        transition: var(--transition);
+    }
+
+    .filter-dropdown-search input:focus {
+        border-color: var(--primary);
+        outline: none;
+    }
+
+    .filter-dropdown-options {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        max-height: 380px;
+        overflow-y: auto;
+        padding-right: 8px;
+    }
+
+    .filter-dropdown-option {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 0;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 1.05rem;
+        min-height: 44px;
+    }
+
+    .filter-dropdown-option:hover {
+        color: var(--primary);
+        transform: translateX(5px);
+    }
+
+    .filter-dropdown-option input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--border);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: var(--transition);
+        flex-shrink: 0;
+    }
+
+    .filter-dropdown-option input[type="checkbox"]:checked {
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+
+    .filter-dropdown-option span {
+        flex: 1;
+        word-wrap: break-word;
+        line-height: 1.4;
+    }
+
+    .selected-count {
+        font-size: 0.9rem;
+        color: var(--text-light);
+        margin-top: 6px;
+    }
+
     /* Responsive Design */
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
         .shop-container {
-            grid-template-columns: 280px 1fr;
-            gap: 25px;
+            grid-template-columns: 400px 1fr;
+            gap: 40px;
         }
         
         .products-grid {
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .shop-container {
+            grid-template-columns: 380px 1fr;
+            gap: 35px;
+        }
+        
+        .products-grid {
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        }
+
+        .filter-dropdown-content {
+            min-width: 380px;
         }
     }
 
     @media (max-width: 768px) {
         .page-header {
-            padding: 30px 0;
-            margin-bottom: 30px;
+            padding: 40px 0;
+            margin-bottom: 40px;
         }
         
         .page-header-content {
             flex-direction: column;
             text-align: center;
-            gap: 15px;
+            gap: 20px;
+            padding: 0 25px;
         }
         
         .header-text {
@@ -981,7 +1146,7 @@
         }
         
         .page-title {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
         }
         
         .cart-header {
@@ -990,8 +1155,8 @@
         
         .shop-container {
             grid-template-columns: 1fr;
-            gap: 20px;
-            padding: 0 15px 30px;
+            gap: 30px;
+            padding: 0 25px 40px;
         }
         
         .mobile-filter-dropdown {
@@ -1005,7 +1170,7 @@
         .products-toolbar {
             flex-direction: column;
             align-items: stretch;
-            gap: 15px;
+            gap: 20px;
         }
         
         .toolbar-controls {
@@ -1019,32 +1184,62 @@
         
         .products-grid.list-view .product-image-container {
             width: 100%;
-            height: 250px;
+            height: 300px;
         }
         
         .empty-state {
-            padding: 60px 20px;
-            margin: 10px 0;
+            padding: 80px 20px;
+            margin: 15px 0;
         }
         
         .empty-icon {
-            width: 80px;
-            height: 80px;
-            font-size: 2rem;
+            width: 120px;
+            height: 120px;
+            font-size: 3rem;
         }
         
         .empty-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
         
         .empty-description {
-            font-size: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .filter-dropdown-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 92vw;
+            max-width: 500px;
+            max-height: 75vh;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--primary);
+            min-width: unset;
+        }
+
+        .pagination {
+            gap: 8px;
+        }
+
+        .pagination-btn {
+            padding: 10px 16px;
+            min-width: 42px;
+            font-size: 0.9rem;
+        }
+
+        .pagination-info {
+            margin-left: 15px;
+            padding: 8px 14px;
+            font-size: 0.9rem;
         }
     }
 
     @media (max-width: 640px) {
         .products-grid {
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
         }
         
         .product-actions {
@@ -1054,7 +1249,7 @@
         .toolbar-controls {
             flex-direction: column;
             align-items: stretch;
-            gap: 12px;
+            gap: 15px;
         }
         
         .sort-select {
@@ -1068,41 +1263,91 @@
         
         .empty-actions .btn-primary {
             width: 100%;
-            max-width: 250px;
+            max-width: 300px;
+        }
+
+        .page-header-content {
+            padding: 0 20px;
+        }
+
+        .shop-container {
+            padding: 0 20px 30px;
+        }
+
+        .filter-dropdown-content {
+            padding: 22px;
+        }
+
+        .pagination {
+            flex-wrap: wrap;
+        }
+
+        .pagination-btn {
+            padding: 8px 14px;
+            min-width: 40px;
+            font-size: 0.85rem;
+        }
+
+        .pagination-info {
+            margin: 10px 0 0 0;
+            width: 100%;
+            text-align: center;
         }
     }
 
     @media (max-width: 480px) {
         .shop-container {
-            padding: 0 10px 20px;
+            padding: 0 18px 25px;
         }
         
         .page-header {
-            padding: 25px 0;
+            padding: 35px 0;
         }
         
         .page-title {
-            font-size: 1.6rem;
+            font-size: 2rem;
         }
         
         .page-subtitle {
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
         
         .products-toolbar {
-            padding: 15px;
+            padding: 22px;
         }
         
         .product-content {
-            padding: 15px;
+            padding: 20px;
         }
         
         .empty-title {
-            font-size: 1.3rem;
+            font-size: 1.6rem;
         }
         
         .empty-description {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+        }
+
+        .filter-dropdown-toggle {
+            padding: 16px 22px;
+        }
+
+        .filter-dropdown-content {
+            padding: 20px;
+        }
+
+        .products-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .pagination {
+            gap: 6px;
+        }
+
+        .pagination-btn {
+            padding: 8px 12px;
+            min-width: 38px;
+            font-size: 0.8rem;
         }
     }
 </style>
@@ -1156,7 +1401,7 @@
             </button>
         </div>
 
-        <!-- Recherche -->
+        <!-- Recherche Globale -->
         <div class="filter-section">
             <h3 class="filter-section-title">
                 <i class="fas fa-search"></i>
@@ -1168,37 +1413,47 @@
             </div>
         </div>
 
-        <!-- Catégories Médicales -->
+        <!-- Catégories Médicales - Dropdown -->
         <div class="filter-section">
-            <h3 class="filter-section-title">
-                <i class="fas fa-tags"></i>
-                Catégories
-            </h3>
-            <div class="filter-options">
-                <label class="filter-option">
-                    <input type="checkbox" name="category" value="diagnostic">
-                    <span>Diagnostic</span>
-                </label>
-                <label class="filter-option">
-                    <input type="checkbox" name="category" value="monitoring">
-                    <span>Monitoring</span>
-                </label>
-                <label class="filter-option">
-                    <input type="checkbox" name="category" value="mobilier">
-                    <span>Mobilier Médical</span>
-                </label>
-                <label class="filter-option">
-                    <input type="checkbox" name="category" value="reanimation">
-                    <span>Réanimation</span>
-                </label>
-                <label class="filter-option">
-                    <input type="checkbox" name="category" value="chirurgie">
-                    <span>Chirurgie</span>
-                </label>
-                <label class="filter-option">
-                    <input type="checkbox" name="category" value="sterilisation">
-                    <span>Stérilisation</span>
-                </label>
+            <div class="filter-dropdown">
+                <button class="filter-dropdown-toggle" onclick="toggleFilterDropdown('categories')">
+                    <span>
+                        <i class="fas fa-tags"></i>
+                        Catégories
+                        <span class="selected-count" id="categoriesCount">(0)</span>
+                    </span>
+                    <i class="fas fa-chevron-down" id="categoriesChevron"></i>
+                </button>
+                <div class="filter-dropdown-content" id="categoriesDropdown">
+                    <div class="filter-dropdown-search">
+                        <input type="text" id="categoriesSearch" placeholder="Rechercher une catégorie..." onkeyup="filterDropdownOptions('categories')">
+                    </div>
+                    <div class="filter-dropdown-options" id="categoriesOptions">
+                        <!-- Les catégories seront générées dynamiquement -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sous-catégories - Dropdown -->
+        <div class="filter-section">
+            <div class="filter-dropdown">
+                <button class="filter-dropdown-toggle" onclick="toggleFilterDropdown('subcategories')">
+                    <span>
+                        <i class="fas fa-list"></i>
+                        Types d'équipements
+                        <span class="selected-count" id="subcategoriesCount">(0)</span>
+                    </span>
+                    <i class="fas fa-chevron-down" id="subcategoriesChevron"></i>
+                </button>
+                <div class="filter-dropdown-content" id="subcategoriesDropdown">
+                    <div class="filter-dropdown-search">
+                        <input type="text" id="subcategoriesSearch" placeholder="Rechercher un type..." onkeyup="filterDropdownOptions('subcategories')">
+                    </div>
+                    <div class="filter-dropdown-options" id="subcategoriesOptions">
+                        <!-- Les sous-catégories seront générées dynamiquement -->
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1219,47 +1474,29 @@
             </div>
         </div>
 
-        <!-- Disponibilité -->
+        <!-- Disponibilité - Dropdown -->
         <div class="filter-section">
-            <h3 class="filter-section-title">
-                <i class="fas fa-box"></i>
-                Disponibilité
-            </h3>
-            <div class="filter-options">
-                <label class="filter-option">
-                    <input type="checkbox" name="availability" value="in-stock">
-                    <span>En stock</span>
-                </label>
-                <label class="filter-option">
-                    <input type="checkbox" name="availability" value="preorder">
-                    <span>Pré-commande</span>
-                </label>
-            </div>
-        </div>
-
-        <!-- Marques -->
-        <div class="filter-section">
-            <h3 class="filter-section-title">
-                <i class="fas fa-industry"></i>
-                Marques
-            </h3>
-            <div class="filter-options">
-                <label class="filter-option">
-                    <input type="checkbox" name="brand" value="philips">
-                    <span>Philips</span>
-                </label>
-                <label class="filter-option">
-                    <input type="checkbox" name="brand" value="ge">
-                    <span>GE Healthcare</span>
-                </label>
-                <label class="filter-option">
-                    <input type="checkbox" name="brand" value="siemens">
-                    <span>Siemens</span>
-                </label>
-                <label class="filter-option">
-                    <input type="checkbox" name="brand" value="medtronic">
-                    <span>Medtronic</span>
-                </label>
+            <div class="filter-dropdown">
+                <button class="filter-dropdown-toggle" onclick="toggleFilterDropdown('availability')">
+                    <span>
+                        <i class="fas fa-box"></i>
+                        Disponibilité
+                        <span class="selected-count" id="availabilityCount">(0)</span>
+                    </span>
+                    <i class="fas fa-chevron-down" id="availabilityChevron"></i>
+                </button>
+                <div class="filter-dropdown-content" id="availabilityDropdown">
+                    <div class="filter-dropdown-options">
+                        <label class="filter-dropdown-option">
+                            <input type="checkbox" name="availability" value="in-stock">
+                            <span>En stock</span>
+                        </label>
+                        <label class="filter-dropdown-option">
+                            <input type="checkbox" name="availability" value="preorder">
+                            <span>Pré-commande</span>
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1302,7 +1539,15 @@
 
         <!-- Grid des Produits -->
         <div class="products-grid" id="productsGrid">
-            <!-- Les équipements seront générés dynamiquement -->
+            <!-- Les équipements seront générés dynamiquement depuis l'API -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container" id="paginationContainer" style="display: none;">
+            <div class="pagination" id="pagination">
+                <!-- La pagination sera générée dynamiquement -->
+            </div>
+            <div class="pagination-info" id="paginationInfo"></div>
         </div>
 
         <!-- État vide amélioré -->
@@ -1335,170 +1580,20 @@
 </div>
 
 <script>
-    // Données des équipements médicaux - EXEMPLE COMPLET
-    const productsData = [
-        {
-            id: 1,
-            title: "Électrocardiographe 12 canaux",
-            category: "diagnostic",
-            brand: "philips",
-            price: 12500,
-            oldPrice: 14500,
-            image: "/assets/images/ecg.jpg",
-            description: "Électrocardiographe numérique 12 canaux avec écran LCD tactile et impression thermique haute résolution. Idéal pour les services de cardiologie et les consultations externes.",
-            stock: "in-stock",
-            badge: "promo",
-            featured: true
-        },
-        {
-            id: 2,
-            title: "Ventilateur de soins intensifs",
-            category: "reanimation",
-            brand: "medtronic",
-            price: 32500,
-            oldPrice: null,
-            image: "/assets/images/ventilateur.jpg",
-            description: "Ventilateur médical haut de gamme pour soins intensifs avec modes de ventilation avancés et monitoring intégré des paramètres respiratoires.",
-            stock: "in-stock",
-            badge: "new",
-            featured: true
-        },
-        {
-            id: 3,
-            title: "Monitor de surveillance patient",
-            category: "monitoring",
-            brand: "ge",
-            price: 18500,
-            oldPrice: 21000,
-            image: "/assets/images/monitor.jpg",
-            description: "Système de monitoring complet avec écran 15 pouces, surveillance ECG, SpO2, pression artérielle non invasive et température.",
-            stock: "in-stock",
-            badge: "promo",
-            featured: false
-        },
-        {
-            id: 4,
-            title: "Table d'opération électrique",
-            category: "chirurgie",
-            brand: "siemens",
-            price: 42500,
-            oldPrice: null,
-            image: "/assets/images/table-operation.jpg",
-            description: "Table d'opération multifonction avec commandes électriques, positions préréglées et radiotransparence pour imagerie peropératoire.",
-            stock: "preorder",
-            badge: null,
-            featured: false
-        },
-        {
-            id: 5,
-            title: "Autoclave de stérilisation",
-            category: "sterilisation",
-            brand: "philips",
-            price: 28500,
-            oldPrice: 32000,
-            image: "/assets/images/autoclave.jpg",
-            description: "Autoclave classe B avec chambre de 45L, programmes automatiques et traçabilité complète des cycles de stérilisation.",
-            stock: "in-stock",
-            badge: "promo",
-            featured: true
-        },
-        {
-            id: 6,
-            title: "Lit médicalisé électrique",
-            category: "mobilier",
-            brand: "ge",
-            price: 12500,
-            oldPrice: null,
-            image: "/assets/images/lit-medical.jpg",
-            description: "Lit médical électrique avec commandes latérales, positions Trendelenburg et anti-Trendelenburg, et structure renforcée.",
-            stock: "in-stock",
-            badge: null,
-            featured: false
-        },
-        {
-            id: 7,
-            title: "Échographe portable",
-            category: "diagnostic",
-            brand: "siemens",
-            price: 38500,
-            oldPrice: 42000,
-            image: "/assets/images/echographe.jpg",
-            description: "Échographe portable haute performance avec sonde multifréquence, écran 17 pouces et connectivité sans fil pour télémédecine.",
-            stock: "preorder",
-            badge: "new",
-            featured: true
-        },
-        {
-            id: 8,
-            title: "Défibrillateur semi-automatique",
-            category: "reanimation",
-            brand: "philips",
-            price: 8500,
-            oldPrice: 9500,
-            image: "/assets/images/defibrillateur.jpg",
-            description: "Défibrillateur DEA avec assistance vocale, analyse ECG automatique et chocs biphasiques de haute énergie.",
-            stock: "in-stock",
-            badge: "promo",
-            featured: false
-        },
-        {
-            id: 9,
-            title: "Armoire de pharmacie sécurisée",
-            category: "mobilier",
-            brand: "medtronic",
-            price: 7500,
-            oldPrice: null,
-            image: "/assets/images/armoire-pharmacie.jpg",
-            description: "Armoire sécurisée pour stockage des médicaments avec système de verrouillage électronique et compartiments modulables.",
-            stock: "in-stock",
-            badge: null,
-            featured: false
-        },
-        {
-            id: 10,
-            title: "Système de scope chirurgical",
-            category: "chirurgie",
-            brand: "ge",
-            price: 62500,
-            oldPrice: 68000,
-            image: "/assets/images/scope-chirurgical.jpg",
-            description: "Tour vidéo endoscopique HD avec caméra 4K, source de lumière LED et système d'insufflation intégré pour chirurgie mini-invasive.",
-            stock: "preorder",
-            badge: "new",
-            featured: true
-        },
-        {
-            id: 11,
-            title: "Analyseur de gaz sanguins",
-            category: "diagnostic",
-            brand: "siemens",
-            price: 28500,
-            oldPrice: null,
-            image: "/assets/images/analyseur-gaz.jpg",
-            description: "Analyseur portable pour gaz du sang, électrolytes et métabolites avec écran tactile et connectivité réseau.",
-            stock: "in-stock",
-            badge: null,
-            featured: false
-        },
-        {
-            id: 12,
-            title: "Stérilisateur vapeur rapide",
-            category: "sterilisation",
-            brand: "philips",
-            price: 18500,
-            oldPrice: 21000,
-            image: "/assets/images/sterilisateur-rapide.jpg",
-            description: "Stérilisateur vapeur à cycle rapide pour instruments d'urgence, avec séchage intégré et mémoire des cycles.",
-            stock: "in-stock",
-            badge: "promo",
-            featured: false
-        }
-    ];
+    // Variables globales pour stocker les données de l'API
+    let apiData = {
+        articles: [],
+        categories: [],
+        sub_categories: []
+    };
+
+    // Données transformées pour l'affichage
+    let productsData = [];
 
     let currentFilters = {
         search: '',
         categories: [],
-        brands: [],
+        subcategories: [],
         maxPrice: 50000,
         availability: []
     };
@@ -1506,28 +1601,209 @@
     let currentSort = 'popularity';
     let currentView = 'grid';
     let cartItems = [];
+    let activeDropdown = null;
+    
+    // Variables de pagination
+    let currentPage = 1;
+    const productsPerPage = 9;
 
-    // Fonctions utilitaires
-    function getCategoryName(category) {
-        const categories = {
-            'diagnostic': 'Diagnostic',
-            'monitoring': 'Monitoring',
-            'mobilier': 'Mobilier Médical',
-            'reanimation': 'Réanimation',
-            'chirurgie': 'Chirurgie',
-            'sterilisation': 'Stérilisation'
-        };
-        return categories[category] || category;
+    // Fonction pour charger les données depuis l'API
+    async function loadApiData() {
+        try {
+            const response = await fetch('/articles/nos-articles');
+            apiData = await response.json();
+            
+            // Transformer les données de l'API en format compatible avec l'interface
+            transformApiData();
+            
+            // Initialiser l'interface
+            initializeInterface();
+            
+        } catch (error) {
+            console.error('Erreur lors du chargement des données:', error);
+            showNotification('Erreur de chargement des données', 'error');
+        }
     }
 
-    function getBrandName(brand) {
-        const brands = {
-            'philips': 'Philips',
-            'ge': 'GE Healthcare',
-            'siemens': 'Siemens',
-            'medtronic': 'Medtronic'
-        };
-        return brands[brand] || brand;
+    // Transformer les données de l'API en format produits
+    function transformApiData() {
+        productsData = apiData.articles.map(article => {
+            // Utiliser les données multilingues si disponibles
+            const articleName = article.article_name?.fr || article.article_name || 'Nom non disponible';
+            const articleDesc = article.article_desc?.fr || article.article_desc || 'Description non disponible';
+            
+            // Générer un prix aléatoire pour la démonstration
+            const price = Math.floor(Math.random() * 40000) + 1000;
+            const hasOldPrice = Math.random() > 0.7;
+            const oldPrice = hasOldPrice ? Math.floor(price * 1.2) : null;
+            
+            return {
+                id: article.id,
+                title: articleName,
+                description: articleDesc,
+                category: article.categorie_id?.toString() || 'unknown',
+                category_name: article.category?.category_name || 'Non catégorisé',
+                subcategory: article.SubCategory?.id?.toString() || 'unknown',
+                subcategory_name: article.SubCategory?.sub_categorie_name || 'Non classé',
+                price: price,
+                oldPrice: oldPrice,
+                image: article.article_image ? `/storage/${article.article_image}` : '/assets/images/placeholder-medical.jpg',
+                stock: article.published ? 'in-stock' : 'preorder',
+                badge: Math.random() > 0.7 ? (Math.random() > 0.5 ? 'promo' : 'new') : null,
+                featured: Math.random() > 0.8,
+                published: article.published
+            };
+        });
+    }
+
+    // Initialiser l'interface avec les données de l'API
+    function initializeInterface() {
+        populateCategoryFilters();
+        populateSubcategoryFilters();
+        displayProducts(sortProductsList(productsData, 'popularity'));
+        updateActiveFilters();
+        updatePriceDisplay();
+        updateCartHeader();
+        updateSelectedCounts();
+        
+        // Ajouter les écouteurs d'événements
+        setupEventListeners();
+    }
+
+    // Peupler les filtres de catégories
+    function populateCategoryFilters() {
+        const container = document.getElementById('categoriesOptions');
+        container.innerHTML = '';
+        
+        apiData.categories
+            .filter(cat => cat.published === 1)
+            .forEach(category => {
+                const label = document.createElement('label');
+                label.className = 'filter-dropdown-option';
+                label.innerHTML = `
+                    <input type="checkbox" name="category" value="${category.id}" data-name="${category.category_name}" onchange="handleFilterChange()">
+                    <span>${category.category_name}</span>
+                `;
+                container.appendChild(label);
+            });
+    }
+
+    // Peupler les filtres de sous-catégories
+    function populateSubcategoryFilters() {
+        const container = document.getElementById('subcategoriesOptions');
+        container.innerHTML = '';
+        
+        apiData.sub_categories.forEach(subCategory => {
+            const label = document.createElement('label');
+            label.className = 'filter-dropdown-option';
+            label.innerHTML = `
+                <input type="checkbox" name="subcategory" value="${subCategory.id}" data-name="${subCategory.sub_categorie_name}" onchange="handleFilterChange()">
+                <span>${subCategory.sub_categorie_name}</span>
+            `;
+            container.appendChild(label);
+        });
+    }
+
+    // Configurer les écouteurs d'événements
+    function setupEventListeners() {
+        document.getElementById('priceRange').addEventListener('input', function() {
+            updatePriceDisplay();
+            handleFilterChange();
+        });
+        
+        document.getElementById('globalSearch').addEventListener('input', function() {
+            handleFilterChange();
+        });
+        
+        // Événements pour les filtres de disponibilité
+        document.querySelectorAll('input[name="availability"]').forEach(checkbox => {
+            checkbox.addEventListener('change', handleFilterChange);
+        });
+
+        // Fermer les dropdowns en cliquant à l'extérieur
+        document.addEventListener('click', function(e) {
+            if (activeDropdown && !activeDropdown.contains(e.target) && 
+                !e.target.closest('.filter-dropdown-toggle')) {
+                closeActiveDropdown();
+            }
+        });
+    }
+
+    // Gérer le changement de filtre (applique automatiquement les filtres)
+    function handleFilterChange() {
+        applyFilters();
+    }
+
+    // Toggle dropdown de filtre
+    function toggleFilterDropdown(type) {
+        const dropdown = document.getElementById(`${type}Dropdown`);
+        const toggle = document.querySelector(`[onclick="toggleFilterDropdown('${type}')"]`);
+        const chevron = document.getElementById(`${type}Chevron`);
+
+        // Fermer le dropdown actif s'il y en a un
+        if (activeDropdown && activeDropdown !== dropdown) {
+            closeActiveDropdown();
+        }
+
+        if (dropdown.classList.contains('active')) {
+            dropdown.classList.remove('active');
+            toggle.classList.remove('active');
+            chevron.className = 'fas fa-chevron-down';
+            activeDropdown = null;
+        } else {
+            dropdown.classList.add('active');
+            toggle.classList.add('active');
+            chevron.className = 'fas fa-chevron-up';
+            activeDropdown = dropdown;
+        }
+    }
+
+    // Fermer le dropdown actif
+    function closeActiveDropdown() {
+        if (activeDropdown) {
+            activeDropdown.classList.remove('active');
+            const toggle = activeDropdown.previousElementSibling;
+            const chevron = toggle.querySelector('.fa-chevron-down, .fa-chevron-up');
+            toggle.classList.remove('active');
+            chevron.className = 'fas fa-chevron-down';
+            activeDropdown = null;
+        }
+    }
+
+    // Filtrer les options dans les dropdowns
+    function filterDropdownOptions(type) {
+        const searchTerm = document.getElementById(`${type}Search`).value.toLowerCase();
+        const options = document.querySelectorAll(`#${type}Options .filter-dropdown-option`);
+        
+        options.forEach(option => {
+            const text = option.textContent.toLowerCase();
+            if (text.includes(searchTerm)) {
+                option.style.display = 'flex';
+            } else {
+                option.style.display = 'none';
+            }
+        });
+    }
+
+    // Mettre à jour les compteurs de sélection
+    function updateSelectedCounts() {
+        const types = ['categories', 'subcategories', 'availability'];
+        
+        types.forEach(type => {
+            const selectedCount = document.querySelectorAll(`#${type}Options input[type="checkbox"]:checked`).length;
+            document.getElementById(`${type}Count`).textContent = `(${selectedCount})`;
+        });
+    }
+
+    // Fonctions utilitaires
+    function getCategoryName(categoryId) {
+        const category = apiData.categories.find(cat => cat.id == categoryId);
+        return category ? category.category_name : 'Non catégorisé';
+    }
+
+    function getSubcategoryName(subcategoryId) {
+        const subcategory = apiData.sub_categories.find(sub => sub.id == subcategoryId);
+        return subcategory ? subcategory.sub_categorie_name : 'Non classé';
     }
 
     function showNotification(message, type = 'success') {
@@ -1546,7 +1822,7 @@
         showNotification(message, 'success');
     }
 
-    // Afficher les produits
+    // Afficher les produits avec pagination
     function displayProducts(products = productsData) {
         const grid = document.getElementById('productsGrid');
         const count = document.getElementById('productsCount');
@@ -1554,14 +1830,15 @@
         const emptyStateIcon = document.getElementById('emptyStateIcon');
         const emptyStateTitle = document.getElementById('emptyStateTitle');
         const emptyStateDescription = document.getElementById('emptyStateDescription');
+        const paginationContainer = document.getElementById('paginationContainer');
         
         count.textContent = products.length;
         
         if (products.length === 0) {
             grid.style.display = 'none';
+            paginationContainer.style.display = 'none';
             emptyState.style.display = 'block';
             
-            // Adapter le message selon le contexte
             if (currentFilters.search) {
                 emptyStateIcon.className = 'fas fa-search';
                 emptyStateTitle.textContent = 'Aucun résultat trouvé';
@@ -1579,7 +1856,20 @@
             return;
         }
 
-        grid.innerHTML = products.map(product => `
+        // Calcul de la pagination
+        const totalPages = Math.ceil(products.length / productsPerPage);
+        
+        // Ajuster la page courante si nécessaire
+        if (currentPage > totalPages) {
+            currentPage = totalPages || 1;
+        }
+        
+        // Calcul des produits à afficher
+        const startIndex = (currentPage - 1) * productsPerPage;
+        const endIndex = startIndex + productsPerPage;
+        const productsToShow = products.slice(startIndex, endIndex);
+
+        grid.innerHTML = productsToShow.map(product => `
             <div class="product-card">
                 ${product.badge ? `<div class="product-badge ${product.badge}">${product.badge === 'promo' ? 'Promo' : 'Nouveau'}</div>` : ''}
                 <div class="product-image-container">
@@ -1594,7 +1884,8 @@
                     </div>
                 </div>
                 <div class="product-content">
-                    <span class="product-category">${getCategoryName(product.category)}</span>
+                    <span class="product-category">${product.category_name}</span>
+                    ${product.subcategory_name !== 'Non classé' ? `<span class="product-subcategory" style="display: block; font-size: 0.7rem; color: var(--text-light); margin-bottom: 5px;">${product.subcategory_name}</span>` : ''}
                     <h3 class="product-title">${product.title}</h3>
                     <p class="product-description">${product.description}</p>
                     <div class="product-meta">
@@ -1611,7 +1902,6 @@
                             <i class="fas fa-cart-plus"></i>
                             Ajouter au panier
                         </button>
-                      
                     </div>
                 </div>
             </div>
@@ -1619,14 +1909,94 @@
 
         applyCurrentView();
         
+        // Afficher/mettre à jour la pagination
+        updatePagination(products.length, totalPages);
+        
         grid.style.display = 'grid';
+        paginationContainer.style.display = 'flex';
         emptyState.style.display = 'none';
     }
+
+    // Mettre à jour la pagination
+    function updatePagination(totalProducts, totalPages) {
+        const pagination = document.getElementById('pagination');
+        const paginationInfo = document.getElementById('paginationInfo');
+        
+        // Mettre à jour les informations de pagination
+        const startProduct = ((currentPage - 1) * productsPerPage) + 1;
+        const endProduct = Math.min(currentPage * productsPerPage, totalProducts);
+        paginationInfo.textContent = `Affichage de ${startProduct} à ${endProduct} sur ${totalProducts} produits`;
+        
+        // Générer les boutons de pagination
+        let paginationHTML = '';
+        
+        // Bouton précédent
+        paginationHTML += `
+            <button class="pagination-btn ${currentPage === 1 ? 'disabled' : ''}" 
+                    onclick="changePage(${currentPage - 1})" 
+                    ${currentPage === 1 ? 'disabled' : ''}>
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        `;
+        
+        // Première page
+        if (currentPage > 3) {
+            paginationHTML += `
+                <button class="pagination-btn" onclick="changePage(1)">1</button>
+                ${currentPage > 4 ? '<span class="pagination-dots">...</span>' : ''}
+            `;
+        }
+        
+        // Pages autour de la page courante
+        for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
+            paginationHTML += `
+                <button class="pagination-btn ${i === currentPage ? 'active' : ''}" 
+                        onclick="changePage(${i})">
+                    ${i}
+                </button>
+            `;
+        }
+        
+        // Dernière page
+        if (currentPage < totalPages - 2) {
+            paginationHTML += `
+                ${currentPage < totalPages - 3 ? '<span class="pagination-dots">...</span>' : ''}
+                <button class="pagination-btn" onclick="changePage(${totalPages})">${totalPages}</button>
+            `;
+        }
+        
+        // Bouton suivant
+        paginationHTML += `
+            <button class="pagination-btn ${currentPage === totalPages ? 'disabled' : ''}" 
+                    onclick="changePage(${currentPage + 1})" 
+                    ${currentPage === totalPages ? 'disabled' : ''}>
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        `;
+        
+        pagination.innerHTML = paginationHTML;
+    }
+
+    // Changer de page
+    function changePage(page) {
+        if (page < 1 || page > Math.ceil(filteredProducts.length / productsPerPage)) return;
+        
+        currentPage = page;
+        applyFilters();
+        
+        // Scroll vers le haut des produits
+        document.getElementById('productsGrid').scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+        });
+    }
+
+    let filteredProducts = [];
 
     function hasActiveFilters() {
         return currentFilters.search || 
                currentFilters.categories.length > 0 || 
-               currentFilters.brands.length > 0 || 
+               currentFilters.subcategories.length > 0 || 
                currentFilters.maxPrice < 50000 || 
                currentFilters.availability.length > 0;
     }
@@ -1642,26 +2012,50 @@
             toggle.classList.remove('active');
             chevron.className = 'fas fa-chevron-down';
         } else {
-            // Copier le contenu de la sidebar dans le dropdown mobile
             const sidebarContent = document.getElementById('filtersSidebar').innerHTML;
             content.innerHTML = sidebarContent;
             content.style.display = 'block';
             toggle.classList.add('active');
             chevron.className = 'fas fa-chevron-up';
+            
+            // Réattacher les événements pour les filtres mobiles
+            setTimeout(() => {
+                setupMobileFilterEvents();
+            }, 100);
         }
     }
 
-    // Fermer le dropdown mobile en cliquant à l'extérieur
-    document.addEventListener('click', function(e) {
-        const dropdown = document.querySelector('.mobile-filter-dropdown');
-        const content = document.getElementById('mobileFilterContent');
+    // Configurer les événements pour les filtres mobiles
+    function setupMobileFilterEvents() {
+        const mobileSearch = document.querySelector('#mobileFilterContent #globalSearch');
+        const mobilePriceRange = document.querySelector('#mobileFilterContent #priceRange');
+        const mobileCategoryCheckboxes = document.querySelectorAll('#mobileFilterContent input[name="category"]');
+        const mobileSubcategoryCheckboxes = document.querySelectorAll('#mobileFilterContent input[name="subcategory"]');
+        const mobileAvailabilityCheckboxes = document.querySelectorAll('#mobileFilterContent input[name="availability"]');
         
-        if (!dropdown.contains(e.target) && content.style.display === 'block') {
-            content.style.display = 'none';
-            document.querySelector('.mobile-filter-toggle').classList.remove('active');
-            document.getElementById('filterChevron').className = 'fas fa-chevron-down';
+        if (mobileSearch) {
+            mobileSearch.addEventListener('input', handleFilterChange);
         }
-    });
+        
+        if (mobilePriceRange) {
+            mobilePriceRange.addEventListener('input', function() {
+                updatePriceDisplay();
+                handleFilterChange();
+            });
+        }
+        
+        mobileCategoryCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', handleFilterChange);
+        });
+        
+        mobileSubcategoryCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', handleFilterChange);
+        });
+        
+        mobileAvailabilityCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', handleFilterChange);
+        });
+    }
 
     // Mettre à jour le panier dans le header
     function updateCartHeader() {
@@ -1695,11 +2089,9 @@
     // Toggle panier
     function toggleCart() {
         if (cartItems.length === 0) {
-            // showCartNotification('Votre panier est vide');
-            window.location.href='/panier'
-
+            showCartNotification('Votre panier est vide');
         } else {
-            window.location.href='/panier'
+            window.location.href='/panier';
         }
     }
 
@@ -1713,36 +2105,39 @@
     function applyFilters() {
         const searchTerm = document.getElementById('globalSearch').value.toLowerCase();
         const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(cb => cb.value);
-        const selectedBrands = Array.from(document.querySelectorAll('input[name="brand"]:checked')).map(cb => cb.value);
+        const selectedSubcategories = Array.from(document.querySelectorAll('input[name="subcategory"]:checked')).map(cb => cb.value);
         const selectedAvailability = Array.from(document.querySelectorAll('input[name="availability"]:checked')).map(cb => cb.value);
         const maxPrice = parseInt(document.getElementById('priceRange').value);
 
         currentFilters = {
             search: searchTerm,
             categories: selectedCategories,
-            brands: selectedBrands,
+            subcategories: selectedSubcategories,
             maxPrice: maxPrice,
             availability: selectedAvailability
         };
 
-        const filteredProducts = productsData.filter(product => {
+        filteredProducts = productsData.filter(product => {
             const searchMatch = !searchTerm || 
                 product.title.toLowerCase().includes(searchTerm) ||
-                product.description.toLowerCase().includes(searchTerm);
+                product.description.toLowerCase().includes(searchTerm) ||
+                product.category_name.toLowerCase().includes(searchTerm) ||
+                product.subcategory_name.toLowerCase().includes(searchTerm);
 
             const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(product.category);
-            const brandMatch = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
+            const subcategoryMatch = selectedSubcategories.length === 0 || selectedSubcategories.includes(product.subcategory);
             const priceMatch = product.price <= maxPrice;
             const availabilityMatch = selectedAvailability.length === 0 || selectedAvailability.includes(product.stock);
 
-            return searchMatch && categoryMatch && brandMatch && priceMatch && availabilityMatch;
+            return searchMatch && categoryMatch && subcategoryMatch && priceMatch && availabilityMatch;
         });
 
         const sortedProducts = sortProductsList(filteredProducts, currentSort);
         displayProducts(sortedProducts);
         updateActiveFilters();
+        updateSelectedCounts();
         
-        // Fermer le dropdown mobile
+        // Fermer le dropdown mobile après application des filtres
         if (window.innerWidth <= 768) {
             document.getElementById('mobileFilterContent').style.display = 'none';
             document.querySelector('.mobile-filter-toggle').classList.remove('active');
@@ -1778,25 +2173,24 @@
 
     // Réinitialiser les filtres
     function resetFilters() {
-        // Réinitialiser les inputs
         document.getElementById('globalSearch').value = '';
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
         document.getElementById('priceRange').value = 50000;
+        currentPage = 1;
         
-        // Réinitialiser les filtres courants
         currentFilters = {
             search: '',
             categories: [],
-            brands: [],
+            subcategories: [],
             maxPrice: 50000,
             availability: []
         };
         
-        // Réafficher tous les produits
         const sortedProducts = sortProductsList(productsData, currentSort);
         displayProducts(sortedProducts);
         updateActiveFilters();
         updatePriceDisplay();
+        updateSelectedCounts();
     }
 
     // Mettre à jour l'affichage des prix
@@ -1827,11 +2221,11 @@
             });
         });
         
-        currentFilters.brands.forEach(brand => {
+        currentFilters.subcategories.forEach(sub => {
             activeFilters.push({
-                type: 'brand',
-                label: `Marque: ${getBrandName(brand)}`,
-                value: brand
+                type: 'subcategory',
+                label: `Type: ${getSubcategoryName(sub)}`,
+                value: sub
             });
         });
         
@@ -1875,8 +2269,8 @@
             case 'category':
                 document.querySelector(`input[name="category"][value="${value}"]`).checked = false;
                 break;
-            case 'brand':
-                document.querySelector(`input[name="brand"][value="${value}"]`).checked = false;
+            case 'subcategory':
+                document.querySelector(`input[name="subcategory"][value="${value}"]`).checked = false;
                 break;
             case 'price':
                 document.getElementById('priceRange').value = 50000;
@@ -1894,7 +2288,6 @@
     function changeView(view) {
         currentView = view;
         
-        // Mettre à jour les boutons
         document.querySelectorAll('.view-btn').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.view === view);
         });
@@ -1907,7 +2300,7 @@
         grid.classList.toggle('list-view', currentView === 'list');
     }
 
-    // Modal produit (simplifié pour l'exemple)
+    // Modal produit
     function openProductModal(productId) {
         const product = productsData.find(p => p.id === productId);
         if (!product) return;
@@ -1917,28 +2310,7 @@
 
     // Initialisation
     document.addEventListener('DOMContentLoaded', function() {
-        // Afficher les produits initiaux
-        displayProducts(sortProductsList(productsData, 'popularity'));
-        updateActiveFilters();
-        updatePriceDisplay();
-        updateCartHeader();
-        
-        // Événements
-        document.getElementById('priceRange').addEventListener('input', updatePriceDisplay);
-        document.getElementById('globalSearch').addEventListener('input', applyFilters);
-        
-        // Copier les filtres pour le mobile au chargement
-        if (window.innerWidth <= 768) {
-            const sidebarContent = document.getElementById('filtersSidebar').innerHTML;
-            document.getElementById('mobileFilterContent').innerHTML = sidebarContent;
-        }
-        
-        // Événements pour les filtres (délégation d'événements)
-        document.addEventListener('change', function(e) {
-            if (e.target.matches('input[name="category"], input[name="brand"], input[name="availability"]')) {
-                applyFilters();
-            }
-        });
+        loadApiData();
     });
 </script>
 @endsection
