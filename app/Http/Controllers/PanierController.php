@@ -1,22 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-use Cart;
 use Illuminate\Http\Request;
+use  App\Models\Article;
+use Darryldecode\Cart\Facades\CartFacade;
+
+// use Darryldecode\Cart\Cart;
 
 class PanierController extends Controller
 {
   public function index()
     {
         return response()->json([
-            'items' => Cart::content(),
-            'total' => Cart::total(),
-            'count' => Cart::count(),
+            'items' => CartFacade::content(),
+            'total' => CartFacade::total(),
+            'count' => CartFacade::count(),
         ]);
     }
 
     public function add(Request $request)
     {
+        $article=Article::find($request->id);
+
         $request->validate([
             'id' => 'required',
             'name' => 'required',
@@ -24,18 +29,20 @@ class PanierController extends Controller
             'qty' => 'required|integer|min:1',
         ]);
 
-        $item = Cart::add([
+        $item = CartFacade::add([
             'id' => $request->id,
             'name' => $request->name,
             'qty' => $request->qty,
             'price' => $request->price,
-            'options' => $request->options ?? [],
+            'options' => [
+                "image"=>$article->article_image,
+            ],
         ]);
 
         return response()->json([
             'message' => 'Produit ajouté au panier',
             'item' => $item,
-            'cart' => Cart::content(),
+            'cart' => CartFacade::content(),
         ], 201);
     }
 
@@ -43,27 +50,27 @@ class PanierController extends Controller
     {
         $request->validate(['qty' => 'required|integer|min:1']);
 
-        Cart::update($rowId, $request->qty);
+        CartFacade::update($rowId, $request->qty);
 
         return response()->json([
             'message' => 'Quantité mise à jour',
-            'cart' => Cart::content(),
+            'cart' => CartFacade::content(),
         ]);
     }
 
     public function remove($rowId)
     {
-        Cart::remove($rowId);
+        CartFacade::remove($rowId);
 
         return response()->json([
             'message' => 'Article supprimé du panier',
-            'cart' => Cart::content(),
+            'cart' => CartFacade::content(),
         ]);
     }
 
     public function clear()
     {
-        Cart::destroy();
+        CartFacade::destroy();
 
         return response()->json(['message' => 'Panier vidé']);
     }

@@ -1469,36 +1469,11 @@
                     <span id="maxPriceDisplay">50 000 €</span>
                 </div>
                 <div class="range-slider-container">
-                    <input type="range" min="0" max="50000" value="50000" class="range-slider" id="priceRange">
+                    <input type="range" min="0" max="900000" value="900000" class="range-slider" id="priceRange">
                 </div>
             </div>
         </div>
 
-        <!-- Disponibilité - Dropdown -->
-        <div class="filter-section">
-            <div class="filter-dropdown">
-                <button class="filter-dropdown-toggle" onclick="toggleFilterDropdown('availability')">
-                    <span>
-                        <i class="fas fa-box"></i>
-                        Disponibilité
-                        <span class="selected-count" id="availabilityCount">(0)</span>
-                    </span>
-                    <i class="fas fa-chevron-down" id="availabilityChevron"></i>
-                </button>
-                <div class="filter-dropdown-content" id="availabilityDropdown">
-                    <div class="filter-dropdown-options">
-                        <label class="filter-dropdown-option">
-                            <input type="checkbox" name="availability" value="in-stock">
-                            <span>En stock</span>
-                        </label>
-                        <label class="filter-dropdown-option">
-                            <input type="checkbox" name="availability" value="preorder">
-                            <span>Pré-commande</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Actions -->
         <div class="filter-actions">
@@ -1594,7 +1569,7 @@
         search: '',
         categories: [],
         subcategories: [],
-        maxPrice: 50000,
+        maxPrice: 900000,
         availability: []
     };
 
@@ -2229,7 +2204,7 @@
             });
         });
         
-        if (currentFilters.maxPrice < 50000) {
+        if (currentFilters.maxPrice < 900000) {
             activeFilters.push({
                 type: 'price',
                 label: `Prix max: ${currentFilters.maxPrice.toLocaleString()} €`,
