@@ -1267,7 +1267,7 @@
                     {{__('À Propos de')}} <span>{{ env('APP_NAME') }}</span>
                 </h2>
                 <p class="history-description">
-                    {{__('Animée par l’excellence : G-MEDIC offre des équipements médicaux innovants, alliant performance, sécurité et accompagnement professionnel pour chaque besoin de santé.')}}
+                    {{__('NotreHistoire')}}
                 </p>
                 
                 <div class="history-features">
@@ -1277,7 +1277,7 @@
                         </div>
                         <div class="feature-content">
                             <h4>{{__('Notre Mission')}}</h4>
-                            <p>{{__('Fournir des équipements médicaux innovants et certifiés pour améliorer la qualité des soins et accompagner les professionnels de santé dans leur pratique.')}}</p>
+                            <p>{{__('NotreMission')}}</p>
                         </div>
                     </div>
                     
@@ -1287,7 +1287,7 @@
                         </div>
                         <div class="feature-content">
                             <h4>{{__('Notre Vision')}}</h4>
-                            <p>{{__('Devenir une référence dans la distribution d’équipements médicaux performants, en alliant technologie, fiabilité et service client de qualité.')}}</p>
+                            <p>{{__('NotreVision')}}</p>
                         </div>
                     </div>
                     
@@ -1297,7 +1297,7 @@
                         </div>
                         <div class="feature-content">
                             <h4>{{__('Nos Valeurs')}}</h4>
-                            <p>{{__('Innovation, Qualité, Confiance et Engagement au service des professionnels de santé et de leurs patients.')}}</p>
+                            <p>{{__('NosValeurs')}}</p>
                         </div>
                     </div>
                 </div>
@@ -1323,7 +1323,7 @@
         <div class="section-subtitle-premium">{{__('Notre Engagement')}}</div>
         <h2 class="section-title-premium">{{__('Qualité & Expertise')}}</h2>
         <p class="section-description">
-            {{__('Des équipements médicaux performants, adaptés à chaque spécialité et à chaque besoin professionnel.')}}
+            {{__('QualiteExpertise')}}
         </p>
     </div>
 
@@ -1335,7 +1335,7 @@
             </div>
             <h3 class="mission-title-premium">{{__('Expertise Médicale')}}</h3>
             <p class="mission-description-premium">
-                {{__('Nous sélectionnons des équipements médicaux certifiés pour garantir fiabilité, précision et sécurité dans toutes les disciplines.')}}
+                {{__('MedicalExpertise')}}
             </p>
         </div>
 
@@ -1346,7 +1346,7 @@
             </div>
             <h3 class="mission-title-premium">{{__('Innovation Technologique')}}</h3>
             <p class="mission-description-premium">
-                {{__('Nous proposons des dispositifs à la pointe de la technologie, conçus pour améliorer les performances médicales et le confort des utilisateurs.')}}
+                {{__('TechnologicalInnovation')}}
             </p>
         </div>
 
@@ -1357,7 +1357,7 @@
             </div>
             <h3 class="mission-title-premium">{{__('Accompagnement Global')}}</h3>
             <p class="mission-description-premium">
-                {{__('De la sélection du matériel à l’installation, nous accompagnons les professionnels avec un service personnalisé et durable.')}}
+                {{__('ComprehensiveSupport')}}
             </p>
         </div>
     </div>
@@ -1370,7 +1370,7 @@
         <div class="section-subtitle-premium">{{__('Domaines d\'Expertise')}}</div>
         <h2 class="section-title-premium">{{__('Spécialisations Médicales')}}</h2>
         <p class="section-description">
-            {{__('Notre expertise s’étend à la vente d’équipements médicaux dans tous les domaines de la santé, du diagnostic à la rééducation.')}}
+            {{__('DomainesExpertise')}}
         </p>
     </div>
 
@@ -1384,7 +1384,7 @@
                 </div>
                 <h3 class="expertise-title">{{__('Diagnostic Médical')}}</h3>
                 <p class="expertise-description">
-                    {{__('Fourniture d’appareils de diagnostic précis et certifiés pour les hôpitaux, cliniques et laboratoires médicaux.')}}
+                    {{__('DiagnosticMedical')}}
                 </p>
             </div>
 
@@ -1395,7 +1395,7 @@
                 </div>
                 <h3 class="expertise-title">{{__('Équipements de Soins')}}</h3>
                 <p class="expertise-description">
-                    {{__('Distribution d’équipements médicaux essentiels pour les soins, la chirurgie et la surveillance des patients.')}}
+                    {{__('EquipementsSoins')}}
                 </p>
             </div>
 
@@ -1406,7 +1406,7 @@
                 </div>
                 <h3 class="expertise-title">{{__('Rééducation & Bien-être')}}</h3>
                 <p class="expertise-description">
-                    {{__('Solutions complètes pour la rééducation, la mobilité et le confort, destinées aux établissements et aux particuliers.')}}
+                    {{__('ReeducationBienEtre')}}
                 </p>
             </div>
         </div>
@@ -1423,7 +1423,7 @@
         <div class="section-subtitle-premium">{{__('Services Complémentaires')}}</div>
         <h2 class="section-title-premium">{{__('Notre Accompagnement')}}</h2>
         <p class="section-description">
-            {{__('Au-delà de la vente d’équipements médicaux, nous vous accompagnons avec des services sur mesure pour garantir performance et satisfaction.')}}
+            {{__('ServicesComplementaires')}}
         </p>
     </div>
 
@@ -1437,7 +1437,7 @@
                 </div>
                 <h3 class="service-title">{{__('Conseil & Sélection')}}</h3>
                 <p class="service-description">
-                    {{__('Nos experts vous orientent vers les solutions médicales les mieux adaptées à vos besoins et à votre spécialité.')}}
+                    {{__('ConseilSelection')}}
                 </p>
             </div>
 
@@ -1448,7 +1448,7 @@
                 </div>
                 <h3 class="service-title">{{__('Installation & Configuration')}}</h3>
                 <p class="service-description">
-                    {{__('Mise en place professionnelle de vos équipements médicaux, avec vérification complète du bon fonctionnement.')}}
+                    {{__('InstallationConfiguration')}}
                 </p>
             </div>
 
@@ -1459,7 +1459,7 @@
                 </div>
                 <h3 class="service-title">{{__('Maintenance & Support')}}</h3>
                 <p class="service-description">
-                    {{__('Un service après-vente réactif, incluant maintenance préventive, assistance technique et remplacement rapide des pièces.')}}
+                    {{__('MaintenanceSupport')}}
                 </p>
             </div>
 
@@ -1474,7 +1474,7 @@
         <div class="section-subtitle-premium">{{__('Nos Engagements')}}</div>
         <h2 class="section-title-premium">{{__('Garanties & Qualité')}}</h2>
         <p class="section-description">
-            {{__('La qualité et la sécurité au cœur de notre démarche')}}
+            {{__('NosEngagements')}}
         </p>
     </div>
 
@@ -1486,7 +1486,7 @@
                 </div>
                 <h3 class="guarantee-title">{{__('Certifications CE')}}</h3>
                 <p class="guarantee-description">
-                    {{__('Tous nos équipements sont certifiés CE et répondent aux normes médicales européennes.')}}
+                    {{__('CertificationsCE')}}
                 </p>
             </div>
 
@@ -1496,7 +1496,7 @@
                 </div>
                 <h3 class="guarantee-title">{{__('Qualité Médicale')}}</h3>
                 <p class="guarantee-description">
-                    {{__('Produits de qualité médicale pour une efficacité et une sécurité optimales.')}}
+                    {{__('QualiteMedicale')}}
                 </p>
             </div>
 
@@ -1506,7 +1506,7 @@
                 </div>
                 <h3 class="guarantee-title">{{__('Livraison Rapide')}}</h3>
                 <p class="guarantee-description">
-                    {{__('Livraison express partout en Afrique pour répondre à vos besoins urgents.')}}
+                    {{__('FastDelivery')}}
                 </p>
             </div>
 
@@ -1516,7 +1516,7 @@
                 </div>
                 <h3 class="guarantee-title">{{__('Support 24/7')}}</h3>
                 <p class="guarantee-description">
-                    {{__('Assistance technique disponible pour répondre à toutes vos questions.')}}
+                    {{__('Support247')}}
                 </p>
             </div>
         </div>
@@ -1526,7 +1526,7 @@
 <!-- Section CTA -->
 <section class="cta-section">
     <div class="cta-container">
-        <h2 class="cta-title">{{__('Prêt à équiper votre établissement médical ?')}}</h2>
+        <h2 class="cta-title">{{__('CallToAction')}}</h2>
         <p class="cta-description">
             {{__('Contactez nos conseillers pour obtenir une recommandation personnalisée et découvrez nos équipements médicaux certifiés.')}}
         </p>
