@@ -82,7 +82,7 @@
 
         .card-header {
             background: var(--gradient);
-            padding: 50px 50px 40px;
+            padding: 40px 40px 40px;
             color: white;
             position: relative;
             overflow: hidden;
@@ -619,7 +619,7 @@
             }
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 915px) {
             .card-body {
                 flex-direction: column;
             }
@@ -648,17 +648,17 @@
 
         @media (max-width: 768px) {
             .card-header {
-                padding: 35px 30px 25px;
+                padding: 20px 20px 20px;
             }
             
             .identity-section, .contact-section {
-                padding: 35px 30px;
+                padding: 10px 10px;
                 min-width: 100%;
             }
             
             .identity-badge {
-                width: 140px;
-                height: 140px;
+                width: 80px;
+                height: 80px;
             }
             
             .identity-badge i {
@@ -666,23 +666,24 @@
             }
             
             .profile-name {
-                font-size: 1.6rem;
+                font-size: 1.1rem;
             }
             
             .company-name {
-                font-size: 2rem;
+                font-size: 1rem;
+        
             }
             
             .logo-wrapper {
-                width: 120px;
-                height: 90px;
+                width: 200px;
+                height: 60px;
             }
             
             .contact-item {
                 flex-direction: column;
                 text-align: center;
-                gap: 15px;
-                padding: 20px;
+                gap: 5px;
+                padding: 10px;
             }
             
             .contact-icon {
@@ -852,7 +853,7 @@
                     </div>
                     <div class="company-info">
                         <h1 class="company-name">GMEDIC</h1>
-                        <p class="company-tagline">Excellence Médicale & Innovation Technologique</p>
+                        <p class="company-tagline">{{__('GMEDIC_Excellence_Medicale')}}</p>
                     </div>
                 </div>
             </div>
@@ -863,20 +864,20 @@
                 <div class="identity-badge">
                     <i class="fas fa-user-md"></i>
                 </div>
-                <h2 class="profile-name">Dr EHLAN K. Efadzi</h2>
-                <div class="profile-title">CEO & Fondateur</div>
+                <h2 class="profile-name">{{ __('Nom_Fondateur') }}</h2>
+                <div class="profile-title">{{__('Titre_Fondateur')}}</div>
             </div>
             
             <div class="contact-section">
-                <h3 class="section-title">Coordonnées</h3>
+                <h3 class="section-title">{{ __('Coordonnees') }}</h3>
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <div class="contact-label">Adresse</div>
-                            <div class="contact-value">Agoe, en face du Marché Cacaveli, Lomé - Togo</div>
+                            <div class="contact-label">{{ __('AdresseCarteVisite') }}</div>
+                            <div class="contact-value">{{ __('AdresseCarte') }}</div>
                         </div>
                     </div>
                     
@@ -885,32 +886,32 @@
                             <i class="fas fa-phone-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <div class="contact-label">Téléphone</div>
+                            <div class="contact-label">{{ __('Telephone') }}</div>
                             <div class="contact-value">
                                 <div class="phone-numbers">
                                     <div class="phone-number-item">
-                                        <a href="tel:+22891736042">(+228) 91 73 60 42</a>
+                                        <a href="tel:+22891736042">+228 ,91 73 60 42</a>
                                         <div class="phone-actions">
                                             <a href="https://wa.me/22891736042" class="phone-btn whatsapp" target="_blank">
                                                 <i class="fab fa-whatsapp"></i>
-                                                WhatsApp
+                                                {{ __('WhatsApp') }}
                                             </a>
                                             <a href="tel:+22891736042" class="phone-btn">
                                                 <i class="fas fa-phone"></i>
-                                                Appeler
+                                                {{ __('Appeler') }}
                                             </a>
                                         </div>
                                     </div>
                                     <div class="phone-number-item">
-                                        <a href="tel:+22870658816">(+228) 70 65 88 16</a>
+                                        <a href="tel:+22870658816">+228 70 65 88 16</a>
                                         <div class="phone-actions">
                                             <a href="https://wa.me/22870658816" class="phone-btn whatsapp" target="_blank">
                                                 <i class="fab fa-whatsapp"></i>
-                                                WhatsApp
+                                                {{ __('WhatsApp') }}
                                             </a>
                                             <a href="tel:+22870658816" class="phone-btn">
                                                 <i class="fas fa-phone"></i>
-                                                Appeler
+                                                {{ __('Appeler') }}
                                             </a>
                                         </div>
                                     </div>
@@ -924,7 +925,7 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-details">
-                            <div class="contact-label">Email</div>
+                            <div class="contact-label">{{ __('Email') }}</div>
                             <div class="contact-value">
                                 <a href="mailto:ehlanefa@gmail.com">ehlanefa@gmail.com</a>
                                 <a href="mailto:contact@gmedic.tg">contact@gmedic.tg</a>
@@ -937,7 +938,7 @@
                             <i class="fas fa-globe"></i>
                         </div>
                         <div class="contact-details">
-                            <div class="contact-label">Site Web</div>
+                            <div class="contact-label">{{__('Site_Web')}}</div>
                             <div class="contact-value">
                                 <a href="https://www.gmedic.tg" target="_blank">www.gmedic.tg</a>
                             </div>
@@ -948,7 +949,7 @@
         </div>
         
         <div class="card-footer">
-            <p class="footer-text">Votre santé est notre priorité absolue. N'hésitez pas à nous contacter pour toute information complémentaire.</p>
+            <p class="footer-text">{{ __('Slogan') }} {{__('Contact_Invitation')}}</p>
             <div class="social-links">
                 <a href="#" class="social-link" aria-label="Facebook">
                     <i class="fab fa-facebook-f"></i>

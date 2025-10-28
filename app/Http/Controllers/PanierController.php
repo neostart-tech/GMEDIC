@@ -31,19 +31,22 @@ class PanierController extends Controller
 
     if ($cartItem) {
         $item = CartFacade::update($request->id, [
-            'quantity' => $cartItem->quantity + 1
+            'quantity' => [
+                'relative' => true,
+                'value' => 1,
+            ],
         ]);
         $message = 'Quantité mise à jour dans le panier';
     } else {
         $item = CartFacade::add([
-            'id' => $request->id,
+            'id' => $article->id,
             'name' => $article->name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
+            'price' => $article->price ?? $request->price,
+            'quantity' => $request->quantity ?? 1,
             'attributes' => [
                 'image' => $article->article_image,
-                 'category'=>$request->category,
-                 "description"=>$request->description,
+                'category' => $request->category,
+                'description' => $request->description,
             ],
         ]);
         $message = 'Produit ajouté au panier';
@@ -56,11 +59,10 @@ class PanierController extends Controller
     ], 201);
 }
 
-
-public function CartgetContent(){
-    return response()->json(CartFacade::getContent());
-}
-
+    public function CartgetContent()
+    {
+        return response()->json(CartFacade::getContent());
+    }
 
     public function update(Request $request, $rowId)
     {
