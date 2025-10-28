@@ -1942,7 +1942,7 @@
                 // Gérer les URLs d'images
                 let imageUrl = itemImage;
                 if (itemImage && !itemImage.startsWith('http') && !itemImage.startsWith('data:')) {
-                    imageUrl = `/${itemImage}`;
+                    imageUrl = `/storage/${itemImage}`;
                 }
                 
                 return `

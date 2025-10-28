@@ -72,7 +72,7 @@ class PanierController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity ?? 1, 
-            'options' => [                  
+            'attributes' => [                  
                 'image' => $article->article_image,
                 'category' => $request->category,
                 'description' => $request->description,
