@@ -1550,8 +1550,9 @@
             
             const cartData = await response.json();
             console.log('Données brutes du panier:', cartData);
-            
+             Swal.close()
             return cartData;
+           
         } catch (error) {
             console.error('Erreur:', error);
             throw error;
