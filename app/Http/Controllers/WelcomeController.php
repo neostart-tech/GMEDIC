@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Categorie;
 use App\Models\Slider;
+use Darryldecode\Cart\Facades\CartFacade;
 use Illuminate\View\View;
 
 class WelcomeController extends Controller
@@ -12,7 +13,6 @@ class WelcomeController extends Controller
     public function __invoke(): View
     {
         $locale = app()->getLocale();
-
 
         $articles = Article::query()
             ->where('published', true)
@@ -49,11 +49,19 @@ class WelcomeController extends Controller
 
     public function showArticles()
     {
-        return view('client.index');
+        $cartItems = CartFacade::getContent();
+        $nbrArticle = CartFacade::getContent()->count();
+        $totalArticle = CartFacade::getTotal();
+
+
+        // dd($totalArticle);
+        return view('client.index', compact('cartItems', 'nbrArticle',"totalArticle"));
     }
 
+    public function showPanier()
+    {
+        $cartItems = CartFacade::getContent();
 
-    public function showPanier(){
-        return view("client.Ecommerce.panier");
+        return view('client.Ecommerce.panier',compact("cartItems"));
     }
 }

@@ -7,6 +7,8 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+
 
 
 <!-- bootstrap core css -->
@@ -32,6 +34,7 @@
 <link href="{{ asset('assets/client/css/style.css') }}" rel="stylesheet" />
 <!-- responsive style -->
 <link href="{{ asset('assets/client/css/responsive.css') }}" rel="stylesheet" />
+
 
 <style>
 	.active-link {

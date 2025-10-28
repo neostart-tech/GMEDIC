@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use  App\Models\Article;
+
+use App\Models\Article;
 use Darryldecode\Cart\Facades\CartFacade;
+use Illuminate\Http\Request;
 
 // use Darryldecode\Cart\Cart;
 
 class PanierController extends Controller
 {
-  public function index()
+    public function index()
     {
         return response()->json([
             'items' => CartFacade::content(),
@@ -18,33 +19,48 @@ class PanierController extends Controller
         ]);
     }
 
-    public function add(Request $request)
-    {
-        $article=Article::find($request->id);
+  public function add(Request $request)
+{
+    $article = Article::find($request->id);
 
-        $request->validate([
-            'id' => 'required',
-            'name' => 'required',
-            'price' => 'required|numeric',
-            'qty' => 'required|integer|min:1',
+    if (! $article) {
+        return response()->json(['message' => 'Article introuvable'], 404);
+    }
+
+    $cartItem = CartFacade::get($request->id);
+
+    if ($cartItem) {
+        $item = CartFacade::update($request->id, [
+            'quantity' => $cartItem->quantity + 1
         ]);
-
+        $message = 'Quantité mise à jour dans le panier';
+    } else {
         $item = CartFacade::add([
             'id' => $request->id,
-            'name' => $request->name,
-            'qty' => $request->qty,
+            'name' => $article->name,
             'price' => $request->price,
-            'options' => [
-                "image"=>$article->article_image,
+            'quantity' => $request->quantity,
+            'attributes' => [
+                'image' => $article->article_image,
+                 'category'=>$request->category,
+                 "description"=>$request->description,
             ],
         ]);
-
-        return response()->json([
-            'message' => 'Produit ajouté au panier',
-            'item' => $item,
-            'cart' => CartFacade::content(),
-        ], 201);
+        $message = 'Produit ajouté au panier';
     }
+
+    return response()->json([
+        'message' => $message,
+        'item' => $item,
+        'cart' => CartFacade::getContent(),
+    ], 201);
+}
+
+
+public function CartgetContent(){
+    return response()->json(CartFacade::getContent());
+}
+
 
     public function update(Request $request, $rowId)
     {

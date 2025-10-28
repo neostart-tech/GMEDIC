@@ -1362,11 +1362,11 @@
         <div class="cart-header">
             <div class="cart-header-icon" onclick="toggleCart()">
                 <i class="fas fa-shopping-cart"></i>
-                <div class="cart-header-count" id="cartHeaderCount">0</div>
+                <div class="cart-header-count" id="cartHeaderCount">{{$nbrArticle}}</div>
             </div>
             <div class="cart-header-info">
-                <div class="cart-header-total" id="cartHeaderTotal">0,00 €</div>
-                <div class="cart-header-items" id="cartHeaderItems">0 article(s)</div>
+                <div class="cart-header-total" id="cartHeaderTotal">{{ $totalArticle }} fcfa</div>
+                <div class="cart-header-items" id="cartHeaderItems">{{ $nbrArticle }} {{$nbrArticle <= 1 ? "article" : 'articles'}}</div>
             </div>
         </div>
     </div>
@@ -1469,11 +1469,36 @@
                     <span id="maxPriceDisplay">50 000 €</span>
                 </div>
                 <div class="range-slider-container">
-                    <input type="range" min="0" max="900000" value="900000" class="range-slider" id="priceRange">
+                    <input type="range" min="0" max="50000" value="50000" class="range-slider" id="priceRange">
                 </div>
             </div>
         </div>
 
+        <!-- Disponibilité - Dropdown -->
+        <div class="filter-section">
+            <div class="filter-dropdown">
+                <button class="filter-dropdown-toggle" onclick="toggleFilterDropdown('availability')">
+                    <span>
+                        <i class="fas fa-box"></i>
+                        Disponibilité
+                        <span class="selected-count" id="availabilityCount">(0)</span>
+                    </span>
+                    <i class="fas fa-chevron-down" id="availabilityChevron"></i>
+                </button>
+                <div class="filter-dropdown-content" id="availabilityDropdown">
+                    <div class="filter-dropdown-options">
+                        <label class="filter-dropdown-option">
+                            <input type="checkbox" name="availability" value="in-stock">
+                            <span>En stock</span>
+                        </label>
+                        <label class="filter-dropdown-option">
+                            <input type="checkbox" name="availability" value="preorder">
+                            <span>Pré-commande</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Actions -->
         <div class="filter-actions">
@@ -1569,7 +1594,7 @@
         search: '',
         categories: [],
         subcategories: [],
-        maxPrice: 900000,
+        maxPrice: 50000,
         availability: []
     };
 
@@ -1866,7 +1891,7 @@
                     <div class="product-meta">
                         <div class="product-price">
                             ${product.price.toLocaleString()} €
-                            ${product.oldPrice ? `<span class="price-old">${product.oldPrice.toLocaleString()} €</span>` : ''}
+                            ${product.oldPrice ? `<span class="price-old">${product.oldPrice.toLocaleString()} fcfa</span>` : ''}
                         </div>
                         <div class="product-stock ${product.stock === 'preorder' ? 'low' : ''}">
                             ${product.stock === 'in-stock' ? 'En stock' : 'Pré-commande'}
@@ -2033,37 +2058,68 @@
     }
 
     // Mettre à jour le panier dans le header
+   const cartitems = @json($cartItems);
+
     function updateCartHeader() {
-        const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-        const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        
+        const totalItems = Object.values(cartitems).reduce((sum, item) => sum + item.quantity, 0);
+        const totalAmount = Object.values(cartitems).reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
         document.getElementById('cartHeaderCount').textContent = totalItems;
-        document.getElementById('cartHeaderTotal').textContent = totalAmount.toLocaleString('fr-FR', {minimumFractionDigits: 2}) + ' €';
+        document.getElementById('cartHeaderTotal').textContent = totalAmount.toLocaleString('fr-FR', {minimumFractionDigits: 2}) + ' fcfa';
         document.getElementById('cartHeaderItems').textContent = totalItems + ' article(s)';
     }
 
-    // Ajouter au panier
-    function addToCart(productId) {
-        const product = productsData.find(p => p.id === productId);
-        if (!product) return;
+    updateCartHeader();
 
-        const existingItem = cartItems.find(item => item.id === productId);
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cartItems.push({
-                ...product,
+    // Ajouter au panier
+async function addToCart(productId) {
+    const product = productsData.find(p => p.id === productId);
+    if (!product) return;
+    console.log(product)
+
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    try {
+        const response = await fetch('/cart/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify({
+                id: product.id,
+                name: product.title,
+                price: product.price,
+                category:product.category_name,
+                description:product.description,
                 quantity: 1
-            });
+            })
+        });
+
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+            const text = await response.text();
+            throw new Error("Réponse non JSON : " + text);
         }
 
-        updateCartHeader();
-        showCartNotification('Produit ajouté au panier !');
+        const result = await response.json();
+                    updateCartHeader();
+
+        updateCartHeader(result.cart);
+
+        showCartNotification(result.message || 'Produit ajouté au panier !');
+        
+
+    } catch (error) {
+        console.error('Erreur addToCart:', error);
+        showCartNotification('Erreur : impossible d’ajouter le produit au panier.');
     }
+}
+
 
     // Toggle panier
     function toggleCart() {
-        if (cartItems.length === 0) {
+        if (cartitems.length === 0) {
             showCartNotification('Votre panier est vide');
         } else {
             window.location.href='/panier';
@@ -2204,7 +2260,7 @@
             });
         });
         
-        if (currentFilters.maxPrice < 900000) {
+        if (currentFilters.maxPrice < 50000) {
             activeFilters.push({
                 type: 'price',
                 label: `Prix max: ${currentFilters.maxPrice.toLocaleString()} €`,
