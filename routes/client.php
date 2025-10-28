@@ -14,6 +14,7 @@ Route::name('client.')->group(function () {
         Route::get('a-propos', 'showAbout')->name('a-propos');
         Route::get('/', 'showArticles')->name('show-article');
         Route::get('/panier', 'showPanier')->name('show-panier');
+        Route::get('/carte-de-visite','CarteVisite1')->name('carte-de-visite');
     });
 
     Route::controller(BlogController::class)->prefix('blogs')->name('blogs.')->group(function () {

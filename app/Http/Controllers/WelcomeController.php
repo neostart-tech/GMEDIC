@@ -47,6 +47,10 @@ class WelcomeController extends Controller
         return view('client.apropos', compact('articles'));
     }
 
+    public function CarteVisite1(){
+        return view("client.carte-de-visite-1");
+    }
+
     public function showArticles()
     {
         $cartItems = CartFacade::getContent();
