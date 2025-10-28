@@ -64,7 +64,7 @@ class WelcomeController extends Controller
 
     public function showPanier()
     {
-        $cartItems = CartFacade::getContent();
+        $cartItems = CartFacade::getContent()->toJson();
 
         return view('client.Ecommerce.panier',compact("cartItems"));
     }

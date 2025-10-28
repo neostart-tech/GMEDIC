@@ -19,7 +19,36 @@ class PanierController extends Controller
         ]);
     }
 
-  public function add(Request $request)
+    // public function add(Request $request)
+    // {
+    //     $article = Article::find($request->id);
+
+    //     if (! $article) {
+    //         return response()->json(['message' => 'Article introuvable'], 404);
+    //     }
+
+    //     $cartItem = CartFacade::get($request->id);
+
+    //     $item = CartFacade::add([
+    //         'id' => $request->id,
+    //         'name' => $request->name,
+    //         'price' => $request->price,
+    //         'quantity' => $request->quantity,
+    //         'attributes' => [
+    //             'image' => $article->article_image,
+    //             'category' => $request->category,
+    //             'description' => $request->description,
+    //         ],
+    //     ]);
+    //     $message = 'Produit ajouté au panier';
+
+    //     return response()->json([
+    //         'message' => $message,
+    //         'item' => $item,
+    //         'cart' => CartFacade::getContent(),
+    //     ], 201);
+    // }
+    public function add(Request $request)
 {
     $article = Article::find($request->id);
 
@@ -40,10 +69,10 @@ class PanierController extends Controller
     } else {
         $item = CartFacade::add([
             'id' => $article->id,
-            'name' => $article->name,
-            'price' => $article->price ?? $request->price,
-            'quantity' => $request->quantity ?? 1,
-            'attributes' => [
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity ?? 1, 
+            'options' => [                  
                 'image' => $article->article_image,
                 'category' => $request->category,
                 'description' => $request->description,
@@ -59,9 +88,14 @@ class PanierController extends Controller
     ], 201);
 }
 
-    public function CartgetContent()
+
+    public function get()
     {
-        return response()->json(CartFacade::getContent());
+        $items=CartFacade::getContent();
+
+        
+
+        return response()->json($items);
     }
 
     public function update(Request $request, $rowId)

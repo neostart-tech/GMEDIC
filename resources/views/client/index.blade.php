@@ -1469,8 +1469,8 @@
                 </h3>
                 <div class="price-range-container">
                     <div class="price-display">
-                        <span id="minPriceDisplay">0 €</span>
-                        <span id="maxPriceDisplay">50 000 €</span>
+                        <span id="minPriceDisplay">0 cfa</span>
+                        <span id="maxPriceDisplay">9999999 cfa</span>
                     </div>
                     <div class="range-slider-container">
                         <input type="range" min="0" max="50000" value="50000" class="range-slider"
@@ -1552,7 +1552,6 @@
                 <div class="pagination" id="pagination">
                     <!-- La pagination sera générée dynamiquement -->
                 </div>
-                <div class="pagination-info" id="paginationInfo"></div>
             </div>
 
             <!-- État vide amélioré -->
@@ -1640,8 +1639,8 @@
 
                 // Générer un prix aléatoire pour la démonstration
                 // const price = Math.floor(Math.random() * 40000) + 1000;
-                const  oldPrice=article.price ? article.price : "";
-                const price =article.reduceprice ? article.reduceprice : "";
+                const oldPrice = article.price ? article.price : "";
+                const price = article.reduceprice ? article.reduceprice : "";
 
                 return {
                     id: article.id,
@@ -1656,7 +1655,7 @@
                     image: article.article_image ? `/storage/${article.article_image}` :
                         '/assets/images/placeholder-medical.jpg',
                     stock: article.published ? 'in-stock' : 'preorder',
-                    badge: Math.random() > 0.7 ? (Math.random() > 0.5 ? 'promo' : 'new') : null,
+                    badge: article.price ? 'promo' : 'new',
                     featured: Math.random() > 0.8,
                     published: article.published
                 };
@@ -1882,16 +1881,20 @@
 
             grid.innerHTML = productsToShow.map(product => `
             <div class="product-card">
-                ${product.badge ? `<div class="product-badge ${product.badge}">${product.badge === 'promo' ? 'Promo' : 'Nouveau'}</div>` : ''}
+                ${product.price ? `<div class="product-badge ${product.badge}">${product.price  ? '-' +(product.price*100)/product.oldPrice +'%' : 'Nouveau'}</div>` : ''}
                 <div class="product-image-container">
                     <img src="${product.image}" alt="${product.title}" class="product-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3ZjhjOGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLigI3imYLigI08L3RleHQ+PC9zdmc+'">
                     <div class="product-overlay">
                         <div class="product-action" onclick="openProductModal(${product.id})">
                             <i class="fas fa-eye"></i>
                         </div>
-                        <div class="product-action" onclick="addToCart(${product.id})">
-                            <i class="fas fa-cart-plus"></i>
-                        </div>
+                      ${product.price || product.oldPrice  ? `  <div class="product-action" onclick="addToCart(${product.id})">
+                                <i class="fas fa-cart-plus"></i>
+                                
+                            </div>` : `  <div class="product-action" onclick="">
+                            <i class="fas fa-envelope"></i>
+                                
+                            </div>`}
                     </div>
                 </div>
                 <div class="product-content">
@@ -1901,25 +1904,23 @@
                     <p class="product-description">${product.description}</p>
                     <div class="product-meta">
                         <div class="product-price">
-                            ${product.price.toLocaleString()} 
-                            ${product.oldPrice ? `<span class="price-old">${product.oldPrice.toLocaleString()} fcfa</span>` : ''}
+                            ${product.oldPrice ? product.oldPrice.toLocaleString()+" fcfa" :''}
+                            ${product.price ? `<span class="price-old">${product.price.toLocaleString()} fcfa</span>` : ''}
                         </div>
-                        <div class="product-stock ${product.stock === 'preorder' ? 'low' : ''}">
-                            ${product.stock === 'in-stock' ? 'En stock' : 'Pré-commande'}
-                        </div>
+                       
                     </div>
 <div class="product-actions">
-    ${product.price ? `
-                <button class="btn-cart" onclick="addToCart(${product.id})">
-                    <i class="fas fa-cart-plus"></i>
-                    Ajouter au panier
-                </button>
-            ` : `
-                <button class="btn-cart" onclick="openQuoteRequest(${product.id})">
-                    <i class="fas fa-envelope"></i>
-                    Faire une demande
-                </button>
-            `}
+    ${product.price || product.oldPrice  ? `
+                        <button class="btn-cart" onclick="addToCart(${product.id})">
+                            <i class="fas fa-cart-plus"></i>
+                            Ajouter au panier
+                        </button>
+                    ` : `
+                        <button class="btn-cart" onclick="openQuoteRequest(${product.id})">
+                            <i class="fas fa-envelope"></i>
+                            Faire une demande
+                        </button>
+                    `}
 </div>
                 </div>
             </div>
@@ -1938,12 +1939,11 @@
         // Mettre à jour la pagination
         function updatePagination(totalProducts, totalPages) {
             const pagination = document.getElementById('pagination');
-            const paginationInfo = document.getElementById('paginationInfo');
+
 
             // Mettre à jour les informations de pagination
             const startProduct = ((currentPage - 1) * productsPerPage) + 1;
             const endProduct = Math.min(currentPage * productsPerPage, totalProducts);
-            paginationInfo.textContent = `Affichage de ${startProduct} à ${endProduct} sur ${totalProducts} produits`;
 
             // Générer les boutons de pagination
             let paginationHTML = '';
@@ -2110,7 +2110,7 @@
                     body: JSON.stringify({
                         id: product.id,
                         name: product.title,
-                        price: product.oldPrice ? product.oldPrice : product.price ,
+                        price: product.price ? product.price : product.oldPrice,
                         category: product.category_name,
                         description: product.description,
                         quantity: 1

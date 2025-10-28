@@ -37,7 +37,10 @@ Route::name('client.')->group(function () {
 });
 Route::controller(PanierController::class)->prefix('cart')->group(function () {
     Route::get('/', 'index');
+        Route::get('/getPanier', 'get');
+
     Route::post('/add', 'add');
+
     Route::put('/update/{rowId}', 'update');
     Route::delete('/remove/{rowId}', 'remove');
     Route::delete('/clear', 'clear');
