@@ -86,6 +86,9 @@ class ArticleController extends Controller
         'sub_categorie_id'=>$request->get('sub_categorie_id'),
         'article_desc' => $descTranslations,        
         'article_image' => $filePath,
+        'price'=>$request->input('price',null),
+        'reduceprice'=>$request->input('reduceprice',null),
+
     ]);
 
 
@@ -149,6 +152,8 @@ class ArticleController extends Controller
         'sub_categorie_id'=>$request->get('sub_categorie_id'),
         'article_desc' => $descTranslations,
         'article_image' => $filePath,
+        'price'=>$request->input('price',null),
+        'reduceprice'=>$request->input('reduceprice',null),
     ]);
 
     return to_route('admin.articles.index')->with('success', 'Article mis à jour et traduit avec succès !');

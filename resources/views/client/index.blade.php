@@ -1636,14 +1636,12 @@
                 // Utiliser les données multilingues si disponibles
                 const articleName = article.article_name?.fr || article.article_name || 'Nom non disponible';
                 const articleDesc = article.article_desc?.fr || article.article_desc ||
-                'Description non disponible';
+                    'Description non disponible';
 
                 // Générer un prix aléatoire pour la démonstration
                 // const price = Math.floor(Math.random() * 40000) + 1000;
-                const price = "";
-
-                const hasOldPrice = Math.random() > 0.7;
-                const oldPrice = hasOldPrice ? Math.floor(price * 1.2) : null;
+                const  oldPrice=article.price ? article.price : "";
+                const price =article.reduceprice ? article.reduceprice : "";
 
                 return {
                     id: article.id,
@@ -1912,16 +1910,16 @@
                     </div>
 <div class="product-actions">
     ${product.price ? `
-            <button class="btn-cart" onclick="addToCart(${product.id})">
-                <i class="fas fa-cart-plus"></i>
-                Ajouter au panier
-            </button>
-        ` : `
-            <button class="btn-cart" onclick="openQuoteRequest(${product.id})">
-                <i class="fas fa-envelope"></i>
-                Faire une demande
-            </button>
-        `}
+                <button class="btn-cart" onclick="addToCart(${product.id})">
+                    <i class="fas fa-cart-plus"></i>
+                    Ajouter au panier
+                </button>
+            ` : `
+                <button class="btn-cart" onclick="openQuoteRequest(${product.id})">
+                    <i class="fas fa-envelope"></i>
+                    Faire une demande
+                </button>
+            `}
 </div>
                 </div>
             </div>
@@ -2112,7 +2110,7 @@
                     body: JSON.stringify({
                         id: product.id,
                         name: product.title,
-                        price: product.price,
+                        price: product.oldPrice ? product.oldPrice : product.price ,
                         category: product.category_name,
                         description: product.description,
                         quantity: 1

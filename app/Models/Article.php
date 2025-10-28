@@ -20,7 +20,9 @@ class Article extends Model
         'article_image',
         'published',
         'categorie_id',
-        'sub_categorie_id'
+        'sub_categorie_id',
+        'price',
+        'reduceprice',
 
     ];
 

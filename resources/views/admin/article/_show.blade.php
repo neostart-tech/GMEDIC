@@ -17,6 +17,18 @@
 				</div>
 				<div class="row">
 					<div class="form-group col-12">
+						<label for="price" class="form-label">Prix</label>
+						<input type="text" id="price" class="form-control" readonly>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-12">
+						<label for="reduceprice" class="form-label">Prix promo</label>
+						<input type="text" id="reduceprice" class="form-control" readonly>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-12">
 						<label for="category" class="form-label">Categorie</label>
 						<input type="text" id="category" class="form-control" readonly>
 					</div>

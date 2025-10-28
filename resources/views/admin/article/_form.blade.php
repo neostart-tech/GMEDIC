@@ -23,6 +23,24 @@
 					value="{{ old('article_name', $article->getTranslation('article_name',app()->getLocale()) ?? '') }}">
 			</div>
 		</div>
+        <div class="col-md-6 mb-3">
+			<div class="form-group">
+				<label class="form-label" for="price">Prix de l'article <span
+						class="form-text text-danger">*</span></label>
+				<input type="number" min="0" class="form-control" id="price" placeholder="Entrer le prix de l'article"
+					name="price"
+					value="{{ old('price', $article->price ?? '') }}">
+			</div>
+		</div>
+        <div class="col-md-6 mb-3">
+			<div class="form-group">
+				<label class="form-label" for="article_name">Prix promo  <span
+						class="form-text text-danger">*</span></label>
+				<input type="number" min="0" class="form-control" id="reduceprice" placeholder="Entrer le prix de promotion"
+					name="reduceprice"
+					value="{{ old('reduceprice',$article->reduceprice ?? '') }}">
+			</div>
+		</div>
 
 		<div class="col-md-6 mb-3">
 			<div class="form-group">

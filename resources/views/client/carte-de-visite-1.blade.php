@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte de Visite - GMEDIC</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #009D92;
@@ -115,12 +115,14 @@
             display: flex;
             align-items: center;
             gap: 25px;
+            flex: 1;
+            min-width: 300px;
         }
 
         .logo-wrapper {
             width: 140px;
             height: 90px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgb(255, 255, 255);
             backdrop-filter: blur(15px);
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.25);
@@ -131,6 +133,7 @@
             box-shadow: var(--shadow-soft);
             overflow: hidden;
             padding: 15px;
+            flex-shrink: 0;
         }
 
         .logo-wrapper:hover {
@@ -143,23 +146,25 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            /* filter: brightness(0) invert(1); */
+            width: 100%;
+            height: auto;
         }
 
         .company-info {
             flex: 1;
+            min-width: 200px;
         }
 
         .company-name {
             font-size: 2.4rem;
             font-weight: 700;
             margin-bottom: 8px;
-            font-family: 'Playfair Display', serif;
             letter-spacing: -0.5px;
             background: linear-gradient(135deg, #ffffff 0%, #f0f9f8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1.2;
         }
 
         .company-tagline {
@@ -168,25 +173,7 @@
             font-weight: 300;
             max-width: 450px;
             letter-spacing: 0.3px;
-        }
-
-        .header-badge {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            padding: 14px 24px;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: var(--transition);
-        }
-
-        .header-badge:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
+            line-height: 1.4;
         }
 
         .card-body {
@@ -287,7 +274,6 @@
             font-weight: 700;
             color: var(--secondary);
             margin-bottom: 10px;
-            font-family: 'Playfair Display', serif;
             position: relative;
         }
 
@@ -316,35 +302,6 @@
             overflow: hidden;
             border: 1px solid rgba(0, 157, 146, 0.1);
             box-shadow: var(--shadow-soft);
-        }
-
-        .expertise {
-            margin-top: 25px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            max-width: 300px;
-        }
-
-        .expertise-tag {
-            background: var(--light);
-            color: var(--text);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-
-        .expertise-tag:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary);
         }
 
         .contact-section {
@@ -376,15 +333,17 @@
             padding-bottom: 15px;
             border-bottom: 2px solid var(--primary);
             display: inline-block;
-            font-family: 'Playfair Display', serif;
             position: relative;
+            width: 100%;
+            text-align: center;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
             bottom: -2px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60px;
             height: 2px;
             background: var(--gold);
@@ -453,16 +412,17 @@
 
         .contact-details {
             flex: 1;
+            width: 100%;
         }
 
         .contact-label {
-            font-size: 0.92rem;
+            font-size: 0.8rem;
             color: var(--text-light);
             margin-bottom: 8px;
             font-weight: 500;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            text-align: left;
         }
 
         .contact-value {
@@ -470,6 +430,8 @@
             color: var(--text);
             font-weight: 600;
             line-height: 1.5;
+            text-align: left;
+            width: 100%;
         }
 
         .contact-value a {
@@ -478,6 +440,9 @@
             transition: var(--transition);
             position: relative;
             padding-bottom: 2px;
+            display: inline-block;
+            margin-right: 15px;
+            word-break: break-all;
         }
 
         .contact-value a::after {
@@ -497,6 +462,52 @@
 
         .contact-value a:hover::after {
             width: 100%;
+        }
+
+        .phone-numbers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .phone-number-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .phone-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .phone-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 157, 146, 0.2);
+        }
+
+        .phone-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .phone-btn.whatsapp:hover {
+            background: #25D366;
+            color: white;
+            border-color: #25D366;
         }
 
         .card-footer {
@@ -577,29 +588,6 @@
             font-size: 1.1rem;
         }
 
-        .qr-code {
-            margin-top: 25px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .qr-container {
-            background: white;
-            padding: 12px;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .qr-container:hover {
-            transform: scale(1.05);
-        }
-
-        .qr-code img {
-            width: 90px;
-            height: 90px;
-        }
-
         /* Animation d'entrée sophistiquée */
         @keyframes fadeInUp {
             from {
@@ -616,7 +604,7 @@
             animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
-        /* Responsive Design Avancé */
+        /* Responsive Design Amélioré */
         @media (max-width: 1024px) {
             .business-card {
                 max-width: 95%;
@@ -644,15 +632,17 @@
             .header-content {
                 flex-direction: column;
                 text-align: center;
+                gap: 25px;
+            }
+            
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
                 gap: 20px;
             }
             
             .company-info {
                 text-align: center;
-            }
-            
-            .logo-container {
-                justify-content: center;
             }
         }
 
@@ -685,11 +675,9 @@
             
             .logo-wrapper {
                 width: 120px;
-                height: 80px;
+                height: 90px;
             }
-        }
-
-        @media (max-width: 640px) {
+            
             .contact-item {
                 flex-direction: column;
                 text-align: center;
@@ -705,6 +693,17 @@
                 font-size: 1.4rem;
             }
             
+            .contact-label,
+            .contact-value {
+                text-align: center;
+            }
+            
+            .phone-actions {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 640px) {
             .card-footer {
                 padding: 25px 30px;
             }
@@ -718,6 +717,17 @@
                 height: 42px;
                 border-radius: 12px;
             }
+            
+            .contact-value a {
+                margin-right: 10px;
+                margin-bottom: 5px;
+                display: block;
+                text-align: center;
+            }
+            
+            .phone-numbers {
+                align-items: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -726,11 +736,11 @@
             }
             
             .card-header {
-                padding: 30px 25px 20px;
+                padding: 30px 20px 20px;
             }
             
             .identity-section, .contact-section {
-                padding: 30px 25px;
+                padding: 30px 20px;
             }
             
             .identity-badge {
@@ -748,7 +758,7 @@
             
             .logo-wrapper {
                 width: 100px;
-                height: 70px;
+                height: 90px;
             }
             
             .profile-name {
@@ -764,23 +774,35 @@
                 font-size: 1rem;
             }
             
-            .expertise {
-                gap: 8px;
+            .section-title {
+                font-size: 1.3rem;
             }
             
-            .expertise-tag {
-                padding: 6px 12px;
-                font-size: 0.8rem;
+            .phone-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                width: 100%;
+            }
+            
+            .phone-btn {
+                width: 100%;
+                max-width: 200px;
+                justify-content: center;
+            }
+            
+            .company-tagline {
+                font-size: 1rem;
             }
         }
 
         @media (max-width: 380px) {
             .card-header {
-                padding: 25px 20px 15px;
+                padding: 25px 15px 15px;
             }
             
             .identity-section, .contact-section {
-                padding: 25px 20px;
+                padding: 25px 15px;
             }
             
             .logo-wrapper {
@@ -792,9 +814,13 @@
                 font-size: 1.6rem;
             }
             
-            .header-badge {
-                padding: 10px 18px;
-                font-size: 0.85rem;
+            .contact-item {
+                padding: 15px 10px;
+            }
+            
+            .phone-btn {
+                padding: 10px 16px;
+                font-size: 0.9rem;
             }
         }
 
@@ -829,7 +855,6 @@
                         <p class="company-tagline">Excellence Médicale & Innovation Technologique</p>
                     </div>
                 </div>
-               
             </div>
         </div>
         
@@ -840,8 +865,6 @@
                 </div>
                 <h2 class="profile-name">Dr EHLAN K. Efadzi</h2>
                 <div class="profile-title">CEO & Fondateur</div>
-                
-              
             </div>
             
             <div class="contact-section">
@@ -864,8 +887,34 @@
                         <div class="contact-details">
                             <div class="contact-label">Téléphone</div>
                             <div class="contact-value">
-                                <a href="tel:+22891736042">(+228) 91 73 60 42</a><br>
-                                <a href="tel:+22870658816">(+228) 70 65 88 16</a>
+                                <div class="phone-numbers">
+                                    <div class="phone-number-item">
+                                        <a href="tel:+22891736042">(+228) 91 73 60 42</a>
+                                        <div class="phone-actions">
+                                            <a href="https://wa.me/22891736042" class="phone-btn whatsapp" target="_blank">
+                                                <i class="fab fa-whatsapp"></i>
+                                                WhatsApp
+                                            </a>
+                                            <a href="tel:+22891736042" class="phone-btn">
+                                                <i class="fas fa-phone"></i>
+                                                Appeler
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="phone-number-item">
+                                        <a href="tel:+22870658816">(+228) 70 65 88 16</a>
+                                        <div class="phone-actions">
+                                            <a href="https://wa.me/22870658816" class="phone-btn whatsapp" target="_blank">
+                                                <i class="fab fa-whatsapp"></i>
+                                                WhatsApp
+                                            </a>
+                                            <a href="tel:+22870658816" class="phone-btn">
+                                                <i class="fas fa-phone"></i>
+                                                Appeler
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -877,7 +926,7 @@
                         <div class="contact-details">
                             <div class="contact-label">Email</div>
                             <div class="contact-value">
-                                <a href="mailto:ehlanefa@gmail.com">ehlanefa@gmail.com</a><br>
+                                <a href="mailto:ehlanefa@gmail.com">ehlanefa@gmail.com</a>
                                 <a href="mailto:contact@gmedic.tg">contact@gmedic.tg</a>
                             </div>
                         </div>
@@ -940,18 +989,6 @@
                 
                 link.addEventListener('mouseleave', function() {
                     this.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-            
-            // Animation des tags d'expertise
-            const expertiseTags = document.querySelectorAll('.expertise-tag');
-            expertiseTags.forEach(tag => {
-                tag.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-4px)';
-                });
-                
-                tag.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
                 });
             });
             

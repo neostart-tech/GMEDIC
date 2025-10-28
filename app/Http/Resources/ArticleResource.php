@@ -21,6 +21,8 @@ class ArticleResource extends JsonResource
             'article_desc' => $this->article_desc,
             'article_image' => $this->article_image,
             'article_name' => $this->article_name,
+            'price'=>$this->price,
+            'reduceprice'=>$this->reduceprice,
             'published' => $this->published,
             'slug' => $this->slug,
             'categorie_id' => $this->categorie_id,

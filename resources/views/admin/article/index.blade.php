@@ -160,9 +160,17 @@
 				const categorie=article.category.category_name && article.category.category_name[lang]
 		? article.category.category_name[lang]  :(article.category.category_name['fr'] || '')
 
+		const price=article.price
+		? article.price  :  ''
+
+		const reduceprice=article.reduceprice
+		? article.reduceprice  : ''
+
     document.getElementById('nom').value = name;
     document.getElementById('category').value = categorie;
-	    document.getElementById('category').value = souscategory;
+	    document.getElementById('souscategory').value = souscategory;
+	    document.getElementById('price').value = price;
+	    document.getElementById('reduceprice').value = reduceprice;
 
 	
     document.getElementById('desc').innerHTML = desc;
