@@ -647,22 +647,7 @@
         </div>
         <h1 class="article-hero-title">{{ $blog->blog_title }}</h1>
         
-        <div class="article-hero-meta">
-            <div class="article-meta-item">
-                <i class="far fa-calendar"></i>
-                {{ $blog->created_at->translatedFormat('d F Y') }}
-            </div>
-            <div class="article-meta-item">
-                <i class="far fa-clock"></i>
-                {{ ceil(str_word_count(strip_tags($blog->blog_content)) / 200) }} {{__('min de lecture')}}
-            </div>
-            @if($blog->created_at->diffInDays(now()) <= 7)
-            <div class="article-meta-item">
-                <i class="fas fa-star"></i>
-               {{__('Nouveau')}}
-            </div>
-            @endif
-        </div>
+
 
         <div class="article-hero-actions">
             <a href="{{ route('client.blogs.index') }}" class="article-back-btn">
@@ -704,7 +689,7 @@
                     </div>
                     
                     <div class="article-body">
-                        {!! $blog->blog_content !!}
+                        {!! $blog->blog_description !!}
                     </div>
                 </div>
             </div>

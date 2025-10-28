@@ -1507,7 +1507,7 @@
 
 <script>
     // Données d'exemple du panier avec 12 articles médicaux
-    const sampleCartItems =@json('cartItems')
+    const sampleCartItems =@json($cartItems)
 
     let cartItems = [];
     let promoCodeApplied = false;
