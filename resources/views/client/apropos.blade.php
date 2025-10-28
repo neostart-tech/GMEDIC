@@ -1264,7 +1264,7 @@
                     {{__('Notre Histoire')}}
                 </div>
                 <h2 class="history-title">
-                    {{__('À Propos de')}} <span>{{ env('APP_NAME') }}</span>
+                    {{__('À propos de')}} <span>{{ env('APP_NAME') }}</span>
                 </h2>
                 <p class="history-description">
                     {{__('NotreHistoire')}}
@@ -1276,7 +1276,7 @@
                             <i class="fas fa-bullseye"></i>
                         </div>
                         <div class="feature-content">
-                            <h4>{{__('Notre Mission')}}</h4>
+                            <h4>{{__('notre_mission')}}</h4>
                             <p>{{__('NotreMission')}}</p>
                         </div>
                     </div>
@@ -1286,7 +1286,7 @@
                             <i class="fas fa-eye"></i>
                         </div>
                         <div class="feature-content">
-                            <h4>{{__('Notre Vision')}}</h4>
+                            <h4>{{__('notre_vision')}}</h4>
                             <p>{{__('NotreVision')}}</p>
                         </div>
                     </div>
@@ -1296,7 +1296,7 @@
                             <i class="fas fa-hand-holding-heart"></i>
                         </div>
                         <div class="feature-content">
-                            <h4>{{__('Nos Valeurs')}}</h4>
+                            <h4>{{__('nos_valeurs')}}</h4>
                             <p>{{__('NosValeurs')}}</p>
                         </div>
                     </div>
@@ -1321,7 +1321,7 @@
 <section class="mission-section-premium" >
     <div class="section-header-premium">
         <div class="section-subtitle-premium">{{__('Notre Engagement')}}</div>
-        <h2 class="section-title-premium">{{__('Qualité & Expertise')}}</h2>
+        <h2 class="section-title-premium">{{__('Qualite_Expertise')}}</h2>
         <p class="section-description">
             {{__('QualiteExpertise')}}
         </p>
@@ -1333,7 +1333,7 @@
             <div class="mission-icon-premium">
                 <i class="fas fa-stethoscope"></i>
             </div>
-            <h3 class="mission-title-premium">{{__('Expertise Médicale')}}</h3>
+            <h3 class="mission-title-premium" style="text-transform: uppercase">{{__('Domaines_dExpertise')}}</h3>
             <p class="mission-description-premium">
                 {{__('MedicalExpertise')}}
             </p>
@@ -1367,8 +1367,8 @@
 <!-- Section Expertise Médicale -->
 <section class="expertise-section">
     <div class="section-header-premium">
-        <div class="section-subtitle-premium">{{__('Domaines d\'Expertise')}}</div>
-        <h2 class="section-title-premium">{{__('Spécialisations Médicales')}}</h2>
+        <div class="section-subtitle-premium">{{__('Domaines_dExpertise')}}</div>
+        <h2 class="section-title-premium">{{__('Specialisations_Medicales')}}</h2>
         <p class="section-description">
             {{__('DomainesExpertise')}}
         </p>
@@ -1382,7 +1382,7 @@
                 <div class="expertise-icon">
                     <i class="fas fa-microscope"></i>
                 </div>
-                <h3 class="expertise-title">{{__('Diagnostic Médical')}}</h3>
+                <h3 class="expertise-title">{{__('Diagnostic_Medical')}}</h3>
                 <p class="expertise-description">
                     {{__('DiagnosticMedical')}}
                 </p>
@@ -1393,7 +1393,7 @@
                 <div class="expertise-icon">
                     <i class="fas fa-hospital-user"></i>
                 </div>
-                <h3 class="expertise-title">{{__('Équipements de Soins')}}</h3>
+                <h3 class="expertise-title">{{__('Equipements_de_Soins')}}</h3>
                 <p class="expertise-description">
                     {{__('EquipementsSoins')}}
                 </p>
@@ -1404,7 +1404,7 @@
                 <div class="expertise-icon">
                     <i class="fas fa-heartbeat"></i>
                 </div>
-                <h3 class="expertise-title">{{__('Rééducation & Bien-être')}}</h3>
+                <h3 class="expertise-title">{{__('Reeducation_Bien_etre')}}</h3>
                 <p class="expertise-description">
                     {{__('ReeducationBienEtre')}}
                 </p>
@@ -1420,8 +1420,8 @@
 <!-- Section Services Additionnels -->
 <section class="services-section" style="background: #fff">
     <div class="section-header-premium">
-        <div class="section-subtitle-premium">{{__('Services Complémentaires')}}</div>
-        <h2 class="section-title-premium">{{__('Notre Accompagnement')}}</h2>
+        <div class="section-subtitle-premium">{{__('Services_Complementaires')}}</div>
+        <h2 class="section-title-premium">{{__('Notre_Accompagnement')}}</h2>
         <p class="section-description">
             {{__('ServicesComplementaires')}}
         </p>
@@ -1435,7 +1435,7 @@
                 <div class="service-icon">
                     <i class="fas fa-handshake"></i>
                 </div>
-                <h3 class="service-title">{{__('Conseil & Sélection')}}</h3>
+                <h3 class="service-title">{{__('Conseil_Selection')}}</h3>
                 <p class="service-description">
                     {{__('ConseilSelection')}}
                 </p>
@@ -1446,7 +1446,7 @@
                 <div class="service-icon">
                     <i class="fas fa-cogs"></i>
                 </div>
-                <h3 class="service-title">{{__('Installation & Configuration')}}</h3>
+                <h3 class="service-title">{{__('Installation_Configuration')}}</h3>
                 <p class="service-description">
                     {{__('InstallationConfiguration')}}
                 </p>
@@ -1457,7 +1457,7 @@
                 <div class="service-icon">
                     <i class="fas fa-tools"></i>
                 </div>
-                <h3 class="service-title">{{__('Maintenance & Support')}}</h3>
+                <h3 class="service-title">{{__('Maintenance_Support')}}</h3>
                 <p class="service-description">
                     {{__('MaintenanceSupport')}}
                 </p>
@@ -1471,8 +1471,8 @@
 <!-- Section Garanties -->
 <section class="guarantees-section">
     <div class="section-header-premium">
-        <div class="section-subtitle-premium">{{__('Nos Engagements')}}</div>
-        <h2 class="section-title-premium">{{__('Garanties & Qualité')}}</h2>
+        <div class="section-subtitle-premium">{{__('Nos_Engagements')}}</div>
+        <h2 class="section-title-premium">{{__('Garanties_Qualite')}}</h2>
         <p class="section-description">
             {{__('NosEngagements')}}
         </p>
@@ -1484,7 +1484,7 @@
                 <div class="guarantee-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
-                <h3 class="guarantee-title">{{__('Certifications CE')}}</h3>
+                <h3 class="guarantee-title">{{__('certification_ce')}}</h3>
                 <p class="guarantee-description">
                     {{__('CertificationsCE')}}
                 </p>
@@ -1494,7 +1494,7 @@
                 <div class="guarantee-icon">
                     <i class="fas fa-medkit"></i>
                 </div>
-                <h3 class="guarantee-title">{{__('Qualité Médicale')}}</h3>
+                <h3 class="guarantee-title">{{__('Qualite_Medicale')}}</h3>
                 <p class="guarantee-description">
                     {{__('QualiteMedicale')}}
                 </p>
@@ -1514,7 +1514,7 @@
                 <div class="guarantee-icon">
                     <i class="fas fa-headset"></i>
                 </div>
-                <h3 class="guarantee-title">{{__('Support 24/7')}}</h3>
+                <h3 class="guarantee-title">{{__('Support_24_7')}}</h3>
                 <p class="guarantee-description">
                     {{__('Support247')}}
                 </p>
@@ -1528,16 +1528,16 @@
     <div class="cta-container">
         <h2 class="cta-title">{{__('CallToAction')}}</h2>
         <p class="cta-description">
-            {{__('Contactez nos conseillers pour obtenir une recommandation personnalisée et découvrez nos équipements médicaux certifiés.')}}
+            {{__('DescriptionContact')}}
         </p>
         <div class="cta-actions">
             <a href="{{ route('client.contact.create') }}" class="btn-cta btn-cta-primary">
                 <i class="fas fa-headset"></i>
-                {{__('Contacter un Expert')}}
+                {{__('Contacter_un_Expert')}}
             </a>
             <a href="{{ route('client.categories.index') }}" class="btn-cta btn-cta-secondary">
                 <i class="fas fa-box-open"></i>
-                {{__('Découvrir nos Équipements')}}
+                {{__('Decouvrir_nos_Equipements')}}
             </a>
         </div>
     </div>

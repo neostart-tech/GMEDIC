@@ -781,8 +781,8 @@
         /* Hero Section Styles */
         .luxury-hero-redesign {
             position: relative;
-            min-height: 85vh;
-            height: 85vh;
+            min-height: 70vh;
+            height: 70vh;
             max-height: 100vh;
             overflow: hidden;
             background: var(--secondary-dark);
