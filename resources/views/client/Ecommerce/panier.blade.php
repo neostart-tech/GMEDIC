@@ -2706,7 +2706,13 @@
     // Charger les informations bancaires
     async function loadInfosBancaires() {
         try {
+            showLoading('Chargement des informations bancaires...');
+            
             const response = await fetch('/api/infos-bancaires');
+            if (!response.ok) {
+                throw new Error('Erreur lors du chargement des informations bancaires');
+            }
+            
             infosBancaires = await response.json();
             
             const select = document.getElementById('info_bancaire_id');
@@ -2718,8 +2724,12 @@
                 option.textContent = `${info.nom_banque} - ${info.titulaire_compte}`;
                 select.appendChild(option);
             });
+            
+            closeLoading();
         } catch (error) {
             console.error('Erreur lors du chargement des infos bancaires:', error);
+            closeLoading();
+            showError('Erreur lors du chargement des informations bancaires');
         }
     }
 
@@ -2749,7 +2759,7 @@
             
             // Vérifier le montant minimum
             const total = calculateTotal();
-            if (total < bank.montant_minimum) {
+            if (bank.montant_minimum && total < bank.montant_minimum) {
                 container.innerHTML += `
                     <div style="background: var(--warning); color: white; padding: 10px; border-radius: var(--border-radius); margin-top: 10px;">
                         <i class="fas fa-exclamation-triangle"></i>
@@ -2788,57 +2798,89 @@
 
         // Validation selon la méthode
         let isValid = true;
+        let validationMessage = '';
+        
         if (selectedPaymentMethod === 'card') {
             isValid = validateCarteForm();
+            validationMessage = 'Veuillez remplir tous les champs de la carte bancaire';
         } else if (selectedPaymentMethod === 'transfer') {
             isValid = validateVirementForm();
+            validationMessage = 'Veuillez compléter toutes les informations de virement';
         } else if (selectedPaymentMethod === 'check') {
             isValid = validateChequeForm();
+            validationMessage = 'Veuillez compléter toutes les informations du chèque';
         }
 
-        if (!isValid) return;
+        if (!isValid) {
+            showError(validationMessage);
+            return;
+        }
 
         try {
             showLoading('Traitement de votre paiement...');
 
-            const formData = new FormData();
-            formData.append('methode_paiement', selectedPaymentMethod);
-            formData.append('adresse_id', selectedAddressId);
-            formData.append('commentaires', document.getElementById('commentaires')?.value || '');
+            // Préparer les données de la commande
+            const commandeData = {
+                methode_paiement: selectedPaymentMethod,
+                adresse_id: selectedAddressId,
+                commentaires: document.getElementById('commentaires')?.value || '',
+                articles: cartItems.map(item => ({
+                    id: item.id,
+                    nom: item.name,
+                    prix: item.price,
+                    quantite: item.quantity
+                }))
+            };
 
             // Ajouter les données spécifiques selon la méthode
             if (selectedPaymentMethod === 'card') {
-                formData.append('numero_carte', document.getElementById('cardNumber').value);
-                formData.append('titulaire_carte', document.getElementById('cardHolder').value);
-                formData.append('date_expiration', document.getElementById('cardExpiry').value);
-                formData.append('cvv', document.getElementById('cardCVV').value);
+                commandeData.paiement_details = {
+                    numero_carte: document.getElementById('cardNumber').value,
+                    titulaire_carte: document.getElementById('cardHolder').value,
+                    date_expiration: document.getElementById('cardExpiry').value,
+                    cvv: document.getElementById('cardCVV').value
+                };
             } else if (selectedPaymentMethod === 'transfer') {
-                formData.append('info_bancaire_id', document.getElementById('info_bancaire_id').value);
-                formData.append('reference_virement', document.getElementById('reference_virement').value);
+                commandeData.paiement_details = {
+                    info_bancaire_id: document.getElementById('info_bancaire_id').value,
+                    reference_virement: document.getElementById('reference_virement').value
+                };
+                
+                // Gérer le fichier de preuve pour le virement
                 const preuveFile = document.getElementById('preuve_virement').files[0];
                 if (preuveFile) {
+                    const formData = new FormData();
                     formData.append('preuve_paiement', preuveFile);
+                    // Vous devrez gérer l'upload séparément ou l'envoyer avec la commande
                 }
             } else if (selectedPaymentMethod === 'check') {
-                formData.append('banque', document.getElementById('banque_cheque').value);
-                formData.append('numero_cheque', document.getElementById('numero_cheque').value);
+                commandeData.paiement_details = {
+                    banque: document.getElementById('banque_cheque').value,
+                    numero_cheque: document.getElementById('numero_cheque').value
+                };
+                
+                // Gérer le fichier de preuve pour le chèque
                 const preuveFile = document.getElementById('preuve_cheque').files[0];
                 if (preuveFile) {
+                    const formData = new FormData();
                     formData.append('preuve_paiement', preuveFile);
+                    // Vous devrez gérer l'upload séparément ou l'envoyer avec la commande
                 }
             }
 
+            // Envoyer la commande
             const response = await fetch('/commandes', {
                 method: 'POST',
                 headers: {
+                    'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 },
-                body: formData
+                body: JSON.stringify(commandeData)
             });
 
             const result = await response.json();
 
-            if (response.ok) {
+            if (response.ok && result.success) {
                 // Afficher la confirmation
                 document.getElementById('paymentSection').classList.remove('active');
                 document.getElementById('confirmationSection').classList.add('active');
@@ -2871,29 +2913,37 @@
 
     // Fonctions de validation
     function validateCarteForm() {
-        const fields = ['cardNumber', 'cardExpiry', 'cardHolder', 'cardCVV'];
-        let isValid = true;
+        const cardNumber = document.getElementById('cardNumber').value.trim();
+        const cardExpiry = document.getElementById('cardExpiry').value.trim();
+        const cardHolder = document.getElementById('cardHolder').value.trim();
+        const cardCVV = document.getElementById('cardCVV').value.trim();
 
-        fields.forEach(field => {
-            const element = document.getElementById(field);
-            if (!element.value.trim()) {
-                element.style.borderColor = 'var(--danger)';
-                isValid = false;
-            } else {
-                element.style.borderColor = 'var(--border)';
-            }
-        });
-
-        if (!isValid) {
-            showError('Veuillez remplir tous les champs de la carte');
+        if (!cardNumber || !cardExpiry || !cardHolder || !cardCVV) {
+            return false;
         }
 
-        return isValid;
+        // Validation basique du format de la carte
+        if (cardNumber.replace(/\s/g, '').length < 16) {
+            showError('Le numéro de carte doit contenir 16 chiffres');
+            return false;
+        }
+
+        if (!/^\d{2}\/\d{2}$/.test(cardExpiry)) {
+            showError('Le format de date d\'expiration doit être MM/AA');
+            return false;
+        }
+
+        if (cardCVV.length !== 3) {
+            showError('Le CVV doit contenir 3 chiffres');
+            return false;
+        }
+
+        return true;
     }
 
     function validateVirementForm() {
         const bankId = document.getElementById('info_bancaire_id').value;
-        const reference = document.getElementById('reference_virement').value;
+        const reference = document.getElementById('reference_virement').value.trim();
         const file = document.getElementById('preuve_virement').files[0];
 
         if (!bankId) {
@@ -2914,7 +2964,7 @@
         // Vérifier le montant minimum
         const bank = infosBancaires.find(b => b.id == bankId);
         const total = calculateTotal();
-        if (bank && total < bank.montant_minimum) {
+        if (bank && bank.montant_minimum && total < bank.montant_minimum) {
             showError(`Le montant minimum pour un virement est de ${bank.montant_minimum.toLocaleString('fr-FR')} FCFA`);
             return false;
         }
@@ -2923,8 +2973,8 @@
     }
 
     function validateChequeForm() {
-        const banque = document.getElementById('banque_cheque').value;
-        const numeroCheque = document.getElementById('numero_cheque').value;
+        const banque = document.getElementById('banque_cheque').value.trim();
+        const numeroCheque = document.getElementById('numero_cheque').value.trim();
         const file = document.getElementById('preuve_cheque').files[0];
 
         if (!banque) {
@@ -2959,6 +3009,10 @@
     // =============================================
 
     function calculateTotal() {
+        if (!Array.isArray(cartItems)) {
+            cartItems = [];
+        }
+        
         const subtotal = cartItems.reduce((sum, item) => sum + ((item.price || 0) * (item.quantity || 0)), 0);
         const shipping = subtotal > 0 ? (subtotal > 10000 ? 0 : 500) : 0;
         const discount = promoCodeApplied ? subtotal * discountRate : 0;
