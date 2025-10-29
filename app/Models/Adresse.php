@@ -10,13 +10,13 @@ class Adresse extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',	
-        'etablissement',	
-        'adresse',	
-        'ville',	
-        'code_postal',	
-        'telephone',	
-        'notes_livraison'	
+        'user_id',
+        'etablissement',
+        'adresse',
+        'ville',
+        'code_postal',
+        'telephone',
+        'notes_livraison',
     ];
 
     public function user()
@@ -27,5 +27,10 @@ class Adresse extends Model
     public function commandes()
     {
         return $this->hasMany(Commande::class);
+    }
+
+    public function adressePrincipale()
+    {
+        return $this->hasOne(Adresse::class)->where('is_active', true);
     }
 }

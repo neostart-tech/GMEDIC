@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthClientController extends Controller
 {
@@ -27,9 +30,11 @@ class AuthClientController extends Controller
 
         ]);
 
-        $user = User::where('email', $validate['email'])->exists();
+        $exist = User::where('email', $validate['email'])->exists();
+        $user = User::where('email', $validate['email'])->first();
 
-        if (! $user) {
+
+        if (! $exist) {
             return redirect()->back()->with('error', 'Email incorrect');
         }
 
@@ -43,25 +48,36 @@ class AuthClientController extends Controller
 
     }
 
-    public function register(Request $request)
-    {
-        $validate = $request->validate([
-            'email' => 'required|exists:users,email',
-            'password' => 'required',
-            'name' => 'required',
-        ], [
-            'email.required' => 'Email est requis',
-            'email.exists' => 'Désolé le Email que vous avez saisie existe déja',
-            'password.required' => 'Le mot de passe est requis',
-            'name.required' => 'Le nom et le prénom sont requis',
-        ]);
+  public function register(Request $request)
+{
+    $validate = $request->validate([
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|min:6',
+        'name' => 'required|string|max:255',
+    ], [
+        'email.required' => 'L\'email est requis.',
+        'email.email' => 'L\'adresse email n\'est pas valide.',
+        'email.unique' => 'Désolé, cet email est déjà utilisé.',
+        'password.required' => 'Le mot de passe est requis.',
+        'password.min' => 'Le mot de passe doit contenir au moins 6 caractères.',
+        'name.required' => 'Le nom et le prénom sont requis.',
+    ]);
 
-        User::create([
-            ...$validate,
-            'role_id' => 3,
-        ]);
-
-        return redirect()->route('client.dologin')->with('success', 'Création de compte effectué avec succes');
+    try{
+  User::create([
+        'name' => $validate['name'],
+        'email' => $validate['email'],
+        'password' => Hash::make($validate['password']),
+        'role_id' => 3,
+    ]);
+    }catch(Exception $e){
+        throw new Error($e->getMessage());
 
     }
+  
+
+    return redirect()->route('client.dologin')
+        ->with('success', 'Création de compte effectuée avec succès.');
+}
+
 }

@@ -51,7 +51,7 @@ Route::prefix('cart')->group(function () {
 
 Route::controller(AuthClientController::class)->prefix('client')->name('client.')->group(function () {
     Route::post('/log', 'login')->name('login');
-    Route::post('/register', 'login')->name('register');
+    Route::post('/register', 'register')->name('register');
     Route::get('/authentification', 'doLogin')->name('dologin');
     Route::get('/register', 'doRegister')->name('doregister');
 });
