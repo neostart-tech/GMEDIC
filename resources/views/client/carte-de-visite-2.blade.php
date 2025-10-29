@@ -864,8 +864,8 @@
                 <div class="identity-badge">
                     <i class="fas fa-user-md"></i>
                 </div>
-                <h2 class="profile-name">{{ __('Nom_Fondateur') }}</h2>
-                <div class="profile-title">{{__('Titre_Fondateur')}}</div>
+                <h2 class="profile-name">{{ __('Nom_femme') }}</h2>
+                <div class="profile-title">{{__('titre_femme')}}</div>
             </div>
             
             <div class="contact-section">
@@ -877,7 +877,7 @@
                         </div>
                         <div class="contact-details">
                             <div class="contact-label">{{ __('AdresseCarteVisite') }}</div>
-                            <div class="contact-value">{{ __('AdresseCarte2') }}</div>
+                            <div class="contact-value">{{ __('AdresseCarte') }}</div>
                         </div>
                     </div>
                     
@@ -890,31 +890,19 @@
                             <div class="contact-value">
                                 <div class="phone-numbers">
                                     <div class="phone-number-item">
-                                        <a href="tel:+22891736042">+228 91 73 60 42</a>
+                                        <a href="tel:+22891736042">+228 91 26 40 96</a>
                                         <div class="phone-actions">
-                                            <a href="https://wa.me/22891736042" class="phone-btn whatsapp" target="_blank">
+                                            <a href="https://wa.me/22891264096" class="phone-btn whatsapp" target="_blank">
                                                 <i class="fab fa-whatsapp"></i>
                                                 {{ __('WhatsApp') }}
                                             </a>
-                                            <a href="tel:+22891736042" class="phone-btn">
+                                            <a href="tel:+22891264096" class="phone-btn">
                                                 <i class="fas fa-phone"></i>
                                                 {{ __('Appeler') }}
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="phone-number-item">
-                                        <a href="tel:+22870658816">+228 70 65 88 16</a>
-                                        <div class="phone-actions">
-                                            <a href="https://wa.me/22870658816" class="phone-btn whatsapp" target="_blank">
-                                                <i class="fab fa-whatsapp"></i>
-                                                {{ __('WhatsApp') }}
-                                            </a>
-                                            <a href="tel:+22870658816" class="phone-btn">
-                                                <i class="fas fa-phone"></i>
-                                                {{ __('Appeler') }}
-                                            </a>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -927,7 +915,7 @@
                         <div class="contact-details">
                             <div class="contact-label">{{ __('Email') }}</div>
                             <div class="contact-value">
-                                <a href="mailto:ehlanefa@gmail.com">ehlanefa@gmail.com</a>
+                                <a href="mailto:ehlanefa@gmail.com">a.eugenie@gmedic.tg</a>
                                 <a href="mailto:contact@gmedic.tg">contact@gmedic.tg</a>
                             </div>
                         </div>

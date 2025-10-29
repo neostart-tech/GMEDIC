@@ -32,4 +32,20 @@ class User extends Authenticatable
 	{
 		return $this->belongsTo(Role::class);
 	}
+
+	 public function adresses()
+    {
+        return $this->hasMany(Adresse::class);
+    }
+
+    public function commandes()
+    {
+        return $this->hasMany(Commande::class);
+    }
+
+    public function hasAdresse()
+    {
+        return $this->adresses()->exists();
+    }
+
 }
