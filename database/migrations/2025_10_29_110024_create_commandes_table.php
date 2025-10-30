@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('adresse_id');
             $table->foreign('adresse_id')->references('id')->on('adresses')->onDelete('cascade');
             $table->dateTime('date_commande')->useCurrent();
-            $table->enum('statut', ['en_attente', 'livrée', 'annulée'])->default('en_attente');
+            $table->enum('statut', ['en_attente','livrée','annulée','en_attente_paiement','confirmee'])->default('en_attente');
             $table->decimal('total', 10, 2);
             $table->text('commentaires')->nullable();
             $table->timestamps();

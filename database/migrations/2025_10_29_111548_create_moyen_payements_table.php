@@ -13,9 +13,9 @@ return new class extends Migration
             $table->id();
             
             $table->unsignedBigInteger('commande_id');
-            $table->enum('methode', ['carte_bancaire', 'virement_bancaire', 'cheque']);
+            $table->enum('methode', ['card','transfer','check']);
             $table->decimal('montant', 15, 2)->nullable();
-            $table->enum('statut', ['en_attente', 'payé', 'échoué'])->default('en_attente');
+            $table->enum('statut', ['en_attente','paye','echoue','confirmee','en_attente_validation','en_attente_encaissement','en_attente_paiement'])->default('en_attente_validation');
             $table->timestamp('date_paiement')->nullable();
             $table->timestamp('date_encaissement')->nullable();
 

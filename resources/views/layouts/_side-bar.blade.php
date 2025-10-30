@@ -139,6 +139,8 @@
 						<li class="pc-item"><a class="pc-link" href="">Informations Bancaires</a>
 						</li>
 						<li class="pc-item"><a class="pc-link" href="">Commandes</a></li>
+						<li class="pc-item"><a class="pc-link" href="">Demande de prix</a></li>
+
 					</ul>
 				</li>
 
