@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\AdresseController;
 use App\Http\Controllers\Auth\AuthClientController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContacterController;
+use App\Http\Controllers\InfoBancaireController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PanierController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CommandeController;
 use Illuminate\Support\Facades\Route;
 
 Route::name('client.')->group(function () {
@@ -37,6 +40,15 @@ Route::name('client.')->group(function () {
 
     Route::get('/lang/{locale}', [LanguageController::class, 'switch'])->name('lang.switch');
 
+    Route::controller(AdresseController::class)->group(function () {
+        Route::get('/adresses', 'index');
+        Route::post('/adresses/store', 'store');
+        Route::get('/adresses/{id}/show', 'show');
+        Route::put('/adresses/{id}/update', 'update');
+        Route::delete('/adresses/{id}/delete', 'destroy');
+        Route::post('/adresses/{id}/activer', 'activer');
+    });
+
 });
 // Routes du panier
 Route::prefix('cart')->group(function () {
@@ -47,6 +59,7 @@ Route::prefix('cart')->group(function () {
     Route::put('/update/{rowId}', [PanierController::class, 'update'])->name('cart.update');
     Route::delete('/remove/{rowId}', [PanierController::class, 'remove'])->name('cart.remove');
     Route::delete('/clear', [PanierController::class, 'clear'])->name('cart.clear');
+
 });
 
 Route::controller(AuthClientController::class)->prefix('client')->name('client.')->group(function () {
@@ -56,6 +69,16 @@ Route::controller(AuthClientController::class)->prefix('client')->name('client.'
     Route::get('/register', 'doRegister')->name('doregister');
 });
 
+Route::controller(InfoBancaireController::class)->group(function () {
+    Route::get('/info-bancaire', 'index');
+});
+
+Route::controller(CommandeController::class)->group(function () {
+    Route::post('/commandes', 'store');
+});
+
+
+
 // Route::middleware('cart.auth')->group(function () {
 
 //     Route::prefix('cart')->group(function () {
@@ -63,6 +86,5 @@ Route::controller(AuthClientController::class)->prefix('client')->name('client.'
 //     Route::delete('/remove/{rowId}', [PanierController::class, 'remove'])->name('cart.remove');
 //     Route::delete('/clear', [PanierController::class, 'clear'])->name('cart.clear');
 // });
-
 
 // });

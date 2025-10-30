@@ -1737,11 +1737,11 @@
                                     <p>{{ $address->code_postal }} {{ $address->ville }}</p>
                                     <p>Tél: {{ $address->telephone }}</p>
                                     @if($address->notes_livraison)
-                                        <p class="address-notes">📝 {{ $address->notes_livraison }}</p>
+                                        <p class="address-notes"> {{ $address->notes_livraison }}</p>
                                     @endif
                                 </div>
                                 <div class="address-actions">
-                                    <button type="button" class="btn-edit-address" onclick="editAddress({{ $address->id }})">
+                                    <button type="button" class="btn-edit-address" onclick="editAddress({{ $address }})">
                                         <i class="fas fa-edit"></i>
                                     </button>
                                 </div>
@@ -1793,7 +1793,7 @@
                         <label class="form-label">Téléphone de contact *</label>
                         <input type="tel" class="form-input" id="newCustomerPhone" 
                                placeholder="Numéro de téléphone"
-                               value="{{ auth()->user() ? auth()->user()->phone : '' }}">
+                               value="{{ auth()->user() ? auth()->user()->phone : '--' }}">
                     </div>
 
                     <div class="form-group">
@@ -1805,7 +1805,7 @@
                     <div class="form-group">
                         <label class="checkbox-container">
                             <input type="checkbox" id="setAsPrimary">
-                            <span class="checkbox-label">Définir comme adresse principale</span>
+                            <span class="checkbox-label" >Définir comme adresse principale</span>
                         </label>
                     </div>
 
@@ -1829,16 +1829,17 @@
                     <div class="user-info-grid">
                         <div class="info-item">
                             <label>Email</label>
-                            <span>{{ auth()->user()->email }}</span>
+                            <span>{{  auth()->user() ? auth()->user()->email : "--" }}</span>
                         </div>
                         <div class="info-item">
                             <label>Nom</label>
-                            <span>{{ auth()->user()->name }}</span>
+                            <span>{{ auth()->user() ? auth()->user()->name : '--'}}</span>
                         </div>
-                        @if(auth()->user()->phone)
+                        @if(auth()->user())
                         <div class="info-item">
                             <label>Téléphone</label>
-                            <span>{{ auth()->user()->phone }}</span>
+                            <span>{{ optional(auth()->user()->adressePrincipale)->telephone ?? '--' }}</span>
+
                         </div>
                         @endif
                     </div>
@@ -2114,7 +2115,8 @@
             code_postal: document.getElementById('newCustomerZipCode').value,
             telephone: document.getElementById('newCustomerPhone').value,
             notes_livraison: document.getElementById('newDeliveryNotes').value,
-            is_primary: document.getElementById('setAsPrimary').checked
+            is_active: document.getElementById('setAsPrimary').checked
+
         };
 
         // Validation
@@ -2126,7 +2128,7 @@
         try {
             showLoading('Sauvegarde de l\'adresse...');
             
-            const response = await fetch('/adresses', {
+            const response = await fetch('/adresses/store', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -2152,8 +2154,13 @@
     }
 
     function editAddress(addressId) {
-        // Pour l'instant, on ouvre simplement le formulaire de nouvelle adresse
-        // Vous pourriez pré-remplir avec les données existantes
+        document.getElementById('newCustomerCompany').value=addressId.etablissement,
+           document.getElementById('newCustomerAddress').value=addressId.adresse,
+          document.getElementById('newCustomerCity').value=addressId.adresse,
+           document.getElementById('newCustomerZipCode').value=addressId.code_postal,
+          document.getElementById('newCustomerPhone').value=addressId.telephone,
+            document.getElementById('newDeliveryNotes').value=addressId.notes_livraison,
+             document.getElementById('setAsPrimary').checked=addressId.is_active
         showNewAddressForm();
     }
 
@@ -2621,9 +2628,9 @@
 
         // Sauvegarder les informations client
         customerInfo = {
-            email: "{{ auth()->user()->email }}",
-            name: "{{ auth()->user()->name }}",
-            phone: "{{ auth()->user()->phone }}"
+            email: "{{ auth()->user()->email ?? "--" }}",
+            name: "{{ auth()->user()->name ?? "--" }}",
+            phone: "{{ auth()->user()->phone ?? "--" }}"
         };
 
         // Passer à l'étape de paiement
@@ -2708,7 +2715,7 @@
         try {
             showLoading('Chargement des informations bancaires...');
             
-            const response = await fetch('/api/infos-bancaires');
+            const response = await fetch('/info-bancaire');
             if (!response.ok) {
                 throw new Error('Erreur lors du chargement des informations bancaires');
             }
@@ -2851,7 +2858,6 @@
                 if (preuveFile) {
                     const formData = new FormData();
                     formData.append('preuve_paiement', preuveFile);
-                    // Vous devrez gérer l'upload séparément ou l'envoyer avec la commande
                 }
             } else if (selectedPaymentMethod === 'check') {
                 commandeData.paiement_details = {
@@ -2859,7 +2865,6 @@
                     numero_cheque: document.getElementById('numero_cheque').value
                 };
                 
-                // Gérer le fichier de preuve pour le chèque
                 const preuveFile = document.getElementById('preuve_cheque').files[0];
                 if (preuveFile) {
                     const formData = new FormData();

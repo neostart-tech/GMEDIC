@@ -16,6 +16,7 @@ class Commande extends Model
         'statut',
         'total',
         'commentaires',
+        'numero_commande',
     ];
 
     protected $casts = [

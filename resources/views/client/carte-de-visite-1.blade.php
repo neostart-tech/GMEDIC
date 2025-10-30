@@ -877,7 +877,7 @@
                         </div>
                         <div class="contact-details">
                             <div class="contact-label">{{ __('AdresseCarteVisite') }}</div>
-                            <div class="contact-value">{{ __('AdresseCarte2') }}</div>
+                            <div class="contact-value">{{ __('AdresseCarte') }}</div>
                         </div>
                     </div>
                     
