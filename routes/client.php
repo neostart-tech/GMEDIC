@@ -68,6 +68,8 @@ Route::controller(AuthClientController::class)->prefix('client')->name('client.'
     Route::get('/authentification', 'doLogin')->name('dologin');
     Route::get('/register', 'doRegister')->name('doregister');
     Route::delete('/logout', 'logout')->name('logout');
+    Route::put('/{user}/update', 'update')->name('update');
+
 });
 
 Route::controller(InfoBancaireController::class)->group(function () {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Compte - G-Medic</title>
+    <title>Détails Commande - G-Medic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -547,12 +547,27 @@
             font-weight: 600;
         }
 
-        .status-delivered {
+        .status-en_attente {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-confirmee {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-livree {
             background: #d1fae5;
             color: #065f46;
         }
 
-        .status-processing {
+        .status-annulee {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-en_attente_paiement {
             background: #fef3c7;
             color: #92400e;
         }
@@ -1065,6 +1080,316 @@
             opacity: 0.8;
         }
 
+        /* Order Details Page Styles */
+        .order-details-page {
+            padding: 2rem 2.5rem;
+        }
+
+        .order-header-details {
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 6px solid var(--primary);
+        }
+
+        .order-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .order-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .order-meta-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .order-meta-value {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .order-status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .order-details-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .order-items-section, .order-summary-section {
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        .order-items-list {
+            margin-bottom: 1.5rem;
+        }
+
+        .order-item-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .order-item-detail:last-child {
+            border-bottom: none;
+        }
+
+        .item-image-detail {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background: var(--primary-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .item-details-detail {
+            flex: 1;
+        }
+
+        .item-name-detail {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-category-detail {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-meta-detail {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .item-price-detail {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .order-summary-list {
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: var(--text-light);
+        }
+
+        .summary-value {
+            font-weight: 600;
+        }
+
+        .summary-total {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .order-address-section, .order-payment-section {
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .address-details-detail, .payment-details-detail {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .payment-proof-section {
+            margin-top: 1.5rem;
+        }
+
+        .proof-upload {
+            border: 2px dashed var(--border);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .proof-upload:hover {
+            border-color: var(--primary);
+        }
+
+        .proof-upload i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .proof-upload p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .proof-file {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+        }
+
+        .proof-file i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .proof-file-info {
+            flex: 1;
+        }
+
+        .proof-file-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .proof-file-size {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .proof-file-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .order-actions-detail {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .status-timeline {
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0.5rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border);
+            z-index: 1;
+        }
+
+        .timeline-item.active::before {
+            background: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-soft);
+        }
+
+        .timeline-item.completed::before {
+            background: var(--success);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-status {
+            font-weight: 600;
+        }
+
+        .timeline-description {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .account-container {
@@ -1182,6 +1507,18 @@
             .form-actions {
                 flex-direction: column;
             }
+
+            .order-details-page {
+                padding: 1.5rem;
+            }
+
+            .order-details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .order-actions-detail {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1280,6 +1617,11 @@
                                 Mes Commandes
                                 <span class="nav-badge">3</span>
                             </a>
+                            <a href="#orders" class="nav-item" data-tab="orders">
+                                <i class="fas fa-shopping-bag"></i>
+                                Mes Demandes
+                                <span class="nav-badge">3</span>
+                            </a>
                         </div>
 
                         <div class="nav-section">
@@ -1322,11 +1664,20 @@
 
                         <div class="stats-grid">
                             <div class="stat-card">
+                                <div class="stat-icon icon-warning">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-value">{{$all}}</span>
+                                    <span class="stat-description">Totales</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
                                 <div class="stat-icon icon-primary">
                                     <i class="fas fa-shopping-bag"></i>
                                 </div>
                                 <div class="stat-content">
-                                    <span class="stat-value">3</span>
+                                    <span class="stat-value">{{$en_attente}}</span>
                                     <span class="stat-description">Commandes en cours</span>
                                 </div>
                             </div>
@@ -1335,8 +1686,18 @@
                                     <i class="fas fa-check-circle"></i>
                                 </div>
                                 <div class="stat-content">
-                                    <span class="stat-value">9</span>
+                                    <span class="stat-value">{{$livre}}</span>
                                     <span class="stat-description">Commandes livrées</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon icon-warning">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <span class="stat-value">{{$confirmee}}</span>
+                                    <span class="stat-description">Commandes confirmées</span>
                                 </div>
                             </div>
                             <div class="stat-card">
@@ -1344,10 +1705,11 @@
                                     <i class="fas fa-heart"></i>
                                 </div>
                                 <div class="stat-content">
-                                    <span class="stat-value">5</span>
-                                    <span class="stat-description">Produits favoris</span>
+                                    <span class="stat-value">{{$annulee}}</span>
+                                    <span class="stat-description">Commandes annulées</span>
                                 </div>
                             </div>
+                           
                         </div>
 
                         <div class="content-section">
@@ -1365,7 +1727,7 @@
                                             <h4>CMD-2024-001</h4>
                                             <p class="order-date">15 Mars 2024</p>
                                         </div>
-                                        <span class="order-status status-delivered">Livrée</span>
+                                        <span class="order-status status-livree">Livrée</span>
                                     </div>
                                     <div class="order-items">
                                         <div class="order-item">
@@ -1383,7 +1745,7 @@
                                     </div>
                                     <div class="order-footer">
                                         <span class="order-total">23.500 FCFA</span>
-                                        <button class="action-btn">
+                                        <button class="action-btn" onclick="showOrderDetails('CMD-2024-001')">
                                             <i class="fas fa-eye"></i>
                                             Détails
                                         </button>
@@ -1396,7 +1758,7 @@
                                             <h4>CMD-2024-002</h4>
                                             <p class="order-date">12 Mars 2024</p>
                                         </div>
-                                        <span class="order-status status-processing">En cours</span>
+                                        <span class="order-status status-en_attente">En attente</span>
                                     </div>
                                     <div class="order-items">
                                         <div class="order-item">
@@ -1414,7 +1776,7 @@
                                     </div>
                                     <div class="order-footer">
                                         <span class="order-total">16.000 FCFA</span>
-                                        <button class="action-btn">
+                                        <button class="action-btn" onclick="showOrderDetails('CMD-2024-002')">
                                             <i class="fas fa-eye"></i>
                                             Détails
                                         </button>
@@ -1433,7 +1795,8 @@
 
                         <div class="filters-bar">
                             <button class="filter-btn active">Toutes</button>
-                            <button class="filter-btn">En cours</button>
+                            <button class="filter-btn">En attente</button>
+                            <button class="filter-btn">Confirmées</button>
                             <button class="filter-btn">Livrées</button>
                             <button class="filter-btn">Annulées</button>
                             <div class="search-box">
@@ -1483,12 +1846,12 @@
                                 </div>
                                  <div class="form-group">
                                     <label class="form-label">Ancien mot de passe</label>
-                                    <input type="email" class="form-input" placeholder="********">
+                                    <input type="password" class="form-input" placeholder="********">
                                 </div>
                                 
                                  <div class="form-group">
                                     <label class="form-label">Nouveau mot de passe</label>
-                                    <input type="email" class="form-input" placeholder="********">
+                                    <input type="password" class="form-input" placeholder="********">
                                 </div>
                                 
                     
@@ -1570,12 +1933,13 @@
                         </div>
                     </div>
 
-                    <!-- Payments Tab -->
-                   
+                    <!-- Order Details Tab -->
+                    <div id="order-details" class="tab-content">
+                        <!-- Le contenu sera chargé dynamiquement par JavaScript -->
+                    </div>
                 </main>
             </div>
         </div>
-
         <!-- Footer -->
         <footer class="account-footer">
             <div class="footer-content">
@@ -1585,60 +1949,165 @@
     </div>
 
     <script>
-       const DataOrders=@json($commandes);
-
+        // Données statiques pour les commandes
         const ordersData = [
             {
                 id: 'CMD-2024-001',
-                date: '15/03/2024 à 14:30',
+                numero_commande: 'CMD-2024-001',
+                date_commande: '15/03/2024 à 14:30',
+                date_commande_obj: new Date('2024-03-15T14:30:00'),
                 amount: '23.500 FCFA',
+                total: 23500,
                 items: 2,
-                status: 'delivered',
-                products: [
-                    { name: 'Paracétamol 500mg', category: 'Antidouleur et antipyrétique', quantity: 2, price: '7.500 FCFA' },
-                    { name: 'Vitamine C 1000mg', category: 'Complément alimentaire', quantity: 1, price: '16.000 FCFA' }
+                statut: 'livree',
+                commentaires: 'Livraison rapide et soignée, merci!',
+                user: {
+                    name: 'John Doe',
+                    email: 'john.doe@example.com'
+                },
+                adresse: {
+                    etablissement: 'Domicile',
+                    adresse: '123 Rue du Commerce, Appartement 4B',
+                    ville: 'Lomé',
+                    code_postal: '00000',
+                    telephone: '+228 70 65 88 16',
+                    notes_livraison: 'Sonner à l\'interphone'
+                },
+                paiement: {
+                    methode: 'carte_bancaire',
+                    montant: '23.500 FCFA',
+                    statut: 'paye',
+                    date_paiement: '15/03/2024 à 14:35',
+                    numero_carte: '**** **** **** 1234',
+                    titulaire_carte: 'John Doe',
+                    reference_paiement: 'PAY-001234'
+                },
+                details: [
+                    { 
+                        article: {
+                            name: 'Paracétamol 500mg',
+                            category: 'Antidouleur et antipyrétique'
+                        },
+                        quantite: 2,
+                        prix_unitaire: '7.500 FCFA',
+                        prix_total: '15.000 FCFA'
+                    },
+                    { 
+                        article: {
+                            name: 'Vitamine C 1000mg',
+                            category: 'Complément alimentaire'
+                        },
+                        quantite: 1,
+                        prix_unitaire: '8.500 FCFA',
+                        prix_total: '8.500 FCFA'
+                    }
+                ],
+                timeline: [
+                    { date: '15/03/2024 14:30', status: 'Commande passée', description: 'Votre commande a été enregistrée' },
+                    { date: '15/03/2024 14:35', status: 'Paiement confirmé', description: 'Paiement par carte bancaire validé' },
+                    { date: '16/03/2024 09:15', status: 'Commande confirmée', description: 'Votre commande est en préparation' },
+                    { date: '17/03/2024 14:20', status: 'Commande livrée', description: 'Votre commande a été livrée avec succès' }
                 ]
             },
             {
                 id: 'CMD-2024-002',
-                date: '12/03/2024 à 09:15',
-                amount: '12.000 FCFA',
+                numero_commande: 'CMD-2024-002',
+                date_commande: '12/03/2024 à 09:15',
+                date_commande_obj: new Date('2024-03-12T09:15:00'),
+                amount: '16.000 FCFA',
+                total: 16000,
                 items: 1,
-                status: 'processing',
-                products: [
-                    { name: 'Aspirine 500mg', category: 'Antidouleur et anti-inflammatoire', quantity: 1, price: '12.000 FCFA' }
+                statut: 'en_attente_paiement',
+                commentaires: 'En attente de confirmation de paiement',
+                user: {
+                    name: 'John Doe',
+                    email: 'john.doe@example.com'
+                },
+                adresse: {
+                    etablissement: 'Bureau',
+                    adresse: '456 Avenue de la Paix, Bureau 202',
+                    ville: 'Lomé',
+                    code_postal: '00000',
+                    telephone: '+228 98 71 20 20',
+                    notes_livraison: 'Livrer à la réception'
+                },
+                paiement: {
+                    methode: 'virement',
+                    montant: '16.000 FCFA',
+                    statut: 'en_attente',
+                    date_paiement: null,
+                    reference_paiement: null,
+                    preuve_paiement: null
+                },
+                details: [
+                    { 
+                        article: {
+                            name: 'Vitamine C',
+                            category: 'Complément alimentaire'
+                        },
+                        quantite: 1,
+                        prix_unitaire: '16.000 FCFA',
+                        prix_total: '16.000 FCFA'
+                    }
+                ],
+                timeline: [
+                    { date: '12/03/2024 09:15', status: 'Commande passée', description: 'Votre commande a été enregistrée' },
+                    { date: '12/03/2024 09:15', status: 'En attente de paiement', description: 'En attente de réception du virement' }
                 ]
             },
             {
                 id: 'CMD-2024-003',
-                date: '10/03/2024 à 16:45',
+                numero_commande: 'CMD-2024-003',
+                date_commande: '10/03/2024 à 16:45',
+                date_commande_obj: new Date('2024-03-10T16:45:00'),
                 amount: '18.750 FCFA',
+                total: 18750,
                 items: 3,
-                status: 'delivered',
-                products: [
-                    { name: 'Ibuprofène 400mg', category: 'Anti-inflammatoire', quantity: 1, price: '8.500 FCFA' },
-                    { name: 'Vitamine D3', category: 'Complément alimentaire', quantity: 2, price: '10.250 FCFA' }
-                ]
-            },
-            {
-                id: 'CMD-2024-004',
-                date: '08/03/2024 à 11:20',
-                amount: '15.000 FCFA',
-                items: 1,
-                status: 'delivered',
-                products: [
-                    { name: 'Oméprazole 20mg', category: 'Anti-acide', quantity: 1, price: '15.000 FCFA' }
-                ]
-            },
-            {
-                id: 'CMD-2024-005',
-                date: '05/03/2024 à 13:10',
-                amount: '32.000 FCFA',
-                items: 2,
-                status: 'processing',
-                products: [
-                    { name: 'Métformine 500mg', category: 'Antidiabétique', quantity: 2, price: '12.000 FCFA' },
-                    { name: 'Atorvastatine 20mg', category: 'Hypolipémiant', quantity: 1, price: '20.000 FCFA' }
+                statut: 'confirmee',
+                commentaires: '',
+                user: {
+                    name: 'John Doe',
+                    email: 'john.doe@example.com'
+                },
+                adresse: {
+                    etablissement: 'Domicile',
+                    adresse: '123 Rue du Commerce, Appartement 4B',
+                    ville: 'Lomé',
+                    code_postal: '00000',
+                    telephone: '+228 70 65 88 16',
+                    notes_livraison: 'Livraison avant 18h'
+                },
+                paiement: {
+                    methode: 'mobile_money',
+                    montant: '18.750 FCFA',
+                    statut: 'paye',
+                    date_paiement: '10/03/2024 à 16:50',
+                    reference_paiement: 'MM-987654'
+                },
+                details: [
+                    { 
+                        article: {
+                            name: 'Ibuprofène 400mg',
+                            category: 'Anti-inflammatoire'
+                        },
+                        quantite: 1,
+                        prix_unitaire: '8.500 FCFA',
+                        prix_total: '8.500 FCFA'
+                    },
+                    { 
+                        article: {
+                            name: 'Vitamine D3',
+                            category: 'Complément alimentaire'
+                        },
+                        quantite: 2,
+                        prix_unitaire: '5.125 FCFA',
+                        prix_total: '10.250 FCFA'
+                    }
+                ],
+                timeline: [
+                    { date: '10/03/2024 16:45', status: 'Commande passée', description: 'Votre commande a été enregistrée' },
+                    { date: '10/03/2024 16:50', status: 'Paiement confirmé', description: 'Paiement par mobile money validé' },
+                    { date: '11/03/2024 08:30', status: 'Commande confirmée', description: 'Votre commande est en préparation' }
                 ]
             }
         ];
@@ -1750,9 +2219,10 @@
                 filteredOrders = [...ordersData];
             } else {
                 filteredOrders = ordersData.filter(order => {
-                    if (status === 'En cours') return order.status === 'processing';
-                    if (status === 'Livrées') return order.status === 'delivered';
-                    if (status === 'Annulées') return order.status === 'cancelled';
+                    if (status === 'En attente') return order.statut === 'en_attente';
+                    if (status === 'Confirmées') return order.statut === 'confirmee';
+                    if (status === 'Livrées') return order.statut === 'livree';
+                    if (status === 'Annulées') return order.statut === 'annulee';
                     return true;
                 });
             }
@@ -1768,8 +2238,8 @@
             } else {
                 filteredOrders = ordersData.filter(order => 
                     order.id.toLowerCase().includes(query.toLowerCase()) ||
-                    order.products.some(product => 
-                        product.name.toLowerCase().includes(query.toLowerCase())
+                    order.details.some(detail => 
+                        detail.article.name.toLowerCase().includes(query.toLowerCase())
                     )
                 );
             }
@@ -1787,9 +2257,9 @@
 
             if (currentOrders.length === 0) {
                 ordersList.innerHTML = `
-                    <div class="no-orders">
+                    <div class="no-orders" style="text-align: center; padding: 3rem;">
                         <i class="fas fa-search" style="font-size: 3rem; color: var(--text-light); margin-bottom: 1rem;"></i>
-                        <h3 style="color: var(--text-light); text-align: center;">Aucune commande trouvée</h3>
+                        <h3 style="color: var(--text-light);">Aucune commande trouvée</h3>
                     </div>
                 `;
                 return;
@@ -1800,7 +2270,7 @@
                     <div class="order-detail-header">
                         <div class="order-meta">
                             <h3>Commande #${order.id}</h3>
-                            <p>Passée le ${order.date}</p>
+                            <p>Passée le ${order.date_commande}</p>
                         </div>
                         <div class="order-summary">
                             <span class="order-amount">${order.amount}</span>
@@ -1808,34 +2278,27 @@
                         </div>
                     </div>
                     <div class="order-detail-items">
-                        ${order.products.map(product => `
+                        ${order.details.map(detail => `
                             <div class="order-detail-item">
                                 <div class="item-image-large">
                                     <i class="fas fa-pills"></i>
                                 </div>
                                 <div class="item-details-large">
-                                    <h4 class="item-name-large">${product.name}</h4>
-                                    <p class="item-category">${product.category}</p>
+                                    <h4 class="item-name-large">${detail.article.name}</h4>
+                                    <p class="item-category">${detail.article.category}</p>
                                     <div class="item-meta-large">
-                                        <span class="item-quantity">Quantité: ${product.quantity}</span>
-                                        <span class="item-price">${product.price}</span>
+                                        <span class="item-quantity">Quantité: ${detail.quantite}</span>
+                                        <span class="item-price">${detail.prix_unitaire}</span>
                                     </div>
-                                </div>
-                                <div class="item-actions">
-                                   
                                 </div>
                             </div>
                         `).join('')}
                     </div>
                     <div class="order-actions">
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" onclick="showOrderDetails('${order.id}')">
                             <i class="fas fa-eye"></i>
                             Voir les détails
                         </button>
-                        // <button class="btn btn-outline">
-                        //     <i class="fas fa-print"></i>
-                        //     Facture
-                        // </button>
                     </div>
                 </div>
             `).join('');
@@ -1882,6 +2345,318 @@
                     setupPagination();
                 }
             });
+        }
+
+        // Show order details
+        function showOrderDetails(orderId) {
+            const order = ordersData.find(o => o.id === orderId);
+            if (!order) return;
+
+            // Hide all tabs and show order details
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+            
+            // Activate orders tab in sidebar
+            document.querySelector('[data-tab="orders"]').classList.add('active');
+            
+            // Show order details tab
+            const orderDetailsTab = document.getElementById('order-details');
+            orderDetailsTab.classList.add('active');
+            
+            // Generate order details HTML
+            orderDetailsTab.innerHTML = generateOrderDetailsHTML(order);
+        }
+
+        // Generate order details HTML
+        function generateOrderDetailsHTML(order) {
+            const statusClass = `status-${order.statut}`;
+            const statusText = getStatusText(order.statut);
+            
+            return `
+                <div class="order-details-page">
+                    <div class="page-header">
+                        <h1 class="page-title">Détails de la commande</h1>
+                        <p class="page-subtitle">Commande #${order.numero_commande}</p>
+                    </div>
+
+                    <div class="order-header-details">
+                        <div class="order-meta-grid">
+                            <div class="order-meta-item">
+                                <span class="order-meta-label">Numéro de commande</span>
+                                <span class="order-meta-value">${order.numero_commande}</span>
+                            </div>
+                            <div class="order-meta-item">
+                                <span class="order-meta-label">Date de commande</span>
+                                <span class="order-meta-value">${order.date_commande}</span>
+                            </div>
+                            <div class="order-meta-item">
+                                <span class="order-meta-label">Statut</span>
+                                <span class="order-status-badge ${statusClass}">${statusText}</span>
+                            </div>
+                            <div class="order-meta-item">
+                                <span class="order-meta-label">Total</span>
+                                <span class="order-meta-value">${order.amount}</span>
+                            </div>
+                        </div>
+                        ${order.commentaires ? `
+                            <div class="order-meta-item">
+                                <span class="order-meta-label">Commentaires</span>
+                                <span class="order-meta-value">${order.commentaires}</span>
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <div class="order-details-grid">
+                        <div class="order-items-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-shopping-bag"></i>
+                                Articles commandés
+                            </h2>
+                            <div class="order-items-list">
+                                ${order.details.map(detail => `
+                                    <div class="order-item-detail">
+                                        <div class="item-image-detail">
+                                            <i class="fas fa-pills"></i>
+                                        </div>
+                                        <div class="item-details-detail">
+                                            <div class="item-name-detail">${detail.article.name}</div>
+                                            <div class="item-category-detail">${detail.article.category}</div>
+                                            <div class="item-meta-detail">
+                                                <span>Quantité: ${detail.quantite}</span>
+                                                <span class="item-price-detail">${detail.prix_unitaire}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="order-summary-section">
+                            <h2 class="section-title">
+                                <i class="fas fa-receipt"></i>
+                                Récapitulatif
+                            </h2>
+                            <div class="order-summary-list">
+                                ${order.details.map(detail => `
+                                    <div class="summary-row">
+                                        <span class="summary-label">${detail.article.name} (x${detail.quantite})</span>
+                                        <span class="summary-value">${detail.prix_total}</span>
+                                    </div>
+                                `).join('')}
+                                <div class="summary-row">
+                                    <span class="summary-label">Sous-total</span>
+                                    <span class="summary-value">${order.amount}</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label">Livraison</span>
+                                    <span class="summary-value">Gratuite</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span class="summary-label summary-total">Total</span>
+                                    <span class="summary-value summary-total">${order.amount}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-address-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Adresse de livraison
+                        </h2>
+                        <div class="address-details-detail">
+                            <p><strong>${order.user.name}</strong></p>
+                            <p>${order.adresse.etablissement}</p>
+                            <p>${order.adresse.adresse}</p>
+                            <p>${order.adresse.code_postal} ${order.adresse.ville}</p>
+                            <p>Téléphone: ${order.adresse.telephone}</p>
+                            ${order.adresse.notes_livraison ? `<p><strong>Instructions:</strong> ${order.adresse.notes_livraison}</p>` : ''}
+                        </div>
+                    </div>
+
+                    <div class="order-payment-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-credit-card"></i>
+                            Informations de paiement
+                        </h2>
+                        <div class="payment-details-detail">
+                            <p><strong>Méthode:</strong> ${getPaymentMethodText(order.paiement.methode)}</p>
+                            <p><strong>Montant:</strong> ${order.paiement.montant}</p>
+                            <p><strong>Statut:</strong> ${getPaymentStatusText(order.paiement.statut)}</p>
+                            ${order.paiement.date_paiement ? `<p><strong>Date de paiement:</strong> ${order.paiement.date_paiement}</p>` : ''}
+                            ${order.paiement.reference_paiement ? `<p><strong>Référence:</strong> ${order.paiement.reference_paiement}</p>` : ''}
+                            ${order.paiement.numero_carte ? `<p><strong>Carte:</strong> ${order.paiement.numero_carte}</p>` : ''}
+                        </div>
+
+                        ${order.paiement.statut === 'en_attente' && order.paiement.methode === 'virement' ? `
+                            <div class="payment-proof-section">
+                                <h3 class="section-title">
+                                    <i class="fas fa-file-upload"></i>
+                                    Preuve de paiement
+                                </h3>
+                                <div class="proof-upload" id="proofUpload">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Déposez votre justificatif de virement ici</p>
+                                    <p class="text-sm">Formats acceptés: PDF, JPG, PNG (max. 5MB)</p>
+                                    <button class="btn btn-primary" onclick="document.getElementById('proofFile').click()">
+                                        <i class="fas fa-upload"></i>
+                                        Choisir un fichier
+                                    </button>
+                                    <input type="file" id="proofFile" style="display: none;" accept=".pdf,.jpg,.jpeg,.png" onchange="handleProofUpload(this)">
+                                </div>
+                                <div id="proofFileInfo" style="display: none;">
+                                    <div class="proof-file">
+                                        <i class="fas fa-file-pdf"></i>
+                                        <div class="proof-file-info">
+                                            <div class="proof-file-name" id="proofFileName"></div>
+                                            <div class="proof-file-size" id="proofFileSize"></div>
+                                        </div>
+                                        <div class="proof-file-actions">
+                                            <button class="action-btn" onclick="removeProofFile()">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary" onclick="submitProof()">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Envoyer la preuve
+                                    </button>
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    <div class="status-timeline">
+                        <h2 class="section-title">
+                            <i class="fas fa-history"></i>
+                            Historique de la commande
+                        </h2>
+                        <div class="timeline">
+                            ${order.timeline.map((item, index) => `
+                                <div class="timeline-item ${index === order.timeline.length - 1 ? 'active' : 'completed'}">
+                                    <div class="timeline-date">${item.date}</div>
+                                    <div class="timeline-status">${item.status}</div>
+                                    <div class="timeline-description">${item.description}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="order-actions-detail">
+                        <button class="btn btn-outline" onclick="goBackToOrders()">
+                            <i class="fas fa-arrow-left"></i>
+                            Retour aux commandes
+                        </button>
+                        ${order.statut === 'en_attente_paiement' ? `
+                            <button class="btn btn-primary" onclick="processPayment('${order.id}')">
+                                <i class="fas fa-credit-card"></i>
+                                Procéder au paiement
+                            </button>
+                        ` : ''}
+                        ${order.statut === 'confirmee' ? `
+                            <button class="btn btn-primary" onclick="trackOrder('${order.id}')">
+                                <i class="fas fa-shipping-fast"></i>
+                                Suivre la livraison
+                            </button>
+                        ` : ''}
+                        ${order.statut === 'livree' ? `
+                            <button class="btn btn-primary" onclick="downloadInvoice('${order.id}')">
+                                <i class="fas fa-download"></i>
+                                Télécharger la facture
+                            </button>
+                        ` : ''}
+                        ${['en_attente', 'en_attente_paiement', 'confirmee'].includes(order.statut) ? `
+                            <button class="btn btn-outline" onclick="cancelOrder('${order.id}')" style="border-color: var(--error); color: var(--error);">
+                                <i class="fas fa-times"></i>
+                                Annuler la commande
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Helper functions for status texts
+        function getStatusText(status) {
+            const statusMap = {
+                'en_attente': 'En attente',
+                'confirmee': 'Confirmée',
+                'livree': 'Livrée',
+                'annulee': 'Annulée',
+                'en_attente_paiement': 'En attente de paiement'
+            };
+            return statusMap[status] || status;
+        }
+
+        function getPaymentMethodText(method) {
+            const methodMap = {
+                'carte_bancaire': 'Carte bancaire',
+                'virement': 'Virement bancaire',
+                'mobile_money': 'Mobile Money'
+            };
+            return methodMap[method] || method;
+        }
+
+        function getPaymentStatusText(status) {
+            const statusMap = {
+                'en_attente': 'En attente',
+                'paye': 'Payé'
+            };
+            return statusMap[status] || status;
+        }
+
+        // Proof upload handling
+        function handleProofUpload(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const fileName = file.name;
+                const fileSize = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+                
+                document.getElementById('proofFileName').textContent = fileName;
+                document.getElementById('proofFileSize').textContent = fileSize;
+                document.getElementById('proofUpload').style.display = 'none';
+                document.getElementById('proofFileInfo').style.display = 'block';
+            }
+        }
+
+        function removeProofFile() {
+            document.getElementById('proofFile').value = '';
+            document.getElementById('proofUpload').style.display = 'block';
+            document.getElementById('proofFileInfo').style.display = 'none';
+        }
+
+        function submitProof() {
+            alert('Preuve de paiement envoyée avec succès! Votre commande sera traitée après vérification.');
+            // Ici vous ajouteriez la logique pour envoyer le fichier au serveur
+        }
+
+        // Order actions
+        function goBackToOrders() {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById('orders').classList.add('active');
+        }
+
+        function processPayment(orderId) {
+            alert(`Redirection vers la page de paiement pour la commande ${orderId}`);
+            // Ici vous redirigeriez vers la page de paiement
+        }
+
+        function trackOrder(orderId) {
+            alert(`Ouverture du suivi de livraison pour la commande ${orderId}`);
+            // Ici vous ouvririez la page de suivi
+        }
+
+        function downloadInvoice(orderId) {
+            alert(`Téléchargement de la facture pour la commande ${orderId}`);
+            // Ici vous déclencheriez le téléchargement de la facture
+        }
+
+        function cancelOrder(orderId) {
+            if (confirm('Êtes-vous sûr de vouloir annuler cette commande ? Cette action est irréversible.')) {
+                alert(`Commande ${orderId} annulée avec succès`);
+                // Ici vous enverriez la requête d'annulation au serveur
+                goBackToOrders();
+            }
         }
 
         // Logout function

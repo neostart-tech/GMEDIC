@@ -177,6 +177,245 @@
             min-height: 60vh;
         }
 
+        /* Loading States */
+        .loading-container {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            grid-column: 1 / -1;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--primary-soft);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Modal Styles - VERSION CORRIGÉE */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex !important;
+            opacity: 1;
+        }
+
+        .modal {
+            background: var(--lighter);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-xl);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(-30px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-header {
+            padding: 30px 40px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--lighter);
+            z-index: 1;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+
+        .modal-body {
+            padding: 30px 40px;
+        }
+
+        .modal-footer {
+            padding: 20px 40px 30px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+        }
+
+        /* Product Detail Modal */
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .product-detail-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-detail-image img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-detail-info h2 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .product-detail-category {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .product-detail-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        .product-detail-description {
+            line-height: 1.6;
+            color: var(--text);
+            margin-bottom: 25px;
+        }
+
+        .product-detail-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .meta-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .meta-value {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Quote Request Form */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+            background: var(--lighter);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Reste du CSS existant... */
         /* Mobile Filter Dropdown */
         .mobile-filter-dropdown {
             display: none;
@@ -237,7 +476,6 @@
                 opacity: 0;
                 transform: translateY(-10px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -791,6 +1029,30 @@
             box-shadow: var(--shadow-lg);
         }
 
+        .btn-quote {
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex: 1;
+            padding: 12px 18px;
+            font-weight: 600;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-quote:hover {
+            background: #219653;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+        }
+
         /* Pagination Styles */
         .pagination-container {
             display: flex;
@@ -974,7 +1236,7 @@
             background: var(--warning);
         }
 
-        /* Styles pour les dropdowns de filtres - TAILLES AUGMENTÉES */
+        /* Styles pour les dropdowns de filtres */
         .filter-dropdown {
             margin-bottom: 30px;
             position: relative;
@@ -1127,6 +1389,11 @@
             .filter-dropdown-content {
                 min-width: 380px;
             }
+
+            .product-detail {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1235,6 +1502,17 @@
                 padding: 8px 14px;
                 font-size: 0.9rem;
             }
+
+            .modal-header,
+            .modal-body,
+            .modal-footer {
+                padding: 20px 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
         }
 
         @media (max-width: 640px) {
@@ -1294,6 +1572,10 @@
                 width: 100%;
                 text-align: center;
             }
+
+            .product-detail-meta {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1349,6 +1631,16 @@
                 padding: 8px 12px;
                 min-width: 38px;
                 font-size: 0.8rem;
+            }
+
+            .modal-header,
+            .modal-body,
+            .modal-footer {
+                padding: 15px 20px;
+            }
+
+            .modal-title {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -1469,8 +1761,8 @@
                 </h3>
                 <div class="price-range-container">
                     <div class="price-display">
-                        <span id="minPriceDisplay">0 cfa</span>
-                        <span id="maxPriceDisplay">9999999 cfa</span>
+                        <span id="minPriceDisplay">0 fcfa</span>
+                        <span id="maxPriceDisplay">9999999 fcfa</span>
                     </div>
                     <div class="range-slider-container">
                         <input type="range" min="0" max="50000" value="50000" class="range-slider"
@@ -1542,8 +1834,16 @@
             <!-- Filtres actifs -->
             <div class="active-filters" id="activeFilters"></div>
 
+            <!-- Loading State -->
+            <div class="loading-container" id="loadingState">
+                <div>
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Chargement des équipements...</div>
+                </div>
+            </div>
+
             <!-- Grid des Produits -->
-            <div class="products-grid" id="productsGrid">
+            <div class="products-grid" id="productsGrid" style="display: none;">
                 <!-- Les équipements seront générés dynamiquement depuis l'API -->
             </div>
 
@@ -1583,6 +1883,95 @@
         <span id="notificationText"></span>
     </div>
 
+    <!-- Modal Détails Produit -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="productModalTitle">Détails du produit</h3>
+                <button class="modal-close" onclick="closeModal('productModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="product-detail" id="productModalContent">
+                    <!-- Contenu chargé dynamiquement -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('productModal')">
+                    <i class="fas fa-times"></i>
+                    Fermer
+                </button>
+                <button class="btn-primary" id="productModalAction">
+                    <!-- Bouton action dynamique (Ajouter au panier ou Demander un devis) -->
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Demande de Devis -->
+    <div class="modal-overlay" id="quoteModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title" id="quoteModalTitle">Demande de devis</h3>
+                <button class="modal-close" onclick="closeModal('quoteModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="quoteForm">
+                    <input type="hidden" id="quoteProductId" name="product_id">
+                    <input type="hidden" id="quoteProductName" name="product_name">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="quoteName">Nom complet *</label>
+                            <input type="text" class="form-control" id="quoteName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="quoteEmail">Email *</label>
+                            <input type="email" class="form-control" id="quoteEmail" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="quotePhone">Téléphone *</label>
+                            <input type="tel" class="form-control" id="quotePhone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="quoteCompany">Établissement/Entreprise</label>
+                            <input type="text" class="form-control" id="quoteCompany" name="company">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="quoteMessage">Message supplémentaire</label>
+                        <textarea class="form-control" id="quoteMessage" name="message" 
+                                  placeholder="Précisez vos besoins, la quantité souhaitée, les délais, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Produit concerné</label>
+                        <div class="form-control" style="background: var(--primary-soft); padding: 12px; border: 1px solid var(--border);">
+                            <strong id="quoteProductDisplay"></strong>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('quoteModal')">
+                    <i class="fas fa-times"></i>
+                    Annuler
+                </button>
+                <button class="btn-primary" onclick="submitQuoteRequest()">
+                    <i class="fas fa-paper-plane"></i>
+                    Envoyer la demande
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Variables globales pour stocker les données de l'API
         let apiData = {
@@ -1614,6 +2003,8 @@
         // Fonction pour charger les données depuis l'API
         async function loadApiData() {
             try {
+                showLoadingState();
+                
                 const response = await fetch('/articles/nos-articles');
                 apiData = await response.json();
 
@@ -1623,10 +2014,26 @@
                 // Initialiser l'interface
                 initializeInterface();
 
+                hideLoadingState();
+
             } catch (error) {
                 console.error('Erreur lors du chargement des données:', error);
                 showNotification('Erreur de chargement des données', 'error');
+                hideLoadingState();
             }
+        }
+
+        // Afficher l'état de chargement
+        function showLoadingState() {
+            document.getElementById('loadingState').style.display = 'flex';
+            document.getElementById('productsGrid').style.display = 'none';
+            document.getElementById('emptyState').style.display = 'none';
+            document.getElementById('paginationContainer').style.display = 'none';
+        }
+
+        // Masquer l'état de chargement
+        function hideLoadingState() {
+            document.getElementById('loadingState').style.display = 'none';
         }
 
         // Transformer les données de l'API en format produits
@@ -1638,7 +2045,6 @@
                     'Description non disponible';
 
                 // Générer un prix aléatoire pour la démonstration
-                // const price = Math.floor(Math.random() * 40000) + 1000;
                 const oldPrice = article.price ? article.price : "";
                 const price = article.reduceprice ? article.reduceprice : "";
 
@@ -1733,6 +2139,30 @@
                     closeActiveDropdown();
                 }
             });
+
+            // Fermer les modals en cliquant à l'extérieur
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeModal(modal.id);
+                    }
+                });
+            });
+
+            // Fermer les modals avec la touche Échap
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeAllModals();
+                }
+            });
+        }
+
+        // Fermer tous les modals
+        function closeAllModals() {
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
         }
 
         // Gérer le changement de filtre (applique automatiquement les filtres)
@@ -1881,19 +2311,17 @@
 
             grid.innerHTML = productsToShow.map(product => `
             <div class="product-card">
-                ${product.price ? `<div class="product-badge ${product.badge}">${product.price  ? '-' +(product.price*100)/product.oldPrice +'%' : 'Nouveau'}</div>` : ''}
+                ${product.price ? `<div class="product-badge ${product.badge}">${product.price  ? '-' + Math.round((product.price*100)/product.oldPrice) +'%' : 'Nouveau'}</div>` : ''}
                 <div class="product-image-container">
                     <img src="${product.image}" alt="${product.title}" class="product-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3ZjhjOGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLigI3imYLigI08L3RleHQ+PC9zdmc+'">
                     <div class="product-overlay">
-                        <div class="product-action" onclick="openProductModal(${product.id})">
+                        <div class="product-action" onclick="event.stopPropagation(); openProductModal(${product.id})">
                             <i class="fas fa-eye"></i>
                         </div>
-                      ${product.price || product.oldPrice  ? `  <div class="product-action" onclick="addToCart(${product.id})">
+                      ${product.price || product.oldPrice  ? `  <div class="product-action" onclick="event.stopPropagation(); addToCart(${product.id})">
                                 <i class="fas fa-cart-plus"></i>
-                                
-                            </div>` : `  <div class="product-action" onclick="">
+                            </div>` : `  <div class="product-action" onclick="event.stopPropagation(); openQuoteRequest(${product.id})">
                             <i class="fas fa-envelope"></i>
-                                
                             </div>`}
                     </div>
                 </div>
@@ -1904,24 +2332,24 @@
                     <p class="product-description">${product.description}</p>
                     <div class="product-meta">
                         <div class="product-price">
-                            ${product.oldPrice ? product.oldPrice.toLocaleString()+" fcfa" :''}
-                            ${product.price ? `<span class="price-old">${product.price.toLocaleString()} fcfa</span>` : ''}
+                            ${product.price ? product.price.toLocaleString() + " fcfa" : ''}
+                            ${product.oldPrice ? `<span class="price-old">${product.oldPrice.toLocaleString()} fcfa</span>` : ''}
                         </div>
-                       
                     </div>
-<div class="product-actions">
-    ${product.price || product.oldPrice  ? `
+                    <div class="product-actions">
+                       
+                        ${product.price || product.oldPrice  ? `
                         <button class="btn-cart" onclick="addToCart(${product.id})">
                             <i class="fas fa-cart-plus"></i>
                             Ajouter au panier
                         </button>
                     ` : `
-                        <button class="btn-cart" onclick="openQuoteRequest(${product.id})">
+                        <button class="btn-quote" onclick="openQuoteRequest(${product.id})">
                             <i class="fas fa-envelope"></i>
                             Faire une demande
                         </button>
                     `}
-</div>
+                    </div>
                 </div>
             </div>
         `).join('');
@@ -1939,7 +2367,6 @@
         // Mettre à jour la pagination
         function updatePagination(totalProducts, totalPages) {
             const pagination = document.getElementById('pagination');
-
 
             // Mettre à jour les informations de pagination
             const startProduct = ((currentPage - 1) * productsPerPage) + 1;
@@ -2096,7 +2523,6 @@
         async function addToCart(productId) {
             const product = productsData.find(p => p.id === productId);
             if (!product) return;
-            console.log(product)
 
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
@@ -2133,10 +2559,9 @@
 
             } catch (error) {
                 console.error('Erreur addToCart:', error);
-                showCartNotification('Erreur : impossible d’ajouter le produit au panier.');
+                showCartNotification('Erreur : impossible d\'ajouter le produit au panier.');
             }
         }
-
 
         // Toggle panier
         function toggleCart() {
@@ -2255,7 +2680,7 @@
         function updatePriceDisplay() {
             const range = document.getElementById('priceRange');
             const maxDisplay = document.getElementById('maxPriceDisplay');
-            maxDisplay.textContent = parseInt(range.value).toLocaleString() + ' €';
+            maxDisplay.textContent = parseInt(range.value).toLocaleString() + ' fcfa';
         }
 
         // Mettre à jour les filtres actifs
@@ -2290,7 +2715,7 @@
             if (currentFilters.maxPrice < 50000) {
                 activeFilters.push({
                     type: 'price',
-                    label: `Prix max: ${currentFilters.maxPrice.toLocaleString()} €`,
+                    label: `Prix max: ${currentFilters.maxPrice.toLocaleString()} fcfa`,
                     value: currentFilters.maxPrice
                 });
             }
@@ -2358,12 +2783,168 @@
             grid.classList.toggle('list-view', currentView === 'list');
         }
 
-        // Modal produit
+        // Modal functions - VERSION CORRIGÉE
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Focus management for accessibility
+                setTimeout(() => {
+                    const closeBtn = modal.querySelector('.modal-close');
+                    if (closeBtn) closeBtn.focus();
+                }, 100);
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        function closeAllModals() {
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+        }
+
+        // Modal produit détaillé - VERSION CORRIGÉE
         function openProductModal(productId) {
             const product = productsData.find(p => p.id === productId);
             if (!product) return;
 
-            showNotification(`Détails du produit: ${product.title} - Fonctionnalité à venir!`, 'warning');
+            const modalContent = document.getElementById('productModalContent');
+            const modalTitle = document.getElementById('productModalTitle');
+            const modalAction = document.getElementById('productModalAction');
+
+            modalTitle.textContent = product.title;
+            
+            modalContent.innerHTML = `
+                <div class="product-detail">
+                    <div class="product-detail-image">
+                        <img src="${product.image}" alt="${product.title}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3ZjhjOGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLigI3imYLigI08L3RleHQ+PC9zdmc+'">
+                    </div>
+                    <div class="product-detail-info">
+                        <span class="product-detail-category">${product.category_name}</span>
+                        <h2>${product.title}</h2>
+                        ${product.subcategory_name !== 'Non classé' ? `<p><strong>Type:</strong> ${product.subcategory_name}</p>` : ''}
+                        
+                        <div class="product-detail-price">
+                            ${product.price ? product.price.toLocaleString() + " fcfa" : 'Prix sur demande'}
+                            ${product.oldPrice ? `<span class="price-old">${product.oldPrice.toLocaleString()} fcfa</span>` : ''}
+                        </div>
+                        
+                        <div class="product-detail-description">
+                            <h4>Description</h4>
+                            <p>${product.description}</p>
+                        </div>
+                        
+                        <div class="product-detail-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Disponibilité</span>
+                                <span class="meta-value">${product.stock === 'in-stock' ? 'En stock' : 'Pré-commande'}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Catégorie</span>
+                                <span class="meta-value">${product.category_name}</span>
+                            </div>
+                            ${product.subcategory_name !== 'Non classé' ? `
+                            <div class="meta-item">
+                                <span class="meta-label">Type d'équipement</span>
+                                <span class="meta-value">${product.subcategory_name}</span>
+                            </div>
+                            ` : ''}
+                            <div class="meta-item">
+                                <span class="meta-label">Référence</span>
+                                <span class="meta-value">#${product.id.toString().padStart(6, '0')}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Configurer le bouton d'action
+            if (product.price || product.oldPrice) {
+                modalAction.innerHTML = '<i class="fas fa-cart-plus"></i> Ajouter au panier';
+                modalAction.onclick = function() {
+                    addToCart(productId);
+                    closeModal('productModal');
+                };
+            } else {
+                modalAction.innerHTML = '<i class="fas fa-envelope"></i> Demander un devis';
+                modalAction.onclick = function() {
+                    closeModal('productModal');
+                    openQuoteRequest(productId);
+                };
+            }
+
+            openModal('productModal');
+        }
+
+        // Ouvrir le modal de demande de devis
+        function openQuoteRequest(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+
+            document.getElementById('quoteProductId').value = product.id;
+            document.getElementById('quoteProductName').value = product.title;
+            document.getElementById('quoteProductDisplay').textContent = product.title;
+            document.getElementById('quoteModalTitle').textContent = `Demande de devis - ${product.title}`;
+
+            // Réinitialiser le formulaire
+            document.getElementById('quoteForm').reset();
+
+            openModal('quoteModal');
+        }
+
+        // Soumettre la demande de devis
+        async function submitQuoteRequest() {
+            const form = document.getElementById('quoteForm');
+            const formData = new FormData(form);
+            
+            // Validation basique
+            const requiredFields = ['name', 'email', 'phone'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!formData.get(field)) {
+                    isValid = false;
+                    showNotification(`Le champ ${field} est obligatoire`, 'error');
+                }
+            });
+            
+            if (!isValid) return;
+            
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            
+            try {
+                const response = await fetch('/quote-request', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Accept': 'application/json'
+                    },
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showNotification('Votre demande de devis a été envoyée avec succès !');
+                    closeModal('quoteModal');
+                    form.reset();
+                } else {
+                    showNotification(result.message || 'Erreur lors de l\'envoi de la demande', 'error');
+                }
+            } catch (error) {
+                console.error('Erreur:', error);
+                showNotification('Erreur lors de l\'envoi de la demande', 'error');
+            }
         }
 
         // Initialisation

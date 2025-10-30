@@ -232,12 +232,20 @@ class CommandeController extends Controller
      */
     public function getMyCommand()
     {
-        $commandes = Commande::with(['adresse', 'paiement'])
-            ->where('user_id', Auth::id())
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
 
-        return view('client.Ecommerce.commande',compact('commandes'));
+        $all=Commande::where('user_id',auth()->id())->count();
+        $en_attente=Commande::where('statut',"en_attente_paiement")->count();
+        $livre=Commande::where('statut',"livrée")->count();
+        $confirmee=Commande::where('statut',"confirmee")->count();
+        $annulee=Commande::where('statut',"annulée")->count();
+
+        return view('client.Ecommerce.commande',compact("all","en_attente","livre","confirmee",'annulee'));
+    }
+
+
+    public function getCommande(){
+        
+
     }
 
     /**
