@@ -564,7 +564,11 @@
     "Appeler": "电话联系",
     "Site_Web": "网站",
     "Slogan": "您的健康是我们的首要任务。",
-    "Contact_Invitation": "如需更多信息，请随时与我们联系。"
+    "Contact_Invitation": "如需更多信息，请随时与我们联系。",
+      "connexion": "登录",
+    "deconnexion": "登出",
+    "mes_commandes": "我的订单",
+    "mon_compte": "我的账户"
 
 
 

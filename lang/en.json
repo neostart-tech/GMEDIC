@@ -565,7 +565,11 @@
     "Appeler": "Call",
     "Site_Web": "Website",
     "Slogan": "Your health is our top priority.",
-    "Contact_Invitation": "Feel free to contact us for any additional information."
+    "Contact_Invitation": "Feel free to contact us for any additional information.",
+     "connexion": "Login",
+    "deconnexion": "Logout",
+    "mes_commandes": "My Orders",
+    "mon_compte": "My Account"
 
 
 

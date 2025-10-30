@@ -7,6 +7,7 @@
 <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
     rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <style>
     :root {
         --primary: #009D92;
@@ -240,6 +241,111 @@
         background-color: var(--primary-dark);
     }
 
+    /* Section utilisateur */
+    .user-section {
+        position: relative;
+        display: inline-block;
+        flex-shrink: 0;
+    }
+
+    .user-login {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 15px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        font-size: 0.9rem;
+        font-weight: 500;
+        white-space: nowrap;
+        text-decoration: none;
+    }
+
+    .user-login:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .user-login i {
+        font-size: 1rem;
+    }
+
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: white;
+    }
+
+    .user-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: var(--white);
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        min-width: 180px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: var(--transition);
+        z-index: 1002;
+        border: 1px solid var(--border);
+    }
+
+    .user-section.active .user-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(5px);
+    }
+
+    .user-option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 15px;
+        text-decoration: none;
+        color: var(--text);
+        transition: var(--transition);
+        border-bottom: 1px solid var(--border);
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .user-option:last-child {
+        border-bottom: none;
+    }
+
+    .user-option:hover {
+        background-color: var(--accent);
+        color: var(--primary);
+    }
+
+    .user-option.logout {
+        color: #e53e3e;
+    }
+
+    .user-option.logout:hover {
+        background-color: #fed7d7;
+        color: #c53030;
+    }
+
+    .user-option i {
+        width: 20px;
+        text-align: center;
+        font-size: 1rem;
+    }
+
     /* Header Main - Navigation principale */
     .header-main {
         background-color: var(--white);
@@ -448,6 +554,11 @@
             height: 14px;
         }
 
+        .user-login {
+            padding: 6px 10px;
+            font-size: 0.8rem;
+        }
+
         /* Ajustements pour la navigation principale */
         .nav-container {
             padding: 0 15px;
@@ -513,6 +624,11 @@
             width: 20px;
             height: 15px;
             margin-right: 0;
+        }
+
+        .user-login span {
+            display: none;
+            /* Cache le texte, garde seulement l'avatar */
         }
 
         /* Ajustement navigation */
@@ -715,6 +831,85 @@
             background-color: var(--primary);
             color: var(--white);
         }
+
+        /* Section utilisateur mobile */
+        .mobile-user-section {
+            display: block;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            width: 100%;
+        }
+
+        .mobile-user-login {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background-color: var(--accent);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .mobile-user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .mobile-user-options {
+            display: none;
+            background-color: var(--white);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .mobile-user-options.active {
+            display: block;
+        }
+
+        .mobile-user-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            border-bottom: 1px solid var(--border);
+            width: 100%;
+        }
+
+        .mobile-user-option:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-user-option:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .mobile-user-option.logout {
+            color: #e53e3e;
+        }
+
+        .mobile-user-option.logout:hover {
+            background-color: #fed7d7;
+            color: #c53030;
+        }
     }
 
     /* Améliorations pour les petits écrans mobiles */
@@ -763,6 +958,14 @@
         .mobile-language-option {
             padding: 10px 12px;
         }
+
+        .mobile-user-login {
+            padding: 10px 12px;
+        }
+
+        .mobile-user-option {
+            padding: 10px 12px;
+        }
     }
 
     /* Cache le sélecteur de langue desktop en mobile */
@@ -774,11 +977,23 @@
         .mobile-language-selector {
             display: block !important;
         }
+
+        .user-section {
+            display: none;
+        }
+
+        .mobile-user-section {
+            display: block !important;
+        }
     }
 
     /* Affiche le sélecteur de langue desktop en desktop */
     @media screen and (min-width: 769px) {
         .mobile-language-selector {
+            display: none !important;
+        }
+
+        .mobile-user-section {
             display: none !important;
         }
     }
@@ -816,7 +1031,38 @@
                     <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
 
-
+                <!-- Section utilisateur Desktop -->
+                <div class="user-section">
+                    @auth
+                        <!-- Utilisateur connecté - Afficher le dropdown -->
+                        <div class="user-login">
+                            <div class="user-avatar">
+                                {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                            </div>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="user-dropdown">
+                            <a href="" class="user-option">
+                                <i class="fas fa-user"></i>
+                                <span>{{ __('mon_compte') }}</span>
+                            </a>
+                            <a href="{{ route('mes-commandes') }}" class="user-option">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>{{__('mes_commandes')}}</span>
+                            </a>
+                            <a href="" onclick="logout()" class="user-option logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>{{ __('deconnexion') }}</span>
+                            </a>
+                        </div>
+                    @else
+                        <!-- Utilisateur non connecté - Afficher le lien de connexion -->
+                        <a href="{{ route('client.dologin') }}" class="user-login">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>{{ __('connexion') }}</span>
+                        </a>
+                    @endauth
+                </div>
 
                 <!-- Sélecteur de langue Desktop -->
                 <div class="language-selector">
@@ -877,9 +1123,8 @@
                 <img src="{{ asset('assets/images/logos/gmedic_logo.png') }}" alt="G-Medic Logo">
             </a>
 
-
             <ul class="nav-menu">
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{ route('client.show-article') }}"
                         class="nav-link {{ Request::routeIs('client.show-article') ? 'active' : '' }}">
                         {{ __('Articles') }}
@@ -916,6 +1161,37 @@
                     </a>
                 </li>
 
+                <!-- Section utilisateur Mobile (dans le menu) -->
+                <li class="nav-item mobile-user-section" style="display: none">
+                    @auth
+                        <div class="mobile-user-login">
+                            <div class="mobile-user-avatar">
+                                {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                            </div>
+                            <span>{{ Auth::user()->name }}</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="mobile-user-options">
+                            <a href="" class="mobile-user-option">
+                                <i class="fas fa-user"></i>
+                                <span>{{__('mon_compte')}}</span>
+                            </a>
+                            <a href="{{ route('mes-commandes') }}" class="mobile-user-option">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>{{__('mes_commandes')}}</span>
+                            </a>
+                            <a onclick="logout()" class="mobile-user-option logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>{{ __('deconnexion') }}</span>
+                            </a>
+                        </div>
+                    @else
+                        <a href="{{ route('client.dologin') }}" class="mobile-user-login">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>{{  __('connexion') }}</span>
+                        </a>
+                    @endauth
+                </li>
 
                 <!-- Sélecteur de langue Mobile (dans le menu) -->
                 <li class="nav-item mobile-language-selector" style="display: none">
@@ -935,7 +1211,7 @@
                             'zh_CN' => [
                                 'name' => '中文',
                                 'flag' =>
-                                    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxMyAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4=',
+                                    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxNSAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4=',
                             ],
                         ];
                     @endphp
@@ -973,9 +1249,8 @@
         </div>
     </div>
 
-
-
     <script>
+        let loading=false;
         // Script pour le menu hamburger
         document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.querySelector('.hamburger');
@@ -1018,16 +1293,37 @@
                 });
             }
 
-            // Fermer le dropdown en cliquant ailleurs
+            // Gestion de la section utilisateur Desktop
+            const userSection = document.querySelector('.user-section');
+            const userLogin = document.querySelector('.user-login');
+            const userOptions = document.querySelectorAll('.user-option');
+
+            if (userLogin && userSection.querySelector('.user-dropdown')) {
+                userLogin.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    userSection.classList.toggle('active');
+                });
+            }
+
+            // Fermer les dropdowns en cliquant ailleurs
             document.addEventListener('click', function() {
                 if (languageSelector) {
                     languageSelector.classList.remove('active');
                 }
+                if (userSection) {
+                    userSection.classList.remove('active');
+                }
             });
 
-            // Empêcher la fermeture quand on clique dans le dropdown
+            // Empêcher la fermeture quand on clique dans les dropdowns
             if (languageSelector) {
                 languageSelector.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+            if (userSection) {
+                userSection.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
             }
@@ -1069,6 +1365,18 @@
                 });
             }
 
+            // Gestion de la section utilisateur Mobile
+            const mobileUserLogin = document.querySelector('.mobile-user-login');
+            const mobileUserOptions = document.querySelector('.mobile-user-options');
+            const mobileUserOptionsList = document.querySelectorAll('.mobile-user-option');
+
+            if (mobileUserLogin && mobileUserOptions) {
+                mobileUserLogin.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    mobileUserOptions.classList.toggle('active');
+                });
+            }
+
             mobileLanguageOptionsList.forEach(option => {
                 option.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1098,4 +1406,48 @@
                 window.location.href = `/lang/${lang}`;
             }
         });
+
+   async function logout() {
+    try {
+        const url = "{{ route('client.logout') }}";    
+        const response = await fetch(url, {
+            method: 'DELETE', 
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": "{{ csrf_token() }}", 
+                "Accept": "application/json"
+            },
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            // Afficher le message de succès avec toastr
+            toastr.success(data.message || 'Déconnexion réussie!');
+            
+            // Rediriger après un court délai
+            setTimeout(() => {
+                window.location.href = "{{ route('client.login') }}";
+            }, 1500);
+        } else {
+            // Afficher un message d'erreur
+            toastr.error(data.message || 'Erreur lors de la déconnexion');
+        }
+    } catch (error) {
+        console.error('Erreur:', error);
+        toastr.error('Une erreur est survenue lors de la déconnexion');
+    } finally {
+        // loading = false;
+    }
+}
     </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "3000",
+        "extendedTimeOut": "1000"
+    };
+</script>

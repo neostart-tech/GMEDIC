@@ -563,7 +563,11 @@
     "Appeler": "Appeler",
     "Site_Web": "Site Web",
     "Slogan": "Votre santé est notre priorité absolue.",
-    "Contact_Invitation": "N'hésitez pas à nous contacter pour toute information complémentaire."
+    "Contact_Invitation": "N'hésitez pas à nous contacter pour toute information complémentaire.",
+     "connexion": "Connexion",
+    "deconnexion": "Déconnexion",
+    "mes_commandes": "Mes commandes",
+    "mon_compte": "Mon compte"
     
 
 

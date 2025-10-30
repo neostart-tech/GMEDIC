@@ -125,6 +125,23 @@
 					</a>
 				</li>
 
+				<li class="pc-item pc-hasmenu">
+					<a href="#" class="pc-link">
+						<span class="pc-micon">
+								<svg class="pc-icon">
+										<use xlink:href="#custom-shopping-bag"></use>
+								</svg>
+						</span>
+						<span class="pc-mtext">Ecommerce</span>
+						<span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+					</a>
+					<ul class="pc-submenu">
+						<li class="pc-item"><a class="pc-link" href="">Informations Bancaires</a>
+						</li>
+						<li class="pc-item"><a class="pc-link" href="">Commandes</a></li>
+					</ul>
+				</li>
+
 				{{-- Utilisateurs --}}
 				@if(auth()->user()->role_id === 1)
 					<li class="pc-item">

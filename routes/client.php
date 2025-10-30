@@ -67,6 +67,7 @@ Route::controller(AuthClientController::class)->prefix('client')->name('client.'
     Route::post('/register', 'register')->name('register');
     Route::get('/authentification', 'doLogin')->name('dologin');
     Route::get('/register', 'doRegister')->name('doregister');
+    Route::delete('/logout', 'logout')->name('logout');
 });
 
 Route::controller(InfoBancaireController::class)->group(function () {
@@ -75,6 +76,7 @@ Route::controller(InfoBancaireController::class)->group(function () {
 
 Route::controller(CommandeController::class)->group(function () {
     Route::post('/commandes', 'store');
+    Route::get('/mes-commandes', 'getMyCommand')->name('mes-commandes');
 });
 
 
