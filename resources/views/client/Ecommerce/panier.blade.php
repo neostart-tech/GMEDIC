@@ -2989,8 +2989,6 @@ async function processPayment() {
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                // NE PAS mettre 'Content-Type': 'application/json' pour FormData
-                // Le navigateur définira automatiquement le bon Content-Type avec boundary
             },
             body: formData
         });

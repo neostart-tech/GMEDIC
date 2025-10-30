@@ -204,6 +204,7 @@ class CommandeController extends Controller
 // }
 public function store(Request $request)
 {
+
     // Valider les données de base
     $request->validate([
         'adresse_id' => 'required|exists:adresses,id',
@@ -223,20 +224,22 @@ public function store(Request $request)
         ], 400);
     }
 
-    // Validation conditionnelle selon la méthode de paiement
+
     if ($request->methode_paiement === 'card') {
+                \Log::info($request->all());
+
         $request->validate([
             'paiement_details.numero_carte' => 'required|string|max:20',
             'paiement_details.titulaire_carte' => 'required|string|max:255',
-            'paiement_details.date_expiration' => 'required|date|after:today',
+            'paiement_details.date_expiration' => 'required',
             'paiement_details.cvv' => 'required|string|max:4',
         ]);
+
     } elseif ($request->methode_paiement === 'transfer') {
         $request->validate([
             'paiement_details.info_bancaire_id' => 'required|exists:info_bancaires,id',
             'paiement_details.reference_virement' => 'required|string|max:255',
         ]);
-        // Pour virement, le fichier est requis
         $request->validate([
             'preuve_paiement' => 'required|file|mimes:jpg,jpeg,png,pdf|max:5120',
         ]);
@@ -245,7 +248,6 @@ public function store(Request $request)
             'paiement_details.banque' => 'required|string|max:255',
             'paiement_details.numero_cheque' => 'required|string|max:255',
         ]);
-        // Pour chèque, le fichier est requis
         $request->validate([
             'preuve_paiement' => 'required|file|mimes:jpg,jpeg,png,pdf|max:5120',
         ]);
@@ -254,7 +256,6 @@ public function store(Request $request)
     try {
         DB::beginTransaction();
 
-        // Vérifier que le panier n'est pas vide
         if (empty($articles)) {
             return response()->json([
                 'success' => false,
@@ -262,7 +263,6 @@ public function store(Request $request)
             ], 400);
         }
 
-        // Calculer les totaux à partir des articles
         $sousTotal = 0;
         foreach ($articles as $article) {
             $articleModel = Article::find($article['id']);
@@ -274,10 +274,8 @@ public function store(Request $request)
         $fraisLivraison = 0;
         $total = $sousTotal + $fraisLivraison;
 
-        // Générer un numéro de commande unique
         $numeroCommande = 'CMD-' . date('Ymd') . '-' . strtoupper(Str::random(6));
 
-        // Créer la commande
         $commande = Commande::create([
             'user_id' => Auth::id(),
             'adresse_id' => $request->adresse_id,
@@ -288,7 +286,6 @@ public function store(Request $request)
             'commentaires' => $request->commentaires,
         ]);
 
-        // Créer les détails de commande
         foreach ($articles as $item) {
             $article = Article::find($item['id']);
             if ($article) {
@@ -301,13 +298,11 @@ public function store(Request $request)
             }
         }
 
-        // Gérer le fichier de preuve de paiement
         $preuvePath = null;
         if ($request->hasFile('preuve_paiement')) {
             $preuvePath = $request->file('preuve_paiement')->store('preuves_paiement', 'public');
         }
 
-        // Déterminer le statut du paiement selon la méthode
         $statutPaiement = 'en_attente';
         $statutCommande = 'en_attente_paiement';
 
@@ -320,10 +315,8 @@ public function store(Request $request)
             $statutPaiement = 'en_attente_encaissement';
         }
 
-        // Mettre à jour le statut de la commande
         $commande->update(['statut' => $statutCommande]);
 
-        // Enregistrer le moyen de paiement
         $paiementData = [
             'commande_id' => $commande->id,
             'methode' => $request->methode_paiement,
@@ -333,7 +326,6 @@ public function store(Request $request)
             'preuve_paiement' => $preuvePath,
         ];
 
-        // Données spécifiques selon la méthode
         if ($request->methode_paiement === 'card') {
             $paiementData['numero_carte'] = $request->paiement_details['numero_carte'];
             $paiementData['titulaire_carte'] = $request->paiement_details['titulaire_carte'];
