@@ -2797,131 +2797,246 @@
     }
 
     // Traitement du paiement mis à jour
-    async function processPayment() {
-        if (!selectedPaymentMethod) {
-            showError('Veuillez sélectionner une méthode de paiement');
-            return;
-        }
+    // async function processPayment() {
+    //     if (!selectedPaymentMethod) {
+    //         showError('Veuillez sélectionner une méthode de paiement');
+    //         return;
+    //     }
 
-        // Validation selon la méthode
-        let isValid = true;
-        let validationMessage = '';
+    //     // Validation selon la méthode
+    //     let isValid = true;
+    //     let validationMessage = '';
         
-        if (selectedPaymentMethod === 'card') {
-            isValid = validateCarteForm();
-            validationMessage = 'Veuillez remplir tous les champs de la carte bancaire';
-        } else if (selectedPaymentMethod === 'transfer') {
-            isValid = validateVirementForm();
-            validationMessage = 'Veuillez compléter toutes les informations de virement';
-        } else if (selectedPaymentMethod === 'check') {
-            isValid = validateChequeForm();
-            validationMessage = 'Veuillez compléter toutes les informations du chèque';
-        }
+    //     if (selectedPaymentMethod === 'card') {
+    //         isValid = validateCarteForm();
+    //         validationMessage = 'Veuillez remplir tous les champs de la carte bancaire';
+    //     } else if (selectedPaymentMethod === 'transfer') {
+    //         isValid = validateVirementForm();
+    //         validationMessage = 'Veuillez compléter toutes les informations de virement';
+    //     } else if (selectedPaymentMethod === 'check') {
+    //         isValid = validateChequeForm();
+    //         validationMessage = 'Veuillez compléter toutes les informations du chèque';
+    //     }
 
-        if (!isValid) {
-            showError(validationMessage);
-            return;
-        }
+    //     if (!isValid) {
+    //         showError(validationMessage);
+    //         return;
+    //     }
 
-        try {
-            showLoading('Traitement de votre paiement...');
+    //     try {
+    //         showLoading('Traitement de votre paiement...');
 
-            // Préparer les données de la commande
-            const commandeData = {
-                methode_paiement: selectedPaymentMethod,
-                adresse_id: selectedAddressId,
-                commentaires: document.getElementById('commentaires')?.value || '',
-                articles: cartItems.map(item => ({
-                    id: item.id,
-                    nom: item.name,
-                    prix: item.price,
-                    quantite: item.quantity
-                }))
-            };
+    //         // Préparer les données de la commande
+    //         const commandeData = {
+    //             methode_paiement: selectedPaymentMethod,
+    //             adresse_id: selectedAddressId,
+    //             commentaires: document.getElementById('commentaires')?.value || '',
+    //             articles: cartItems.map(item => ({
+    //                 id: item.id,
+    //                 nom: item.name,
+    //                 prix: item.price,
+    //                 quantite: item.quantity
+    //             }))
+    //         };
 
-            // Ajouter les données spécifiques selon la méthode
-            if (selectedPaymentMethod === 'card') {
-                commandeData.paiement_details = {
-                    numero_carte: document.getElementById('cardNumber').value,
-                    titulaire_carte: document.getElementById('cardHolder').value,
-                    date_expiration: document.getElementById('cardExpiry').value,
-                    cvv: document.getElementById('cardCVV').value
-                };
-            } else if (selectedPaymentMethod === 'transfer') {
-                commandeData.paiement_details = {
-                    info_bancaire_id: document.getElementById('info_bancaire_id').value,
-                    reference_virement: document.getElementById('reference_virement').value
-                };
+    //         // Ajouter les données spécifiques selon la méthode
+    //         if (selectedPaymentMethod === 'card') {
+    //             commandeData.paiement_details = {
+    //                 numero_carte: document.getElementById('cardNumber').value,
+    //                 titulaire_carte: document.getElementById('cardHolder').value,
+    //                 date_expiration: document.getElementById('cardExpiry').value,
+    //                 cvv: document.getElementById('cardCVV').value
+    //             };
+    //         } else if (selectedPaymentMethod === 'transfer') {
+    //             commandeData.paiement_details = {
+    //                 info_bancaire_id: document.getElementById('info_bancaire_id').value,
+    //                 reference_virement: document.getElementById('reference_virement').value
+    //             };
                 
-                // Gérer le fichier de preuve pour le virement
-                const preuveFile = document.getElementById('preuve_virement').files[0];
-                if (preuveFile) {
-                    const formData = new FormData();
-                    formData.append('preuve_paiement', preuveFile);
-                }
-            } else if (selectedPaymentMethod === 'check') {
-                commandeData.paiement_details = {
-                    banque: document.getElementById('banque_cheque').value,
-                    numero_cheque: document.getElementById('numero_cheque').value
-                };
+    //             // Gérer le fichier de preuve pour le virement
+    //             const preuveFile = document.getElementById('preuve_virement').files[0];
+    //             if (preuveFile) {
+    //                 const formData = new FormData();
+    //                 formData.append('preuve_paiement', preuveFile);
+    //             }
+    //         } else if (selectedPaymentMethod === 'check') {
+    //             commandeData.paiement_details = {
+    //                 banque: document.getElementById('banque_cheque').value,
+    //                 numero_cheque: document.getElementById('numero_cheque').value
+    //             };
                 
-                const preuveFile = document.getElementById('preuve_cheque').files[0];
-                if (preuveFile) {
-                    const formData = new FormData();
-                    formData.append('preuve_paiement', preuveFile);
-                    // Vous devrez gérer l'upload séparément ou l'envoyer avec la commande
-                }
-            }
+    //             const preuveFile = document.getElementById('preuve_cheque').files[0];
+    //             if (preuveFile) {
+    //                 const formData = new FormData();
+    //                 formData.append('preuve_paiement', preuveFile);
+    //                 // Vous devrez gérer l'upload séparément ou l'envoyer avec la commande
+    //             }
+    //         }
 
-            // Envoyer la commande
-            const response = await fetch('/commandes', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                },
-                body: JSON.stringify(commandeData)
-            });
+    //         // Envoyer la commande
+    //         const response = await fetch('/commandes', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+    //             },
+    //             body: JSON.stringify(commandeData)
+    //         });
 
-            const result = await response.json();
+    //         const result = await response.json();
 
-            if (response.ok && result.success) {
-                // Afficher la confirmation
-                document.getElementById('paymentSection').classList.remove('active');
-                document.getElementById('confirmationSection').classList.add('active');
-                currentStep = 4;
-                updateCheckoutSteps();
+    //         if (response.ok && result.success) {
+    //             // Afficher la confirmation
+    //             document.getElementById('paymentSection').classList.remove('active');
+    //             document.getElementById('confirmationSection').classList.add('active');
+    //             currentStep = 4;
+    //             updateCheckoutSteps();
                 
-                // Mettre à jour les informations de confirmation
-                document.getElementById('finalOrderNumber').textContent = result.numero_commande || 'CMD-' + new Date().getFullYear() + '-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-                document.getElementById('finalPaymentMethod').textContent = getPaymentMethodName(selectedPaymentMethod);
-                document.getElementById('finalTotalAmount').textContent = calculateTotal().toLocaleString('fr-FR', {minimumFractionDigits: 2}) + ' fcfa';
+    //             // Mettre à jour les informations de confirmation
+    //             document.getElementById('finalOrderNumber').textContent = result.numero_commande || 'CMD-' + new Date().getFullYear() + '-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+    //             document.getElementById('finalPaymentMethod').textContent = getPaymentMethodName(selectedPaymentMethod);
+    //             document.getElementById('finalTotalAmount').textContent = calculateTotal().toLocaleString('fr-FR', {minimumFractionDigits: 2}) + ' fcfa';
                 
-                // Vider le panier
-                cartItems = [];
-                localStorage.setItem('medicalCart', JSON.stringify(cartItems));
-                await clearCartOnServer();
-                displayCartItems();
+    //             // Vider le panier
+    //             cartItems = [];
+    //             localStorage.setItem('medicalCart', JSON.stringify(cartItems));
+    //             await clearCartOnServer();
+    //             displayCartItems();
                 
-                closeLoading();
-                showSuccess('Commande confirmée avec succès !');
+    //             closeLoading();
+    //             showSuccess('Commande confirmée avec succès !');
                 
-            } else {
-                throw new Error(result.message || 'Erreur lors du traitement de la commande');
-            }
+    //         } else {
+    //             throw new Error(result.message || 'Erreur lors du traitement de la commande');
+    //         }
 
-        } catch (error) {
-            closeLoading();
-            showError(error.message || 'Erreur lors du traitement du paiement');
-        }
+    //     } catch (error) {
+    //         closeLoading();
+    //         showError(error.message || 'Erreur lors du traitement du paiement');
+    //     }
+    // }
+async function processPayment() {
+    if (!selectedPaymentMethod) {
+        showError('Veuillez sélectionner une méthode de paiement');
+        return;
     }
 
+    // Validation selon la méthode
+    let isValid = true;
+    let validationMessage = '';
+    
+    if (selectedPaymentMethod === 'card') {
+        isValid = validateCarteForm();
+        validationMessage = 'Veuillez remplir tous les champs de la carte bancaire';
+    } else if (selectedPaymentMethod === 'transfer') {
+        isValid = validateVirementForm();
+        validationMessage = 'Veuillez compléter toutes les informations de virement';
+    } else if (selectedPaymentMethod === 'check') {
+        isValid = validateChequeForm();
+        validationMessage = 'Veuillez compléter toutes les informations du chèque';
+    }
+
+    if (!isValid) {
+        showError(validationMessage);
+        return;
+    }
+
+    try {
+        showLoading('Traitement de votre paiement...');
+
+        // Créer FormData au lieu d'envoyer du JSON
+        const formData = new FormData();
+
+        // Ajouter les données de base
+        formData.append('methode_paiement', selectedPaymentMethod);
+        formData.append('adresse_id', selectedAddressId);
+        formData.append('commentaires', document.getElementById('commentaires')?.value || '');
+        formData.append('articles', JSON.stringify(cartItems.map(item => ({
+            id: item.id,
+            nom: item.name,
+            prix: item.price,
+            quantite: item.quantity
+        }))));
+
+        // Ajouter les données spécifiques selon la méthode
+        if (selectedPaymentMethod === 'card') {
+            formData.append('paiement_details[numero_carte]', document.getElementById('cardNumber').value);
+            formData.append('paiement_details[titulaire_carte]', document.getElementById('cardHolder').value);
+            formData.append('paiement_details[date_expiration]', document.getElementById('cardExpiry').value);
+            formData.append('paiement_details[cvv]', document.getElementById('cardCVV').value);
+        } else if (selectedPaymentMethod === 'transfer') {
+            formData.append('paiement_details[info_bancaire_id]', document.getElementById('info_bancaire_id').value);
+            formData.append('paiement_details[reference_virement]', document.getElementById('reference_virement').value);
+            
+            // Ajouter le fichier de preuve
+            const preuveFile = document.getElementById('preuve_virement').files[0];
+            if (preuveFile) {
+                formData.append('preuve_paiement', preuveFile);
+            }
+        } else if (selectedPaymentMethod === 'check') {
+            formData.append('paiement_details[banque]', document.getElementById('banque_cheque').value);
+            formData.append('paiement_details[numero_cheque]', document.getElementById('numero_cheque').value);
+            
+            // Ajouter le fichier de preuve
+            const preuveFile = document.getElementById('preuve_cheque').files[0];
+            if (preuveFile) {
+                formData.append('preuve_paiement', preuveFile);
+            }
+        }
+
+        // Envoyer la commande avec FormData
+        const response = await fetch('/commandes', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                // NE PAS mettre 'Content-Type': 'application/json' pour FormData
+                // Le navigateur définira automatiquement le bon Content-Type avec boundary
+            },
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+            // Afficher la confirmation
+            document.getElementById('paymentSection').classList.remove('active');
+            document.getElementById('confirmationSection').classList.add('active');
+            currentStep = 4;
+            updateCheckoutSteps();
+            
+            // Mettre à jour les informations de confirmation
+            document.getElementById('finalOrderNumber').textContent = result.numero_commande || 'CMD-' + new Date().getFullYear() + '-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            document.getElementById('finalPaymentMethod').textContent = getPaymentMethodName(selectedPaymentMethod);
+            document.getElementById('finalTotalAmount').textContent = calculateTotal().toLocaleString('fr-FR', {minimumFractionDigits: 2}) + ' fcfa';
+            
+            // Vider le panier
+            cartItems = [];
+            localStorage.setItem('medicalCart', JSON.stringify(cartItems));
+            await clearCartOnServer();
+            displayCartItems();
+            
+            closeLoading();
+            showSuccess('Commande confirmée avec succès !');
+            
+        } else {
+            throw new Error(result.message || 'Erreur lors du traitement de la commande');
+        }
+
+    } catch (error) {
+        closeLoading();
+        console.error('Erreur détaillée:', error);
+        showError(error.message || 'Erreur lors du traitement du paiement');
+    }
+}
     // Fonctions de validation
     function validateCarteForm() {
+        
         const cardNumber = document.getElementById('cardNumber').value.trim();
         const cardExpiry = document.getElementById('cardExpiry').value.trim();
         const cardHolder = document.getElementById('cardHolder').value.trim();
         const cardCVV = document.getElementById('cardCVV').value.trim();
+
+
 
         if (!cardNumber || !cardExpiry || !cardHolder || !cardCVV) {
             return false;
@@ -3009,9 +3124,7 @@
         return methods[method] || method;
     }
 
-    // =============================================
-    // FONCTIONS UTILITAIRES
-    // =============================================
+  
 
     function calculateTotal() {
         if (!Array.isArray(cartItems)) {

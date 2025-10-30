@@ -9,6 +9,8 @@ class InfoBancaire extends Model
 {
     use HasFactory;
 
+    protected $table="info_bancaires";
+
     protected $fillable = [
         'nom_banque',
         'titulaire_compte',
