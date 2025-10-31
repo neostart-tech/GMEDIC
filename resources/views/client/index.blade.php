@@ -24,12 +24,6 @@
             --transition: all 0.2s ease;
         }
 
-        /* Reset des marges pour mobile */
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
         /* Header */
         .page-header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
@@ -58,7 +52,6 @@
         }
 
         .cart-header {
-            background: rgba(255, 255, 255, 0.15);
             padding: 12px 16px;
             border-radius: 12px;
             display: flex;
@@ -163,18 +156,6 @@
             margin-bottom: 15px;
         }
 
-        .slide-promo-badge {
-            background: var(--accent);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 15px;
-            margin-left: 8px;
-        }
-
         .slide-title {
             font-size: 1.5rem;
             font-weight: 700;
@@ -190,33 +171,18 @@
             font-size: 0.95rem;
         }
 
-        .slide-price-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
         .slide-price {
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary);
+            margin-bottom: 20px;
         }
 
-        .slide-price-old {
+        .price-old {
             text-decoration: line-through;
             color: var(--text-light);
             font-size: 1rem;
-        }
-
-        .slide-discount {
-            background: var(--accent);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            margin-left: 8px;
         }
 
         .slide-actions {
@@ -257,6 +223,16 @@
         .btn-outline:hover {
             background: var(--primary);
             color: white;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: translateY(-1px);
         }
 
         .slider-nav {
@@ -414,55 +390,6 @@
             height: 16px;
         }
 
-        /* Style personnalisé pour le range input */
-        input[type="range"] {
-            width: 100%;
-            height: 6px;
-            border-radius: 5px;
-            background: var(--border);
-            outline: none;
-            -webkit-appearance: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--primary);
-            cursor: pointer;
-            border: 2px solid white;
-            box-shadow: var(--shadow);
-        }
-
-        input[type="range"]::-moz-range-thumb {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--primary);
-            cursor: pointer;
-            border: 2px solid white;
-            box-shadow: var(--shadow);
-        }
-
-        input[type="range"]::-webkit-slider-track {
-            height: 6px;
-            border-radius: 5px;
-            background: linear-gradient(to right, var(--primary) 0%, var(--primary) var(--range-progress, 0%), var(--border) var(--range-progress, 0%), var(--border) 100%);
-        }
-
-        input[type="range"]::-moz-range-track {
-            height: 6px;
-            border-radius: 5px;
-            background: var(--border);
-        }
-
-        input[type="range"]::-moz-range-progress {
-            background: var(--primary);
-            height: 6px;
-            border-radius: 5px;
-        }
-
         /* Products Grid */
         .products-main {
             min-height: 500px;
@@ -505,25 +432,11 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             border: 1px solid var(--border);
-            position: relative;
         }
 
         .product-card:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
-        }
-
-        .product-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: var(--accent);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            z-index: 2;
         }
 
         .product-image {
@@ -558,33 +471,11 @@
             line-height: 1.4;
         }
 
-        .product-price-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
         .product-price {
             font-size: 1.1rem;
             font-weight: 700;
             color: var(--primary);
-        }
-
-        .product-price-old {
-            text-decoration: line-through;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .product-discount {
-            background: var(--accent);
-            color: white;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
+            margin-bottom: 15px;
         }
 
         .product-actions {
@@ -687,7 +578,6 @@
             .shop-container {
                 grid-template-columns: 1fr;
                 gap: 20px;
-                padding: 0 15px 30px;
             }
 
             .filters-sidebar {
@@ -696,7 +586,6 @@
 
             .mobile-filters {
                 display: block;
-                margin: 0 15px 20px;
             }
 
             .products-grid {
@@ -736,7 +625,6 @@
                 flex-direction: column;
                 gap: 15px;
                 text-align: center;
-                padding: 0 15px;
             }
 
             .header-text h1 {
@@ -849,7 +737,6 @@
 
             .empty-state {
                 padding: 60px 15px;
-                margin: 0 15px 20px;
             }
 
             .empty-state-icon {
@@ -863,7 +750,7 @@
 
         @media (max-width: 480px) {
             .page-header-content {
-                padding: 0 10px;
+                padding: 0 15px;
             }
 
             .header-text h1 {
@@ -902,10 +789,6 @@
                 padding: 0 10px 25px;
             }
 
-            .mobile-filters {
-                margin: 0 10px 15px;
-            }
-
             .filters-dropdown-header {
                 padding: 12px 15px;
             }
@@ -931,7 +814,6 @@
 
             .empty-state {
                 padding: 40px 15px;
-                margin: 0 10px 15px;
             }
 
             .empty-state-icon {
@@ -959,14 +841,6 @@
             .products-grid {
                 grid-template-columns: 1fr;
             }
-
-            .page-header-content,
-            .hero-section,
-            .shop-container,
-            .mobile-filters {
-                padding-left: 8px;
-                padding-right: 8px;
-            }
         }
     </style>
 
@@ -982,7 +856,6 @@
                     <i class="fas fa-shopping-cart"></i>
                     <div class="cart-count" id="cartCount">{{ $nbrArticle }}</div>
                 </div>
-               
             </div>
         </div>
     </div>
@@ -1153,19 +1026,29 @@
         let sliderInterval;
         let isFiltersDropdownOpen = false;
 
-        // Calculer le pourcentage de réduction
-        function calculateDiscountPercentage(originalPrice, reducedPrice) {
-            if (!originalPrice || !reducedPrice || originalPrice <= reducedPrice) return 0;
-            return Math.round(((originalPrice - reducedPrice) / originalPrice) * 100);
-        }
+        // WhatsApp Configuration
+        const WHATSAPP_NUMBER = '22898712020';
+        const COMPANY_NAME = '{{ env("APP_NAME", "Notre Société") }}';
 
-        // Mettre à jour le style du range input
-        function updateRangeStyle() {
-            const ranges = document.querySelectorAll('input[type="range"]');
-            ranges.forEach(range => {
-                const value = (range.value - range.min) / (range.max - range.min) * 100;
-                range.style.setProperty('--range-progress', value + '%');
-            });
+        // Fonction pour envoyer la demande de devis par WhatsApp
+        function sendWhatsAppQuote(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) {
+                showNotification('Produit non trouvé', 'error');
+                return;
+            }
+
+            // Message personnalisé pour la demande de devis
+            const message = `Bonjour ${COMPANY_NAME} !%0A%0AJe suis intéressé(e) par cet équipement médical :%0A%0A*${product.title}*%0A Catégorie : ${product.categoryName}%0A${product.subcategoryName ? ` Sous-catégorie : ${product.subcategoryName}%0A` : ''}%0A *Demande de devis*%0A%0APouvez-vous me communiquer le prix et les disponibilités ?%0A%0AMerci pour votre retour !`;
+
+            // URL WhatsApp avec le message pré-rempli
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+            
+            // Ouvrir WhatsApp dans une nouvelle fenêtre
+            window.open(whatsappUrl, '_blank');
+            
+            // Notification de confirmation
+            showNotification('Ouverture de WhatsApp pour la demande de devis');
         }
 
         // Toggle mobile filters dropdown
@@ -1204,8 +1087,6 @@
             if (sortDesktop && sortMobile) {
                 sortMobile.value = sortDesktop.value;
             }
-            
-            updateRangeStyle();
         }
 
         // Charger toutes les données
@@ -1218,28 +1099,21 @@
                 
                 const data = await response.json();
                 
-                // Transformer les données avec calcul des réductions
-                allProducts = data.articles.map(article => {
-                    const price = article.reduceprice || article.price;
-                    const oldPrice = article.price && article.reduceprice ? article.price : null;
-                    const discountPercentage = oldPrice ? calculateDiscountPercentage(oldPrice, price) : 0;
-                    
-                    return {
-                        id: article.id,
-                        title: article.article_name?.fr || article.article_name || 'Nom non disponible',
-                        description: article.article_desc?.fr || article.article_desc || 'Description non disponible',
-                        price: price,
-                        oldPrice: oldPrice,
-                        discountPercentage: discountPercentage,
-                        image: article.article_image ? `/storage/${article.article_image}` : '/images/placeholder.jpg',
-                        category: article.categorie_id,
-                        categoryName: article.category?.category_name || 'Non catégorisé',
-                        subcategory: article.SubCategory?.id,
-                        subcategoryName: article.SubCategory?.sub_categorie_name || 'Non classé',
-                        published: article.published,
-                        created_at: article.created_at
-                    };
-                });
+                // Transformer les données
+                allProducts = data.articles.map(article => ({
+                    id: article.id,
+                    title: article.article_name?.fr || article.article_name || 'Nom non disponible',
+                    description: article.article_desc?.fr || article.article_desc || 'Description non disponible',
+                    price: article.reduceprice || article.price,
+                    oldPrice: article.price && article.reduceprice ? article.price : null,
+                    image: article.article_image ? `/storage/${article.article_image}` : '/images/placeholder.jpg',
+                    category: article.categorie_id,
+                    categoryName: article.category?.category_name || 'Non catégorisé',
+                    subcategory: article.SubCategory?.id,
+                    subcategoryName: article.SubCategory?.sub_categorie_name || 'Non classé',
+                    published: article.published,
+                    created_at: article.created_at
+                }));
 
                 allCategories = data.categories.filter(cat => cat.published === 1);
                 allSubcategories = data.sub_categories;
@@ -1260,7 +1134,6 @@
             populateSubcategoryFilters();
             initializeSlider();
             applyFilters();
-            updateRangeStyle();
         }
 
         // Initialiser le slider avec ordre responsive
@@ -1280,7 +1153,6 @@
 
             sliderTrack.innerHTML = latestProducts.map((product, index) => {
                 const isMobile = window.innerWidth <= 1024;
-                const hasDiscount = product.discountPercentage > 0;
                 
                 return `
                     <div class="slider-slide">
@@ -1291,18 +1163,13 @@
                                      onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3ZjhjOGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLigI3imYLigI08L3RleHQ+PC9zdmc+'">
                             </div>
                             <div class="slide-content">
-                                <div>
-                                    <span class="slide-badge">${hasDiscount ? 'Promotion' : 'Nouveau'}</span>
-                                    ${hasDiscount ? `<span class="slide-promo-badge">-${product.discountPercentage}%</span>` : ''}
-                                </div>
+                                <div class="slide-badge">${product.oldPrice ? 'Promotion' : 'Nouveau'}</div>
                                 <h2 class="slide-title">${product.title}</h2>
                                 <p class="slide-description">${product.description}</p>
                                 ${product.price ? `
-                                    <div class="slide-price-container">
-                                        <div class="slide-price">${product.price.toLocaleString()} fcfa</div>
-                                        ${product.oldPrice ? `
-                                            <div class="slide-price-old">${product.oldPrice.toLocaleString()} fcfa</div>
-                                        ` : ''}
+                                    <div class="slide-price">
+                                        ${product.price.toLocaleString()} fcfa
+                                        ${product.oldPrice ? `<span class="price-old">${product.oldPrice.toLocaleString()} fcfa</span>` : ''}
                                     </div>
                                 ` : ''}
                                 <div class="slide-actions">
@@ -1312,8 +1179,8 @@
                                             Ajouter au panier
                                         </button>
                                     ` : `
-                                        <button class="btn btn-primary" onclick="openQuoteRequest(${product.id})">
-                                            <i class="fas fa-envelope"></i>
+                                        <button class="btn btn-whatsapp" onclick="sendWhatsAppQuote(${product.id})">
+                                            <i class="fab fa-whatsapp"></i>
                                             Demander un devis
                                         </button>
                                     `}
@@ -1326,18 +1193,13 @@
                         ` : `
                             <!-- Version Desktop: Image à droite -->
                             <div class="slide-content">
-                                <div>
-                                    <span class="slide-badge">${hasDiscount ? 'Promotion' : 'Nouveau'}</span>
-                                    ${hasDiscount ? `<span class="slide-promo-badge">-${product.discountPercentage}%</span>` : ''}
-                                </div>
+                                <div class="slide-badge">${product.oldPrice ? 'Promotion' : 'Nouveau'}</div>
                                 <h2 class="slide-title">${product.title}</h2>
                                 <p class="slide-description">${product.description}</p>
                                 ${product.price ? `
-                                    <div class="slide-price-container">
-                                        <div class="slide-price">${product.price.toLocaleString()} fcfa</div>
-                                        ${product.oldPrice ? `
-                                            <div class="slide-price-old">${product.oldPrice.toLocaleString()} fcfa</div>
-                                        ` : ''}
+                                    <div class="slide-price">
+                                        ${product.price.toLocaleString()} fcfa
+                                        ${product.oldPrice ? `<span class="price-old">${product.oldPrice.toLocaleString()} fcfa</span>` : ''}
                                     </div>
                                 ` : ''}
                                 <div class="slide-actions">
@@ -1347,8 +1209,8 @@
                                             Ajouter au panier
                                         </button>
                                     ` : `
-                                        <button class="btn btn-primary" onclick="openQuoteRequest(${product.id})">
-                                            <i class="fas fa-envelope"></i>
+                                        <button class="btn btn-whatsapp" onclick="sendWhatsAppQuote(${product.id})">
+                                            <i class="fab fa-whatsapp"></i>
                                             Demander un devis
                                         </button>
                                     `}
@@ -1489,7 +1351,6 @@
             if (display) display.textContent = currentFilters.maxPrice.toLocaleString() + ' fcfa';
             if (displayMobile) displayMobile.textContent = currentFilters.maxPrice.toLocaleString() + ' fcfa';
             
-            updateRangeStyle();
             applyFilters();
         }
 
@@ -1557,12 +1418,8 @@
             loadingState.style.display = 'none';
             emptyState.style.display = 'none';
 
-            grid.innerHTML = products.map(product => {
-                const hasDiscount = product.discountPercentage > 0;
-                
-                return `
+            grid.innerHTML = products.map(product => `
                 <div class="product-card">
-                    ${hasDiscount ? `<div class="product-badge">-${product.discountPercentage}%</div>` : ''}
                     <img src="${product.image}" alt="${product.title}" class="product-image"
                          onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjE1MCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3ZjhjOGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLigI3imYLigI08L3RleHQ+PC9zdmc+'">
                     <div class="product-content">
@@ -1570,12 +1427,7 @@
                         <h3 class="product-title">${product.title}</h3>
                         <p class="product-description">${product.description.length > 100 ? product.description.substring(0, 100) + '...' : product.description}</p>
                         ${product.price ? `
-                            <div class="product-price-container">
-                                <div class="product-price">${product.price.toLocaleString()} fcfa</div>
-                                ${product.oldPrice ? `
-                                    <div class="product-price-old">${product.oldPrice.toLocaleString()} fcfa</div>
-                                ` : ''}
-                            </div>
+                            <div class="product-price">${product.price.toLocaleString()} fcfa</div>
                         ` : '<div class="product-price">Prix sur demande</div>'}
                         <div class="product-actions">
                             ${product.price ? `
@@ -1584,9 +1436,9 @@
                                     Panier
                                 </button>
                             ` : `
-                                <button class="btn btn-primary btn-small" onclick="openQuoteRequest(${product.id})">
-                                    <i class="fas fa-envelope"></i>
-                                    Devis
+                                <button class="btn btn-whatsapp btn-small" onclick="sendWhatsAppQuote(${product.id})">
+                                    <i class="fab fa-whatsapp"></i>
+                                    Devis WhatsApp
                                 </button>
                             `}
                             <button class="btn btn-outline btn-small" onclick="showProductDetails(${product.id})">
@@ -1596,7 +1448,7 @@
                         </div>
                     </div>
                 </div>
-            `}).join('');
+            `).join('');
         }
 
         // Fonctions panier
@@ -1634,17 +1486,28 @@
             }
         }
 
-        function openQuoteRequest(productId) {
-            const product = allProducts.find(p => p.id === productId);
-            if (product) {
-                showNotification(`Demande de devis pour: ${product.title}`);
-            }
-        }
-
         function showProductDetails(productId) {
             const product = allProducts.find(p => p.id === productId);
             if (product) {
-                alert(`Détails: ${product.title}\n\n${product.description}\n\nPrix: ${product.price ? product.price.toLocaleString() + ' fcfa' : 'Sur demande'}`);
+                const details = `
+                     *${product.title}*
+                    
+                     Catégorie : ${product.categoryName}
+                    ${product.subcategoryName ? ` Sous-catégorie : ${product.subcategoryName}\n` : ''}
+                    
+                     Description :
+                    ${product.description}
+                    
+                    ${product.price ? ` Prix : ${product.price.toLocaleString()} fcfa` : ' Prix : Sur demande'}
+                    
+                    ---
+                    
+                    Options disponibles :
+                    • Ajouter au panier
+                    • Demander un devis
+                    • Voir plus de détails
+                `;
+                alert(details);
             }
         }
 
@@ -1742,6 +1605,10 @@
                                     <i class="fas fa-shopping-catalog"></i>
                                     Voir le catalogue
                                 </button>
+                                <button class="btn btn-whatsapp" onclick="sendWhatsAppQuote(null)">
+                                    <i class="fab fa-whatsapp"></i>
+                                    Contact WhatsApp
+                                </button>
                             </div>
                         </div>
                     ` : `
@@ -1753,6 +1620,10 @@
                                 <button class="btn btn-primary" onclick="resetFilters()">
                                     <i class="fas fa-shopping-catalog"></i>
                                     Voir le catalogue
+                                </button>
+                                <button class="btn btn-whatsapp" onclick="sendWhatsAppQuote(null)">
+                                    <i class="fab fa-whatsapp"></i>
+                                    Contact WhatsApp
                                 </button>
                             </div>
                         </div>
@@ -1768,7 +1639,6 @@
         function handleResize() {
             initializeSlider();
             updateSlider();
-            updateRangeStyle();
         }
 
         // Initialisation
@@ -1784,9 +1654,6 @@
 
             // Redessiner le slider lors du redimensionnement
             window.addEventListener('resize', handleResize);
-
-            // Mettre à jour le style des ranges au chargement
-            updateRangeStyle();
 
             // Fermer le dropdown des filtres en cliquant à l'extérieur
             document.addEventListener('click', function(event) {
