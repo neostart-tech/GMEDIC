@@ -554,8 +554,8 @@
     "Nom_femme":"Dr AWOUSSI Eugénie",
     "titre_femme":"Responsable des ventes",
     "Titre_Fondateur": "CEO & Fondateur",
- "Nom_femme":"Dr AWOUSSI Eugénie",
-    "titre_femme":"Responsable des ventes",    "AdresseCarte": "Agoe, en face du Marché Cacaveli, Lomé - Togo",
+
+     "AdresseCarte": "Agoe, en face du Marché Cacaveli, Lomé - Togo",
 
       "AdresseCarteVisite": "Adresse",
     "Telephone": "Téléphone",
@@ -567,7 +567,11 @@
      "connexion": "Connexion",
     "deconnexion": "Déconnexion",
     "mes_commandes": "Mes commandes",
-    "mon_compte": "Mon compte"
+    "mon_compte": "Mon compte",
+    "equipements_medicaux": "Équipements médicaux",
+    "materiel_professionnel": "Matériel professionnel pour les professionnels de santé"
+
+
     
 
 

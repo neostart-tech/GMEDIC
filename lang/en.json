@@ -569,7 +569,11 @@
      "connexion": "Login",
     "deconnexion": "Logout",
     "mes_commandes": "My Orders",
-    "mon_compte": "My Account"
+    "mon_compte": "My Account",
+        "equipements_medicaux": "Medical Equipment",
+      "materiel_professionnel": "Professional equipment for healthcare professionals"
+
+
 
 
 

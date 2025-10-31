@@ -568,7 +568,11 @@
       "connexion": "登录",
     "deconnexion": "登出",
     "mes_commandes": "我的订单",
-    "mon_compte": "我的账户"
+    "mon_compte": "我的账户",
+        "equipements_medicaux": "医疗设备",
+        "materiel_professionnel": "为医疗专业人士提供的专业设备"
+
+
 
 
 
