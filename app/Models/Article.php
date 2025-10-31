@@ -26,7 +26,7 @@ class Article extends Model
 
     ];
 
-        public $translatable = ['article_name', 'article_desc'];
+    public $translatable = ['article_name', 'article_desc'];
 
     public function getImageUrlAttribute()
     {

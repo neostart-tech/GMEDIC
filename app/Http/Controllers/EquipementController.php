@@ -35,4 +35,18 @@ class EquipementController extends Controller
             'sub_categories' => SousCategorieResource::collection($subCategories),
         ]);
     }
+
+
+     public function show(Article $article){
+        $articles=Article::with(['category','subCategorie'])->where('published',true)->where("id",$article->id)->get();
+        $othersArticles=Article::with(['category','subCategorie'])->where('published',true)->where("id","!=",$article->id)->get()->take(12);
+        return response()->json(["articles"=>ArticleResource::collection($articles),"othersArticles"=>ArticleResource::collection($othersArticles)]);
+    }
+
+
+    public function showDetail(Article $article){
+        
+        return view('client.Ecommerce.detailArticle',compact('article'));
+    }
+    
 }

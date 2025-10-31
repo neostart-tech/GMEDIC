@@ -17,9 +17,11 @@ class articlesController extends Controller
 	private const FOLDER = 'article_images';
 
     public function index(){
-        $articles=Articles::with(['category'])->where('published',true)->get();
+        $articles=Article::with(['category'])->where('published',true)->get();
         return ArticleResource::collection($articles);
     }
+
+   
 
 
 }

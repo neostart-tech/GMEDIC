@@ -296,6 +296,8 @@
             background: var(--lighter);
             border-radius: 12px;
             padding: 0;
+            margin-left:15px;
+            margin-right: 15px;
             margin-bottom: 20px;
             box-shadow: var(--shadow);
             overflow: hidden;
@@ -388,6 +390,75 @@
         .filter-option input {
             width: 16px;
             height: 16px;
+        }
+
+        /* Custom Range Input Styles */
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 5px;
+            background: var(--border);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        /* Webkit browsers (Chrome, Safari, Edge) */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        input[type="range"]::-webkit-slider-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: linear-gradient(to right, var(--primary) 0%, var(--primary) var(--range-progress, 50%), var(--border) var(--range-progress, 50%), var(--border) 100%);
+            border-radius: 5px;
+        }
+
+        /* Firefox */
+        input[type="range"]::-moz-range-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: var(--border);
+            border-radius: 5px;
+            border: none;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        input[type="range"]::-moz-range-progress {
+            background: var(--primary);
+            height: 6px;
+            border-radius: 5px;
         }
 
         /* Products Grid */
@@ -911,7 +982,7 @@
             <div class="filter-section">
                 <div class="filter-title">Prix maximum</div>
                 <input type="range" id="priceRangeMobile" min="0" max="100000" value="100000" step="1000" oninput="updatePriceDisplay()">
-                <div id="priceDisplayMobile" style="margin-top: 8px; font-size: 0.9rem; color: var(--text-light);">100 000 fcfa</div>
+                <div id="priceDisplayMobile" style="margin-top: 8px; font-size: 0.9rem; color: var(--text-light);">1 000 000 fcfa</div>
             </div>
 
             <div class="filter-section">
@@ -956,8 +1027,8 @@
 
             <div class="filter-section">
                 <div class="filter-title">Prix maximum</div>
-                <input type="range" id="priceRange" min="0" max="100000" value="100000" step="1000" oninput="updatePriceDisplay()">
-                <div id="priceDisplay" style="margin-top: 8px; font-size: 0.9rem; color: var(--text-light);">100 000 fcfa</div>
+                <input type="range" id="priceRange" min="0" max="1000000" value="1000000" step="1000" oninput="updatePriceDisplay()">
+                <div id="priceDisplay" style="margin-top: 8px; font-size: 0.9rem; color: var(--text-light);">1 000 000 fcfa</div>
             </div>
 
             <button class="btn btn-outline" onclick="resetFilters()" style="width: 100%; margin-top: 20px;">
@@ -990,7 +1061,7 @@
 
             <!-- Empty State -->
             <div class="empty-state" id="emptyState" style="display: none;">
-                <div class="empty-state-icon">🔍</div>
+                <div class="empty-state-icon"></div>
                 <h3 class="empty-state-title">Aucun équipement trouvé</h3>
                 <p class="empty-state-description">
                     Aucun équipement ne correspond à vos critères de recherche. 
@@ -1029,6 +1100,15 @@
         // WhatsApp Configuration
         const WHATSAPP_NUMBER = '22898712020';
         const COMPANY_NAME = '{{ env("APP_NAME", "Notre Société") }}';
+
+        // Fonction pour mettre à jour la couleur du range dynamiquement
+        function updateRangeColor() {
+            const ranges = document.querySelectorAll('input[type="range"]');
+            ranges.forEach(range => {
+                const value = (range.value - range.min) / (range.max - range.min) * 100;
+                range.style.setProperty('--range-progress', value + '%');
+            });
+        }
 
         // Fonction pour envoyer la demande de devis par WhatsApp
         function sendWhatsAppQuote(productId) {
@@ -1103,7 +1183,7 @@
                 allProducts = data.articles.map(article => ({
                     id: article.id,
                     title: article.article_name?.fr || article.article_name || 'Nom non disponible',
-                    description: article.article_desc?.fr || article.article_desc || 'Description non disponible',
+                    description: article.article_desc?.fr || article.article_desc.slice(0,100)+"..." || 'Description non disponible',
                     price: article.reduceprice || article.price,
                     oldPrice: article.price && article.reduceprice ? article.price : null,
                     image: article.article_image ? `/storage/${article.article_image}` : '/images/placeholder.jpg',
@@ -1134,6 +1214,8 @@
             populateSubcategoryFilters();
             initializeSlider();
             applyFilters();
+            // Initialiser la couleur des ranges
+            updateRangeColor();
         }
 
         // Initialiser le slider avec ordre responsive
@@ -1350,6 +1432,9 @@
             
             if (display) display.textContent = currentFilters.maxPrice.toLocaleString() + ' fcfa';
             if (displayMobile) displayMobile.textContent = currentFilters.maxPrice.toLocaleString() + ' fcfa';
+            
+            // Mettre à jour la couleur du range
+            updateRangeColor();
             
             applyFilters();
         }
@@ -1667,6 +1752,9 @@
                     toggleFiltersDropdown();
                 }
             });
+
+            // Mettre à jour la couleur des ranges lors du chargement
+            updateRangeColor();
         });
     </script>
 @endsection

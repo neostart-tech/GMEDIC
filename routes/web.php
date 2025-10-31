@@ -82,6 +82,10 @@ Route::middleware(['auth'])->prefix('administration')->name('admin.')->group(fun
 
 Route::controller(EquipementController::class)->name('articles.')->prefix('articles')->group(function () {
     Route::get('/nos-articles', 'index')->name('nos-articles');
+    Route::get("{article}/details","show");
+    Route::get("{article}/voir-detail","showDetail")->name('voir-detail');
+
+
 
 });
 
