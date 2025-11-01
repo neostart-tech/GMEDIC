@@ -580,10 +580,25 @@
     "categories": "类别",
     "sous_categories": "子类别",
     "prix_maximum": "最高价格",
-    "reinitialiser": "重置",
     "panier": "购物车",
     "devis_whatsapp": "WhatsApp 报价",
-    "details": "详情"
+    "details": "详情",
+    "filtres_et_recherche": "筛选和搜索",
+     "trier_par": "排序方式",
+    "plus_recents": "最新",
+    "prix_croissant": "价格从低到高",
+    "prix_decroissant": "价格从高到低",
+    "nom_a_z": "名称 A-Z",
+    "reinitialiser_les_filtres": "重置筛选",
+    "recherche": "搜索",
+    "reinitialiser": "重置",
+    "chargement": "加载中",
+    "chargement_des_equipements": "正在加载设备",
+    "aucun_equipement_trouve": "未找到设备",
+    "aucun_equipement_correspond": "没有设备符合您的搜索条件。 请尝试修改筛选或搜索。",
+        "equipements_trouves": "找到的设备"
+
+
 
 
 

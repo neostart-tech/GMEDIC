@@ -579,10 +579,25 @@
     "categories": "Catégories",
     "sous_categories": "Sous-catégories",
     "prix_maximum": "Prix maximum",
-    "reinitialiser": "Réinitialiser",
     "panier": "Panier",
     "devis_whatsapp": "Devis WhatsApp",
-    "details": "Détails"
+    "details": "Détails",
+        "filtres_et_recherche": "Filtres et Recherche",
+          "trier_par": "Trier par",
+    "plus_recents": "Plus récents",
+    "prix_croissant": "Prix croissant",
+    "prix_decroissant": "Prix décroissant",
+    "nom_a_z": "Nom A-Z",
+    "reinitialiser_les_filtres": "Réinitialiser les filtres",
+    "recherche": "Recherche",
+    "reinitialiser": "Réinitialiser",
+    "chargement": "Chargement",
+    "chargement_des_equipements": "Chargement des équipements",
+    "aucun_equipement_trouve": "Aucun équipement trouvé",
+    "aucun_equipement_correspond": "Aucun équipement ne correspond à vos critères de recherche. Essayez de modifier vos filtres ou votre recherche.",
+        "equipements_trouves": "Équipement(s) trouvé(s)"
+
+
 
 
     

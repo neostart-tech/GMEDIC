@@ -956,7 +956,7 @@
     <!-- Mobile Filters Dropdown -->
     <div class="mobile-filters">
         <div class="filters-dropdown-header" onclick="toggleFiltersDropdown()">
-            <h3><i class="fas fa-filter"></i> Filtres et Recherche</h3>
+            <h3><i class="fas fa-filter"></i> {{ __('filtres_et_recherche') }}</h3>
             <i class="fas fa-chevron-down" id="filtersDropdownIcon"></i>
         </div>
         <div class="filters-dropdown-content" id="filtersDropdownContent">
@@ -966,38 +966,38 @@
             </div>
 
             <div class="filter-section">
-                <div class="filter-title">Catégories</div>
+                <div class="filter-title">{{ __('categories') }}</div>
                 <div class="filter-options" id="categoriesFilterMobile">
                     <!-- Catégories chargées dynamiquement -->
                 </div>
             </div>
 
             <div class="filter-section">
-                <div class="filter-title">Sous-catégories</div>
+                <div class="filter-title">{{__('sous_categories')}}</div>
                 <div class="filter-options" id="subcategoriesFilterMobile">
                     <!-- Sous-catégories chargées dynamiquement -->
                 </div>
             </div>
 
             <div class="filter-section">
-                <div class="filter-title">Prix maximum</div>
+                <div class="filter-title">{{__('prix_maximum')}}</div>
                 <input type="range" id="priceRangeMobile" min="0" max="100000" value="100000" step="1000" oninput="updatePriceDisplay()">
                 <div id="priceDisplayMobile" style="margin-top: 8px; font-size: 0.9rem; color: var(--text-light);">1 000 000 fcfa</div>
             </div>
 
             <div class="filter-section">
-                <div class="filter-title">Trier par</div>
+                <div class="filter-title">{{ __('trier_par') }}</div>
                 <select class="sort-select" id="sortSelectMobile" onchange="applyFilters()" style="width: 100%;">
-                    <option value="newest">Plus récents</option>
-                    <option value="price-asc">Prix croissant</option>
-                    <option value="price-desc">Prix décroissant</option>
-                    <option value="name">Nom A-Z</option>
+                    <option value="newest">{{__('plus_recents')}}</option>
+                    <option value="price-asc">{{ __('prix_croissant') }}</option>
+                    <option value="price-desc">{{ __('prix_decroissant') }}</option>
+                    <option value="name">{{__('nom_a_z')}}</option>
                 </select>
             </div>
 
             <button class="btn btn-outline" onclick="resetFilters()" style="width: 100%; margin-top: 20px;">
                 <i class="fas fa-redo"></i>
-                Réinitialiser les filtres
+                {{ __('reinitialiser_les_filtres') }}
             </button>
         </div>
     </div>
@@ -1007,45 +1007,45 @@
         <!-- Filters Sidebar (Desktop) -->
         <aside class="filters-sidebar">
             <div class="filter-section">
-                <div class="filter-title">Recherche</div>
+                <div class="filter-title">{{ __('Search') }}</div>
                 <input type="text" id="globalSearch" placeholder="Rechercher un équipement..." class="search-input" oninput="applyFilters()">
             </div>
 
             <div class="filter-section">
-                <div class="filter-title">Catégories</div>
+                <div class="filter-title">{{ __('categories') }}</div>
                 <div class="filter-options" id="categoriesFilter">
                     <!-- Catégories chargées dynamiquement -->
                 </div>
             </div>
 
             <div class="filter-section">
-                <div class="filter-title">Sous-catégories</div>
+                <div class="filter-title">{{ __('sous_categories') }}</div>
                 <div class="filter-options" id="subcategoriesFilter">
                     <!-- Sous-catégories chargées dynamiquement -->
                 </div>
             </div>
 
             <div class="filter-section">
-                <div class="filter-title">Prix maximum</div>
+                <div class="filter-title">{{ __('prix_maximum') }}</div>
                 <input type="range" id="priceRange" min="0" max="1000000" value="1000000" step="1000" oninput="updatePriceDisplay()">
                 <div id="priceDisplay" style="margin-top: 8px; font-size: 0.9rem; color: var(--text-light);">1 000 000 fcfa</div>
             </div>
 
             <button class="btn btn-outline" onclick="resetFilters()" style="width: 100%; margin-top: 20px;">
                 <i class="fas fa-redo"></i>
-                Réinitialiser
+                {{ __('reinitialiser') }}
             </button>
         </aside>
 
         <!-- Products Main -->
         <main class="products-main">
             <div class="products-toolbar">
-                <div class="products-count" id="productsCount">Chargement...</div>
+                <div class="products-count" id="productsCount">{{ __('chargement') }}...</div>
                 <select class="sort-select" id="sortSelect" onchange="applyFilters()">
-                    <option value="newest">Plus récents</option>
-                    <option value="price-asc">Prix croissant</option>
-                    <option value="price-desc">Prix décroissant</option>
-                    <option value="name">Nom A-Z</option>
+                    <option value="newest">{{__('plus_recents')}}</option>
+                    <option value="price-asc">{{ __('prix_croissant') }}</option>
+                    <option value="price-desc">{{ __('prix_decroissant') }}</option>
+                    <option value="name">{{__('nom_a_z')}}</option>
                 </select>
             </div>
 
@@ -1056,20 +1056,19 @@
             <!-- Loading State -->
             <div class="loading-container" id="loadingState">
                 <div class="loading-spinner"></div>
-                <div class="loading-text">Chargement des équipements...</div>
+                <div class="loading-text">{{__('chargement_des_equipements')}}...</div>
             </div>
 
             <!-- Empty State -->
             <div class="empty-state" id="emptyState" style="display: none;">
                 <div class="empty-state-icon"></div>
-                <h3 class="empty-state-title">Aucun équipement trouvé</h3>
+                <h3 class="empty-state-title">{{ __('aucun_equipement_trouve') }}</h3>
                 <p class="empty-state-description">
-                    Aucun équipement ne correspond à vos critères de recherche. 
-                    Essayez de modifier vos filtres ou votre recherche.
+                   {{ __('aucun_equipement_correspond') }}
                 </p>
                 <button class="btn btn-primary" onclick="resetFilters()">
                     <i class="fas fa-redo"></i>
-                    Réinitialiser les filtres
+                    {{ __('reinitialiser_les_filtres') }}
                 </button>
             </div>
         </main>
@@ -1246,7 +1245,7 @@
                                      onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM3ZjhjOGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7imYLigI3imYLigI08L3RleHQ+PC9zdmc+'">
                             </div>
                             <div class="slide-content">
-                                <div class="slide-badge">${product.oldPrice ? 'Promotion' : 'Nouveau'}</div>
+                                <div class="slide-badge">${product.oldPrice ? '{{ __('promotion') }}' : '{{ __('nouveau') }}'}</div>
                                 <h2 class="slide-title">${product.title}</h2>
                                 <p class="slide-description">${product.description}</p>
                                 ${product.price ? `
@@ -1259,24 +1258,23 @@
                                     ${product.price ? `
                                         <button class="btn btn-primary" onclick="addToCart(${product.id})">
                                             <i class="fas fa-cart-plus"></i>
-                                            Ajouter au panier
+                                            {{ __('ajouter_au_panier') }}
                                         </button>
                                     ` : `
                                         <button class="btn btn-whatsapp" onclick="sendWhatsAppQuote(${product.id})">
                                             <i class="fab fa-whatsapp"></i>
-                                            Demander un devis
+                                            {{ __('demander_un_devis') }}
                                         </button>
                                     `}
                                     <button class="btn btn-outline" onclick="scrollToProduct(${product.id})">
                                         <i class="fas fa-eye"></i>
-                                        Voir détails
+                                       {{__('voir_details')}}
                                     </button>
                                 </div>
                             </div>
                         ` : `
-                            <!-- Version Desktop: Image à droite -->
                             <div class="slide-content">
-                                <div class="slide-badge">${product.oldPrice ? 'Promotion' : 'Nouveau'}</div>
+                                <div class="slide-badge">${product.oldPrice ? '{{ __('promotion') }}' : '{{ __('nouveau') }}'}</div>
                                 <h2 class="slide-title">${product.title}</h2>
                                 <p class="slide-description">${product.description}</p>
                                 ${product.price ? `
@@ -1289,17 +1287,17 @@
                                     ${product.price ? `
                                         <button class="btn btn-primary" onclick="addToCart(${product.id})">
                                             <i class="fas fa-cart-plus"></i>
-                                            Ajouter au panier
+                                            {{ __('ajouter_au_panier') }}
                                         </button>
                                     ` : `
                                         <button class="btn btn-whatsapp" onclick="sendWhatsAppQuote(${product.id})">
                                             <i class="fab fa-whatsapp"></i>
-                                            Demander un devis
+                                            {{ __('demander_un_devis') }}
                                         </button>
                                     `}
                                     <a class="btn btn-outline" href='/articles/${product.slug}/voir-detail'>
                                         <i class="fas fa-eye"></i>
-                                        Voir détails
+                                       {{__('voir_details')}}
                                     </a>
                                 </div>
                             </div>
@@ -1491,7 +1489,7 @@
             const emptyState = document.getElementById('emptyState');
             const loadingState = document.getElementById('loadingState');
 
-            count.textContent = `${products.length} équipement(s) trouvé(s)`;
+            count.textContent = `${products.length} {{ __('equipements_trouves') }}`;
 
             if (products.length === 0) {
                 grid.style.display = 'none';
@@ -1519,17 +1517,17 @@
                             ${product.price ? `
                                 <button class="btn btn-primary btn-small" onclick="addToCart(${product.id})">
                                     <i class="fas fa-cart-plus"></i>
-                                    Panier
+                                    {{ __('panier') }}
                                 </button>
                             ` : `
                                 <button class="btn btn-whatsapp btn-small" onclick="sendWhatsAppQuote(${product.id})">
                                     <i class="fab fa-whatsapp"></i>
-                                    Devis WhatsApp
+                                    {{ __('demander_un_devis') }}
                                 </button>
                             `}
                             <a href='/articles/${product.slug}/voir-detail' class="btn btn-outline btn-small">
                                 <i class="fas fa-eye"></i>
-                                Détails
+                               {{__('voir_details')}}
                             </a>
                         </div>
                     </div>

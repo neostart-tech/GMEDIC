@@ -584,7 +584,22 @@
     "reinitialiser": "Reset",
     "panier": "Cart",
     "devis_whatsapp": "WhatsApp quote",
-    "details": "Details"
+    "details": "Details",
+        "filtres_et_recherche": "Filters and Search",
+         "trier_par": "Sort by",
+    "plus_recents": "Most recent",
+    "prix_croissant": "Price ascending",
+    "prix_decroissant": "Price descending",
+    "nom_a_z": "Name A-Z",
+    "reinitialiser_les_filtres": "Reset filters",
+    "recherche": "Search",
+    "chargement": "Loading",
+    "chargement_des_equipements": "Loading equipment",
+    "aucun_equipement_trouve": "No equipments found",
+    "aucun_equipement_correspond": "No equipment matches your search criteria.  Try changing your filters or search.",
+        "equipements_trouves": "Equipments found"
+
+
 
 
 
