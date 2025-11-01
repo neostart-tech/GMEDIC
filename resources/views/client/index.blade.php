@@ -919,8 +919,8 @@
     <div class="page-header">
         <div class="page-header-content">
             <div class="header-text">
-                <h1>Équipements Médicaux</h1>
-                <p>Matériel professionnel pour les professionnels de santé</p>
+                <h1>{{__('equipements_medicaux')}}</h1>
+                <p>{{__('materiel_professionnel')}}</p>
             </div>
             <div class="cart-header" onclick="toggleCart()">
                 <div class="cart-icon">
@@ -961,7 +961,7 @@
         </div>
         <div class="filters-dropdown-content" id="filtersDropdownContent">
             <div class="filter-section">
-                <div class="filter-title">Recherche</div>
+                <div class="filter-title">{{__('Search')}}</div>
                 <input type="text" id="globalSearchMobile" placeholder="Rechercher un équipement..." class="search-input" oninput="applyFilters()">
             </div>
 
@@ -1182,6 +1182,7 @@
                 // Transformer les données
                 allProducts = data.articles.map(article => ({
                     id: article.id,
+                    slug:article.slug,
                     title: article.article_name?.fr || article.article_name || 'Nom non disponible',
                     description: article.article_desc?.fr || article.article_desc.slice(0,100)+"..." || 'Description non disponible',
                     price: article.reduceprice || article.price,
@@ -1526,10 +1527,10 @@
                                     Devis WhatsApp
                                 </button>
                             `}
-                            <button class="btn btn-outline btn-small" onclick="showProductDetails(${product.id})">
+                            <a href='/articles/${product.slug}/voir-detail' class="btn btn-outline btn-small">
                                 <i class="fas fa-eye"></i>
                                 Détails
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -1571,29 +1572,8 @@
             }
         }
 
-        function showProductDetails(productId) {
-            const product = allProducts.find(p => p.id === productId);
-            if (product) {
-                const details = `
-                     *${product.title}*
-                    
-                     Catégorie : ${product.categoryName}
-                    ${product.subcategoryName ? ` Sous-catégorie : ${product.subcategoryName}\n` : ''}
-                    
-                     Description :
-                    ${product.description}
-                    
-                    ${product.price ? ` Prix : ${product.price.toLocaleString()} fcfa` : ' Prix : Sur demande'}
-                    
-                    ---
-                    
-                    Options disponibles :
-                    • Ajouter au panier
-                    • Demander un devis
-                    • Voir plus de détails
-                `;
-                alert(details);
-            }
+        function showProductDetails(product) {
+            window.location.href=`/articles/${product.slug}/voir-detail`
         }
 
         function scrollToProduct(productId) {

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class MoyenPayement extends Model
 {
@@ -63,5 +64,10 @@ class MoyenPayement extends Model
     public function scopePaye($query)
     {
         return $query->where('statut', 'paye');
+    }
+
+
+    public function path(){
+        return asset(Storage::url($this->preuve_paiement));
     }
 }
