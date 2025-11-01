@@ -596,7 +596,18 @@
     "chargement_des_equipements": "正在加载设备",
     "aucun_equipement_trouve": "未找到设备",
     "aucun_equipement_correspond": "没有设备符合您的搜索条件。 请尝试修改筛选或搜索。",
-        "equipements_trouves": "找到的设备"
+        "equipements_trouves": "找到的设备",
+         "description_non_disponible": "描述不可用",
+    "nom_non_disponible": "名称不可用",
+    "erreur_reseau": "网络错误",
+    "non_categorise": "未分类",
+    "non_classe": "未分类",
+    "erreur_chargement_donnees": "数据加载错误",
+    "produit_ajoute_au_panier": "产品已加入购物车",
+    "erreur_ajout_au_panier": "添加到购物车时出错",
+    "decouvrez_gamme_materiel": "探索我们完整的高质量医疗设备系列。",
+    "voir_catalogue": "查看目录",
+    "contact_whatsapp": "WhatsApp 联系"
 
 
 

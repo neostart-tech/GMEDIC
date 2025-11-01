@@ -597,7 +597,18 @@
     "chargement_des_equipements": "Loading equipment",
     "aucun_equipement_trouve": "No equipments found",
     "aucun_equipement_correspond": "No equipment matches your search criteria.  Try changing your filters or search.",
-        "equipements_trouves": "Equipments found"
+        "equipements_trouves": "Equipments found",
+          "description_non_disponible": "Description not available",
+    "nom_non_disponible": "Name not available",
+    "erreur_reseau": "Network error",
+    "non_categorise": "Uncategorized",
+    "non_classe": "Unclassified",
+    "erreur_chargement_donnees": "Data loading error",
+    "produit_ajoute_au_panier": "Product added to cart",
+    "erreur_ajout_au_panier": "Error adding to cart",
+    "decouvrez_gamme_materiel": "Discover our complete range of high-quality medical equipment.",
+    "voir_catalogue": "View catalogue",
+    "contact_whatsapp": "WhatsApp contact"
 
 
 

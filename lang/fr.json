@@ -595,7 +595,18 @@
     "chargement_des_equipements": "Chargement des équipements",
     "aucun_equipement_trouve": "Aucun équipement trouvé",
     "aucun_equipement_correspond": "Aucun équipement ne correspond à vos critères de recherche. Essayez de modifier vos filtres ou votre recherche.",
-        "equipements_trouves": "Équipement(s) trouvé(s)"
+        "equipements_trouves": "Équipement(s) trouvé(s)",
+        "description_non_disponible": "Description non disponible",
+    "nom_non_disponible": "Nom non disponible",
+    "erreur_reseau": "Erreur réseau",
+    "non_categorise": "Non catégorisé",
+    "non_classe": "Non classé",
+    "erreur_chargement_donnees": "Erreur de chargement des données",
+    "produit_ajoute_au_panier": "Produit ajouté au panier",
+    "erreur_ajout_au_panier": "Erreur d'ajout au panier",
+    "decouvrez_gamme_materiel": "Découvrez notre gamme complète de matériel médical de haute qualité.",
+    "voir_catalogue": "Voir le catalogue",
+    "contact_whatsapp": "Contact WhatsApp"
 
 
 
