@@ -1182,15 +1182,15 @@
                 allProducts = data.articles.map(article => ({
                     id: article.id,
                     slug:article.slug,
-                    title: article.article_name?.fr || article.article_name || 'Nom non disponible',
-                    description: article.article_desc?.fr || article.article_desc.slice(0,100)+"..." || 'Description non disponible',
+                    title: article.article_name?.fr || article.article_name || '{{ __('nom_non_disponible') }}',
+                    description: article.article_desc?.fr || article.article_desc.slice(0,100)+"..." || '{{ __('description_non_disponible') }}',
                     price: article.reduceprice || article.price,
                     oldPrice: article.price && article.reduceprice ? article.price : null,
                     image: article.article_image ? `/storage/${article.article_image}` : '/images/placeholder.jpg',
                     category: article.categorie_id,
-                    categoryName: article.category?.category_name || 'Non catégorisé',
+                    categoryName: article.category?.category_name || '{{ __('non_categorise') }}',
                     subcategory: article.SubCategory?.id,
-                    subcategoryName: article.SubCategory?.sub_categorie_name || 'Non classé',
+                    subcategoryName: article.SubCategory?.sub_categorie_name || '{{ __('non_classe') }}',
                     published: article.published,
                     created_at: article.created_at
                 }));
@@ -1202,9 +1202,9 @@
                 hideLoading();
                 
             } catch (error) {
-                console.error('Erreur chargement données:', error);
+                console.error('{{ __('erreur_chargement_donnees') }}:', error);
                 hideLoading();
-                showNotification('Erreur de chargement des données', 'error');
+                showNotification('{{ __('erreur_chargement_donnees') }}', 'error');
             }
         }
 
@@ -1559,14 +1559,14 @@
                 const result = await response.json();
                 
                 if (response.ok) {
-                    showNotification('Produit ajouté au panier !');
+                    showNotification('{{ __('produit_ajoute_au_panier') }} !');
                     document.getElementById('cartCount').textContent = result.cartCount || {{ $nbrArticle }} + 1;
                 } else {
-                    showNotification(result.message || 'Erreur', 'error');
+                    showNotification(result.message || '{{ __('erreur_reseau') }}', 'error');
                 }
             } catch (error) {
                 console.error('Erreur:', error);
-                showNotification('Erreur d\'ajout au panier', 'error');
+                showNotification('{{ __('erreur_ajout_au_panier') }}', 'error');
             }
         }
 
@@ -1662,15 +1662,15 @@
                         <div class="slide-content">
                             <div class="slide-badge">Nouveau</div>
                             <h2 class="slide-title">Équipements Médicaux Professionnels</h2>
-                            <p class="slide-description">Découvrez notre gamme complète de matériel médical de haute qualité.</p>
+                            <p class="slide-description">{{__('decouvrez_gamme_materiel')}}</p>
                             <div class="slide-actions">
                                 <button class="btn btn-primary" onclick="resetFilters()">
                                     <i class="fas fa-shopping-catalog"></i>
-                                    Voir le catalogue
+                                    {{ __('voir_catalogue') }}
                                 </button>
                                 <button class="btn btn-whatsapp" onclick="sendWhatsAppQuote(null)">
                                     <i class="fab fa-whatsapp"></i>
-                                    Contact WhatsApp
+                                    {{ __('contact_whatsapp') }}
                                 </button>
                             </div>
                         </div>
@@ -1678,15 +1678,15 @@
                         <div class="slide-content">
                             <div class="slide-badge">Nouveau</div>
                             <h2 class="slide-title">Équipements Médicaux Professionnels</h2>
-                            <p class="slide-description">Découvrez notre gamme complète de matériel médical de haute qualité.</p>
+                            <p class="slide-description">{{__('decouvrez_gamme_materiel')}}</p>
                             <div class="slide-actions">
                                 <button class="btn btn-primary" onclick="resetFilters()">
                                     <i class="fas fa-shopping-catalog"></i>
-                                    Voir le catalogue
+                                    {{ __('voir_catalogue') }}
                                 </button>
                                 <button class="btn btn-whatsapp" onclick="sendWhatsAppQuote(null)">
                                     <i class="fab fa-whatsapp"></i>
-                                    Contact WhatsApp
+                                    {{ __('contact_whatsapp') }}
                                 </button>
                             </div>
                         </div>
