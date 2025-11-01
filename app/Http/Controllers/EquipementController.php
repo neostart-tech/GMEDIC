@@ -12,7 +12,7 @@ use Stichoza\GoogleTranslate\GoogleTranslate;
 use App\Http\Resources\ArticleResource;
 use App\Http\Resources\CategorieResource;
 use App\Http\Resources\SousCategorieResource;
-
+use Cart;
 
 class EquipementController extends Controller
 {
@@ -45,8 +45,13 @@ class EquipementController extends Controller
 
 
     public function showDetail(Article $article){
+
+        $monpanier=Cart::getTotalQuantity();
+        $nbrArticle=Cart::getTotalQuantity();
+
+ 
         
-        return view('client.Ecommerce.detailArticle',compact('article'));
+        return view('client.Ecommerce.detailArticle',compact('article','monpanier',"nbrArticle"));
     }
     
 }

@@ -1297,10 +1297,10 @@
                                             Demander un devis
                                         </button>
                                     `}
-                                    <button class="btn btn-outline" onclick="scrollToProduct(${product.id})">
+                                    <a class="btn btn-outline" href='/articles/${product.slug}/voir-detail'>
                                         <i class="fas fa-eye"></i>
                                         Voir détails
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                             <div class="slide-image">

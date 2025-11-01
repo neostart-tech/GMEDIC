@@ -53,6 +53,7 @@ class PanierController extends Controller
         return response()->json([
             'message' => $message,
             'item' => $item,
+            'cartCount'=> CartFacade::getTotalQuantity(),
             'cart' => CartFacade::getContent(),
         ], 201);
     }
