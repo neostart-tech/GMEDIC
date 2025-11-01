@@ -569,7 +569,20 @@
     "mes_commandes": "Mes commandes",
     "mon_compte": "Mon compte",
     "equipements_medicaux": "Équipements médicaux",
-    "materiel_professionnel": "Matériel professionnel pour les professionnels de santé"
+    "materiel_professionnel": "Matériel professionnel pour les professionnels de santé",
+    "promotion": "Promotion",
+    "nouveau": "Nouveau",
+     "ajouter_au_panier": "Ajouter au panier",
+    "voir_details": "Voir détails",
+    "demander_un_devis": "Demander un devis",
+     "rechercher_un_equipement": "Rechercher un équipement...",
+    "categories": "Catégories",
+    "sous_categories": "Sous-catégories",
+    "prix_maximum": "Prix maximum",
+    "reinitialiser": "Réinitialiser",
+    "panier": "Panier",
+    "devis_whatsapp": "Devis WhatsApp",
+    "details": "Détails"
 
 
     

@@ -571,7 +571,20 @@
     "mes_commandes": "My Orders",
     "mon_compte": "My Account",
         "equipements_medicaux": "Medical Equipment",
-      "materiel_professionnel": "Professional equipment for healthcare professionals"
+      "materiel_professionnel": "Professional equipment for healthcare professionals",
+      "promotion": "Promotion",
+    "nouveau": "New",
+     "ajouter_au_panier": "Add to cart",
+    "voir_details": "View details",
+    "demander_un_devis": "Request a quote",
+     "rechercher_un_equipement": "Search for equipment...",
+    "categories": "Categories",
+    "sous_categories": "Subcategories",
+    "prix_maximum": "Maximum price",
+    "reinitialiser": "Reset",
+    "panier": "Cart",
+    "devis_whatsapp": "WhatsApp quote",
+    "details": "Details"
 
 
 
