@@ -827,11 +827,11 @@
     <header class="ecom-header">
         <div class="ecom-header-content">
             <a href="{{ url('/') }}" class="logo">
-                <i class="fas fa-stethoscope"></i> {{ env('APP_NAME') }}
+                {{-- {{ env('APP_NAME') }} --}}
             </a>
 
             <div class="breadcrumb">
-                <a href="/accueil"><i class="fas fa-home"></i> Accueil</a>
+                <a href="/accueil"><i class="fas fa-home"></i> {{ Accueil }}</a>
                 <span><i class="fas fa-chevron-right"></i></span>
                 <a href="/">Équipements</a>
                 <span><i class="fas fa-chevron-right"></i></span>
