@@ -59,7 +59,7 @@ class WelcomeController extends Controller
     public function showArticles()
     {
         $cartItems = CartFacade::getContent();
-        $nbrArticle = CartFacade::getContent()->count();
+        $nbrArticle = CartFacade::getTotalQuantity();
         $totalArticle = CartFacade::getTotal();
 
 
