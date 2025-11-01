@@ -1559,24 +1559,24 @@
                     <button class="mobile-sidebar-toggle">
                         <i class="fas fa-bars"></i>
                     </button>
-                    
+                    {{-- {{ dd(app()->getLocale()) }} --}}
                     <!-- Sélecteur de langue -->
                     <div class="language-selector">
                         <div class="language-current">
                             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg==" alt="Français" class="language-flag">
-                            <span>FR</span>
+                            <span>{{ app()->getLocale() }}</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="language-dropdown">
-                            <a href="#" class="language-option" data-lang="fr">
+                            <a href="{{ route('client.lang.switch','fr') }}" class="language-option" data-lang="fr">
                                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg==" alt="Français" class="language-flag">
                                 <span>Français</span>
                             </a>
-                            <a href="#" class="language-option" data-lang="en">
+                            <a href="{{ route('client.lang.switch','en') }}" class="language-option" data-lang="en">
                                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cGF0aCBkPSJNMCAwdjMwbDYwLTNWMGwtNjAtM3oiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMCAwbDUwIDIwdjEwbC01MC0yMHoiIGZpbGw9IiNmMDJiMDAiLz48cGF0aCBkPSJNMCAyMGw1MC0yMHYxMGwtNTAgMjB6IiBmaWxsPSIjZjAyYjAwIi8+PC9zdmc+" alt="English" class="language-flag">
                                 <span>English</span>
                             </a>
-                            <a href="#" class="language-option" data-lang="zh">
+                            <a href="{{ route('client.lang.switch','zh_CN') }}" class="language-option" data-lang="zh">
                                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxMyAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4=" alt="中文" class="language-flag">
                                 <span>中文</span>
                             </a>
