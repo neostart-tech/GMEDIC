@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CommandeResource;
 use App\Models\Adresse;
 use App\Models\Article;
 use App\Models\Commande;
@@ -11,6 +12,8 @@ use App\Models\MoyenPayement;
 use App\Models\User;
 use Cart;
 use App\Mail\NewOrderMail;
+use Darryldecode\Cart\Cart as CartCart;
+use Darryldecode\Cart\Facades\CartFacade;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +27,7 @@ class CommandeController extends Controller
      */
     public function create()
     {
-        $cartItems = Cart::content();
+        $cartItems = CartFacade::content();
         $adresses = Adresse::where('user_id', Auth::id())->get();
 
         if ($cartItems->isEmpty()) {
@@ -62,7 +65,6 @@ class CommandeController extends Controller
         }
 
         if ($request->methode_paiement === 'card') {
-            \Log::info($request->all());
 
             $request->validate([
                 'paiement_details.numero_carte' => 'required|string|max:20',
@@ -196,7 +198,7 @@ class CommandeController extends Controller
 
         } catch (\Exception $e) {
             DB::rollBack();
-            \Log::error('Erreur création commande: '.$e->getMessage());
+            // \Log::error('Erreur création commande: '.$e->getMessage());
 
             return response()->json([
                 'success' => false,
@@ -244,6 +246,10 @@ class CommandeController extends Controller
 
 
     public function getCommande(){
+
+    $commandes=Commande::with(["adresse","adresse","details",'paiement'])->where('user_id',auth()->user()->id)->latest()->get();
+
+    return CommandeResource::collection($commandes);
         
 
     }

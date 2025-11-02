@@ -79,6 +79,7 @@ Route::controller(InfoBancaireController::class)->group(function () {
 Route::controller(CommandeController::class)->group(function () {
     Route::post('/commandes', 'store');
     Route::get('/mes-commandes', 'getMyCommand')->name('mes-commandes');
+    Route::get("/get-my-orders","getCommande");
 });
 
 

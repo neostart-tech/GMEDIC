@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails Commande - G-Medic</title>
+    <title>Mes Commandes - G-Medic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -568,6 +568,21 @@
         }
 
         .status-en_attente_paiement {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-en_attente_validation {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .status-paye {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .status-en_attente_encaissement {
             background: #fef3c7;
             color: #92400e;
         }
@@ -1390,6 +1405,28 @@
             margin-top: 0.25rem;
         }
 
+        /* Loading Spinner */
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--primary-soft);
+            border-left: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .account-container {
@@ -1559,26 +1596,22 @@
                     <button class="mobile-sidebar-toggle">
                         <i class="fas fa-bars"></i>
                     </button>
-                    {{-- {{ dd(app()->getLocale()) }} --}}
+                    
                     <!-- Sélecteur de langue -->
                     <div class="language-selector">
                         <div class="language-current">
                             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg==" alt="Français" class="language-flag">
-                            <span>{{ app()->getLocale() }}</span>
+                            <span>FR</span>
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="language-dropdown">
-                            <a href="{{ route('client.lang.switch','fr') }}" class="language-option" data-lang="fr">
+                            <a href="#" class="language-option" data-lang="fr">
                                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg==" alt="Français" class="language-flag">
                                 <span>Français</span>
                             </a>
-                            <a href="{{ route('client.lang.switch','en') }}" class="language-option" data-lang="en">
+                            <a href="#" class="language-option" data-lang="en">
                                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cGF0aCBkPSJNMCAwdjMwbDYwLTNWMGwtNjAtM3oiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMCAwbDUwIDIwdjEwbC01MC0yMHoiIGZpbGw9IiNmMDJiMDAiLz48cGF0aCBkPSJNMCAyMGw1MC0yMHYxMGwtNTAgMjB6IiBmaWxsPSIjZjAyYjAwIi8+PC9zdmc+" alt="English" class="language-flag">
                                 <span>English</span>
-                            </a>
-                            <a href="{{ route('client.lang.switch','zh_CN') }}" class="language-option" data-lang="zh">
-                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxMyAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4=" alt="中文" class="language-flag">
-                                <span>中文</span>
                             </a>
                         </div>
                     </div>
@@ -1594,6 +1627,7 @@
                 </div>
             </div>
         </header>
+
         <!-- Main Content -->
         <div class="account-hero">
             <div class="account-container">
@@ -1601,8 +1635,8 @@
                 <aside class="account-sidebar">
                     <div class="user-profile">
                         <div class="user-avatar">JD</div>
-                        <h2 class="user-name">{{ auth()->user()->name }}</h2>
-                        <p class="user-email">{{ auth()->user()->email }}</p>
+                        <h2 class="user-name">John Doe</h2>
+                        <p class="user-email">john.doe@example.com</p>
                     </div>
 
                     <nav class="sidebar-nav">
@@ -1615,12 +1649,7 @@
                             <a href="#orders" class="nav-item" data-tab="orders">
                                 <i class="fas fa-shopping-bag"></i>
                                 Mes Commandes
-                                <span class="nav-badge">3</span>
-                            </a>
-                            <a href="#orders" class="nav-item" data-tab="orders">
-                                <i class="fas fa-shopping-bag"></i>
-                                Mes Demandes
-                                <span class="nav-badge">3</span>
+                                <span class="nav-badge" id="orders-count">0</span>
                             </a>
                         </div>
 
@@ -1630,7 +1659,6 @@
                                 <i class="fas fa-map-marker-alt"></i>
                                 Adresses
                             </a>
-                           
                         </div>
 
                         <div class="nav-section">
@@ -1659,26 +1687,26 @@
                     <div id="dashboard" class="tab-content active">
                         <div class="page-header">
                             <h1 class="page-title">Tableau de bord</h1>
-                            <p class="page-subtitle">Bienvenue dans votre espace personnel John</p>
+                            <p class="page-subtitle">Bienvenue dans votre espace personnel</p>
                         </div>
 
                         <div class="stats-grid">
                             <div class="stat-card">
                                 <div class="stat-icon icon-warning">
-                                    <i class="fas fa-heart"></i>
+                                    <i class="fas fa-shopping-bag"></i>
                                 </div>
                                 <div class="stat-content">
-                                    <span class="stat-value">{{$all}}</span>
-                                    <span class="stat-description">Totales</span>
+                                    <span class="stat-value" id="total-orders">0</span>
+                                    <span class="stat-description">Commandes totales</span>
                                 </div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-icon icon-primary">
-                                    <i class="fas fa-shopping-bag"></i>
+                                    <i class="fas fa-clock"></i>
                                 </div>
                                 <div class="stat-content">
-                                    <span class="stat-value">{{$en_attente}}</span>
-                                    <span class="stat-description">Commandes en cours</span>
+                                    <span class="stat-value" id="pending-orders">0</span>
+                                    <span class="stat-description">En attente</span>
                                 </div>
                             </div>
                             <div class="stat-card">
@@ -1686,30 +1714,10 @@
                                     <i class="fas fa-check-circle"></i>
                                 </div>
                                 <div class="stat-content">
-                                    <span class="stat-value">{{$livre}}</span>
-                                    <span class="stat-description">Commandes livrées</span>
+                                    <span class="stat-value" id="confirmed-orders">0</span>
+                                    <span class="stat-description">Confirmées</span>
                                 </div>
                             </div>
-                            
-                            <div class="stat-card">
-                                <div class="stat-icon icon-warning">
-                                    <i class="fas fa-heart"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <span class="stat-value">{{$confirmee}}</span>
-                                    <span class="stat-description">Commandes confirmées</span>
-                                </div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-icon icon-warning">
-                                    <i class="fas fa-heart"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <span class="stat-value">{{$annulee}}</span>
-                                    <span class="stat-description">Commandes annulées</span>
-                                </div>
-                            </div>
-                           
                         </div>
 
                         <div class="content-section">
@@ -1720,68 +1728,8 @@
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
                             </div>
-                            <div class="orders-grid">
-                                <div class="order-card">
-                                    <div class="order-header">
-                                        <div class="order-info">
-                                            <h4>CMD-2024-001</h4>
-                                            <p class="order-date">15 Mars 2024</p>
-                                        </div>
-                                        <span class="order-status status-livree">Livrée</span>
-                                    </div>
-                                    <div class="order-items">
-                                        <div class="order-item">
-                                            <div class="item-image">
-                                                <i class="fas fa-pills"></i>
-                                            </div>
-                                            <div class="item-details">
-                                                <div class="item-name">Paracétamol 500mg</div>
-                                                <div class="item-meta">
-                                                    <span>Quantité: 2</span>
-                                                    <span>7.500 FCFA</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="order-footer">
-                                        <span class="order-total">23.500 FCFA</span>
-                                        <button class="action-btn" onclick="showOrderDetails('CMD-2024-001')">
-                                            <i class="fas fa-eye"></i>
-                                            Détails
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <div class="order-card">
-                                    <div class="order-header">
-                                        <div class="order-info">
-                                            <h4>CMD-2024-002</h4>
-                                            <p class="order-date">12 Mars 2024</p>
-                                        </div>
-                                        <span class="order-status status-en_attente">En attente</span>
-                                    </div>
-                                    <div class="order-items">
-                                        <div class="order-item">
-                                            <div class="item-image">
-                                                <i class="fas fa-capsules"></i>
-                                            </div>
-                                            <div class="item-details">
-                                                <div class="item-name">Vitamine C</div>
-                                                <div class="item-meta">
-                                                    <span>Quantité: 1</span>
-                                                    <span>16.000 FCFA</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="order-footer">
-                                        <span class="order-total">16.000 FCFA</span>
-                                        <button class="action-btn" onclick="showOrderDetails('CMD-2024-002')">
-                                            <i class="fas fa-eye"></i>
-                                            Détails
-                                        </button>
-                                    </div>
-                                </div>
+                            <div class="orders-grid" id="recent-orders">
+                                <!-- Les commandes récentes seront chargées ici -->
                             </div>
                         </div>
                     </div>
@@ -1794,11 +1742,10 @@
                         </div>
 
                         <div class="filters-bar">
-                            <button class="filter-btn active">Toutes</button>
-                            <button class="filter-btn">En attente</button>
-                            <button class="filter-btn">Confirmées</button>
-                            <button class="filter-btn">Livrées</button>
-                            <button class="filter-btn">Annulées</button>
+                            <button class="filter-btn active" data-filter="all">Toutes</button>
+                            <button class="filter-btn" data-filter="en_attente_paiement">En attente paiement</button>
+                            <button class="filter-btn" data-filter="confirmee">Confirmées</button>
+                            <button class="filter-btn" data-filter="paye">Payées</button>
                             <div class="search-box">
                                 <i class="fas fa-search"></i>
                                 <input type="text" placeholder="Rechercher une commande..." id="orderSearch">
@@ -1806,7 +1753,9 @@
                         </div>
 
                         <div class="orders-list" id="ordersList">
-                            <!-- Les commandes seront chargées dynamiquement -->
+                            <div class="loading-spinner">
+                                <div class="spinner"></div>
+                            </div>
                         </div>
 
                         <!-- Pagination -->
@@ -1816,9 +1765,7 @@
                                 Précédent
                             </button>
                             <div class="pagination-pages">
-                                <span class="page-number active">1</span>
-                                <span class="page-number">2</span>
-                                <span class="page-number">3</span>
+                                <!-- Pages will be generated dynamically -->
                             </div>
                             <button class="pagination-btn next-btn">
                                 Suivant
@@ -1838,23 +1785,20 @@
                             <div class="form-grid">
                                 <div class="form-group">
                                     <label class="form-label">Nom complet</label>
-                                    <input type="text" class="form-input" value="{{ old("name",auth()->user()->name) }}">
+                                    <input type="text" class="form-input" value="John Doe">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Email</label>
-                                    <input type="email" class="form-input" value="{{ old("email",auth()->user()->email) }}">
+                                    <input type="email" class="form-input" value="john.doe@example.com">
                                 </div>
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label class="form-label">Ancien mot de passe</label>
                                     <input type="password" class="form-input" placeholder="********">
                                 </div>
-                                
-                                 <div class="form-group">
+                                <div class="form-group">
                                     <label class="form-label">Nouveau mot de passe</label>
                                     <input type="password" class="form-input" placeholder="********">
                                 </div>
-                                
-                    
                             </div>
                             <div class="form-actions">
                                 <button class="btn btn-outline">Annuler</button>
@@ -1896,34 +1840,6 @@
                                 </div>
                             </div>
 
-                            <div class="address-card">
-                                <div class="address-header">
-                                    <h3 class="address-title">Adresse de travail</h3>
-                                </div>
-                                <div class="address-details">
-                                    <p><strong>John Doe</strong></p>
-                                    <p>456 Avenue de la Paix</p>
-                                    <p>Bureau 202</p>
-                                    <p>Lomé 00000</p>
-                                    <p>Togo</p>
-                                    <p>Téléphone: +228 98 71 20 20</p>
-                                </div>
-                                <div class="address-actions">
-                                    <button class="action-btn">
-                                        <i class="fas fa-edit"></i>
-                                        Modifier
-                                    </button>
-                                    <button class="action-btn">
-                                        <i class="fas fa-trash"></i>
-                                        Supprimer
-                                    </button>
-                                    <button class="action-btn">
-                                        <i class="fas fa-star"></i>
-                                        Définir par défaut
-                                    </button>
-                                </div>
-                            </div>
-
                             <div class="form-actions">
                                 <button class="btn btn-primary">
                                     <i class="fas fa-plus"></i>
@@ -1940,6 +1856,7 @@
                 </main>
             </div>
         </div>
+
         <!-- Footer -->
         <footer class="account-footer">
             <div class="footer-content">
@@ -1949,176 +1866,21 @@
     </div>
 
     <script>
-        // Données statiques pour les commandes
-        const ordersData = [
-            {
-                id: 'CMD-2024-001',
-                numero_commande: 'CMD-2024-001',
-                date_commande: '15/03/2024 à 14:30',
-                date_commande_obj: new Date('2024-03-15T14:30:00'),
-                amount: '23.500 FCFA',
-                total: 23500,
-                items: 2,
-                statut: 'livree',
-                commentaires: 'Livraison rapide et soignée, merci!',
-                user: {
-                    name: 'John Doe',
-                    email: 'john.doe@example.com'
-                },
-                adresse: {
-                    etablissement: 'Domicile',
-                    adresse: '123 Rue du Commerce, Appartement 4B',
-                    ville: 'Lomé',
-                    code_postal: '00000',
-                    telephone: '+228 70 65 88 16',
-                    notes_livraison: 'Sonner à l\'interphone'
-                },
-                paiement: {
-                    methode: 'carte_bancaire',
-                    montant: '23.500 FCFA',
-                    statut: 'paye',
-                    date_paiement: '15/03/2024 à 14:35',
-                    numero_carte: '**** **** **** 1234',
-                    titulaire_carte: 'John Doe',
-                    reference_paiement: 'PAY-001234'
-                },
-                details: [
-                    { 
-                        article: {
-                            name: 'Paracétamol 500mg',
-                            category: 'Antidouleur et antipyrétique'
-                        },
-                        quantite: 2,
-                        prix_unitaire: '7.500 FCFA',
-                        prix_total: '15.000 FCFA'
-                    },
-                    { 
-                        article: {
-                            name: 'Vitamine C 1000mg',
-                            category: 'Complément alimentaire'
-                        },
-                        quantite: 1,
-                        prix_unitaire: '8.500 FCFA',
-                        prix_total: '8.500 FCFA'
-                    }
-                ],
-                timeline: [
-                    { date: '15/03/2024 14:30', status: 'Commande passée', description: 'Votre commande a été enregistrée' },
-                    { date: '15/03/2024 14:35', status: 'Paiement confirmé', description: 'Paiement par carte bancaire validé' },
-                    { date: '16/03/2024 09:15', status: 'Commande confirmée', description: 'Votre commande est en préparation' },
-                    { date: '17/03/2024 14:20', status: 'Commande livrée', description: 'Votre commande a été livrée avec succès' }
-                ]
-            },
-            {
-                id: 'CMD-2024-002',
-                numero_commande: 'CMD-2024-002',
-                date_commande: '12/03/2024 à 09:15',
-                date_commande_obj: new Date('2024-03-12T09:15:00'),
-                amount: '16.000 FCFA',
-                total: 16000,
-                items: 1,
-                statut: 'en_attente_paiement',
-                commentaires: 'En attente de confirmation de paiement',
-                user: {
-                    name: 'John Doe',
-                    email: 'john.doe@example.com'
-                },
-                adresse: {
-                    etablissement: 'Bureau',
-                    adresse: '456 Avenue de la Paix, Bureau 202',
-                    ville: 'Lomé',
-                    code_postal: '00000',
-                    telephone: '+228 98 71 20 20',
-                    notes_livraison: 'Livrer à la réception'
-                },
-                paiement: {
-                    methode: 'virement',
-                    montant: '16.000 FCFA',
-                    statut: 'en_attente',
-                    date_paiement: null,
-                    reference_paiement: null,
-                    preuve_paiement: null
-                },
-                details: [
-                    { 
-                        article: {
-                            name: 'Vitamine C',
-                            category: 'Complément alimentaire'
-                        },
-                        quantite: 1,
-                        prix_unitaire: '16.000 FCFA',
-                        prix_total: '16.000 FCFA'
-                    }
-                ],
-                timeline: [
-                    { date: '12/03/2024 09:15', status: 'Commande passée', description: 'Votre commande a été enregistrée' },
-                    { date: '12/03/2024 09:15', status: 'En attente de paiement', description: 'En attente de réception du virement' }
-                ]
-            },
-            {
-                id: 'CMD-2024-003',
-                numero_commande: 'CMD-2024-003',
-                date_commande: '10/03/2024 à 16:45',
-                date_commande_obj: new Date('2024-03-10T16:45:00'),
-                amount: '18.750 FCFA',
-                total: 18750,
-                items: 3,
-                statut: 'confirmee',
-                commentaires: '',
-                user: {
-                    name: 'John Doe',
-                    email: 'john.doe@example.com'
-                },
-                adresse: {
-                    etablissement: 'Domicile',
-                    adresse: '123 Rue du Commerce, Appartement 4B',
-                    ville: 'Lomé',
-                    code_postal: '00000',
-                    telephone: '+228 70 65 88 16',
-                    notes_livraison: 'Livraison avant 18h'
-                },
-                paiement: {
-                    methode: 'mobile_money',
-                    montant: '18.750 FCFA',
-                    statut: 'paye',
-                    date_paiement: '10/03/2024 à 16:50',
-                    reference_paiement: 'MM-987654'
-                },
-                details: [
-                    { 
-                        article: {
-                            name: 'Ibuprofène 400mg',
-                            category: 'Anti-inflammatoire'
-                        },
-                        quantite: 1,
-                        prix_unitaire: '8.500 FCFA',
-                        prix_total: '8.500 FCFA'
-                    },
-                    { 
-                        article: {
-                            name: 'Vitamine D3',
-                            category: 'Complément alimentaire'
-                        },
-                        quantite: 2,
-                        prix_unitaire: '5.125 FCFA',
-                        prix_total: '10.250 FCFA'
-                    }
-                ],
-                timeline: [
-                    { date: '10/03/2024 16:45', status: 'Commande passée', description: 'Votre commande a été enregistrée' },
-                    { date: '10/03/2024 16:50', status: 'Paiement confirmé', description: 'Paiement par mobile money validé' },
-                    { date: '11/03/2024 08:30', status: 'Commande confirmée', description: 'Votre commande est en préparation' }
-                ]
-            }
-        ];
-
-        // Éléments de pagination
+        // Variables globales
+        let allOrders = [];
+        let filteredOrders = [];
         let currentPage = 1;
-        const ordersPerPage = 2;
-        let filteredOrders = [...ordersData];
+        const ordersPerPage = 5;
 
-        // Tab Navigation
+        // Initialisation
         document.addEventListener('DOMContentLoaded', function() {
+            initializeNavigation();
+            loadOrders();
+            setupEventListeners();
+        });
+
+        // Initialisation de la navigation
+        function initializeNavigation() {
             const navItems = document.querySelectorAll('.nav-item');
             const tabContents = document.querySelectorAll('.tab-content');
 
@@ -2174,14 +1936,18 @@
             document.addEventListener('click', function() {
                 languageSelector.classList.remove('active');
             });
+        }
 
+        // Configuration des écouteurs d'événements
+        function setupEventListeners() {
             // Filter buttons
             const filterBtns = document.querySelectorAll('.filter-btn');
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     filterBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    filterOrders(this.textContent.trim());
+                    const filter = this.getAttribute('data-filter');
+                    filterOrders(filter);
                 });
             });
 
@@ -2192,63 +1958,106 @@
             });
 
             // Pagination
-            setupPagination();
-
-            // Load initial orders
-            displayOrders();
-
-            // Close sidebar on escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeMobileSidebar();
-                }
-            });
-        });
-
-        function closeMobileSidebar() {
-            const sidebar = document.querySelector('.account-sidebar');
-            const overlay = document.querySelector('.sidebar-overlay');
-            sidebar.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
+            setupPaginationListeners();
         }
 
-        // Filter orders by status
-        function filterOrders(status) {
-            if (status === 'Toutes') {
-                filteredOrders = [...ordersData];
-            } else {
-                filteredOrders = ordersData.filter(order => {
-                    if (status === 'En attente') return order.statut === 'en_attente';
-                    if (status === 'Confirmées') return order.statut === 'confirmee';
-                    if (status === 'Livrées') return order.statut === 'livree';
-                    if (status === 'Annulées') return order.statut === 'annulee';
-                    return true;
-                });
+        // Chargement des commandes depuis l'API
+        async function loadOrders() {
+            try {
+                showLoading('ordersList');
+                
+                // Simulation d'appel API - remplacez par votre véritable endpoint
+                const response = await fetch('/get-my-orders');
+                const data = await response.json();
+                
+                allOrders = data.data || [];
+                filteredOrders = [...allOrders];
+                
+                updateDashboardStats();
+                displayOrders();
+                setupPagination();
+                loadRecentOrders();
+                
+            } catch (error) {
+                console.error('Erreur lors du chargement des commandes:', error);
+                showError('ordersList', 'Erreur lors du chargement des commandes');
             }
-            currentPage = 1;
-            displayOrders();
-            setupPagination();
         }
 
-        // Search orders
-        function searchOrders(query) {
-            if (query.trim() === '') {
-                filteredOrders = [...ordersData];
-            } else {
-                filteredOrders = ordersData.filter(order => 
-                    order.id.toLowerCase().includes(query.toLowerCase()) ||
-                    order.details.some(detail => 
-                        detail.article.name.toLowerCase().includes(query.toLowerCase())
-                    )
-                );
+        // Mise à jour des statistiques du tableau de bord
+        function updateDashboardStats() {
+            const totalOrders = allOrders.length;
+            const pendingOrders = allOrders.filter(order => 
+                order.statut === 'en_attente_paiement' || 
+                order.paiement?.statut === 'en_attente_validation'
+            ).length;
+            const confirmedOrders = allOrders.filter(order => 
+                order.statut === 'confirmee'
+            ).length;
+
+            document.getElementById('total-orders').textContent = totalOrders;
+            document.getElementById('pending-orders').textContent = pendingOrders;
+            document.getElementById('confirmed-orders').textContent = confirmedOrders;
+            document.getElementById('orders-count').textContent = totalOrders;
+        }
+
+        // Affichage des commandes récentes
+        function loadRecentOrders() {
+            const recentOrdersContainer = document.getElementById('recent-orders');
+            const recentOrders = allOrders.slice(0, 2); // 2 commandes les plus récentes
+
+            if (recentOrders.length === 0) {
+                recentOrdersContainer.innerHTML = `
+                    <div style="text-align: center; padding: 2rem; color: var(--text-light);">
+                        <i class="fas fa-shopping-bag" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                        <p>Aucune commande récente</p>
+                    </div>
+                `;
+                return;
             }
-            currentPage = 1;
-            displayOrders();
-            setupPagination();
+
+            recentOrdersContainer.innerHTML = recentOrders.map(order => `
+                <div class="order-card">
+                    <div class="order-header">
+                        <div class="order-info">
+                            <h4>${order.numero_commande}</h4>
+                            <p class="order-date">${formatDate(order.date_commande)}</p>
+                        </div>
+                        <span class="order-status status-${order.statut}">${getStatusText(order.statut)}</span>
+                    </div>
+                    <div class="order-items">
+                        ${order.detail_commandes.slice(0, 2).map(detail => `
+                            <div class="order-item">
+                                <div class="item-image">
+                                    <i class="fas fa-pills"></i>
+                                </div>
+                                <div class="item-details">
+                                    <div class="item-name">Article #${detail.article_id}</div>
+                                    <div class="item-meta">
+                                        <span>Quantité: ${detail.quantite}</span>
+                                        <span>${formatPrice(detail.prix_unitaire)}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                        ${order.detail_commandes.length > 2 ? `
+                            <div style="text-align: center; padding: 0.5rem; color: var(--text-light);">
+                                + ${order.detail_commandes.length - 2} autre(s) article(s)
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div class="order-footer">
+                        <span class="order-total">${formatPrice(order.total)}</span>
+                        <button class="action-btn" onclick="showOrderDetails(${order.id})">
+                            <i class="fas fa-eye"></i>
+                            Détails
+                        </button>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        // Display orders for current page
+        // Affichage des commandes avec pagination
         function displayOrders() {
             const ordersList = document.getElementById('ordersList');
             const startIndex = (currentPage - 1) * ordersPerPage;
@@ -2269,42 +2078,81 @@
                 <div class="order-detail-card">
                     <div class="order-detail-header">
                         <div class="order-meta">
-                            <h3>Commande #${order.id}</h3>
-                            <p>Passée le ${order.date_commande}</p>
+                            <h3>Commande #${order.numero_commande}</h3>
+                            <p>Passée le ${formatDate(order.date_commande)}</p>
+                            <p>Statut: <span class="order-status status-${order.statut}">${getStatusText(order.statut)}</span></p>
+                            <p>Paiement: <span class="order-status status-${order.paiement?.statut || 'non_paye'}">${getPaymentStatusText(order.paiement?.statut)}</span></p>
                         </div>
                         <div class="order-summary">
-                            <span class="order-amount">${order.amount}</span>
-                            <span class="order-count">${order.items} article(s)</span>
+                            <span class="order-amount">${formatPrice(order.total)}</span>
+                            <span class="order-count">${order.detail_commandes.length} article(s)</span>
                         </div>
                     </div>
                     <div class="order-detail-items">
-                        ${order.details.map(detail => `
+                        ${order.detail_commandes.map(detail => `
                             <div class="order-detail-item">
                                 <div class="item-image-large">
                                     <i class="fas fa-pills"></i>
                                 </div>
                                 <div class="item-details-large">
-                                    <h4 class="item-name-large">${detail.article.name}</h4>
-                                    <p class="item-category">${detail.article.category}</p>
+                                    <h4 class="item-name-large">Article #${detail.article_id}</h4>
                                     <div class="item-meta-large">
                                         <span class="item-quantity">Quantité: ${detail.quantite}</span>
-                                        <span class="item-price">${detail.prix_unitaire}</span>
+                                        <span class="item-price">${formatPrice(detail.prix_unitaire)}</span>
                                     </div>
                                 </div>
                             </div>
                         `).join('')}
                     </div>
                     <div class="order-actions">
-                        <button class="btn btn-primary" onclick="showOrderDetails('${order.id}')">
+                        <button class="btn btn-primary" onclick="showOrderDetails(${order.id})">
                             <i class="fas fa-eye"></i>
                             Voir les détails
                         </button>
+                        ${order.paiement?.statut === 'en_attente_validation' ? `
+                            <button class="btn btn-outline" onclick="uploadPaymentProof(${order.id})">
+                                <i class="fas fa-upload"></i>
+                                Preuve de paiement
+                            </button>
+                        ` : ''}
                     </div>
                 </div>
             `).join('');
         }
 
-        // Setup pagination
+        // Filtrage des commandes
+        function filterOrders(filter) {
+            if (filter === 'all') {
+                filteredOrders = [...allOrders];
+            } else if (filter === 'paye') {
+                filteredOrders = allOrders.filter(order => 
+                    order.paiement?.statut === 'paye'
+                );
+            } else {
+                filteredOrders = allOrders.filter(order => order.statut === filter);
+            }
+            
+            currentPage = 1;
+            displayOrders();
+            setupPagination();
+        }
+
+        // Recherche de commandes
+        function searchOrders(query) {
+            if (query.trim() === '') {
+                filteredOrders = [...allOrders];
+            } else {
+                filteredOrders = allOrders.filter(order => 
+                    order.numero_commande.toLowerCase().includes(query.toLowerCase()) ||
+                    order.total.toString().includes(query)
+                );
+            }
+            currentPage = 1;
+            displayOrders();
+            setupPagination();
+        }
+
+        // Configuration de la pagination
         function setupPagination() {
             const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
             const paginationPages = document.querySelector('.pagination-pages');
@@ -2313,7 +2161,7 @@
 
             // Update pagination buttons
             prevBtn.classList.toggle('disabled', currentPage === 1);
-            nextBtn.classList.toggle('disabled', currentPage === totalPages);
+            nextBtn.classList.toggle('disabled', currentPage === totalPages || totalPages === 0);
 
             // Generate page numbers
             paginationPages.innerHTML = '';
@@ -2328,8 +2176,13 @@
                 });
                 paginationPages.appendChild(pageNumber);
             }
+        }
 
-            // Pagination button events
+        // Écouteurs d'événements pour la pagination
+        function setupPaginationListeners() {
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+
             prevBtn.addEventListener('click', () => {
                 if (currentPage > 1) {
                     currentPage--;
@@ -2339,6 +2192,7 @@
             });
 
             nextBtn.addEventListener('click', () => {
+                const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
                 if (currentPage < totalPages) {
                     currentPage++;
                     displayOrders();
@@ -2347,17 +2201,14 @@
             });
         }
 
-        // Show order details
+        // Affichage des détails d'une commande
         function showOrderDetails(orderId) {
-            const order = ordersData.find(o => o.id === orderId);
+            const order = allOrders.find(o => o.id === orderId);
             if (!order) return;
 
             // Hide all tabs and show order details
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-            
-            // Activate orders tab in sidebar
-            document.querySelector('[data-tab="orders"]').classList.add('active');
             
             // Show order details tab
             const orderDetailsTab = document.getElementById('order-details');
@@ -2367,11 +2218,8 @@
             orderDetailsTab.innerHTML = generateOrderDetailsHTML(order);
         }
 
-        // Generate order details HTML
+        // Génération du HTML pour les détails de commande
         function generateOrderDetailsHTML(order) {
-            const statusClass = `status-${order.statut}`;
-            const statusText = getStatusText(order.statut);
-            
             return `
                 <div class="order-details-page">
                     <div class="page-header">
@@ -2387,23 +2235,17 @@
                             </div>
                             <div class="order-meta-item">
                                 <span class="order-meta-label">Date de commande</span>
-                                <span class="order-meta-value">${order.date_commande}</span>
+                                <span class="order-meta-value">${formatDate(order.date_commande)}</span>
                             </div>
                             <div class="order-meta-item">
                                 <span class="order-meta-label">Statut</span>
-                                <span class="order-status-badge ${statusClass}">${statusText}</span>
+                                <span class="order-status-badge status-${order.statut}">${getStatusText(order.statut)}</span>
                             </div>
                             <div class="order-meta-item">
                                 <span class="order-meta-label">Total</span>
-                                <span class="order-meta-value">${order.amount}</span>
+                                <span class="order-meta-value">${formatPrice(order.total)}</span>
                             </div>
                         </div>
-                        ${order.commentaires ? `
-                            <div class="order-meta-item">
-                                <span class="order-meta-label">Commentaires</span>
-                                <span class="order-meta-value">${order.commentaires}</span>
-                            </div>
-                        ` : ''}
                     </div>
 
                     <div class="order-details-grid">
@@ -2413,17 +2255,16 @@
                                 Articles commandés
                             </h2>
                             <div class="order-items-list">
-                                ${order.details.map(detail => `
+                                ${order.detail_commandes.map(detail => `
                                     <div class="order-item-detail">
                                         <div class="item-image-detail">
                                             <i class="fas fa-pills"></i>
                                         </div>
                                         <div class="item-details-detail">
-                                            <div class="item-name-detail">${detail.article.name}</div>
-                                            <div class="item-category-detail">${detail.article.category}</div>
+                                            <div class="item-name-detail">Article #${detail.article_id}</div>
                                             <div class="item-meta-detail">
                                                 <span>Quantité: ${detail.quantite}</span>
-                                                <span class="item-price-detail">${detail.prix_unitaire}</span>
+                                                <span class="item-price-detail">${formatPrice(detail.prix_unitaire)}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -2437,15 +2278,15 @@
                                 Récapitulatif
                             </h2>
                             <div class="order-summary-list">
-                                ${order.details.map(detail => `
+                                ${order.detail_commandes.map(detail => `
                                     <div class="summary-row">
-                                        <span class="summary-label">${detail.article.name} (x${detail.quantite})</span>
-                                        <span class="summary-value">${detail.prix_total}</span>
+                                        <span class="summary-label">Article #${detail.article_id} (x${detail.quantite})</span>
+                                        <span class="summary-value">${formatPrice(detail.prix_unitaire * detail.quantite)}</span>
                                     </div>
                                 `).join('')}
                                 <div class="summary-row">
                                     <span class="summary-label">Sous-total</span>
-                                    <span class="summary-value">${order.amount}</span>
+                                    <span class="summary-value">${formatPrice(order.total)}</span>
                                 </div>
                                 <div class="summary-row">
                                     <span class="summary-label">Livraison</span>
@@ -2453,7 +2294,7 @@
                                 </div>
                                 <div class="summary-row">
                                     <span class="summary-label summary-total">Total</span>
-                                    <span class="summary-value summary-total">${order.amount}</span>
+                                    <span class="summary-value summary-total">${formatPrice(order.total)}</span>
                                 </div>
                             </div>
                         </div>
@@ -2465,10 +2306,10 @@
                             Adresse de livraison
                         </h2>
                         <div class="address-details-detail">
-                            <p><strong>${order.user.name}</strong></p>
-                            <p>${order.adresse.etablissement}</p>
+                            <p><strong>${order.adresse.etablissement}</strong></p>
                             <p>${order.adresse.adresse}</p>
-                            <p>${order.adresse.code_postal} ${order.adresse.ville}</p>
+                            <p>${order.adresse.ville}</p>
+                            <p>${order.adresse.code_postal}</p>
                             <p>Téléphone: ${order.adresse.telephone}</p>
                             ${order.adresse.notes_livraison ? `<p><strong>Instructions:</strong> ${order.adresse.notes_livraison}</p>` : ''}
                         </div>
@@ -2480,66 +2321,39 @@
                             Informations de paiement
                         </h2>
                         <div class="payment-details-detail">
-                            <p><strong>Méthode:</strong> ${getPaymentMethodText(order.paiement.methode)}</p>
-                            <p><strong>Montant:</strong> ${order.paiement.montant}</p>
-                            <p><strong>Statut:</strong> ${getPaymentStatusText(order.paiement.statut)}</p>
-                            ${order.paiement.date_paiement ? `<p><strong>Date de paiement:</strong> ${order.paiement.date_paiement}</p>` : ''}
-                            ${order.paiement.reference_paiement ? `<p><strong>Référence:</strong> ${order.paiement.reference_paiement}</p>` : ''}
-                            ${order.paiement.numero_carte ? `<p><strong>Carte:</strong> ${order.paiement.numero_carte}</p>` : ''}
+                            <p><strong>Méthode:</strong> ${getPaymentMethodText(order.paiement?.methode)}</p>
+                            <p><strong>Montant:</strong> ${formatPrice(order.paiement?.montant || 0)}</p>
+                            <p><strong>Statut:</strong> ${getPaymentStatusText(order.paiement?.statut)}</p>
+                            ${order.paiement?.date_paiement ? `<p><strong>Date de paiement:</strong> ${formatDate(order.paiement.date_paiement)}</p>` : ''}
+                            ${order.paiement?.reference_paiement ? `<p><strong>Référence:</strong> ${order.paiement.reference_paiement}</p>` : ''}
+                            ${order.paiement?.banque ? `<p><strong>Banque:</strong> ${order.paiement.banque}</p>` : ''}
                         </div>
 
-                        ${order.paiement.statut === 'en_attente' && order.paiement.methode === 'virement' ? `
+                        ${order.paiement?.statut === 'en_attente_validation' && order.paiement?.preuve_paiement ? `
                             <div class="payment-proof-section">
                                 <h3 class="section-title">
-                                    <i class="fas fa-file-upload"></i>
+                                    <i class="fas fa-file-invoice"></i>
                                     Preuve de paiement
                                 </h3>
-                                <div class="proof-upload" id="proofUpload">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <p>Déposez votre justificatif de virement ici</p>
-                                    <p class="text-sm">Formats acceptés: PDF, JPG, PNG (max. 5MB)</p>
-                                    <button class="btn btn-primary" onclick="document.getElementById('proofFile').click()">
-                                        <i class="fas fa-upload"></i>
-                                        Choisir un fichier
-                                    </button>
-                                    <input type="file" id="proofFile" style="display: none;" accept=".pdf,.jpg,.jpeg,.png" onchange="handleProofUpload(this)">
-                                </div>
-                                <div id="proofFileInfo" style="display: none;">
-                                    <div class="proof-file">
-                                        <i class="fas fa-file-pdf"></i>
-                                        <div class="proof-file-info">
-                                            <div class="proof-file-name" id="proofFileName"></div>
-                                            <div class="proof-file-size" id="proofFileSize"></div>
-                                        </div>
-                                        <div class="proof-file-actions">
-                                            <button class="action-btn" onclick="removeProofFile()">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </div>
+                                <div class="proof-file">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <div class="proof-file-info">
+                                        <div class="proof-file-name">Justificatif de paiement</div>
+                                        <div class="proof-file-size">Document uploadé</div>
                                     </div>
-                                    <button class="btn btn-primary" onclick="submitProof()">
-                                        <i class="fas fa-paper-plane"></i>
-                                        Envoyer la preuve
-                                    </button>
+                                    <div class="proof-file-actions">
+                                        <a href="${order.paiement.preuve_paiement}" target="_blank" class="action-btn">
+                                            <i class="fas fa-eye"></i>
+                                            Voir
+                                        </a>
+                                        <a href="${order.paiement.preuve_paiement}" download class="action-btn">
+                                            <i class="fas fa-download"></i>
+                                            Télécharger
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         ` : ''}
-                    </div>
-
-                    <div class="status-timeline">
-                        <h2 class="section-title">
-                            <i class="fas fa-history"></i>
-                            Historique de la commande
-                        </h2>
-                        <div class="timeline">
-                            ${order.timeline.map((item, index) => `
-                                <div class="timeline-item ${index === order.timeline.length - 1 ? 'active' : 'completed'}">
-                                    <div class="timeline-date">${item.date}</div>
-                                    <div class="timeline-status">${item.status}</div>
-                                    <div class="timeline-description">${item.description}</div>
-                                </div>
-                            `).join('')}
-                        </div>
                     </div>
 
                     <div class="order-actions-detail">
@@ -2547,26 +2361,14 @@
                             <i class="fas fa-arrow-left"></i>
                             Retour aux commandes
                         </button>
-                        ${order.statut === 'en_attente_paiement' ? `
-                            <button class="btn btn-primary" onclick="processPayment('${order.id}')">
-                                <i class="fas fa-credit-card"></i>
-                                Procéder au paiement
+                        ${order.paiement?.statut === 'en_attente_validation' ? `
+                            <button class="btn btn-primary" onclick="uploadPaymentProof(${order.id})">
+                                <i class="fas fa-upload"></i>
+                                Modifier la preuve
                             </button>
                         ` : ''}
-                        ${order.statut === 'confirmee' ? `
-                            <button class="btn btn-primary" onclick="trackOrder('${order.id}')">
-                                <i class="fas fa-shipping-fast"></i>
-                                Suivre la livraison
-                            </button>
-                        ` : ''}
-                        ${order.statut === 'livree' ? `
-                            <button class="btn btn-primary" onclick="downloadInvoice('${order.id}')">
-                                <i class="fas fa-download"></i>
-                                Télécharger la facture
-                            </button>
-                        ` : ''}
-                        ${['en_attente', 'en_attente_paiement', 'confirmee'].includes(order.statut) ? `
-                            <button class="btn btn-outline" onclick="cancelOrder('${order.id}')" style="border-color: var(--error); color: var(--error);">
+                        ${['en_attente_paiement', 'en_attente_validation'].includes(order.statut) ? `
+                            <button class="btn btn-outline" style="border-color: var(--error); color: var(--error);" onclick="cancelOrder(${order.id})">
                                 <i class="fas fa-times"></i>
                                 Annuler la commande
                             </button>
@@ -2576,7 +2378,25 @@
             `;
         }
 
-        // Helper functions for status texts
+        // Fonctions utilitaires
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('fr-FR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('fr-FR', {
+                style: 'currency',
+                currency: 'XOF'
+            }).format(price);
+        }
+
         function getStatusText(status) {
             const statusMap = {
                 'en_attente': 'En attente',
@@ -2590,83 +2410,85 @@
 
         function getPaymentMethodText(method) {
             const methodMap = {
-                'carte_bancaire': 'Carte bancaire',
-                'virement': 'Virement bancaire',
-                'mobile_money': 'Mobile Money'
+                'card': 'Carte bancaire',
+                'transfer': 'Virement bancaire',
+                'check': 'Chèque'
             };
             return methodMap[method] || method;
         }
 
         function getPaymentStatusText(status) {
             const statusMap = {
-                'en_attente': 'En attente',
-                'paye': 'Payé'
+                'en_attente_validation': 'En attente de validation',
+                'paye': 'Payé',
+                'en_attente_encaissement': 'En attente d\'encaissement'
             };
-            return statusMap[status] || status;
+            return statusMap[status] || status || 'Non payé';
         }
 
-        // Proof upload handling
-        function handleProofUpload(input) {
-            if (input.files && input.files[0]) {
-                const file = input.files[0];
-                const fileName = file.name;
-                const fileSize = (file.size / 1024 / 1024).toFixed(2) + ' MB';
-                
-                document.getElementById('proofFileName').textContent = fileName;
-                document.getElementById('proofFileSize').textContent = fileSize;
-                document.getElementById('proofUpload').style.display = 'none';
-                document.getElementById('proofFileInfo').style.display = 'block';
-            }
+        function closeMobileSidebar() {
+            const sidebar = document.querySelector('.account-sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
-        function removeProofFile() {
-            document.getElementById('proofFile').value = '';
-            document.getElementById('proofUpload').style.display = 'block';
-            document.getElementById('proofFileInfo').style.display = 'none';
+        function showLoading(containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                </div>
+            `;
         }
 
-        function submitProof() {
-            alert('Preuve de paiement envoyée avec succès! Votre commande sera traitée après vérification.');
-            // Ici vous ajouteriez la logique pour envoyer le fichier au serveur
+        function showError(containerId, message) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `
+                <div style="text-align: center; padding: 3rem; color: var(--error);">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h3>${message}</h3>
+                    <button class="btn btn-primary" onclick="loadOrders()" style="margin-top: 1rem;">
+                        <i class="fas fa-redo"></i>
+                        Réessayer
+                    </button>
+                </div>
+            `;
         }
 
-        // Order actions
+        // Fonctions d'action
         function goBackToOrders() {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.getElementById('orders').classList.add('active');
+            document.querySelector('[data-tab="orders"]').classList.add('active');
         }
 
-        function processPayment(orderId) {
-            alert(`Redirection vers la page de paiement pour la commande ${orderId}`);
-            // Ici vous redirigeriez vers la page de paiement
-        }
-
-        function trackOrder(orderId) {
-            alert(`Ouverture du suivi de livraison pour la commande ${orderId}`);
-            // Ici vous ouvririez la page de suivi
-        }
-
-        function downloadInvoice(orderId) {
-            alert(`Téléchargement de la facture pour la commande ${orderId}`);
-            // Ici vous déclencheriez le téléchargement de la facture
+        function uploadPaymentProof(orderId) {
+            alert(`Fonctionnalité d'upload de preuve de paiement pour la commande ${orderId}`);
+            // Implémentez ici la logique d'upload de fichier
         }
 
         function cancelOrder(orderId) {
             if (confirm('Êtes-vous sûr de vouloir annuler cette commande ? Cette action est irréversible.')) {
                 alert(`Commande ${orderId} annulée avec succès`);
-                // Ici vous enverriez la requête d'annulation au serveur
-                goBackToOrders();
+                // Implémentez ici la logique d'annulation
             }
         }
 
-        // Logout function
         function handleLogout() {
             if (confirm('Êtes-vous sûr de vouloir vous déconnecter ?')) {
-                // Add logout logic here
+                // Implémentez ici la logique de déconnexion
                 console.log('Déconnexion...');
-                // window.location.href = '/logout';
             }
         }
+
+        // Fermeture de la sidebar avec la touche Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileSidebar();
+            }
+        });
     </script>
 </body>
 </html>

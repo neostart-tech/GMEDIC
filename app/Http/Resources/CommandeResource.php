@@ -26,6 +26,8 @@ class CommandeResource extends JsonResource
         'numero_commande'=>$this->resource->numero_commande,
         'adresse'=> new AdresseResource($this->whenLoaded('adresse')),
         'user'=> new UserResource($this->whenLoaded('user')),
+        'paiement'=>new MoyenPaiementResource($this->whenLoaded('paiement')),
+        "detail_commandes"=>DetailCommandeResource::collection($this->whenLoaded("details")),
         
         ];
     }

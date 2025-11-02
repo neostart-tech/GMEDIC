@@ -31,7 +31,7 @@ class MoyenPaiementResource extends JsonResource
         'reference_paiement'=>$this->resource->reference_paiement,
         'banque'=>$this->resource->banque,
         'banque'=>$this->resource->banque,
-        'preuve_paiement'=>$this->resource->path,
+        'preuve_paiement'=>$this->resource->path(),
         'notes'=>$this->resource->notes,
         'info_bancaire'=>new InfoBancaireResource($this->whenLoaded('infoBancaire'))
 
