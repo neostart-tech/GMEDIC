@@ -1,13 +1,3 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
-    rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap"
-    rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <style>
     :root {
         --primary: #009D92;
@@ -701,7 +691,9 @@
         }
     }
 
-    /* RESPONSIVE MOBILE (768px et moins) */
+    /* ========================================================================== */
+    /* RESPONSIVE MOBILE (768px et moins) - CORRECTIONS DROPDOWNS */
+    /* ========================================================================== */
     @media screen and (max-width: 768px) {
         body {
             padding-top: 85px;
@@ -723,7 +715,7 @@
             display: block;
         }
 
-        /* Menu navigation mobile */
+        /* Menu navigation mobile AVEC SCROLL */
         .nav-menu {
             position: fixed;
             top: 85px;
@@ -735,12 +727,14 @@
             height: calc(100vh - 85px);
             box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
-            padding: 30px 25px;
+            padding: 20px 15px;
             gap: 0;
             z-index: 999;
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
             align-items: flex-start;
+            overflow-y: auto; /* ✅ Scroll activé */
+            overflow-x: hidden;
         }
 
         .nav-menu.active {
@@ -757,6 +751,8 @@
             padding: 18px 0;
             font-size: 1.1rem;
             width: 100%;
+            white-space: normal; /* ✅ Retour à la ligne */
+            word-wrap: break-word;
         }
 
         .nav-link:after {
@@ -770,6 +766,29 @@
             padding: 15px;
             font-size: 1rem;
         }
+
+        /* Style de scroll personnalisé pour le menu */
+        .nav-menu::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .nav-menu::-webkit-scrollbar-track {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .nav-menu::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .nav-menu::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ========================================================================== */
+        /* CORRECTIONS DROPDOWNS MOBILE */
+        /* ========================================================================== */
 
         /* Sélecteur de langue mobile */
         .mobile-language-selector {
@@ -800,6 +819,8 @@
             border: 1px solid var(--border);
             overflow: hidden;
             width: 100%;
+            max-height: 200px; /* ✅ Hauteur maximale */
+            overflow-y: auto; /* ✅ Scroll si nécessaire */
         }
 
         .mobile-language-options.active {
@@ -816,6 +837,7 @@
             transition: var(--transition);
             border-bottom: 1px solid var(--border);
             width: 100%;
+            min-height: 44px; /* ✅ Taille tactile minimum */
         }
 
         .mobile-language-option:last-child {
@@ -875,6 +897,8 @@
             border: 1px solid var(--border);
             overflow: hidden;
             width: 100%;
+            max-height: 200px; /* ✅ Hauteur maximale */
+            overflow-y: auto; /* ✅ Scroll si nécessaire */
         }
 
         .mobile-user-options.active {
@@ -891,6 +915,7 @@
             transition: var(--transition);
             border-bottom: 1px solid var(--border);
             width: 100%;
+            min-height: 44px; /* ✅ Taille tactile minimum */
         }
 
         .mobile-user-option:last-child {
@@ -909,6 +934,23 @@
         .mobile-user-option.logout:hover {
             background-color: #fed7d7;
             color: #c53030;
+        }
+
+        /* Style de scroll pour les dropdowns */
+        .mobile-language-options::-webkit-scrollbar,
+        .mobile-user-options::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .mobile-language-options::-webkit-scrollbar-track,
+        .mobile-user-options::-webkit-scrollbar-track {
+            background: var(--accent);
+        }
+
+        .mobile-language-options::-webkit-scrollbar-thumb,
+        .mobile-user-options::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
         }
     }
 
@@ -943,7 +985,7 @@
 
         .nav-menu {
             width: 90%;
-            padding: 20px;
+            padding: 15px 12px;
         }
 
         .nav-link {
@@ -951,20 +993,20 @@
             padding: 15px 0;
         }
 
-        .mobile-language-current {
-            padding: 10px 12px;
-        }
-
-        .mobile-language-option {
-            padding: 10px 12px;
-        }
-
+        .mobile-language-current,
         .mobile-user-login {
             padding: 10px 12px;
         }
 
+        .mobile-language-option,
         .mobile-user-option {
             padding: 10px 12px;
+        }
+
+        /* Réduire la hauteur maximale des dropdowns sur très petits écrans */
+        .mobile-language-options,
+        .mobile-user-options {
+            max-height: 180px;
         }
     }
 
@@ -999,202 +1041,73 @@
     }
 </style>
 
-<body>
-    <!-- Header Top avec informations de contact - Caché en mobile -->
-    <div class="header-top">
-        <div class="header-top-container">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <a href="tel:+22870658816">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>+228 70 65 88 16</span>
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <a href="tel:+22898712020">
-                        <i class="fas fa-mobile-alt"></i>
-                        <span>+228 98 71 20 20</span>
-                    </a>
-                </div>
-                <div class="contact-item">
-                    <a href="mailto:gmedicsarl@gmail.com">
-                        <i class="far fa-envelope"></i>
-                        <span>contact@gmedic.tg</span>
-                    </a>
-                </div>
+<!-- Header Top avec informations de contact - Caché en mobile -->
+<div class="header-top">
+    <div class="header-top-container">
+        <div class="contact-info">
+            <div class="contact-item">
+                <a href="tel:+22870658816">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+228 70 65 88 16</span>
+                </a>
             </div>
-            <div class="top-right-section">
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-
-                <!-- Section utilisateur Desktop -->
-                <div class="user-section">
-                    @auth
-                        <!-- Utilisateur connecté - Afficher le dropdown -->
-                        <div class="user-login">
-                            <div class="user-avatar">
-                                {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
-                            </div>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="user-dropdown">
-                            <a href="" class="user-option">
-                                <i class="fas fa-user"></i>
-                                <span>{{ __('mon_compte') }}</span>
-                            </a>
-                            <a href="{{ route('mes-commandes') }}" class="user-option">
-                                <i class="fas fa-shopping-bag"></i>
-                                <span>{{__('mes_commandes')}}</span>
-                            </a>
-                            <a href="" onclick="logout()" class="user-option logout">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span>{{ __('deconnexion') }}</span>
-                            </a>
-                        </div>
-                    @else
-                        <!-- Utilisateur non connecté - Afficher le lien de connexion -->
-                        <a href="{{ route('client.dologin') }}" class="user-login">
-                            <i class="fas fa-sign-in-alt"></i>
-                            <span>{{ __('connexion') }}</span>
-                        </a>
-                    @endauth
-                </div>
-
-                <!-- Sélecteur de langue Desktop -->
-                <div class="language-selector">
-                    <div class="language-current">
-                        @php
-                            $locale = app()->getLocale();
-                            $languages = [
-                                'fr' => [
-                                    'name' => 'Français',
-                                    'flag' =>
-                                        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg==',
-                                ],
-                                'en' => [
-                                    'name' => 'English',
-                                    'flag' =>
-                                        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cGF0aCBkPSJNMCAwdjMwbDYwLTNWMGwtNjAtM3oiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMCAwbDUwIDIwdjEwbC01MC0yMHoiIGZpbGw9IiNmMDJiMDAiLz48cGF0aCBkPSJNMCAyMGw1MC0yMHYxMGwtNTAgMjB6IiBmaWxsPSIjZjAyYjAwIi8+PC9zdmc+',
-                                ],
-                                'zh_CN' => [
-                                    'name' => '中文',
-                                    'flag' =>
-                                        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxMyAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4=',
-                                ],
-                            ];
-                        @endphp
-
-                        @if (isset($languages[$locale]))
-                            <img src="{{ $languages[$locale]['flag'] }}" alt="{{ $languages[$locale]['name'] }}"
-                                class="language-flag">
-                            <span>{{ strtoupper(substr($languages[$locale]['name'], 0, 2)) }}</span>
-                            <i class="fas fa-chevron-down"></i>
-                        @else
-                            {{-- Fallback si la langue n'est pas trouvée --}}
-                            <img src="{{ $languages['fr']['flag'] }}" alt="Français" class="language-flag">
-                            <span>FR</span>
-                            <i class="fas fa-chevron-down"></i>
-                        @endif
-                    </div>
-                    <div class="language-dropdown">
-                        @foreach ($languages as $langCode => $language)
-                            <a href="{{ route('client.lang.switch', $langCode) }}"
-                                class="language-option {{ $locale === $langCode ? 'active' : '' }}"
-                                data-lang="{{ $langCode }}">
-                                <img src="{{ $language['flag'] }}" alt="{{ $language['name'] }}"
-                                    class="language-flag" />
-                                <span>{{ $language['name'] }}</span>
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
+            <div class="contact-item">
+                <a href="tel:+22898712020">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>+228 98 71 20 20</span>
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="mailto:gmedicsarl@gmail.com">
+                    <i class="far fa-envelope"></i>
+                    <span>contact@gmedic.tg</span>
+                </a>
             </div>
         </div>
-    </div>
+        <div class="top-right-section">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
 
-    <!-- Header Main avec navigation -->
-    <div class="header-main">
-        <div class="nav-container">
-            <a href="/" class="logo">
-                <img src="{{ asset('assets/images/logos/gmedic_logo.png') }}" alt="G-Medic Logo">
-            </a>
-
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="{{ route('client.show-article') }}"
-                        class="nav-link {{ Request::routeIs('client.show-article') ? 'active' : '' }}">
-                        {{ __('Articles') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('client.accueil') }}"
-                        class="nav-link {{ Request::routeIs('client.accueil') ? 'active' : '' }}">
-                        {{ __('Accueil') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('client.a-propos') }}"
-                        class="nav-link {{ Request::routeIs('client.a-propos') ? 'active' : '' }}">
-                        {{ __('À propos') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('client.categories.index') }}"
-                        class="nav-link {{ Request::routeIs('client.categories.index') ? 'active' : '' }}">
-                        {{ __('Catégories') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('client.blogs.index') }}"
-                        class="nav-link {{ Request::routeIs('client.blogs.index') ? 'active' : '' }}">
-                        {{ __('Blog') }}
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('client.contact.create') }}"
-                        class="nav-link {{ Request::routeIs('client.contact.create') ? 'active' : '' }}">
-                        {{ __('Contact') }}
-                    </a>
-                </li>
-
-                <!-- Section utilisateur Mobile (dans le menu) -->
-                <li class="nav-item mobile-user-section" style="display: none">
-                    @auth
-                        <div class="mobile-user-login">
-                            <div class="mobile-user-avatar">
-                                {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
-                            </div>
-                            <span>{{ Auth::user()->name }}</span>
-                            <i class="fas fa-chevron-down"></i>
+            <!-- Section utilisateur Desktop -->
+            <div class="user-section">
+                @auth
+                    <!-- Utilisateur connecté - Afficher le dropdown -->
+                    <div class="user-login">
+                        <div class="user-avatar">
+                            {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
                         </div>
-                        <div class="mobile-user-options">
-                            <a href="" class="mobile-user-option">
-                                <i class="fas fa-user"></i>
-                                <span>{{__('mon_compte')}}</span>
-                            </a>
-                            <a href="{{ route('mes-commandes') }}" class="mobile-user-option">
-                                <i class="fas fa-shopping-bag"></i>
-                                <span>{{__('mes_commandes')}}</span>
-                            </a>
-                            <a onclick="logout()" class="mobile-user-option logout">
-                                <i class="fas fa-sign-out-alt"></i>
-                                <span>{{ __('deconnexion') }}</span>
-                            </a>
-                        </div>
-                    @else
-                        <a href="{{ route('client.dologin') }}" class="mobile-user-login">
-                            <i class="fas fa-sign-in-alt"></i>
-                            <span>{{  __('connexion') }}</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="user-dropdown">
+                        <a href="" class="user-option">
+                            <i class="fas fa-user"></i>
+                            <span>{{ __('mon_compte') }}</span>
                         </a>
-                    @endauth
-                </li>
+                        <a href="{{ route('mes-commandes') }}" class="user-option">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>{{ __('mes_commandes') }}</span>
+                        </a>
+                        <a href="" onclick="logout()" class="user-option logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>{{ __('deconnexion') }}</span>
+                        </a>
+                    </div>
+                @else
+                    <!-- Utilisateur non connecté - Afficher le lien de connexion -->
+                    <a href="{{ route('client.dologin') }}" class="user-login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>{{ __('connexion') }}</span>
+                    </a>
+                @endauth
+            </div>
 
-                <!-- Sélecteur de langue Mobile (dans le menu) -->
-                <li class="nav-item mobile-language-selector" style="display: none">
+            <!-- Sélecteur de langue Desktop -->
+            <div class="language-selector">
+                <div class="language-current">
                     @php
                         $locale = app()->getLocale();
                         $languages = [
@@ -1211,236 +1124,409 @@
                             'zh_CN' => [
                                 'name' => '中文',
                                 'flag' =>
-                                    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxNSAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4=',
+                                    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxMyAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4=',
                             ],
                         ];
                     @endphp
 
-                    <div class="mobile-language-current">
-                        @if (isset($languages[$locale]))
-                            <img src="{{ $languages[$locale]['flag'] }}" alt="{{ $languages[$locale]['name'] }}"
-                                class="language-flag">
-                            <span>{{ $languages[$locale]['name'] }}</span>
-                            <i class="fas fa-chevron-down"></i>
-                        @else
-                            {{-- Fallback si la langue n'est pas trouvée --}}
-                            <img src="{{ $languages['fr']['flag'] }}" alt="Français" class="language-flag">
-                            <span>Français</span>
-                            <i class="fas fa-chevron-down"></i>
-                        @endif
-                    </div>
-                    <div class="mobile-language-options">
-                        @foreach ($languages as $langCode => $language)
-                            <a href="{{ route('client.lang.switch', $langCode) }}"
-                                class="mobile-language-option {{ $locale === $langCode ? 'active' : '' }}"
-                                data-lang="{{ $langCode }}">
-                                <img src="{{ $language['flag'] }}" alt="{{ $language['name'] }}"
-                                    class="language-flag" />
-                                <span>{{ $language['name'] }}</span>
-                            </a>
-                        @endforeach
-                    </div>
-                </li>
-            </ul>
-
-            <button class="hamburger">
-                <i class="fas fa-bars"></i>
-            </button>
+                    @if (isset($languages[$locale]))
+                        <img src="{{ $languages[$locale]['flag'] }}" alt="{{ $languages[$locale]['name'] }}"
+                            class="language-flag">
+                        <span>{{ strtoupper(substr($languages[$locale]['name'], 0, 2)) }}</span>
+                        <i class="fas fa-chevron-down"></i>
+                    @else
+                        {{-- Fallback si la langue n'est pas trouvée --}}
+                        <img src="{{ $languages['fr']['flag'] }}" alt="Français" class="language-flag">
+                        <span>FR</span>
+                        <i class="fas fa-chevron-down"></i>
+                    @endif
+                </div>
+                <div class="language-dropdown">
+                    @foreach ($languages as $langCode => $language)
+                        <a href="{{ route('client.lang.switch', $langCode) }}"
+                            class="language-option {{ $locale === $langCode ? 'active' : '' }}"
+                            data-lang="{{ $langCode }}">
+                            <img src="{{ $language['flag'] }}" alt="{{ $language['name'] }}" class="language-flag" />
+                            <span>{{ $language['name'] }}</span>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-    <script>
-        let loading=false;
-        // Script pour le menu hamburger
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
+<!-- Header Main avec navigation -->
+<div class="header-main">
+    <div class="nav-container">
+        <a href="/" class="logo">
+            <img src="{{ asset('assets/images/logos/gmedic_logo.png') }}" alt="G-Medic Logo">
+        </a>
 
-            hamburger.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="{{ route('client.show-article') }}"
+                    class="nav-link {{ Request::routeIs('client.show-article') ? 'active' : '' }}">
+                    {{ __('Articles') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('client.accueil') }}"
+                    class="nav-link {{ Request::routeIs('client.accueil') ? 'active' : '' }}">
+                    {{ __('Accueil') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('client.a-propos') }}"
+                    class="nav-link {{ Request::routeIs('client.a-propos') ? 'active' : '' }}">
+                    {{ __('À propos') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('client.categories.index') }}"
+                    class="nav-link {{ Request::routeIs('client.categories.index') ? 'active' : '' }}">
+                    {{ __('Catégories') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('client.blogs.index') }}"
+                    class="nav-link {{ Request::routeIs('client.blogs.index') ? 'active' : '' }}">
+                    {{ __('Blog') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('client.contact.create') }}"
+                    class="nav-link {{ Request::routeIs('client.contact.create') ? 'active' : '' }}">
+                    {{ __('Contact') }}
+                </a>
+            </li>
 
-                // Changer l'icône du hamburger
+            <!-- Section utilisateur Mobile (dans le menu) -->
+            <li class="nav-item mobile-user-section" style="display: none">
+                @auth
+                    <div class="mobile-user-login">
+                        <div class="mobile-user-avatar">
+                            {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
+                        </div>
+                        <span>{{ Auth::user()->name }}</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="mobile-user-options">
+                        <a href="" class="mobile-user-option">
+                            <i class="fas fa-user"></i>
+                            <span>{{ __('mon_compte') }}</span>
+                        </a>
+                        <a href="{{ route('mes-commandes') }}" class="mobile-user-option">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>{{ __('mes_commandes') }}</span>
+                        </a>
+                        <a onclick="logout()" class="mobile-user-option logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>{{ __('deconnexion') }}</span>
+                        </a>
+                    </div>
+                @else
+                    <a href="{{ route('client.dologin') }}" class="mobile-user-login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>{{ __('connexion') }}</span>
+                    </a>
+                @endauth
+            </li>
+
+            <!-- Sélecteur de langue Mobile (dans le menu) -->
+            <li class="nav-item mobile-language-selector" style="display: none">
+                @php
+                    $locale = app()->getLocale();
+                    $languages = [
+                        'fr' => [
+                            'name' => 'Français',
+                            'flag' =>
+                                'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg==',
+                        ],
+                        'en' => [
+                            'name' => 'English',
+                            'flag' =>
+                                'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cGF0aCBkPSJNMCAwdjMwbDYwLTNWMGwtNjAtM3oiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMCAwbDUwIDIwdjEwbC01MC0yMHoiIGZpbGw9IiNmMDJiMDAiLz48cGF0aCBkPSJNMCAyMGw1MC0yMHYxMGwtNTAgMjB6IiBmaWxsPSIjZjAyYjAwIi8+PC9zdmc+',
+                        ],
+                        'zh_CN' => [
+                            'name' => '中文',
+                            'flag' =>
+                                'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxNSAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4=',
+                        ],
+                    ];
+                @endphp
+
+                <div class="mobile-language-current">
+                    @if (isset($languages[$locale]))
+                        <img src="{{ $languages[$locale]['flag'] }}" alt="{{ $languages[$locale]['name'] }}"
+                            class="language-flag">
+                        <span>{{ $languages[$locale]['name'] }}</span>
+                        <i class="fas fa-chevron-down"></i>
+                    @else
+                        {{-- Fallback si la langue n'est pas trouvée --}}
+                        <img src="{{ $languages['fr']['flag'] }}" alt="Français" class="language-flag">
+                        <span>Français</span>
+                        <i class="fas fa-chevron-down"></i>
+                    @endif
+                </div>
+                <div class="mobile-language-options">
+                    @foreach ($languages as $langCode => $language)
+                        <a href="{{ route('client.lang.switch', $langCode) }}"
+                            class="mobile-language-option {{ $locale === $langCode ? 'active' : '' }}"
+                            data-lang="{{ $langCode }}">
+                            <img src="{{ $language['flag'] }}" alt="{{ $language['name'] }}"
+                                class="language-flag" />
+                            <span>{{ $language['name'] }}</span>
+                        </a>
+                    @endforeach
+                </div>
+            </li>
+        </ul>
+
+        <button class="hamburger">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</div>
+
+<script>
+    let loading = false;
+    
+    // Script pour le menu hamburger
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+
+            // Changer l'icône du hamburger
+            const icon = hamburger.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Fermer le menu en cliquant sur un lien
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
                 const icon = hamburger.querySelector('i');
-                if (navMenu.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             });
+        });
 
-            // Fermer le menu en cliquant sur un lien
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    navMenu.classList.remove('active');
-                    const icon = hamburger.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                });
+        // Gestion du sélecteur de langue Desktop
+        const languageSelector = document.querySelector('.language-selector');
+        const languageCurrent = document.querySelector('.language-current');
+        const languageOptions = document.querySelectorAll('.language-option');
+
+        if (languageCurrent) {
+            languageCurrent.addEventListener('click', function(e) {
+                e.stopPropagation();
+                languageSelector.classList.toggle('active');
             });
+        }
 
-            // Gestion du sélecteur de langue Desktop
-            const languageSelector = document.querySelector('.language-selector');
-            const languageCurrent = document.querySelector('.language-current');
-            const languageOptions = document.querySelectorAll('.language-option');
+        // Gestion de la section utilisateur Desktop
+        const userSection = document.querySelector('.user-section');
+        const userLogin = document.querySelector('.user-login');
+        const userOptions = document.querySelectorAll('.user-option');
 
-            if (languageCurrent) {
-                languageCurrent.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    languageSelector.classList.toggle('active');
-                });
-            }
-
-            // Gestion de la section utilisateur Desktop
-            const userSection = document.querySelector('.user-section');
-            const userLogin = document.querySelector('.user-login');
-            const userOptions = document.querySelectorAll('.user-option');
-
-            if (userLogin && userSection.querySelector('.user-dropdown')) {
-                userLogin.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    userSection.classList.toggle('active');
-                });
-            }
-
-            // Fermer les dropdowns en cliquant ailleurs
-            document.addEventListener('click', function() {
-                if (languageSelector) {
-                    languageSelector.classList.remove('active');
-                }
-                if (userSection) {
-                    userSection.classList.remove('active');
-                }
+        if (userLogin && userSection.querySelector('.user-dropdown')) {
+            userLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                userSection.classList.toggle('active');
             });
+        }
 
-            // Empêcher la fermeture quand on clique dans les dropdowns
+        // Fermer les dropdowns en cliquant ailleurs
+        document.addEventListener('click', function() {
             if (languageSelector) {
-                languageSelector.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                });
+                languageSelector.classList.remove('active');
             }
             if (userSection) {
-                userSection.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                });
-            }
-
-            // Gestion du changement de langue
-            languageOptions.forEach(option => {
-                option.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const selectedLang = this.getAttribute('data-lang');
-
-                    // Mettre à jour l'affichage
-                    languageOptions.forEach(opt => opt.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Mettre à jour le sélecteur principal
-                    const flag = this.querySelector('.language-flag').src;
-                    const text = this.querySelector('span').textContent;
-
-                    languageCurrent.querySelector('.language-flag').src = flag;
-                    languageCurrent.querySelector('span').textContent = text.length > 3 ? text
-                        .substring(0, 2) : text;
-
-                    // Fermer le dropdown
-                    languageSelector.classList.remove('active');
-
-                    // Ici vous pouvez ajouter la logique pour changer la langue du site
-                    changeLanguage(selectedLang);
-                });
-            });
-
-            // Gestion du sélecteur de langue Mobile
-            const mobileLanguageCurrent = document.querySelector('.mobile-language-current');
-            const mobileLanguageOptions = document.querySelector('.mobile-language-options');
-            const mobileLanguageOptionsList = document.querySelectorAll('.mobile-language-option');
-
-            if (mobileLanguageCurrent) {
-                mobileLanguageCurrent.addEventListener('click', function() {
-                    mobileLanguageOptions.classList.toggle('active');
-                });
-            }
-
-            // Gestion de la section utilisateur Mobile
-            const mobileUserLogin = document.querySelector('.mobile-user-login');
-            const mobileUserOptions = document.querySelector('.mobile-user-options');
-            const mobileUserOptionsList = document.querySelectorAll('.mobile-user-option');
-
-            if (mobileUserLogin && mobileUserOptions) {
-                mobileUserLogin.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    mobileUserOptions.classList.toggle('active');
-                });
-            }
-
-            mobileLanguageOptionsList.forEach(option => {
-                option.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const selectedLang = this.getAttribute('data-lang');
-
-                    // Mettre à jour l'affichage
-                    mobileLanguageOptionsList.forEach(opt => opt.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Mettre à jour le sélecteur principal mobile
-                    const flag = this.querySelector('.language-flag').src;
-                    const text = this.querySelector('span').textContent;
-
-                    mobileLanguageCurrent.querySelector('.language-flag').src = flag;
-                    mobileLanguageCurrent.querySelector('span').textContent = text;
-
-                    // Fermer le dropdown mobile
-                    mobileLanguageOptions.classList.remove('active');
-
-                    // Changer la langue
-                    changeLanguage(selectedLang);
-                });
-            });
-
-            // Fonction pour changer la langue
-            function changeLanguage(lang) {
-                window.location.href = `/lang/${lang}`;
+                userSection.classList.remove('active');
             }
         });
 
-   async function logout() {
-    try {
-        const url = "{{ route('client.logout') }}";    
-        const response = await fetch(url, {
-            method: 'DELETE', 
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": "{{ csrf_token() }}", 
-                "Accept": "application/json"
-            },
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            // Afficher le message de succès avec toastr
-            toastr.success(data.message || 'Déconnexion réussie!');
-            
-            // Rediriger après un court délai
-            setTimeout(() => {
-                window.location.href = "{{ route('client.login') }}";
-            }, 1500);
-        } else {
-            // Afficher un message d'erreur
-            toastr.error(data.message || 'Erreur lors de la déconnexion');
+        // Empêcher la fermeture quand on clique dans les dropdowns
+        if (languageSelector) {
+            languageSelector.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
         }
-    } catch (error) {
-        console.error('Erreur:', error);
-        toastr.error('Une erreur est survenue lors de la déconnexion');
-    } finally {
-        // loading = false;
+        if (userSection) {
+            userSection.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        }
+
+        // Gestion du changement de langue
+        languageOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const selectedLang = this.getAttribute('data-lang');
+
+                // Mettre à jour l'affichage
+                languageOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+
+                // Mettre à jour le sélecteur principal
+                const flag = this.querySelector('.language-flag').src;
+                const text = this.querySelector('span').textContent;
+
+                languageCurrent.querySelector('.language-flag').src = flag;
+                languageCurrent.querySelector('span').textContent = text.length > 3 ? text
+                    .substring(0, 2) : text;
+
+                // Fermer le dropdown
+                languageSelector.classList.remove('active');
+
+                // Ici vous pouvez ajouter la logique pour changer la langue du site
+                changeLanguage(selectedLang);
+            });
+        });
+
+        // ==========================================================================
+        // GESTION AMÉLIORÉE DES DROPDOWNS MOBILE
+        // ==========================================================================
+
+        // Gestion du sélecteur de langue Mobile
+        const mobileLanguageCurrent = document.querySelector('.mobile-language-current');
+        const mobileLanguageOptions = document.querySelector('.mobile-language-options');
+        const mobileLanguageOptionsList = document.querySelectorAll('.mobile-language-option');
+
+        if (mobileLanguageCurrent) {
+            mobileLanguageCurrent.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mobileLanguageOptions.classList.toggle('active');
+                
+                // Fermer les autres dropdowns mobiles
+                document.querySelector('.mobile-user-options')?.classList.remove('active');
+            });
+        }
+
+        // Gestion de la section utilisateur Mobile
+        const mobileUserLogin = document.querySelector('.mobile-user-login');
+        const mobileUserOptions = document.querySelector('.mobile-user-options');
+        const mobileUserOptionsList = document.querySelectorAll('.mobile-user-option');
+
+        if (mobileUserLogin && mobileUserOptions) {
+            mobileUserLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                mobileUserOptions.classList.toggle('active');
+                
+                // Fermer les autres dropdowns mobiles
+                document.querySelector('.mobile-language-options')?.classList.remove('active');
+            });
+        }
+
+        // Gestion des clics sur les options de langue mobile
+        mobileLanguageOptionsList.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const selectedLang = this.getAttribute('data-lang');
+
+                // Mettre à jour l'affichage
+                mobileLanguageOptionsList.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+
+                // Mettre à jour le sélecteur principal mobile
+                const flag = this.querySelector('.language-flag').src;
+                const text = this.querySelector('span').textContent;
+
+                mobileLanguageCurrent.querySelector('.language-flag').src = flag;
+                mobileLanguageCurrent.querySelector('span').textContent = text;
+
+                // Fermer le dropdown mobile
+                mobileLanguageOptions.classList.remove('active');
+
+                // Changer la langue
+                changeLanguage(selectedLang);
+            });
+        });
+
+        // Fermer les dropdowns mobiles quand on clique ailleurs
+        document.addEventListener('click', function(e) {
+            // Fermer les dropdowns de langue mobile
+            if (mobileLanguageOptions && mobileLanguageOptions.classList.contains('active')) {
+                if (!e.target.closest('.mobile-language-selector')) {
+                    mobileLanguageOptions.classList.remove('active');
+                }
+            }
+
+            // Fermer les dropdowns utilisateur mobile
+            if (mobileUserOptions && mobileUserOptions.classList.contains('active')) {
+                if (!e.target.closest('.mobile-user-section')) {
+                    mobileUserOptions.classList.remove('active');
+                }
+            }
+        });
+
+        // Empêcher la fermeture du menu quand on clique dans un dropdown mobile
+        document.querySelectorAll('.mobile-language-options, .mobile-user-options').forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+
+        // Fermer les dropdowns quand on scroll dans le menu mobile
+        if (navMenu) {
+            navMenu.addEventListener('scroll', function() {
+                document.querySelector('.mobile-language-options')?.classList.remove('active');
+                document.querySelector('.mobile-user-options')?.classList.remove('active');
+            });
+        }
+
+        // Fonction pour changer la langue
+        function changeLanguage(lang) {
+            window.location.href = `/lang/${lang}`;
+        }
+    });
+
+    async function logout() {
+        try {
+            const url = "{{ route('client.logout') }}";
+            const response = await fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                    "Accept": "application/json"
+                },
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                // Afficher le message de succès avec toastr
+                toastr.success(data.message || 'Déconnexion réussie!');
+
+                // Rediriger après un court délai
+                setTimeout(() => {
+                    window.location.href = "{{ route('client.login') }}";
+                }, 1500);
+            } else {
+                // Afficher un message d'erreur
+                toastr.error(data.message || 'Erreur lors de la déconnexion');
+            }
+        } catch (error) {
+            console.error('Erreur:', error);
+            toastr.error('Une erreur est survenue lors de la déconnexion');
+        } finally {
+            // loading = false;
+        }
     }
-}
-    </script>
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script>
     toastr.options = {
