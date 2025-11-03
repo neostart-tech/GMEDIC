@@ -226,7 +226,7 @@
         }
 
         .btn-whatsapp {
-            background: #25D366;
+            background:  #128C7E;
             color: white;
         }
 
@@ -351,6 +351,7 @@
             box-shadow: var(--shadow);
             position: sticky;
             top: 20px;
+            height: 100%;
         }
 
         .filter-section {

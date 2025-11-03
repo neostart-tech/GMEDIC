@@ -379,7 +379,7 @@
         }
 
         .btn-whatsapp {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            background: linear-gradient(135deg,   #1a3a66 0%, #128C7E 100%);
             color: white;
             flex: 1;
             box-shadow: var(--shadow);
@@ -387,7 +387,8 @@
 
         .btn-whatsapp:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-lg);*
+            color: white
         }
 
         .secure-checkout {
