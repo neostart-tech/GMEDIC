@@ -138,7 +138,7 @@
 
         .logo-wrapper:hover {
             transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.2);
+            background: rgb(255, 255, 255);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
@@ -330,6 +330,7 @@
 
         .identity-badge:hover {
             transform: scale(1.08) rotate(5deg);
+            
             box-shadow: 
                 var(--shadow-xl),
                 inset 0 4px 8px rgba(255, 255, 255, 0.4);
@@ -948,7 +949,7 @@
                         <img src="{{ asset('assets/images/logos/gmedic_logo.png') }}" alt="GMEDIC Logo" class="company-logo">
                     </div>
                     <div class="company-info">
-                        <h1 class="company-name">GMEDIC</h1>
+                        <h1 class="company-name">G-MEDIC</h1>
                         <p class="company-tagline">{{__('GMEDIC_Excellence_Medicale')}}</p>
                     </div>
                 </div>
