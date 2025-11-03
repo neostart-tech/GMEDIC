@@ -63,7 +63,7 @@
             background: white;
             border-radius: var(--border-radius-xl);
             box-shadow: var(--shadow-xl);
-            overflow: hidden;
+            overflow: visible; /* Changé de hidden à visible */
             max-width: 1100px;
             width: 100%;
             display: flex;
@@ -85,7 +85,7 @@
             padding: 40px 40px 40px;
             color: white;
             position: relative;
-            overflow: hidden;
+            overflow: visible; /* Changé de hidden à visible */
         }
 
         .card-header::before {
@@ -176,6 +176,97 @@
             line-height: 1.4;
         }
 
+        /* Sélecteur de langue - Position corrigée */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+            z-index: 9999;
+        }
+
+        .language-current {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-weight: 500;
+            min-width: 120px;
+        }
+
+        .language-current:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .language-flag {
+            width: 24px;
+            height: 16px;
+            border-radius: 3px;
+            object-fit: cover;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-xl);
+            min-width: 160px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition);
+            z-index: 9999;
+            border: 1px solid var(--border);
+        }
+
+        .language-selector.active .language-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .language-option:last-child {
+            border-bottom: none;
+        }
+
+        .language-option:hover {
+            background: var(--primary-soft);
+            color: var(--primary);
+        }
+
+        .language-option.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .language-option.active:hover {
+            background: var(--primary-dark);
+        }
+
+        .language-option span {
+            font-weight: 500;
+        }
+
         .card-body {
             display: flex;
             flex-wrap: wrap;
@@ -234,7 +325,7 @@
                 var(--shadow-lg),
                 inset 0 2px 4px rgba(255, 255, 255, 0.3);
             transition: var(--transition);
-            z-index: 2;
+            z-index: 0;
         }
 
         .identity-badge:hover {
@@ -702,6 +793,11 @@
             .phone-actions {
                 justify-content: center;
             }
+
+            .language-selector {
+                margin-top: 20px;
+                align-self: center;
+            }
         }
 
         @media (max-width: 640px) {
@@ -856,6 +952,55 @@
                         <p class="company-tagline">{{__('GMEDIC_Excellence_Medicale')}}</p>
                     </div>
                 </div>
+                
+                <!-- Sélecteur de langue intégré -->
+                <div class="language-selector">
+                    <div class="language-current">
+                        @php
+                            $locale = app()->getLocale();
+                            $languages = [
+                                'fr' => [
+                                    'name' => 'Français',
+                                    'flag' =>
+                                        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cmVjdCB4PSIyMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2YwMmIwMCIvPjwvc3ZnPg==',
+                                ],
+                                'en' => [
+                                    'name' => 'English',
+                                    'flag' =>
+                                        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiMwMDM1YTkiLz48cGF0aCBkPSJNMCAwdjMwbDYwLTNWMGwtNjAtM3oiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMCAwbDUwIDIwdjEwbC01MC0yMHoiIGZpbGw9IiNmMDJiMDAiLz48cGF0aCBkPSJNMCAyMGw1MC0yMHYxMGwtNTAgMjB6IiBmaWxsPSIjZjAyYjAwIi8+PC9zdmc+',
+                                ],
+                                'zh_CN' => [
+                                    'name' => '中文',
+                                    'flag' =>
+                                        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzMCIgdmlld0JveD0iMCAwIDYwIDMwIj48cmVjdCB3aWR0aD0iNjAiIGhlaWdodD0iMzAiIGZpbGw9IiNkZTE5MTEiLz48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTAgMTMuNUwxMiAxNS41TDEwIDE3LjVWMTR6Ii8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE1IDEyTDE3IDE0TDE1IDE2VjEyWiIvPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0xMiAxMEMxMiAxMyAxMyAxMyAxMyAxM0MxMyAxMCAxMiAxMCAxMiAxMFoiLz48L3N2Zz4=',
+                                ],
+                            ];
+                        @endphp
+
+                        @if (isset($languages[$locale]))
+                            <img src="{{ $languages[$locale]['flag'] }}" alt="{{ $languages[$locale]['name'] }}"
+                                class="language-flag">
+                            <span>{{ strtoupper(substr($languages[$locale]['name'], 0, 2)) }}</span>
+                            <i class="fas fa-chevron-down"></i>
+                        @else
+                            {{-- Fallback si la langue n'est pas trouvée --}}
+                            <img src="{{ $languages['fr']['flag'] }}" alt="Français" class="language-flag">
+                            <span>FR</span>
+                            <i class="fas fa-chevron-down"></i>
+                        @endif
+                    </div>
+                    <div class="language-dropdown">
+                        @foreach ($languages as $langCode => $language)
+                            <a href="{{ route('client.lang.switch', $langCode) }}"
+                                class="language-option {{ $locale === $langCode ? 'active' : '' }}"
+                                data-lang="{{ $langCode }}">
+                                <img src="{{ $language['flag'] }}" alt="{{ $language['name'] }}"
+                                    class="language-flag" />
+                                <span>{{ $language['name'] }}</span>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -992,6 +1137,54 @@
             document.addEventListener('mouseleave', () => {
                 card.style.transform = 'translateY(-8px) rotateX(0) rotateY(0)';
             });
+
+            // Gestion du sélecteur de langue
+            const languageSelector = document.querySelector('.language-selector');
+            const languageCurrent = document.querySelector('.language-current');
+            const languageOptions = document.querySelectorAll('.language-option');
+
+            // Ouvrir/fermer le dropdown
+            languageCurrent.addEventListener('click', function(e) {
+                e.stopPropagation();
+                languageSelector.classList.toggle('active');
+            });
+
+            // Fermer le dropdown en cliquant à l'extérieur
+            document.addEventListener('click', function(e) {
+                if (!languageSelector.contains(e.target)) {
+                    languageSelector.classList.remove('active');
+                }
+            });
+
+            // Gérer la sélection de langue
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const selectedLang = this.getAttribute('data-lang');
+
+                    // Mettre à jour l'affichage
+                    languageOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Mettre à jour le sélecteur principal
+                    const flag = this.querySelector('.language-flag').src;
+                    const text = this.querySelector('span').textContent;
+
+                    languageCurrent.querySelector('.language-flag').src = flag;
+                    languageCurrent.querySelector('span').textContent = text.length > 3 ? text
+                        .substring(0, 2) : text;
+
+                    // Fermer le dropdown
+                    languageSelector.classList.remove('active');
+
+                    // Changer la langue
+                    changeLanguage(selectedLang);
+                });
+            });
+
+            function changeLanguage(lang) {
+                window.location.href = `/lang/${lang}`;
+            }
         });
     </script>
 </body>
