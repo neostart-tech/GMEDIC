@@ -1270,7 +1270,7 @@
     
     // Variables de pagination
     let currentPage = 1;
-    const productsPerPage = 3;
+    const productsPerPage = 6;
     let totalPages = 1;
     let filteredProducts = [];
 
