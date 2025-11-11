@@ -1526,7 +1526,7 @@
 <!-- Section CTA -->
 <section class="cta-section">
     <div class="cta-container">
-        <h2 class="cta-title">{{__('CallToAction')}}</h2>
+        {{-- <h2 class="cta-title">{{__('CallToAction')}}</h2> --}}
         <p class="cta-description">
             {{__('DescriptionContact')}}
         </p>

@@ -84,7 +84,7 @@
                                             <span>{{ __('Nous contacter') }}</span>
                                             <i class="fas fa-arrow-right"></i>
                                         </a>
-                                        <a href="{{ route('client.categories.index') }}" class="cta-btn secondary-btn">
+                                        <a href="/" class="cta-btn secondary-btn">
                                             <span>{{ __('voir_nos_produits') }}</span>
                                         </a>
                                     </div>
@@ -321,7 +321,7 @@
                 </div>
 
                 <div class="section-footer">
-                    <a href="{{ route('client.categories.index') }}" class="btn btn-primary">
+                    <a href="/" class="btn btn-primary">
                         <span>{{ __('Voir tous les produits') }}</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>

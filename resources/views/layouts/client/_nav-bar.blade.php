@@ -1182,12 +1182,7 @@
                     {{ __('À propos') }}
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="{{ route('client.categories.index') }}"
-                    class="nav-link {{ Request::routeIs('client.categories.index') ? 'active' : '' }}">
-                    {{ __('Catégories') }}
-                </a>
-            </li>
+            
             <li class="nav-item">
                 <a href="{{ route('client.blogs.index') }}"
                     class="nav-link {{ Request::routeIs('client.blogs.index') ? 'active' : '' }}">
